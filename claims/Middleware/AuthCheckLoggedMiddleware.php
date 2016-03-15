@@ -3,7 +3,7 @@
 namespace PP\Middleware;
 
 /**
- * auto redirect when user already login
+ * auto redirect when user already login.
  */
 class AuthCheckLoggedMiddleware
 {
