@@ -4,7 +4,6 @@ namespace PP\claims\controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use PP\Module\LoginModule;
 
 class Logined
 {
@@ -16,9 +15,8 @@ class Logined
         $this->c = $container;
     }
 
-    
     /**
-     * Login Post action
+     * Login Post action.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
@@ -34,8 +32,8 @@ class Logined
         //print_r($this->c->user);
 
         return $this->c->view->render($response, 'logined.html.twig', [
-            'sysMsg'=>'Logined',
-            'User'=>$this->c->user
+            'sysMsg' => 'Logined',
+            'User'   => $this->c->user,
         ]);
     }
 }

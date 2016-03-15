@@ -2,8 +2,8 @@
 
 namespace PP\Claims\dbModel;
 
-use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use Ramsey\Uuid\Uuid;
 
 class User extends \Model
 {

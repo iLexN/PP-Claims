@@ -2,9 +2,9 @@
 
 namespace PP\claims\controller;
 
+use PP\Module\LoginModule;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use PP\Module\LoginModule;
 
 class Homepage
 {
@@ -32,18 +32,17 @@ class Homepage
 
         return $this->c->view->render($response, 'homepage.html.twig', [
             'token' => [
-                'nameKey' => $nameKey,
-                'name' => $name,
+                'nameKey'  => $nameKey,
+                'name'     => $name,
                 'valueKey' => $valueKey,
-                'value' => $value,
+                'value'    => $value,
             ],
-            'flash' => $this->c->flash->getMessages()
+            'flash' => $this->c->flash->getMessages(),
         ]);
     }
 
-
     /**
-     * Login Post action
+     * Login Post action.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
@@ -54,24 +53,24 @@ class Homepage
     public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $email = $request->getParsedBody()['email'];
-        $this->c->logger->info('email', ['email'=>$email]);
+        $this->c->logger->info('email', ['email' => $email]);
 
-        $login = new LoginModule;
-        if ( $user = $login->login($email) ) {
+        $login = new LoginModule();
+        if ($user = $login->login($email)) {
             $login->genToken();
-            $mailbody = $this->c->view->fetch('email/login-email.twig',[
-                'User'=>$user
+            $mailbody = $this->c->view->fetch('email/login-email.twig', [
+                'User' => $user,
             ]);
 
-            echo($mailbody);
+            echo $mailbody;
             //todo : send mail
         } else {
             // todo : all api check user
-            echo('not a user ');
+            echo 'not a user ';
         }
 
         return $this->c->view->render($response, 'homepage-login-success.html.twig', [
-            'sysMsg'=>'check email'
+            'sysMsg' => 'check email',
         ]);
     }
 }
