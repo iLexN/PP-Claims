@@ -8,7 +8,7 @@ ORM::configure('password', $dbSetting['password']);
 ORM::configure('driver_options', [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8']);
 ORM::configure('return_result_sets', true);
 ORM::configure('logging', $dbSetting['logging']);
-ORM::configure('logger', function ($log_string, $query_time) use ($container) {
+ORM::configure('logger', function($log_string, $query_time) use ($container) {
     $container->logger->info($log_string.' in '.$query_time);
 });
 

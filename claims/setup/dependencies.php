@@ -3,7 +3,7 @@
 $container = $app->getContainer();
 
 // Twig
-$container['view'] = function (\Slim\Container $c) {
+$container['view'] = function(\Slim\Container $c) {
     $settings = $c->get('viewConfig');
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
     // Add extensions
@@ -16,17 +16,17 @@ $container['view'] = function (\Slim\Container $c) {
 };
 
 // Flash messages
-$container['flash'] = function () {
+$container['flash'] = function() {
     return new \Slim\Flash\Messages();
 };
 
 // Fractal for output data
-$container['dataManager'] = function () {
+$container['dataManager'] = function() {
     return new \League\Fractal\Manager();
 };
 
 // monolog
-$container['logger'] = function (\Slim\Container $c) {
+$container['logger'] = function(\Slim\Container $c) {
     $settings = $c->get('logConfig');
     $logger = new \Monolog\Logger($settings['name']);
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
@@ -34,7 +34,7 @@ $container['logger'] = function (\Slim\Container $c) {
     return $logger;
 };
 
-$container['httpClient'] = function (\Slim\Container $c) {
+$container['httpClient'] = function(\Slim\Container $c) {
     $settings = $c->get('apiConfig');
 
     return new \GuzzleHttp\Client([
@@ -43,9 +43,9 @@ $container['httpClient'] = function (\Slim\Container $c) {
         ]);
 };
 
-$container['csrf'] = function (\Slim\Container $c) {
+$container['csrf'] = function(\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
-    $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
+    $guard->setFailureCallable(function($request, $response, $next) use ($c) {
         $c->logger->info('csrf wrong');
 
         return $c['response']->withStatus(500)
@@ -59,8 +59,8 @@ $container['csrf'] = function (\Slim\Container $c) {
 };
 
 // rount handloer
-$container['notFoundHandler'] = function (\Slim\Container $c) {
-    return function ($request, $response) use ($c) {
+$container['notFoundHandler'] = function(\Slim\Container $c) {
+    return function($request, $response) use ($c) {
         return $c['response']->withStatus(404)
                 ->write($c['view']->fetch('404.html.twig', [
                     'code' => '404 Error',
