@@ -31,7 +31,7 @@ class AuthLoggedMiddleware
         }
 
         $login = new \PP\Module\LoginModule();
-        $this->c->user = $login->getUser();
+        $this->c['user'] = $login->getUser();
 
         $response = $next($request, $response);
 

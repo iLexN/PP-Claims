@@ -5,6 +5,9 @@ namespace PP\Claims\dbModel;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Ramsey\Uuid\Uuid;
 
+/**
+  * @property string $token
+  */
 class User extends \Model
 {
     public static $_table = 'user';

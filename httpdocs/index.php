@@ -13,7 +13,7 @@ date_default_timezone_set('Asia/Hong_Kong');
 
 // get config
 $conf = new Noodlehaus\Config(__DIR__.'/../claims/config');
-$settings = $conf->all();
+$settings = $conf->all() ? : [];
 
 // app init
 $app = new \Slim\App($settings);
