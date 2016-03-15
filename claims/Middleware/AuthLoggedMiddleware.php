@@ -2,6 +2,10 @@
 
 namespace PP\Middleware;
 
+/**
+ * go to homeage when login expired
+ * get user info when user already login
+ */
 class AuthLoggedMiddleware
 {
     /* @var $c \Slim\Container */

@@ -2,6 +2,9 @@
 
 namespace PP\Middleware;
 
+/**
+ * auto redirect when user already login
+ */
 class AuthCheckLoggedMiddleware
 {
     /* @var $c \Slim\Container */
@@ -13,7 +16,7 @@ class AuthCheckLoggedMiddleware
     }
 
     /**
-     * Example middleware invokable class.
+     * middleware invokable class.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response

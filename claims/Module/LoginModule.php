@@ -13,6 +13,12 @@ class LoginModule
     {
     }
 
+    /**
+     * user email to login,
+     *
+     * @param string $email
+     * @return boolean|User
+     */
     public function login($email)
     {
         $user = User::where('email', $email)->findOne();
@@ -25,6 +31,9 @@ class LoginModule
         }
     }
 
+    /**
+     * gen token for login and save into db
+     */
     public function genToken()
     {
         $this->user->genToken();
@@ -32,6 +41,12 @@ class LoginModule
         $this->user->save();
     }
 
+    /**
+     * check token from the email , token expire 1 hr
+     *
+     * @param string $token
+     * @return User
+     */
     public function checkToken($token)
     {
         $this->user = User::where('token', $token)
@@ -41,11 +56,19 @@ class LoginModule
         return $this->user;
     }
 
+    /**
+     * save user id in session
+     */
     public function setLogin()
     {
         $_SESSION['userLogin'] = $this->user->id;
     }
 
+    /**
+     * get User info from session
+     *
+     * @return User
+     */
     public function getUser()
     {
         return User::findOne($_SESSION['userLogin']);

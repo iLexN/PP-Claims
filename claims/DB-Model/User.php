@@ -12,6 +12,9 @@ class User extends \Model
 {
     public static $_table = 'user';
 
+    /**
+     * gen new Token for login
+     */
     public function genToken()
     {
         $uuid1 = Uuid::uuid4();

@@ -66,11 +66,10 @@ class Homepage
             //todo : send mail
         } else {
             // todo : all api check user
-            echo 'not a user ';
         }
 
         return $this->c->view->render($response, 'homepage-login-success.html.twig', [
-            'sysMsg' => 'check email',
+            'sysMsg' => 'Not a user',
         ]);
     }
 }
