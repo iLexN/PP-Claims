@@ -1,12 +1,13 @@
 {
-    "name": "PPClaims/pp-claims",
-    "description": "test test",
+    "name": "pp-claims/pp-claims",
+    "description": "pp-claims",
     "authors": [
         {
             "name": "iLexN",
             "email": "ilex.job@gmail.com"
         }
     ],
+    "license": "MIT",
     "require": {
         "slim/slim": "3.*",
         "slim/flash": "0.1.0",
@@ -14,9 +15,9 @@
         "j4mie/paris": "v1.5.4",
         "j4mie/idiorm": "v1.5.1",
         "league/fractal":"0.13.0",
-        "guzzlehttp/guzzle": "^6.1",
+        "guzzlehttp/guzzle": "6.1.1",
         "hassankhan/config": "0.10.0",
-        "ilexn/idiorm-cache":"v1.1.*",
+        "ilexn/idiorm-cache":"v1.1.1",
         "monolog/monolog": "1.18.1",
         "phpmailer/phpmailer" : "v5.2.14",
         "slim/csrf" : "0.6.0",

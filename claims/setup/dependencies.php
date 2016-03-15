@@ -3,7 +3,7 @@
 $container = $app->getContainer();
 
 // Twig
-$container['view'] = function ($c) {
+$container['view'] = function (\Slim\Container $c) {
     $settings = $c->get('viewConfig');
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
     // Add extensions
@@ -26,7 +26,7 @@ $container['dataManager'] = function () {
 };
 
 // monolog
-$container['logger'] = function ($c) {
+$container['logger'] = function (\Slim\Container $c) {
     $settings = $c->get('logConfig');
     $logger = new \Monolog\Logger($settings['name']);
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
@@ -34,7 +34,7 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
-$container['httpClient'] = function ($c) {
+$container['httpClient'] = function (\Slim\Container $c) {
     $settings = $c->get('apiConfig');
 
     return new \GuzzleHttp\Client([
@@ -43,12 +43,8 @@ $container['httpClient'] = function ($c) {
         ]);
 };
 
-/*
-$container['csrf'] = function ($c) {
-    return new \Slim\Csrf\Guard;
-};
- * */
-$container['csrf'] = function ($c) {
+
+$container['csrf'] = function (\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
     $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
         $c->logger->info('csrf wrong');
@@ -64,7 +60,7 @@ $container['csrf'] = function ($c) {
 };
 
 // rount handloer
-$container['notFoundHandler'] = function ($c) {
+$container['notFoundHandler'] = function (\Slim\Container $c) {
     return function ($request, $response) use ($c) {
         return $c['response']->withStatus(404)
                 ->write($c['view']->fetch('404.html.twig', [

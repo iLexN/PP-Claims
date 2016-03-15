@@ -26,11 +26,6 @@ class Logined
      */
     public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-
-        //print_r($_SESSION);
-
-        //print_r($this->c->user);
-
         return $this->c->view->render($response, 'logined.html.twig', [
             'sysMsg' => 'Logined',
             'User'   => $this->c->user,
