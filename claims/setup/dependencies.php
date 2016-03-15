@@ -43,7 +43,6 @@ $container['httpClient'] = function (\Slim\Container $c) {
         ]);
 };
 
-
 $container['csrf'] = function (\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
     $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
