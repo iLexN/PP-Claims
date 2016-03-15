@@ -30,7 +30,6 @@ class LoginModule
         $this->user->genToken();
         $this->user->tokenDatetime = date('Y-m-d H:i:s');
         $this->user->save();
-
     }
 
     public function checkToken($token)
