@@ -1,0 +1,7 @@
+{# empty Twig template #}
+
+email : {{ User.email }}
+
+<p>
+<a href="{{ path_for('Email-Auth',{ 'token' : User.token }) }}" target="_blank">Login link</a>
+</p>
