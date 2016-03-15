@@ -14,10 +14,11 @@ class LoginModule
     }
 
     /**
-     * user email to login,
+     * user email to login,.
      *
      * @param string $email
-     * @return boolean|User
+     *
+     * @return bool|User
      */
     public function login($email)
     {
@@ -32,7 +33,7 @@ class LoginModule
     }
 
     /**
-     * gen token for login and save into db
+     * gen token for login and save into db.
      */
     public function genToken()
     {
@@ -42,9 +43,10 @@ class LoginModule
     }
 
     /**
-     * check token from the email , token expire 1 hr
+     * check token from the email , token expire 1 hr.
      *
      * @param string $token
+     *
      * @return User
      */
     public function checkToken($token)
@@ -57,7 +59,7 @@ class LoginModule
     }
 
     /**
-     * save user id in session
+     * save user id in session.
      */
     public function setLogin()
     {
@@ -65,7 +67,7 @@ class LoginModule
     }
 
     /**
-     * get User info from session
+     * get User info from session.
      *
      * @return User
      */
