@@ -48,6 +48,7 @@ $container['csrf'] = function (\Slim\Container $c) {
     $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
         $c->logger->info('csrf wrong');
         $c->flash->addMessage('loginError', 'Login Fail');
+        
         return $c->response->withStatus(301)
                 ->withHeader('Location', $c->router->pathFor('Homepage'));
     });
