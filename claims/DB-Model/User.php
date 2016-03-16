@@ -17,9 +17,9 @@ class User extends \Model
      */
     public function genToken()
     {
-        $uuid1 = Uuid::uuid4();
+        $uuid = Uuid::uuid4();
         try {
-            $this->token = $uuid1->toString();
+            $this->token = $uuid->toString();
         } catch (UnsatisfiedDependencyException $e) {
             echo 'Caught exception: '.$e->getMessage()."\n";
         }
