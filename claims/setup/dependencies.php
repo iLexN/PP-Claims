@@ -45,11 +45,10 @@ $container['httpClient'] = function (\Slim\Container $c) {
 
 $container['csrf'] = function (\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
-    /* @var $response \Psr\Http\Message\ResponseInterface */
     $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
         $c->logger->info('csrf wrong');
         $c->flash->addMessage('loginError', 'Login Fail');
-        return $response->withStatus(301)
+        return $c->response->withStatus(301)
                 ->withHeader('Location', $c->router->pathFor('Homepage'));
     });
 
