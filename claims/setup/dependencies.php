@@ -47,12 +47,9 @@ $container['csrf'] = function (\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
     $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
         $c->logger->info('csrf wrong');
-
-        return $c['response']->withStatus(500)
-                ->write($c['view']->fetch('404.html.twig', [
-                    'code' => '404 Error',
-                    ])
-                );
+        $c->flash->addMessage('loginError', 'Login Fail');
+        return $response->withStatus(301)
+                ->withHeader('Location', $c->router->pathFor('Homepage'));
     });
 
     return $guard;
