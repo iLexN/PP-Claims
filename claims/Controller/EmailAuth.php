@@ -29,18 +29,18 @@ class EmailAuth
     {
         $token = $args['token'];
 
-        $this->c->logger->info('token', $args);
+        $this->c['logger']->info('token', $args);
 
         $login = new LoginModule();
 
         if ($login->checkToken($token)) {
             $login->setLogin();
 
-            return $response->withStatus(301)->withHeader('Location', $this->c->router->pathFor('Login-ed'));
+            return $response->withStatus(301)->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }
 
-        $this->c->flash->addMessage('loginError', 'Login expired');
+        $this->c['flash']->addMessage('loginError', 'Login expired');
 
-        return $response->withStatus(301)->withHeader('Location', $this->c->router->pathFor('Homepage'));
+        return $response->withStatus(301)->withHeader('Location', $this->c['router']->pathFor('Homepage'));
     }
 }

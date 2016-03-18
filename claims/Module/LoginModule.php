@@ -27,9 +27,9 @@ class LoginModule
             $this->user = $user;
 
             return $user;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**

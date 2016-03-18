@@ -26,9 +26,9 @@ class Logined
      */
     public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        return $this->c->view->render($response, 'logined.html.twig', [
+        return $this->c['view']->render($response, 'logined.html.twig', [
             'sysMsg' => 'Logined',
-            'User'   => $this->c->user,
+            'User'   => $this->c['user'],
         ]);
     }
 }
