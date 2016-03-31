@@ -3,5 +3,6 @@
 email : {{ User.email }}
 
 <p>
+    this link will expire at {{ User.tokenExpireDatetime }}
 <a href="{{ path_for('Email-Auth',{ 'token' : User.token }) }}" target="_blank">Login link</a>
 </p>

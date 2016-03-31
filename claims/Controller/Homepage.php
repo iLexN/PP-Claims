@@ -37,7 +37,6 @@ class Homepage
                 'valueKey' => $valueKey,
                 'value'    => $value,
             ],
-            'flash' => $this->c['flash']->getMessages(),
         ]);
     }
 

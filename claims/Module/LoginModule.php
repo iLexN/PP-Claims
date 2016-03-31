@@ -38,7 +38,7 @@ class LoginModule
     public function genToken()
     {
         $this->user->genToken();
-        $this->user->tokenDatetime = date('Y-m-d H:i:s');
+        $this->user->tokenExpireDatetime = date('Y-m-d H:i:s', strtotime('+1 hours'));
         $this->user->save();
     }
 
@@ -52,7 +52,7 @@ class LoginModule
     public function checkToken($token)
     {
         $this->user = User::where('token', $token)
-                ->where_gt('tokenDatetime', date('Y-m-d H:i:s', strtotime('-1 hours')))
+                ->where_gt('tokenExpireDatetime', date('Y-m-d H:i:s'))
                 ->findOne();
 
         return $this->user;
