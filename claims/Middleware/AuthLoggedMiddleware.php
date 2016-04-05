@@ -32,7 +32,7 @@ class AuthLoggedMiddleware
     {
         /* @var $loginModule \PP\Module\LoginModule */
         $loginModule = $this->c['loginModule'];
-        
+
         if (!$loginModule->isLogined()) {
             $this->c['flash']->addMessage('loginError', 'Login expired');
 

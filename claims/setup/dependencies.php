@@ -62,7 +62,7 @@ $container['pool'] = function (\Slim\Container $c) {
     $settings = $c->get('dataCacheConfig');
     $driver = new \Stash\Driver\FileSystem($settings);
 
-    return new \Stash\Pool($driver);;
+    return new \Stash\Pool($driver);
 };
 
 // rount handloer
