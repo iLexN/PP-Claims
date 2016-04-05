@@ -16,7 +16,7 @@ class AuthCheckLoggedMiddleware
     }
 
     /**
-     * middleware invokable class.
+     * auto redirect when user already login.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response

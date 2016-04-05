@@ -17,7 +17,8 @@ class AuthLoggedMiddleware
     }
 
     /**
-     * Example middleware invokable class.
+     * go to homeage when login expired.
+     * get user info when user already login.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response

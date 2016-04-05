@@ -16,7 +16,7 @@ class Logined
     }
 
     /**
-     * Login Post action.
+     * Login-ed Page.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

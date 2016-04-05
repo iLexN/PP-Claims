@@ -47,6 +47,13 @@ class HomePageAction
         ]);
     }
 
+    /**
+     * check email in db or not(already user?).
+     *
+     * @param string $email
+     *
+     * @return bool
+     */
     private function checkLogin($email)
     {
         return $this->loginModule->login($email);

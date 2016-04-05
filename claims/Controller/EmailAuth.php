@@ -17,7 +17,7 @@ class EmailAuth
     }
 
     /**
-     * Login Post action.
+     * Email Auth Check action.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
