@@ -29,10 +29,11 @@ class EmailAuth
     {
         $this->c['logger']->info('token', $args);
 
-        $login = new LoginModule();
+        /* @var $loginModule \PP\Module\LoginModule */
+        $loginModule = $this->c['loginModule'];
 
-        if ($login->checkToken($args['token'])) {
-            $login->setLogined();
+        if ($loginModule->checkToken($args['token'])) {
+            $loginModule->setLogined();
 
             return $response->withStatus(301)->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }

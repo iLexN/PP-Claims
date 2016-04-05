@@ -6,11 +6,15 @@ use PP\Claims\dbModel\User;
 
 class LoginModule
 {
+    /* @var $c \Slim\Container */
+    protected $c;
+    
     /* @var $user User */
     public $user;
 
-    public function __construct()
+    public function __construct(\Slim\Container $container)
     {
+        $this->c = $container;
     }
 
     /**

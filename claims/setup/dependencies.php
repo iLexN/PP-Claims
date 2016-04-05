@@ -67,3 +67,10 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
                 );
     };
 };
+
+//custome Module.
+$container['loginModule'] = function (\Slim\Container $c) {
+    $loginModule = new \PP\Module\LoginModule($c);
+    
+    return $loginModule;
+};

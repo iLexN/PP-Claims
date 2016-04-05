@@ -11,9 +11,6 @@ class HomePageAction
     /* @var $c \Slim\Container */
     protected $c;
 
-    /* @var $loginModule \PP\Module\LoginModule */
-    protected $loginModule;
-
     public function __construct(\Slim\Container $container)
     {
         $this->c = $container;
@@ -33,7 +30,6 @@ class HomePageAction
         $email = $request->getParsedBody()['email'];
         $this->c['logger']->info('email', ['email' => $email]);
 
-        $this->loginModule = new LoginModule();
         if ($this->checkLogin($email)) {
             $this->genLoginEmailToUser();
             $msg = 'success';
@@ -56,14 +52,14 @@ class HomePageAction
      */
     private function checkLogin($email)
     {
-        return $this->loginModule->login($email);
+        return $this->c['loginModule']->login($email);
     }
 
     private function genLoginEmailToUser()
     {
-        $this->loginModule->genToken();
+        $this->c['loginModule']->genToken();
         $mailbody = $this->c['view']->fetch('email/login-email.twig', [
-                'User' => $this->loginModule->user,
+                'User' => $this->c['loginModule']->user,
         ]);
 
         echo $mailbody;

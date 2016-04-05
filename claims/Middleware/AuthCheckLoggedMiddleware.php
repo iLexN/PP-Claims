@@ -26,11 +26,12 @@ class AuthCheckLoggedMiddleware
      */
     public function __invoke($request, $response, $next)
     {
-        $loginModule = new \PP\Module\LoginModule();
+        /* @var $loginModule \PP\Module\LoginModule */
+        $loginModule = $this->c['loginModule'];
 
         if ($loginModule->isLogined()) {
             return $response->withStatus(301)
-                ->withHeader('Location', $this->c->router->pathFor('Login-ed'));
+                ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }
 
         $response = $next($request, $response);
