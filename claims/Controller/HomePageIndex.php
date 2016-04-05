@@ -6,7 +6,7 @@ use PP\Module\LoginModule;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class Homepage
+class HomePageIndex
 {
     /* @var $c \Slim\Container */
     protected $c;
@@ -37,40 +37,6 @@ class Homepage
                 'valueKey' => $valueKey,
                 'value'    => $value,
             ],
-        ]);
-    }
-
-    /**
-     * Login Post action.
-     *
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
-     * @param array                  $args
-     *
-     * @return ResponseInterface
-     */
-    public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
-    {
-        $email = $request->getParsedBody()['email'];
-        $this->c['logger']->info('email', ['email' => $email]);
-
-        $login = new LoginModule();
-        if ($user = $login->login($email)) {
-            $login->genToken();
-            $mailbody = $this->c['view']->fetch('email/login-email.twig', [
-                'User' => $user,
-            ]);
-
-            echo $mailbody;
-            //todo : send mail
-            $msg = 'success';
-        } else {
-            // todo : all api check user
-            $msg = 'fail';
-        }
-
-        return $this->c['view']->render($response, 'homepage-login-success.html.twig', [
-            'sysMsg' => $msg,
         ]);
     }
 }

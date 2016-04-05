@@ -7,7 +7,7 @@ use PP\Claims\dbModel\User;
 class LoginModule
 {
     /* @var $user User */
-    private $user;
+    public $user;
 
     public function __construct()
     {
@@ -26,7 +26,8 @@ class LoginModule
         if ($user) {
             $this->user = $user;
 
-            return $user;
+            //return $user;
+            return true;
         }
 
         return false;

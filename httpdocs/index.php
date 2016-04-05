@@ -27,19 +27,19 @@ require __DIR__.'/../claims/setup/db-setup.php';
 //Middleware
 require __DIR__.'/../claims/setup/middleware.php';
 
-$app->get('/', 'PP\Claims\Controller\HomePage:index')
+$app->get('/', 'PP\Claims\Controller\HomePageIndex:index')
     ->setName('Homepage')
-    ->add($container->get('csrf'))
-    ->add($authCheckLogin);
-$app->post('/', 'PP\Claims\Controller\HomePage:action')
-    ->add($container->get('csrf'));
+    ->add($container->get('csrf')) // for login form
+    ->add($authCheckLogin); // redirect to login-ed page if login-ed
+$app->post('/', 'PP\Claims\Controller\HomePageAction:action')
+    ->add($container->get('csrf')); // check form
 
 $app->get('/email-authenticate/{token}', 'PP\Claims\Controller\EmailAuth:action')
     ->setName('Email-Auth');
 
 $app->get('/login-ed', 'PP\Claims\Controller\Logined:action')
     ->setName('Login-ed')
-    ->add($authLogged);
+    ->add($authLogged); // redirect to home page if login expired
 
 // Run!
 $app->run();
