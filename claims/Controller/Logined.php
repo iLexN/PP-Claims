@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\claims\controller;
+namespace PP\claims\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,7 +30,7 @@ class Logined
     {
         return $this->c['view']->render($response, 'logined.html.twig', [
             'sysMsg' => 'Logined',
-            'User'   => $this->c['user'],
+            'User' => $this->c['user'],
         ]);
     }
 }

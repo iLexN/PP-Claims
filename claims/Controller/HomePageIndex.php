@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\claims\controller;
+namespace PP\claims\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,10 +33,10 @@ class HomePageIndex
 
         return $this->c['view']->render($response, 'homepage.html.twig', [
             'token' => [
-                'nameKey'  => $nameKey,
-                'name'     => $name,
+                'nameKey' => $nameKey,
+                'name' => $name,
                 'valueKey' => $valueKey,
-                'value'    => $value,
+                'value' => $value,
             ],
         ]);
     }

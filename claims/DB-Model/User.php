@@ -6,7 +6,9 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Ramsey\Uuid\Uuid;
 
 /**
+ * @property int $id
  * @property string $token
+ * @property string $tokenExpireDatetime
  */
 class User extends \Model
 {
