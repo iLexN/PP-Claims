@@ -18,7 +18,7 @@ class LoginModule
      *
      * @param string $email
      *
-     * @return bool|User
+     * @return bool
      */
     public function login($email)
     {

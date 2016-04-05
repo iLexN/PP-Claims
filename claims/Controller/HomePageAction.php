@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\claims\controller;
+namespace PP\claims\Controller;
 
 use PP\Module\LoginModule;
 use Psr\Http\Message\ResponseInterface;
@@ -47,13 +47,13 @@ class HomePageAction
         ]);
     }
 
-
-    private function checkLogin($email){
+    private function checkLogin($email)
+    {
         return $this->loginModule->login($email);
     }
 
-    private function genLoginEmailToUser(){
-        
+    private function genLoginEmailToUser()
+    {
         $this->loginModule->genToken();
         $mailbody = $this->c['view']->fetch('email/login-email.twig', [
                 'User' => $this->loginModule->user,
