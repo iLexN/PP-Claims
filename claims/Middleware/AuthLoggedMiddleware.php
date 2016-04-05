@@ -40,7 +40,7 @@ class AuthLoggedMiddleware
                 ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
         }
 
-        $this->c['user'] = $loginModule->getUserByLgoinSession();
+        $this->c['user'] = $loginModule->getUserByLoginSession();
 
         $response = $next($request, $response);
 
