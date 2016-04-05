@@ -27,15 +27,16 @@ class AuthLoggedMiddleware
      */
     public function __invoke($request, $response, $next)
     {
-        if (!isset($_SESSION['userLogin'])) {
+        $loginModule = new \PP\Module\LoginModule();
+        
+        if (!$loginModule->isLogined()) {
             $this->c['flash']->addMessage('loginError', 'Login expired');
 
             return $response->withStatus(301)
                 ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
         }
 
-        $login = new \PP\Module\LoginModule();
-        $this->c['user'] = $login->getUser();
+        $this->c['user'] = $loginModule->getUserByLgoinSession();
 
         $response = $next($request, $response);
 

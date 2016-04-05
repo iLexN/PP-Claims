@@ -62,7 +62,7 @@ class LoginModule
     /**
      * save user id in session.
      */
-    public function setLogin()
+    public function setLogined()
     {
         $_SESSION['userLogin'] = $this->user->id;
     }
@@ -72,8 +72,18 @@ class LoginModule
      *
      * @return User
      */
-    public function getUser()
+    public function getUserByLgoinSession()
     {
         return User::findOne($_SESSION['userLogin']);
+    }
+
+    /**
+     * check user is login or not.
+     *
+     * @return bool
+     */
+    public function isLogined()
+    {
+        return isset($_SESSION['userLogin']);
     }
 }

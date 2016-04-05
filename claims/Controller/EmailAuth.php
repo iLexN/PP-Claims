@@ -27,14 +27,12 @@ class EmailAuth
      */
     public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $token = $args['token'];
-
         $this->c['logger']->info('token', $args);
 
         $login = new LoginModule();
 
-        if ($login->checkToken($token)) {
-            $login->setLogin();
+        if ($login->checkToken($args['token'])) {
+            $login->setLogined();
 
             return $response->withStatus(301)->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }
