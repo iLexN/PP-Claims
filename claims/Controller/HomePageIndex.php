@@ -33,10 +33,10 @@ class HomePageIndex
 
         return $this->c['view']->render($response, 'homepage.html.twig', [
             'token' => [
-                'nameKey' => $nameKey,
-                'name' => $name,
+                'nameKey'  => $nameKey,
+                'name'     => $name,
                 'valueKey' => $valueKey,
-                'value' => $value,
+                'value'    => $value,
             ],
         ]);
     }
