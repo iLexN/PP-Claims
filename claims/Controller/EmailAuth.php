@@ -8,7 +8,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class EmailAuth
 {
-    /* @var $c \Slim\Container */
+    /**
+     * @var \Slim\Container
+     */
     protected $c;
 
     public function __construct(\Slim\Container $container)

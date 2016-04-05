@@ -2,13 +2,14 @@
 
 namespace PP\claims\Controller;
 
-use PP\Module\LoginModule;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class HomePageAction
 {
-    /* @var $c \Slim\Container */
+    /**
+     * @var \Slim\Container
+     */
     protected $c;
 
     public function __construct(\Slim\Container $container)

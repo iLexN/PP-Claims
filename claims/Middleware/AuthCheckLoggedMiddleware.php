@@ -7,7 +7,9 @@ namespace PP\Middleware;
  */
 class AuthCheckLoggedMiddleware
 {
-    /* @var $c \Slim\Container */
+    /**
+     * @var \Slim\Container
+     */
     protected $c;
 
     public function __construct(\Slim\Container $container)
