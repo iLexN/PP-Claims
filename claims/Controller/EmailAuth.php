@@ -2,7 +2,6 @@
 
 namespace PP\claims\controller;
 
-use PP\Module\LoginModule;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
