@@ -78,7 +78,19 @@ class LoginModule
      */
     public function getUserByLgoinSession()
     {
-        return User::findOne($_SESSION['userLogin']);
+        /* @var $item Stash\Interfaces\ItemInterface */
+        $item = $this->c['pool']->getItem('User/' .$_SESSION['userLogin'] . '/info' );
+        $user = $item->get();
+
+        if($item->isMiss())
+        {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $user = User::findOne($_SESSION['userLogin']);
+            $this->c['pool']->save($item->set($user));
+        }
+
+        return $user;
     }
 
     /**

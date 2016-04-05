@@ -21,6 +21,7 @@
         "monolog/monolog": "1.18.1",
         "phpmailer/phpmailer" : "v5.2.14",
         "slim/csrf" : "0.6.0",
-        "ramsey/uuid" : "3.2.0"
+        "ramsey/uuid" : "3.2.0",
+        "tedivm/stash": "0.14.*"
     }
 }

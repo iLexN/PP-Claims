@@ -57,6 +57,14 @@ $container['csrf'] = function (\Slim\Container $c) {
     return $guard;
 };
 
+//data cache
+$container['pool'] = function (\Slim\Container $c) {
+    $settings = $c->get('dataCacheConfig');
+    $driver = new \Stash\Driver\FileSystem($settings);
+
+    return new \Stash\Pool($driver);;
+};
+
 // rount handloer
 $container['notFoundHandler'] = function (\Slim\Container $c) {
     return function ($request, $response) use ($c) {
