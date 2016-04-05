@@ -30,7 +30,7 @@ class Logined
     {
         return $this->c['view']->render($response, 'logined.html.twig', [
             'sysMsg' => 'Logined',
-            'User' => $this->c['user'],
+            'User'   => $this->c['user'],
         ]);
     }
 }
