@@ -1,5 +1,5 @@
 <?php
 
-$authLogged = new PP\Middleware\AuthLoggedMiddleware($container);
+$authLoginArea = new PP\Middleware\Login\AuthLoginedAreaMiddleware($container);
 
-$authCheckLogin = new PP\Middleware\AuthCheckLoggedMiddleware($container);
+$authCheckLogined = new PP\Middleware\Login\AuthCheckLoginedMiddleware($container);

@@ -1,12 +1,11 @@
 <?php
 
-namespace PP\Middleware;
+namespace PP\Middleware\Login;
 
 /**
- * go to homeage when login expired
- * get user info when user already login.
+ * auto redirect when user already login.
  */
-class AuthLoggedMiddleware
+class AuthCheckLoginedMiddleware
 {
     /**
      * @var \Slim\Container
@@ -19,8 +18,7 @@ class AuthLoggedMiddleware
     }
 
     /**
-     * go to homeage when login expired.
-     * get user info when user already login.
+     * auto redirect when user already login.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
@@ -33,14 +31,10 @@ class AuthLoggedMiddleware
         /* @var $loginModule \PP\Module\LoginModule */
         $loginModule = $this->c['loginModule'];
 
-        if (!$loginModule->isLogined()) {
-            $this->c['flash']->addMessage('loginError', 'Login expired');
-
+        if ($loginModule->isLogined()) {
             return $response->withStatus(301)
-                ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
+                ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }
-
-        $this->c['user'] = $loginModule->getUserByLoginSession();
 
         $response = $next($request, $response);
 
