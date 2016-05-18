@@ -1,11 +1,11 @@
 <?php
 
-namespace PP\claims\Controller;
+namespace PP\claims\Controller\HomePage;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class HomePageIndex
+class Index
 {
     /**
      * @var \Slim\Container
@@ -24,7 +24,7 @@ class HomePageIndex
      *
      * @return ResponseInterface
      */
-    public function index(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $nameKey = $this->c['csrf']->getTokenNameKey();
         $valueKey = $this->c['csrf']->getTokenValueKey();

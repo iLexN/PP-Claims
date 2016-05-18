@@ -1,11 +1,11 @@
 <?php
 
-namespace PP\claims\Controller;
+namespace PP\claims\Controller\HomePage;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class HomePageAction
+class Action
 {
     /**
      * @var \Slim\Container
@@ -26,7 +26,7 @@ class HomePageAction
      *
      * @return ResponseInterface
      */
-    public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $email = $request->getParsedBody()['email'];
         $this->c['logger']->info('email', ['email' => $email]);
