@@ -31,13 +31,12 @@ class UploadAction
         $files = $request->getUploadedFiles();
 
         //var_dump($files);
-        var_dump($files['newfile']);
-        print_r($files['newfile']);
-        
+        //var_dump($files['newfile']);
+        //print_r($files['newfile']);
+
         if (empty($files['newfile'])) {
             throw new Exception('Expected a newfile');
         }
-
 
         /* @var $newfile \Slim\Http\UploadedFile */
         $newfile = $files['newfile'];

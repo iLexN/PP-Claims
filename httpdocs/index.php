@@ -27,7 +27,6 @@ require __DIR__.'/../claims/setup/db-setup.php';
 //Middleware
 require __DIR__.'/../claims/setup/middleware.php';
 
-
 require __DIR__.'/../claims/route/route.php';
 
 
