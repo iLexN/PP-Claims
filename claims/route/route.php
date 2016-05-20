@@ -17,4 +17,5 @@ $app->get('/login-ed', 'PP\Claims\Controller\Logined:action')
 //test
 $app->get('/upload', 'PP\Claims\Controller\Test\UploadIndex:index');
 $app->post('/upload', 'PP\Claims\Controller\Test\UploadAction:action');
-
+$app->get('/download/{filename}', 'PP\Claims\Controller\Test\DownloadIndex')
+        ->setName('downlaodFile');

@@ -6,3 +6,7 @@
             <input type="file" name="newfile2">
             <button type="submit">Upload</button>
         </form>
+
+<div>
+    <a href="{{ path_for('downlaodFile', {"filename": filename} ) }}">{{ filename }}</a>
+</div>

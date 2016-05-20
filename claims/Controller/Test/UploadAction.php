@@ -42,12 +42,12 @@ class UploadAction
         $newfile = $files['newfile'];
         // do something with $newfile
         
-
         if ($newfile->getError() === UPLOAD_ERR_OK) {
-            $uploadFileName = $newfile->getClientFilename();
-            $newfile->moveTo("/path/to/$uploadFileName");
+            $newfile->moveTo( $this->c->get('uploadConfig')['path'] . "/".$newfile->getClientFilename());
         }
 
-        return $this->c['view']->render($response, 'test/upload.html.twig');
+        return $this->c['view']->render($response, 'test/upload.html.twig',[
+            'filename'=>$newfile->getClientFilename()
+        ]);
     }
 }
