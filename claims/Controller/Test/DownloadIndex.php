@@ -28,9 +28,9 @@ class DownloadIndex
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $filename = $this->c->get('uploadConfig')['path'] . "/". $args['filename'];
-        if ( file_exists($filename) ) {
-            $stream = fopen($this->c->get('uploadConfig')['path'] . "/". $args['filename'], "r");
+        $filename = $this->c->get('uploadConfig')['path'].'/'.$args['filename'];
+        if (file_exists($filename)) {
+            $stream = fopen($this->c->get('uploadConfig')['path'].'/'.$args['filename'], 'r');
 
             return $response
                 ->withBody(new \Slim\Http\Stream($stream))

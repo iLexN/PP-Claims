@@ -39,15 +39,15 @@ class UploadAction
         $newfile->setAllowFilesize('2M');
         $newfile->setAllowMimetype(['image/png', 'image/gif']);
 
-        $errorMsg = array();
-        if ($newfile->isValid() ) {
-            $newfile->moveTo( $this->c->get('uploadConfig')['path'] . "/".$newfile->getClientFilename());
+        $errorMsg = [];
+        if ($newfile->isValid()) {
+            $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
         } else {
             $errorMsg = $newfile->getValidationMsg;
         }
 
-        return $this->c['view']->render($response, 'test/upload.html.twig',[
-            'filename'=>$newfile->getClientFilename(),
+        return $this->c['view']->render($response, 'test/upload.html.twig', [
+            'filename' => $newfile->getClientFilename(),
             'errorMsg' => $errorMsg,
         ]);
     }
