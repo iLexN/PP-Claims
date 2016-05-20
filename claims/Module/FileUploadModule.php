@@ -20,7 +20,6 @@ class FileUploadModule {
     private $validationFunction = array();
 
     /**
-     *
      * @var bool
      */
     public $hasValidationError = false;
@@ -65,6 +64,10 @@ class FileUploadModule {
     }
 
     public function isValid(){
+        if  ( $this->file->getError() !== UPLOAD_ERR_OK ) {
+            return false;
+        }
+
         foreach ( $this->validationFunction as $function ){
             $this->$function();
         }

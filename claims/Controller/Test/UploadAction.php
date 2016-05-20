@@ -39,7 +39,7 @@ class UploadAction
         $newfile->setAllowFilesize('2M');
         $newfile->setAllowMimetype(['image/png', 'image/gif']);
 
-        if ($newfile->getError() === UPLOAD_ERR_OK && $newfile->isValid() ) {
+        if ($newfile->isValid() ) {
             $newfile->moveTo( $this->c->get('uploadConfig')['path'] . "/".$newfile->getClientFilename());
         } else {
             $errorMsg = $newfile->hasValidationMsg;
