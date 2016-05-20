@@ -24,7 +24,7 @@ class FileUploadModule {
      */
     public $hasValidationError = false;
 
-    public $hasValidationMsg = array();
+    public $getValidationMsg = array();
 
     //put your code here
     public function __construct( UploadedFile $file ) {
@@ -77,14 +77,14 @@ class FileUploadModule {
     private function validationMimetype(){
         if (in_array($this->file->getClientMediaType(), $this->validation['mimetype']) === false) {
             $this->hasValidationError = true;
-            $this->hasValidationMsg[] = 'Mimetype error:' . $this->file->getClientMediaType() . ' allow ' . print_r($this->validation['mimetype'],1);
+            $this->getValidationMsg[] = 'Mimetype error:' . $this->file->getClientMediaType() . ' allow ' . print_r($this->validation['mimetype'],1);
         }
     }
 
     private function validationFilesize(){
         if ( $this->file->getSize() > $this->validation['filesize'] ) {
             $this->hasValidationError = true;
-            $this->hasValidationMsg[] = 'Filesize error:' . $this->file->getSize() . ' > ' . $this->validation['filesize'];
+            $this->getValidationMsg[] = 'Filesize error:' . $this->file->getSize() . ' > ' . $this->validation['filesize'];
         }
     }
 
