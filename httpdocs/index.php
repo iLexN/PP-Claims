@@ -29,7 +29,5 @@ require __DIR__.'/../claims/setup/middleware.php';
 
 require __DIR__.'/../claims/route/route.php';
 
-
 // Run!
 $app->run();
-
