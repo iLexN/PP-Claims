@@ -30,24 +30,24 @@ class UploadAction
     {
         $files = $request->getUploadedFiles();
 
-        //var_dump($files);
-        //var_dump($files['newfile']);
-        //print_r($files['newfile']);
-
         if (empty($files['newfile'])) {
             throw new \Exception('Expected a newfile');
         }
 
-        /* @var $newfile \Slim\Http\UploadedFile */
-        $newfile = $files['newfile'];
-        // do something with $newfile
-        
-        if ($newfile->getError() === UPLOAD_ERR_OK) {
+        /* @var $newfile \PP\Module\FileUploadModule */
+        $newfile = new \PP\Module\FileUploadModule($files['newfile']);
+        $newfile->setAllowFilesize('2M');
+        $newfile->setAllowMimetype(['image/png', 'image/gif']);
+
+        if ($newfile->getError() === UPLOAD_ERR_OK && $newfile->isValid() ) {
             $newfile->moveTo( $this->c->get('uploadConfig')['path'] . "/".$newfile->getClientFilename());
+        } else {
+            $errorMsg = $newfile->hasValidationMsg;
         }
 
         return $this->c['view']->render($response, 'test/upload.html.twig',[
-            'filename'=>$newfile->getClientFilename()
+            'filename'=>$newfile->getClientFilename(),
+            'errorMsg' => $errorMsg,
         ]);
     }
 }

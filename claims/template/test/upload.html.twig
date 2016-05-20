@@ -7,6 +7,8 @@
             <button type="submit">Upload</button>
         </form>
 
+<div style="color:red">{{ errorMsg | join(',') }}</div>
+
 <div>
     <a href="{{ path_for('downlaodFile', {"filename": filename} ) }}">{{ filename }}</a>
 </div>
