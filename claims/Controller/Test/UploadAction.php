@@ -39,6 +39,7 @@ class UploadAction
         $newfile->setAllowFilesize('2M');
         $newfile->setAllowMimetype(['image/png', 'image/gif']);
 
+        $errorMsg = array();
         if ($newfile->isValid() ) {
             $newfile->moveTo( $this->c->get('uploadConfig')['path'] . "/".$newfile->getClientFilename());
         } else {

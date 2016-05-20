@@ -11,7 +11,7 @@ use Slim\Http\UploadedFile;
 class FileUploadModule {
 
     /**
-     * @var Slim\Http\UploadedFile
+     * @var UploadedFile
      */
     public $file;
 
