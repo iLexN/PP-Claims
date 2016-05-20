@@ -63,6 +63,9 @@ class FileUploadModule
         return $this->file->getClientFilename();
     }
 
+    /**
+    * @param string $path
+    */
     public function moveTo($path)
     {
         $this->file->moveTo($path);

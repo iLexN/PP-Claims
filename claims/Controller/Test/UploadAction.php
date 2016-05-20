@@ -34,21 +34,31 @@ class UploadAction
             throw new \Exception('Expected a newfile');
         }
 
+        $newfile = $this->handerFile($files['newfile']);
+        
+        return $this->c['view']->render($response, 'test/upload.html.twig', [
+            'filename' => $newfile->getClientFilename(),
+            'errorMsg' => $newfile->getValidationMsg,
+        ]);
+    }
+
+    /**
+     *
+     * @param \Slim\Http\UploadedFile $file
+     *
+     * @return \PP\Module\FileUploadModule
+     */
+    private function handerFile($file)
+    {
         /* @var $newfile \PP\Module\FileUploadModule */
-        $newfile = new \PP\Module\FileUploadModule($files['newfile']);
+        $newfile = new \PP\Module\FileUploadModule($file);
         $newfile->setAllowFilesize('2M');
         $newfile->setAllowMimetype(['image/png', 'image/gif']);
 
-        $errorMsg = [];
         if ($newfile->isValid()) {
             $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
-        } else {
-            $errorMsg = $newfile->getValidationMsg;
         }
-
-        return $this->c['view']->render($response, 'test/upload.html.twig', [
-            'filename' => $newfile->getClientFilename(),
-            'errorMsg' => $errorMsg,
-        ]);
+        
+        return $newfile;
     }
 }
