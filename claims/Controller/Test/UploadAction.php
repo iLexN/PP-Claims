@@ -35,7 +35,7 @@ class UploadAction
         //print_r($files['newfile']);
 
         if (empty($files['newfile'])) {
-            throw new Exception('Expected a newfile');
+            throw new \Exception('Expected a newfile');
         }
 
         /* @var $newfile \Slim\Http\UploadedFile */
