@@ -28,10 +28,17 @@ class DownloadIndex
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $stream = fopen($this->c->get('uploadConfig')['path'] . "/". $args['filename'], "r");
+        $filename = $this->c->get('uploadConfig')['path'] . "/". $args['filename'];
+        if ( file_exists($filename) ) {
+            $stream = fopen($this->c->get('uploadConfig')['path'] . "/". $args['filename'], "r");
 
-        return $response
+            return $response
                 ->withBody(new \Slim\Http\Stream($stream))
                 ->withHeader('Content-Disposition', 'attachment; filename="'.$args['filename'].'"');
+        }
+
+        return $this->c['view']->render($response, '404.html.twig', [
+            'code' => '404 Error',
+        ]);
     }
 }
