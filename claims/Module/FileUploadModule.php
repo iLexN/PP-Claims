@@ -64,8 +64,8 @@ class FileUploadModule
     }
 
     /**
-    * @param string $path
-    */
+     * @param string $path
+     */
     public function moveTo($path)
     {
         $this->file->moveTo($path);

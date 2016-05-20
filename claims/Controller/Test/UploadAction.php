@@ -35,7 +35,7 @@ class UploadAction
         }
 
         $newfile = $this->handerFile($files['newfile']);
-        
+
         return $this->c['view']->render($response, 'test/upload.html.twig', [
             'filename' => $newfile->getClientFilename(),
             'errorMsg' => $newfile->getValidationMsg,
@@ -43,7 +43,6 @@ class UploadAction
     }
 
     /**
-     *
      * @param \Slim\Http\UploadedFile $file
      *
      * @return \PP\Module\FileUploadModule
@@ -58,7 +57,7 @@ class UploadAction
         if ($newfile->isValid()) {
             $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
         }
-        
+
         return $newfile;
     }
 }
