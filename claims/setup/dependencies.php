@@ -31,6 +31,7 @@ $container['logger'] = function (\Slim\Container $c) {
     $settings = $c->get('logConfig');
     $logger = new \Monolog\Logger($settings['name']);
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
+    //$logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'],$settings['mailSubject'],$settings['mailFrom']));
     //$logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
     return $logger;
 };

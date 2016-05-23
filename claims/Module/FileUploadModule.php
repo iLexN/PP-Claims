@@ -34,7 +34,7 @@ class FileUploadModule
     /**
      * array('image/png', 'image/gif').
      *
-     * @param array $array
+     * @param string[] $array
      */
     public function setAllowMimetype($array)
     {
