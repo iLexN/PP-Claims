@@ -75,6 +75,7 @@ class FileUploadModule
     {
         if ($this->file->getError() !== UPLOAD_ERR_OK) {
             $this->getValidationMsg[] = $this->file->getError();
+            
             return false;
         }
 
