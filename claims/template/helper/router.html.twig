@@ -1,0 +1,20 @@
+{# empty Twig template #}
+
+<table cellpadding="5" cellspacing="5" border="1">
+    <tr style="font-weight: bold">
+        <td>Controller Callable</td>
+        <td>Http Method</td>
+        <td>Route Name</td>
+        <td>Route Pattern</td>
+    </tr>
+    
+{% for route in router.getRoutes() %}
+    <tr>
+        <td>{{ route.getCallable()}}</td>
+        <td>{{ route.getMethods() | join(',') }}</td>
+        <td>{{ route.getName() }}</td>
+        <td>{{ route.pattern }}</td>
+    </tr>
+    
+{% endfor %}
+</table>

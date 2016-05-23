@@ -19,3 +19,9 @@ $app->get('/upload', 'PP\Claims\Controller\Test\UploadIndex:index');
 $app->post('/upload', 'PP\Claims\Controller\Test\UploadAction:action');
 $app->get('/download/{filename}', 'PP\Claims\Controller\Test\DownloadIndex')
         ->setName('downlaodFile');
+
+
+
+//helper for development
+$app->get('/helper/router', 'PP\Claims\Controller\Helper\Router')
+        ->setName('helperRouter');
