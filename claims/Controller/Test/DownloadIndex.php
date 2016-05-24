@@ -37,8 +37,6 @@ class DownloadIndex
                 ->withHeader('Content-Disposition', 'attachment; filename="'.$args['filename'].'"');
         }
 
-        return $this->c['view']->render($response, '404.html.twig', [
-            'code' => '404 Error',
-        ]);
+        throw new \Slim\Exception\NotFoundException($request, $response);
     }
 }
