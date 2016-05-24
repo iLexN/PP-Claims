@@ -26,7 +26,7 @@ class Logined
      *
      * @return ResponseInterface
      */
-    public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         return $this->c['view']->render($response, 'logined.html.twig', [
             'sysMsg' => 'Logined',

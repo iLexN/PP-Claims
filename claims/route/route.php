@@ -7,16 +7,16 @@ $app->get('/', 'PP\Claims\Controller\HomePage\Index')
 $app->post('/', 'PP\Claims\Controller\HomePage\Action')
     ->add($container->get('csrf')); // check form
 
-$app->get('/email-authenticate/{token}', 'PP\Claims\Controller\EmailAuth:action')
+$app->get('/email-authenticate/{token}', 'PP\Claims\Controller\EmailAuth')
     ->setName('Email-Auth');
 
-$app->get('/login-ed', 'PP\Claims\Controller\Logined:action')
+$app->get('/login-ed', 'PP\Claims\Controller\Logined')
     ->setName('Login-ed')
     ->add($authLoginArea); // redirect to home page if login expired
 
 //test
-$app->get('/upload', 'PP\Claims\Controller\Test\UploadIndex:index');
-$app->post('/upload', 'PP\Claims\Controller\Test\UploadAction:action');
+$app->get('/upload', 'PP\Claims\Controller\Test\UploadIndex');
+$app->post('/upload', 'PP\Claims\Controller\Test\UploadAction');
 $app->get('/download/{filename}', 'PP\Claims\Controller\Test\DownloadIndex')
         ->setName('downlaodFile');
 

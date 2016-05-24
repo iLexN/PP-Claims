@@ -26,7 +26,7 @@ class EmailAuth
      *
      * @return ResponseInterface
      */
-    public function action(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $this->c['logger']->info('token', $args);
 

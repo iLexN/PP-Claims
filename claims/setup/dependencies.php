@@ -41,7 +41,7 @@ $container['httpClient'] = function (\Slim\Container $c) {
 
     return new \GuzzleHttp\Client([
             'base_uri' => $settings['base_uri'],
-            'auth'     => [$settings['username'], 'password'],
+            'auth'     => [$settings['username'], $settings['password']],
         ]);
 };
 

@@ -26,7 +26,7 @@ class UploadIndex
      *
      * @return ResponseInterface
      */
-    public function index(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         return $this->c['view']->render($response, 'test/upload.html.twig');
     }
