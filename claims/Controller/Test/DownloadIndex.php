@@ -34,7 +34,7 @@ class DownloadIndex
 
             return $response
                 ->withBody(new \Slim\Http\Stream($stream))
-                ->withHeader('Content-Type',mime_content_type($filename))
+                ->withHeader('Content-Type', mime_content_type($filename))
                 ->withHeader('Content-Disposition', 'attachment; filename="'.$args['filename'].'"');
         }
 

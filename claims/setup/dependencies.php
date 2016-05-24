@@ -68,13 +68,14 @@ $container['pool'] = function (\Slim\Container $c) {
 
 // rount handloer
 $container['notFoundHandler'] = function (\Slim\Container $c) {
-    return function ($request, $response) use ($c) {
-        $logInfo = array(
-            'method'=>$request->getMethod(),
-            'uri'=>(string)$request->getUri(),
-            'header'=>$request->getHeaders()
-        );
-        $c->logger->info('404',$logInfo);
+    return function (ServerRequestInterface $request, ResponseInterface $response) use ($c) {
+        $logInfo = [
+            'method' => $request->getMethod(),
+            'uri'    => (string) $request->getUri(),
+            'header' => $request->getHeaders(),
+        ];
+        $c->logger->info('404', $logInfo);
+
         return $c['response']->withStatus(404)
                 ->write($c['view']->fetch('404.html.twig', [
                     'code' => '404 Error',
