@@ -3,8 +3,6 @@
 namespace PP\Module;
 
 use PP\Claims\dbModel\User;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
-use Ramsey\Uuid\Uuid;
 
 class LoginModule
 {
