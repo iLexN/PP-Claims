@@ -23,7 +23,7 @@ class FileUploadModule
      */
     public $hasValidationError = false;
 
-    public $getValidationMsg = [];
+    private $validationMsg = [];
 
     //put your code here
     public function __construct(UploadedFile $file)
@@ -74,7 +74,7 @@ class FileUploadModule
     public function isValid()
     {
         if ($this->file->getError() !== UPLOAD_ERR_OK) {
-            $this->getValidationMsg[] = $this->file->getError();
+            $this->validationMsg[] = $this->file->getError();
 
             return false;
         }
@@ -86,11 +86,15 @@ class FileUploadModule
         return !$this->hasValidationError;
     }
 
+    public function getValidationMsg(){
+        return $this->validationMsg;
+    }
+
     private function validationMimetype()
     {
         if (in_array($this->file->getClientMediaType(), $this->validation['mimetype']) === false) {
             $this->hasValidationError = true;
-            $this->getValidationMsg[] = 'Mimetype error:'.$this->file->getClientMediaType().' allow '.print_r($this->validation['mimetype'], 1);
+            $this->validationMsg[] = 'Mimetype error:'.$this->file->getClientMediaType().' allow '.print_r($this->validation['mimetype'], 1);
         }
     }
 
@@ -98,7 +102,7 @@ class FileUploadModule
     {
         if ($this->file->getSize() > $this->validation['filesize']) {
             $this->hasValidationError = true;
-            $this->getValidationMsg[] = 'Filesize error:'.$this->file->getSize().' > '.$this->validation['filesize'];
+            $this->validationMsg[] = 'Filesize error:'.$this->file->getSize().' > '.$this->validation['filesize'];
         }
     }
 

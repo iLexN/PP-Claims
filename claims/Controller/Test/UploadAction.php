@@ -38,7 +38,7 @@ class UploadAction
 
         return $this->c['view']->render($response, 'test/upload.html.twig', [
             'filename' => $newfile->getClientFilename(),
-            'errorMsg' => $newfile->getValidationMsg,
+            'errorMsg' => $newfile->getValidationMsg(),
         ]);
     }
 
