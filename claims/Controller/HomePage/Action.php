@@ -57,7 +57,7 @@ class Action
     }
 
     /**
-     * action when user exist
+     * action when user exist.
      */
     private function genLoginEmailToUser()
     {

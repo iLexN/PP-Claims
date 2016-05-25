@@ -4,7 +4,7 @@ $app->get('/', 'PP\Claims\Controller\HomePage\Index')
     ->setName('Homepage')
     ->add($authCheckLogined)// redirect to login-ed page if login-ed
     ->add($container->get('csrf')); // for login form
- 
+
 $app->post('/', 'PP\Claims\Controller\HomePage\Action')
     ->add($container->get('csrf')); // check form
 
