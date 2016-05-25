@@ -48,14 +48,7 @@ class LoginModule
      */
     public function genToken()
     {
-        $uuid = Uuid::uuid4();
-        try {
-            $this->user->token = $uuid->toString();
-        } catch (UnsatisfiedDependencyException $e) {
-            $this->c->logger->error('Caught exception: '.$e->getMessage()."\n");
-        }
-
-        $this->user->tokenExpireDatetime = date('Y-m-d H:i:s', strtotime('+1 hours'));
+        $this->user->genToken();
         $this->user->save();
     }
 
