@@ -34,7 +34,6 @@ class LoginModule
         if ($user) {
             $this->user = $user;
 
-            //return $user;
             return true;
         }
 

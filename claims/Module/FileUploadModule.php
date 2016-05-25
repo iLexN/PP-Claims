@@ -14,7 +14,7 @@ class FileUploadModule
      */
     public $file;
 
-    public $validation = [];
+    private $validation = [];
 
     private $validationFunction = [];
 

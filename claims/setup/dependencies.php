@@ -68,7 +68,7 @@ $container['pool'] = function (\Slim\Container $c) {
 
 // rount handloer
 $container['notFoundHandler'] = function (\Slim\Container $c) {
-    return function (ServerRequestInterface $request, ResponseInterface $response) use ($c) {
+    return function (\Slim\Http\Request $request, \Slim\Http\Response  $response) use ($c) {
         $logInfo = [
             'method' => $request->getMethod(),
             'uri'    => (string) $request->getUri(),
