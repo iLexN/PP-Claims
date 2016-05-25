@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\claims\Controller\HomePage;
+namespace PP\Claims\Controller\HomePage;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
