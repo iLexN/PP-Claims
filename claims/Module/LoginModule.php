@@ -3,6 +3,8 @@
 namespace PP\Module;
 
 use PP\Claims\dbModel\User;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use Ramsey\Uuid\Uuid;
 
 class LoginModule
 {
@@ -28,7 +30,7 @@ class LoginModule
      *
      * @return bool
      */
-    public function login($email)
+    public function isUserExist($email)
     {
         $user = User::where('email', $email)->findOne();
         if ($user) {
@@ -46,7 +48,13 @@ class LoginModule
      */
     public function genToken()
     {
-        $this->user->genToken();
+        $uuid = Uuid::uuid4();
+        try {
+            $this->user->token = $uuid->toString();
+        } catch (UnsatisfiedDependencyException $e) {
+            $this->c->logger->error('Caught exception: '.$e->getMessage()."\n");
+        }
+
         $this->user->tokenExpireDatetime = date('Y-m-d H:i:s', strtotime('+1 hours'));
         $this->user->save();
     }

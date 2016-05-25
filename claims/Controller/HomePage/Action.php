@@ -31,7 +31,7 @@ class Action
         $email = $request->getParsedBody()['email'];
         $this->c['logger']->info('email', ['email' => $email]);
 
-        if ($this->checkLogin($email)) {
+        if ($this->isUserExist($email)) {
             $this->genLoginEmailToUser();
             $msg = 'success';
         } else {
@@ -51,11 +51,14 @@ class Action
      *
      * @return bool
      */
-    private function checkLogin($email)
+    private function isUserExist($email)
     {
-        return $this->c['loginModule']->login($email);
+        return $this->c['loginModule']->isUserExist($email);
     }
 
+    /**
+     * action when user exist
+     */
     private function genLoginEmailToUser()
     {
         $this->c['loginModule']->genToken();
