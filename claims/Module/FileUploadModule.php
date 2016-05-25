@@ -86,7 +86,8 @@ class FileUploadModule
         return !$this->hasValidationError;
     }
 
-    public function getValidationMsg(){
+    public function getValidationMsg()
+    {
         return $this->validationMsg;
     }
 
