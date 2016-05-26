@@ -21,11 +21,6 @@ $container['flash'] = function () {
     return new \Slim\Flash\Messages();
 };
 
-// Fractal for output data
-$container['dataManager'] = function () {
-    return new \League\Fractal\Manager();
-};
-
 // monolog
 $container['logger'] = function (\Slim\Container $c) {
     $settings = $c->get('logConfig');

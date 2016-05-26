@@ -1,11 +1,11 @@
 <h1>Home</h1>
 
 <form action="" method="POST">
-    <label for="email">email : <input type=text" name="email" value="" id="email"></label>
+    <label for="email">email : <input type="text" name="email" value="" id="email"></label>
 {% include 'include/csrf.twig' %}
 <input type="submit" value="Submit">
 </form>
 
 {% if flash.loginError is not empty %}
-        <p class="error">{{ flash.loginError.0  }}</p>
+        <p>{{ flash.loginError.0  }}</p>
         {% endif %}
