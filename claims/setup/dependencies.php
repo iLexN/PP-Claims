@@ -40,6 +40,10 @@ $container['httpClient'] = function (\Slim\Container $c) {
         ]);
 };
 
+$container['httpCache'] = function () {
+    return new \Slim\HttpCache\CacheProvider();
+};
+
 $container['csrf'] = function (\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
     $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
@@ -67,7 +71,6 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
         $logInfo = [
             'method' => $request->getMethod(),
             'uri'    => (string) $request->getUri(),
-            'header' => $request->getHeaders(),
         ];
         $c->logger->info('404', $logInfo);
 
