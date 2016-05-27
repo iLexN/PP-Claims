@@ -1,5 +1,5 @@
 <?php
-
+session_cache_limiter('');
 session_name('PP-Claims');
 session_start();
 
