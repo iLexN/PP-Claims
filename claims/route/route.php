@@ -20,7 +20,9 @@ $app->get('/test/upload', 'PP\Claims\Controller\Test\UploadIndex');
 $app->post('/test/upload', 'PP\Claims\Controller\Test\UploadAction');
 $app->get('/test/download/{filename}', 'PP\Claims\Controller\Test\DownloadIndex')
         ->setName('downlaodFile');
-$app->get('/test/js.js', 'PP\Claims\Controller\Test\Js');
+//js path
+$app->get('/test/{filename}.js', 'PP\Claims\Controller\Test\Js')
+        ->setName('jsFile');
 
 //helper for development
 $app->get('/helper/router', 'PP\Claims\Controller\Helper\Router')

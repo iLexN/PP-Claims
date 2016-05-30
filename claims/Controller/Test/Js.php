@@ -28,7 +28,9 @@ class Js
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $filename = $this->c->get('uploadConfig')['path'].'/common.js';
+        $template = 'js/' . $args['filename'] . '.js';
+        
+        $filename = $this->c->get('viewConfig')['template_path'].'/' . $template;
         if (file_exists($filename)) {
             
             $response = $this->c->httpCache->allowCache(
@@ -37,17 +39,10 @@ class Js
                         86400
                     );
 
-            $this->c->logger->info('js');
+            $this->c->logger->info('js',$args);
 
-            $out = new \Assetic\Asset\AssetCollection([
-                new \Assetic\Asset\FileAsset($filename),
-            ], [
-                new \Assetic\Filter\JSMinFilter(),
-            ]);
-
-            return $response
-                ->write($out->dump())
-                ->withHeader('Content-Type', 'application/javascript;charset=utf-8');
+            return $this->c['view']->render($response, $template, [])
+                    ->withHeader('Content-Type', 'application/javascript;charset=utf-8');
         }
 
         throw new \Slim\Exception\NotFoundException($request, $response);
