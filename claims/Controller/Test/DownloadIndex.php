@@ -30,7 +30,7 @@ class DownloadIndex
     {
         $filename = $this->c->get('uploadConfig')['path'].'/'.$args['filename'];
         if (file_exists($filename)) {
-            $stream = fopen($this->c->get('uploadConfig')['path'].'/'.$args['filename'], 'r');
+            $stream = fopen($filename, 'r');
 
             return $response
                 ->withBody(new \Slim\Http\Stream($stream))
