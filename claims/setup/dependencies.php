@@ -27,7 +27,7 @@ $container['logger'] = function (\Slim\Container $c) {
     $logger = new \Monolog\Logger($settings['name']);
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
     //$logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'],$settings['mailSubject'],$settings['mailFrom']));
-    //$logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
+    $logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
     return $logger;
 };
 
@@ -81,6 +81,17 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
                 );
     };
 };
+if ( !$container['settings']['displayErrorDetails']){
+    $container['errorHandler'] = function (\Slim\Container $c) {
+        return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
+            $c['logger']->error('e',(array)$exception);
+
+            return $c['response']->withStatus(500)
+                                 ->withHeader('Content-Type', 'text/html')
+                                 ->write('Something went wrong!');
+        };
+    };
+}
 
 //custome Module.
 $container['loginModule'] = function (\Slim\Container $c) {
