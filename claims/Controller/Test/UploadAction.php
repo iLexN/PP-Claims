@@ -71,7 +71,7 @@ class UploadAction
     private function postFile($filePath)
     {
         /* @var $client \GuzzleHttp\Client */
-        $client = $this->c->httpClient;
+        $client = $this->c['httpClient'];
 
         $response = $client->request('POST', 'test/upload', [
             'multipart' => [
