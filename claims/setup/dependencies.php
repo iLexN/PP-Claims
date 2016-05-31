@@ -28,6 +28,7 @@ $container['logger'] = function (\Slim\Container $c) {
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
     //$logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'],$settings['mailSubject'],$settings['mailFrom']));
     $logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
+
     return $logger;
 };
 
@@ -35,8 +36,8 @@ $container['httpClient'] = function (\Slim\Container $c) {
     $settings = $c->get('apiConfig');
 
     return new \GuzzleHttp\Client([
-            'base_uri' => $settings['base_uri'],
-            'auth'     => [$settings['username'], $settings['password']],
+            'base_uri'    => $settings['base_uri'],
+            'auth'        => [$settings['username'], $settings['password']],
             'http_errors' => false,
         ]);
 };
@@ -82,10 +83,10 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
                 );
     };
 };
-if ( !$container['settings']['displayErrorDetails']){
+if (!$container['settings']['displayErrorDetails']) {
     $container['errorHandler'] = function (\Slim\Container $c) {
         return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
-            $c['logger']->error('e',(array)$exception);
+            $c['logger']->error('e', (array) $exception);
 
             return $c['response']->withStatus(500)
                                  ->withHeader('Content-Type', 'text/html')

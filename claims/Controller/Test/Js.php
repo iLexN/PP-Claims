@@ -28,18 +28,17 @@ class Js
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $template = 'js/' . $args['filename'] . '.js';
-        
-        $filename = $this->c->get('viewConfig')['template_path'].'/' . $template;
+        $template = 'js/'.$args['filename'].'.js';
+
+        $filename = $this->c->get('viewConfig')['template_path'].'/'.$template;
         if (file_exists($filename)) {
-            
             $response = $this->c->httpCache->allowCache(
                         $response,
                         'private',
                         86400
                     );
 
-            $this->c->logger->info('js',$args);
+            $this->c->logger->info('js', $args);
 
             return $this->c['view']->render($response, $template, [])
                     ->withHeader('Content-Type', 'application/javascript;charset=utf-8');
