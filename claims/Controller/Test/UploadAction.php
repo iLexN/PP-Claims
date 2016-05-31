@@ -52,7 +52,7 @@ class UploadAction
         /* @var $newfile \PP\Module\FileUploadModule */
         $newfile = new \PP\Module\FileUploadModule($file);
         $newfile->setAllowFilesize('2M');
-        $newfile->setAllowMimetype(['image/png', 'image/gif','image/jpeg']);
+        $newfile->setAllowMimetype(['image/png', 'image/gif', 'image/jpeg']);
 
         if ($newfile->isValid()) {
             $filePath = $this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename();
@@ -65,7 +65,7 @@ class UploadAction
 
     /**
      * sure post to api same time ?
-     * 
+     *
      * @param string $filePath
      */
     private function postFile($filePath)
@@ -77,20 +77,20 @@ class UploadAction
             'multipart' => [
                 [
                     'name'     => 'newfile',
-                    'contents' => fopen($filePath, 'r')
+                    'contents' => fopen($filePath, 'r'),
                 ],
-            ]
+            ],
         ]);
 
-        $result = json_decode((string)$response->getBody() , 1);
-        $this->c->logger->info( 'post file response' , $result);
+        $result = json_decode((string) $response->getBody(), 1);
+        $this->c->logger->info('post file response', $result);
 
-        if ( isset($result['error']) || $response->getStatusCode() != 200 ){
+        if (isset($result['error']) || $response->getStatusCode() != 200) {
             $log = [
-                'getStatusCode'=>$response->getStatusCode(),
-                'body'=> (string)$response->getBody(),
+                'getStatusCode' => $response->getStatusCode(),
+                'body'          => (string) $response->getBody(),
             ];
-            $this->c->logger->info( 'post file response' , $log);
+            $this->c->logger->info('post file response', $log);
         }
     }
 }

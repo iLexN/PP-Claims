@@ -1,5 +1,7 @@
 <?php
+
 namespace PP\Middleware;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,12 +9,12 @@ namespace PP\Middleware;
  */
 
 /**
- * Description of HttpCache
+ * Description of HttpCache.
  *
  * @author user
  */
-class HttpCache {
-
+class HttpCache
+{
     /**
      * @var \Slim\Container
      */
@@ -24,7 +26,7 @@ class HttpCache {
     }
 
     /**
-     * add default Cache-Control no cache
+     * add default Cache-Control no cache.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
@@ -39,7 +41,7 @@ class HttpCache {
         if (!$response->hasHeader('Cache-Control')) {
             return $this->c->httpCache->denyCache($response);
         }
-        
+
         return $response;
     }
 }
