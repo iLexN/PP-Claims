@@ -16,7 +16,8 @@ $app->get('/login-ed', 'PP\Claims\Controller\Logined')
     ->add($authLoginArea); // redirect to home page if login expired
 
 //test
-$app->get('/test/upload', 'PP\Claims\Controller\Test\UploadIndex');
+$app->get('/test/upload', 'PP\Claims\Controller\Test\UploadIndex')
+        ->setName('upload');
 $app->post('/test/upload', 'PP\Claims\Controller\Test\UploadAction');
 $app->get('/test/download/{filename}', 'PP\Claims\Controller\Test\DownloadIndex')
         ->setName('downlaodFile');

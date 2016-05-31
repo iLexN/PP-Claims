@@ -52,12 +52,45 @@ class UploadAction
         /* @var $newfile \PP\Module\FileUploadModule */
         $newfile = new \PP\Module\FileUploadModule($file);
         $newfile->setAllowFilesize('2M');
-        $newfile->setAllowMimetype(['image/png', 'image/gif']);
+        $newfile->setAllowMimetype(['image/png', 'image/gif','image/jpeg']);
 
         if ($newfile->isValid()) {
-            $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
+            $filePath = $this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename();
+            $newfile->moveTo($filePath);
+            //$this->postFile($filePath);
         }
 
         return $newfile;
+    }
+
+    /**
+     * sure post to api same time ?
+     * 
+     * @param string $filePath
+     */
+    private function postFile($filePath)
+    {
+        /* @var $client \GuzzleHttp\Client */
+        $client = $this->c->httpClient;
+
+        $response = $client->request('POST', 'test/upload', [
+            'multipart' => [
+                [
+                    'name'     => 'newfile',
+                    'contents' => fopen($filePath, 'r')
+                ],
+
+            ]
+        ]);
+
+        $result = json_decode((string)$response->getBody() , 1);
+
+        if ( isset($result['error']) || $response->getStatusCode() != 200 ){
+            $log = [
+                'getStatusCode'=>$response->getStatusCode(),
+                'body'=> (string)$response->getBody(),
+            ];
+            $this->c->logger->info( 'post file response' , $log);
+        }
     }
 }

@@ -1,6 +1,6 @@
 {# empty Twig template #}
 <h1>Upload a file</h1>
-        <form method="POST" action="/upload" enctype="multipart/form-data">
+        <form method="POST" action="{{ path_for('upload') }}" enctype="multipart/form-data">
             <label>Select file to upload:</label>
             <input type="file" name="newfile">
             <input type="file" name="newfile2">
