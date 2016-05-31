@@ -70,10 +70,7 @@ class UploadAction
      */
     private function postFile($filePath)
     {
-        /* @var $client \GuzzleHttp\Client */
-        $client = $this->c['httpClient'];
-
-        $response = $client->request('POST', 'test/upload', [
+        $response = $this->c['httpClient']->request('POST', 'test/upload', [
             'multipart' => [
                 [
                     'name'     => 'newfile',
@@ -83,14 +80,13 @@ class UploadAction
         ]);
 
         $result = json_decode((string) $response->getBody(), 1);
-        $this->c->logger->info('post file response', $result);
 
         if (isset($result['error']) || $response->getStatusCode() != 200) {
             $log = [
                 'getStatusCode' => $response->getStatusCode(),
                 'body'          => (string) $response->getBody(),
             ];
-            $this->c->logger->info('post file response', $log);
+            $this->c->logger->error('post file response', $log);
         }
     }
 }
