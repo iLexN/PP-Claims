@@ -57,7 +57,7 @@ class UploadAction
         if ($newfile->isValid()) {
             $filePath = $this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename();
             $newfile->moveTo($filePath);
-            //$this->postFile($filePath);
+            $this->postFile($filePath);
         }
 
         return $newfile;
@@ -79,11 +79,11 @@ class UploadAction
                     'name'     => 'newfile',
                     'contents' => fopen($filePath, 'r')
                 ],
-
             ]
         ]);
 
         $result = json_decode((string)$response->getBody() , 1);
+        $this->c->logger->info( 'post file response' , $result);
 
         if ( isset($result['error']) || $response->getStatusCode() != 200 ){
             $log = [
