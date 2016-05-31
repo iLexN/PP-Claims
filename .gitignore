@@ -1,10 +1,9 @@
 /claims/cache/db/
 /claims/cache/twig/
 /claims/config/
-/claims/logs/claims-app.log
+/logs/claims-app.log
 /httpdocs/info.php
 /php_error_log.txt
 /vendor/
-/claims/cache/data/
-/claims/cache/route.cache
+/cache/*
 /upload/*
