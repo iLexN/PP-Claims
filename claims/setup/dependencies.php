@@ -89,8 +89,8 @@ if (!$container['settings']['displayErrorDetails']) {
             $c['logger']->error('e', (array) $exception);
 
             return $c['response']->withStatus(500)
-                                 ->withHeader('Content-Type', 'text/html')
-                                 ->write('Something went wrong!');
+                    ->withHeader('Content-Type', 'text/html')
+                    ->write('Something went wrong!');
         };
     };
 }
