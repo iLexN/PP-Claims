@@ -1,5 +1,21 @@
 <h1>Home</h1>
 
+{% if detect.isMobile() and not detect.isTablet() %}
+<div>M</div>
+{% elseif detect.isTablet() %}
+<div>T</div>
+{% else %}
+<div>D</div>
+{% endif %}
+
+{% if detect.isiOS() %}
+<div>ios</div>
+{% endif %}
+    
+{% if detect.isAndroidOS() %}
+<div>Android</div>
+{% endif %}  
+
 <form action="" method="POST">
     <label for="email">email : <input type="text" name="email" value="" id="email"></label>
 {% include 'include/csrf.twig' %}
