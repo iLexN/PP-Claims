@@ -3,11 +3,12 @@
 namespace PP\Module;
 
 /**
- * Description of PolicyModule
+ * Description of PolicyModule.
  *
  * @author user
  */
-class PolicyModule {
+class PolicyModule
+{
     /**
      * @var \Slim\Container
      */
@@ -18,8 +19,8 @@ class PolicyModule {
         $this->c = $container;
     }
 
-    public function getPolices(){
-
+    public function getPolices()
+    {
         $user = $this->c['user'];
 
         /* @var $item Stash\Interfaces\ItemInterface */
@@ -36,8 +37,9 @@ class PolicyModule {
         return $policies;
     }
 
-    private function getPoliciesByAPI($id){
-        $response = $this->c['httpClient']->request('GET', 'user/'.$id. '/policy');
+    private function getPoliciesByAPI($id)
+    {
+        $response = $this->c['httpClient']->request('GET', 'user/'.$id.'/policy');
         $result = $this->c['httpHelper']->verifyResponse($response);
 
         return $result['data'];
