@@ -77,7 +77,7 @@ class LoginModule
     /**
      * get User info from session.
      *
-     * @return User
+     * @return array
      */
     public function getUserByLoginSession()
     {
@@ -91,7 +91,6 @@ class LoginModule
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$this->user = User::findOne($_SESSION['userLogin']);
             $this->user = $this->getUserByAPI($_SESSION['userLogin']['id']);
             $this->c['pool']->save($item->set($this->user));
         }
@@ -99,7 +98,12 @@ class LoginModule
         return $this->user;
     }
 
-    public function getUserByAPI($id)
+    /**
+     * getUserInfo From API
+     * @param int $id
+     * @return array
+     */
+    private function getUserByAPI($id)
     {
         $this->c->logger->info('cache user');
 
