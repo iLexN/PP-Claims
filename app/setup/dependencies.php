@@ -106,3 +106,9 @@ $container['loginModule'] = function (\Slim\Container $c) {
 
     return $loginModule;
 };
+
+$container['httpHelper'] = function (\Slim\Container $c) {
+    $httpHelper = new \PP\Module\Helper\HttpClientHelper($c);
+
+    return $httpHelper;
+};

@@ -79,14 +79,6 @@ class UploadAction
             ],
         ]);
 
-        $result = json_decode((string) $response->getBody(), 1);
-
-        if (isset($result['errors']) || $response->getStatusCode() != 200) {
-            $log = [
-                'getStatusCode' => $response->getStatusCode(),
-                'body'          => (string) $response->getBody(),
-            ];
-            $this->c->logger->error('post file response', $log);
-        }
+        $result = $this->c['httpHelper']->verifyResponse($response);
     }
 }

@@ -22,9 +22,9 @@ class LoginModule
     }
 
     /**
-     * user email to login,.
+     * user email to login.
      *
-     * @param string $email
+     * @param array $input
      *
      * @return bool
      */
@@ -35,26 +35,7 @@ class LoginModule
                 'form_params' => $input
             ]);
 
-        $log = [
-                'getStatusCode' => $response->getStatusCode(),
-                'body'          => (string) $response->getBody(),
-            ];
-            $this->c->logger->error('post file response', $log);
-
-        $result =json_decode((string) $response->getBody(), 1);
-
-        var_dump($result['errors']);
-
-        if (isset($result['errors']) || $response->getStatusCode() != 200) {
-            $log = [
-                'getStatusCode' => $response->getStatusCode(),
-                'body'          => (string) $response->getBody(),
-            ];
-            $this->c->logger->error('post file response', $log);
-            return false;
-        }
-
-        return $result;
+        return $this->c['httpHelper']->verifyResponse($response);
     }
 
     /**
@@ -83,7 +64,9 @@ class LoginModule
     }
 
     /**
-     * save user id in session.
+     * set login
+     *
+     * @param type $data
      */
     public function setLogined($data)
     {
@@ -148,6 +131,5 @@ class LoginModule
 
     public function setLogout(){
         unset($_SESSION['userLogin']);
-        //session_destroy();
     }
 }
