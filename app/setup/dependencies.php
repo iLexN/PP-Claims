@@ -106,6 +106,11 @@ $container['loginModule'] = function (\Slim\Container $c) {
 
     return $loginModule;
 };
+$container['policyModule'] = function (\Slim\Container $c) {
+    $policyModule = new \PP\Module\PolicyModule($c);
+
+    return $policyModule;
+};
 
 $container['httpHelper'] = function (\Slim\Container $c) {
     $httpHelper = new \PP\Module\Helper\HttpClientHelper($c);
