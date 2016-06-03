@@ -40,11 +40,11 @@ class LoginModule
     /**
      * gen token for login and save into db.
      */
-    public function genToken()
-    {
-        $this->user->genToken();
-        $this->user->save();
-    }
+//    public function genToken()
+//    {
+//        $this->user->genToken();
+//        $this->user->save();
+//    }
 
     /**
      * check token from the email , token expire 1 hr.
