@@ -32,13 +32,14 @@ class HttpClientHelper
             ];
         $this->c->logger->info('post file response', $log);
 
-        if ($response->getStatusCode() != 200 ){
+        if ($response->getStatusCode() != 200) {
             return false;
         }
 
         $result = json_decode((string) $response->getBody(), 1);
         if (isset($result['errors'])) {
             $this->c->logger->info('post file response', $log);
+
             return false;
         }
 

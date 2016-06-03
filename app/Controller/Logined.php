@@ -29,8 +29,8 @@ class Logined
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         return $this->c['view']->render($response, 'logined.html.twig', [
-            'sysMsg' => 'Logined',
-            'User'   => $this->c['user'],
+            'sysMsg'  => 'Logined',
+            'User'    => $this->c['user'],
             'Polices' => $this->c['policyModule']->getPolices(),
         ]);
     }
