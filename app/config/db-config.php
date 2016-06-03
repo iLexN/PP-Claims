@@ -1,12 +1,13 @@
 <?php
+
 return [
     'dbConfig' => [
-        'host' => 'localhost',
+        'host'     => 'localhost',
         'database' => 'claims',
-        'user' => 'root',
+        'user'     => 'root',
         'password' => '',
-        'logging' => true,
-        'caching' => false,
-        'path' => __DIR__ . '/../../cache/db',
-    ]
+        'logging'  => true,
+        'caching'  => false,
+        'path'     => __DIR__.'/../../cache/db',
+    ],
 ];

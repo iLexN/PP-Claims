@@ -30,9 +30,8 @@ class LoginModule
      */
     public function isUserExist($input)
     {
-        
         $response = $this->c['httpClient']->request('POST', 'login', [
-                'form_params' => $input
+                'form_params' => $input,
             ]);
 
         return $this->c['httpHelper']->verifyResponse($response);
@@ -64,13 +63,13 @@ class LoginModule
     }
 
     /**
-     * set login
+     * set login.
      *
      * @param type $data
      */
     public function setLogined($data)
     {
-        $this->c->logger->info('user' , $data);
+        $this->c->logger->info('user', $data);
         //$_SESSION['userLogin'] = $this->user->id;
         $_SESSION['userLogin'] = $data;
     }
@@ -83,7 +82,7 @@ class LoginModule
     public function getUserByLoginSession()
     {
         //var_dump($_SESSION['userLogin']);
-        $this->c->logger->info('getUserByLoginSession' , $_SESSION['userLogin']);
+        $this->c->logger->info('getUserByLoginSession', $_SESSION['userLogin']);
 
         /* @var $item Stash\Interfaces\ItemInterface */
         $item = $this->c['pool']->getItem('User/'.$_SESSION['userLogin']['id'].'/info');
@@ -100,19 +99,20 @@ class LoginModule
         return $this->user;
     }
 
-    public function getUserByAPI($id){
-
+    public function getUserByAPI($id)
+    {
         $this->c->logger->info('cache user');
 
         $response = $this->c['httpClient']->request('GET', 'user/'.$id);
 
-        $result =json_decode((string) $response->getBody(), 1);
+        $result = json_decode((string) $response->getBody(), 1);
         if (isset($result['error']) || $response->getStatusCode() != 200) {
             $log = [
                 'getStatusCode' => $response->getStatusCode(),
                 'body'          => (string) $response->getBody(),
             ];
             $this->c->logger->error('post file response', $log);
+
             return false;
         }
 
@@ -129,7 +129,8 @@ class LoginModule
         return isset($_SESSION['userLogin']);
     }
 
-    public function setLogout(){
+    public function setLogout()
+    {
         unset($_SESSION['userLogin']);
     }
 }

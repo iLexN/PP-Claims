@@ -20,9 +20,9 @@ class HttpClientHelper
     }
 
     /**
-     *
      * @param ResponseInterface $response
-     * @return boolean
+     *
+     * @return bool
      */
     public function verifyResponse(ResponseInterface $response)
     {
@@ -32,12 +32,14 @@ class HttpClientHelper
             ];
         $this->c->logger->info('post file response', $log);
 
-        $result =json_decode((string) $response->getBody(), 1);
+        $result = json_decode((string) $response->getBody(), 1);
 
         if (isset($result['errors']) || $response->getStatusCode() != 200) {
             $this->c->logger->error('post file response', $log);
+
             return false;
         }
+
         return $result;
     }
 }
