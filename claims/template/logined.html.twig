@@ -1,5 +1,29 @@
 <h1>{{ sysMsg }}</h1>
 
-<p>{{ User.email }}</p>
+<a href="{{ path_for('Logout') }}">Logout</a>
 
+<div>
+    <p>Client : {{ User.Client_NO }}</p>
+    <p>Title : {{ User.Title }}</p>
+    <p>First: {{ User.First_Name }}</p>
+    <p>Middle : {{ User.Middle_Name }}</p>
+    <p>Surname : {{ User.Surname }}</p>
+    <p>Company : {{ User.Company_Name }}</p>
+    <p>Mobile : {{ User.Mobile_One }}</p>
+    <p>Mobile : {{ User.Mobile_Two }}</p>
+    <p>Phone : {{ User.Home_Phone }}</p>
+    <p>Business_Phone : {{ User.Business_Phone }}</p>
+    <p>Home_Fax : {{ User.Home_Fax }}</p>
+    <p>Business_Fax : {{ User.Business_Fax }}</p>
+    <p>Email: {{ User.Email }}</p>
+    <p>Second_Email : {{ User.Second_Email }}</p>
+    <p>Person_One_Skype : {{ User.Person_One_Skype }}</p>
+    <p>Home_Address_1 : {{ User.Home_Address_1 }}</p>
+    <p>Home_Address_2 : {{ User.Home_Address_2 }}</p>
+    <p>Home_Address_3 : {{ User.Home_Address_3 }}</p>
+    <p>Home_Address_4 : {{ User.Home_Address_4 }}</p>
+    <p>Home_Address_5 : {{ User.Home_Address_5 }}</p>
+</div>
+<!--
 -{{ base_url() }}/assets/css/css.css
+-->

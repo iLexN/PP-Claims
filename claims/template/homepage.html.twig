@@ -1,5 +1,5 @@
 <h1>Home</h1>
-
+<!--
 {% if detect.isMobile() and not detect.isTablet() %}
 <div>M</div>
 {% elseif detect.isTablet() %}
@@ -15,13 +15,16 @@
 {% if detect.isAndroidOS() %}
 <div>Android</div>
 {% endif %}  
-
+-->
 <form action="" method="POST">
-    <label for="email">email : <input type="text" name="email" value="" id="email"></label>
+    <label for="clientID">Client ID : <input type="text" name="clientID" value="" id="clientID"></label>
+    <br/>
+    <label for="password">Password : <input type="text" name="password" value="" id="password"></label>
+    <br/>
 {% include 'include/csrf.twig' %}
 <input type="submit" value="Submit">
 </form>
 
 {% if flash.loginError is not empty %}
-        <p>{{ flash.loginError.0  }}</p>
+        <p style="color:red">{{ flash.loginError.0  }}</p>
         {% endif %}

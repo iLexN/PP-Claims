@@ -81,7 +81,7 @@ class UploadAction
 
         $result = json_decode((string) $response->getBody(), 1);
 
-        if (isset($result['error']) || $response->getStatusCode() != 200) {
+        if (isset($result['errors']) || $response->getStatusCode() != 200) {
             $log = [
                 'getStatusCode' => $response->getStatusCode(),
                 'body'          => (string) $response->getBody(),

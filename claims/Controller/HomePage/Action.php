@@ -28,45 +28,31 @@ class Action
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $email = $request->getParsedBody()['email'];
-        $this->c['logger']->info('email', ['email' => $email]);
+        $result = $this->isUserExist($request->getParsedBody());
+        $this->c['logger']->info('result isUserExist',[$result]);
 
-        if ($this->isUserExist($email)) {
-            $this->genLoginEmailToUser();
-            $msg = 'success';
+        if ( $result ) {
+            $this->c['loginModule']->setLogined($result['data']);
+
+            return $response->withStatus(301)
+                    ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         } else {
-            // todo : all api check user
-            $msg = 'fail';
-        }
+            $this->c['flash']->addMessage('loginError', 'Login Fail');
 
-        return $this->c['view']->render($response, 'homepage-login-success.html.twig', [
-            'sysMsg' => $msg,
-        ]);
+            return $response->withStatus(301)
+                    ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
+        }
     }
 
     /**
      * check email in db or not(already user?).
      *
-     * @param string $email
+     * @param array $input
      *
      * @return bool
      */
-    private function isUserExist($email)
+    private function isUserExist($input)
     {
-        return $this->c['loginModule']->isUserExist($email);
-    }
-
-    /**
-     * action when user exist.
-     */
-    private function genLoginEmailToUser()
-    {
-        $this->c['loginModule']->genToken();
-        $mailbody = $this->c['view']->fetch('email/login-email.twig', [
-                'User' => $this->c['loginModule']->user,
-        ]);
-
-        echo $mailbody;
-        //todo : send mail
+        return $this->c['loginModule']->isUserExist($input);
     }
 }

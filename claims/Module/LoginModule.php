@@ -28,16 +28,33 @@ class LoginModule
      *
      * @return bool
      */
-    public function isUserExist($email)
+    public function isUserExist($input)
     {
-        $user = User::where('email', $email)->findOne();
-        if ($user) {
-            $this->user = $user;
+        
+        $response = $this->c['httpClient']->request('POST', 'login', [
+                'form_params' => $input
+            ]);
 
-            return true;
+        $log = [
+                'getStatusCode' => $response->getStatusCode(),
+                'body'          => (string) $response->getBody(),
+            ];
+            $this->c->logger->error('post file response', $log);
+
+        $result =json_decode((string) $response->getBody(), 1);
+
+        var_dump($result['errors']);
+
+        if (isset($result['errors']) || $response->getStatusCode() != 200) {
+            $log = [
+                'getStatusCode' => $response->getStatusCode(),
+                'body'          => (string) $response->getBody(),
+            ];
+            $this->c->logger->error('post file response', $log);
+            return false;
         }
 
-        return false;
+        return $result;
     }
 
     /**
@@ -68,9 +85,11 @@ class LoginModule
     /**
      * save user id in session.
      */
-    public function setLogined()
+    public function setLogined($data)
     {
-        $_SESSION['userLogin'] = $this->user->id;
+        $this->c->logger->info('user' , $data);
+        //$_SESSION['userLogin'] = $this->user->id;
+        $_SESSION['userLogin'] = $data;
     }
 
     /**
@@ -80,18 +99,41 @@ class LoginModule
      */
     public function getUserByLoginSession()
     {
+        //var_dump($_SESSION['userLogin']);
+        $this->c->logger->info('getUserByLoginSession' , $_SESSION['userLogin']);
+
         /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->c['pool']->getItem('User/'.$_SESSION['userLogin'].'/info');
+        $item = $this->c['pool']->getItem('User/'.$_SESSION['userLogin']['id'].'/info');
         $this->user = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $this->user = User::findOne($_SESSION['userLogin']);
+            //$this->user = User::findOne($_SESSION['userLogin']);
+            $this->user = $this->getUserByAPI($_SESSION['userLogin']['id']);
             $this->c['pool']->save($item->set($this->user));
         }
 
         return $this->user;
+    }
+
+    public function getUserByAPI($id){
+
+        $this->c->logger->info('cache user');
+
+        $response = $this->c['httpClient']->request('GET', 'user/'.$id);
+
+        $result =json_decode((string) $response->getBody(), 1);
+        if (isset($result['error']) || $response->getStatusCode() != 200) {
+            $log = [
+                'getStatusCode' => $response->getStatusCode(),
+                'body'          => (string) $response->getBody(),
+            ];
+            $this->c->logger->error('post file response', $log);
+            return false;
+        }
+
+        return $result['data'];
     }
 
     /**
@@ -102,5 +144,10 @@ class LoginModule
     public function isLogined()
     {
         return isset($_SESSION['userLogin']);
+    }
+
+    public function setLogout(){
+        unset($_SESSION['userLogin']);
+        //session_destroy();
     }
 }
