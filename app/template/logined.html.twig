@@ -1,8 +1,8 @@
 <h1>{{ sysMsg }}</h1>
 
 <a href="{{ path_for('Logout') }}">Logout</a>
-
-<div>
+<br/>
+<div style="float: left">
     <p>Client : {{ User.Client_NO }}</p>
     <p>Title : {{ User.Title }}</p>
     <p>First: {{ User.First_Name }}</p>
@@ -24,6 +24,43 @@
     <p>Home_Address_4 : {{ User.Home_Address_4 }}</p>
     <p>Home_Address_5 : {{ User.Home_Address_5 }}</p>
 </div>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <td>Sale_Date</td>
+        <td>New_Or_Renew</td>
+        <td>Policy_Type</td>
+        <td>Policy_Details</td>
+        <td>Insurance_Company</td>
+        <td>Distributing_Agent</td>
+        <td>Responsibility</td>
+        <td>POSITION</td>
+        <td>STATUS</td>
+        <td>Policy_Issue_Date</td>
+        <td>Issue_Responsibility</td>
+        <td>Policy_Number</td>
+        <td>Renewal_Status</td>
+    </tr>
+    
+    {% for Policy in Polices %}
+    <tr>
+        <td>{{ Policy.Sale_Date }}</td>
+        <td>{{ Policy.New_Or_Renew }}</td>
+        <td>{{ Policy.Policy_Type }}</td>
+        <td>{{ Policy.Policy_Details }}</td>
+        <td>{{ Policy.Insurance_Company }}</td>
+        <td>{{ Policy.Distributing_Agent }}</td>
+        <td>{{ Policy.Responsibility }}</td>
+        <td>{{ Policy.Position }}</td>
+        <td>{{ Policy.Status }}</td>
+        <td>{{ Policy.Policy_Issue_Date }}</td>
+        <td>{{ Policy.Issue_Responsibility }}</td>
+        <td>{{ Policy.Policy_Number }}</td>
+        <td>{{ Policy.Renewal_Status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 <!--
 -{{ base_url() }}/assets/css/css.css
 -->

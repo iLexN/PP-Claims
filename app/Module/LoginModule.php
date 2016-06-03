@@ -105,16 +105,7 @@ class LoginModule
 
         $response = $this->c['httpClient']->request('GET', 'user/'.$id);
 
-        $result = json_decode((string) $response->getBody(), 1);
-        if (isset($result['error']) || $response->getStatusCode() != 200) {
-            $log = [
-                'getStatusCode' => $response->getStatusCode(),
-                'body'          => (string) $response->getBody(),
-            ];
-            $this->c->logger->error('post file response', $log);
-
-            return false;
-        }
+        $result = $this->c['httpHelper']->verifyResponse($response);
 
         return $result['data'];
     }
