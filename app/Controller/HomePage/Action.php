@@ -28,7 +28,7 @@ class Action
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $result = $this->isUserExist($request->getParsedBody());
+        $result = $this->isUserExist( (array)$request->getParsedBody());
         $this->c['logger']->info('result isUserExist', [$result]);
 
         if ($result) {
