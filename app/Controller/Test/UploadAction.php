@@ -79,6 +79,6 @@ class UploadAction
             ],
         ]);
 
-        $result = $this->c['httpHelper']->verifyResponse($response);
+        $this->c['httpHelper']->verifyResponse($response);
     }
 }
