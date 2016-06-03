@@ -12,7 +12,7 @@ class LoginModule
     protected $c;
 
     /**
-     * @var User
+     * @var array
      */
     public $user;
 
