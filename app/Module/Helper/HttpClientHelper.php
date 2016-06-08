@@ -33,6 +33,7 @@ class HttpClientHelper
         $this->c->logger->info('post file response', $log);
 
         if ($response->getStatusCode() != 200) {
+            $this->c->logger->error('getStatusCode != 200', $log);
             return false;
         }
 

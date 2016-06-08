@@ -114,6 +114,19 @@ class LoginModule
         return $result['data'];
     }
 
+    public function postUserInfoByAPI($data){
+
+        $this->c->logger->info('user info in postUserInfoByAPI' , $data);
+
+        $response = $this->c['httpClient']->request('POST', 'user/'.$this->user['Client_NO'], [
+                'form_params' => $data,
+            ]);
+
+        $this->c['pool']->clear('User/'.$this->user['Client_NO'].'/info');
+
+        return  $this->c['httpHelper']->verifyResponse($response);
+    }
+
     /**
      * check user is login or not.
      *

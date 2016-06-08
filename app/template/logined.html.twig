@@ -2,6 +2,11 @@
 
 <a href="{{ path_for('Logout') }}">Logout</a>
 <br/>
+
+{% if flash.sysMsg is not empty %}
+    <p style="color:red">{{ flash.sysMsg.0  }}</p>
+{% endif %}
+
 <div style="float: left">
     <p>Client : {{ User.Client_NO }}</p>
     <p>Title : {{ User.Title }}</p>
