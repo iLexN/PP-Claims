@@ -8,5 +8,7 @@ return [
             'mailFrom'    => 'alex@kwiksure.com',
             'mailTo'      => 'alex@kwiksure.com',
             'mailSubject' => 'claims error log',
+            'level'       => 100,
+            //'level'       => 400,
     ],
 ];

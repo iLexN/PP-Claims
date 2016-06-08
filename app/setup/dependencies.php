@@ -27,7 +27,7 @@ $container['flash'] = function () {
 $container['logger'] = function (\Slim\Container $c) {
     $settings = $c->get('logConfig');
     $logger = new \Monolog\Logger($settings['name']);
-    $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
+    $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     //$logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'],$settings['mailSubject'],$settings['mailFrom']));
     $logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
 
@@ -116,4 +116,8 @@ $container['httpHelper'] = function (\Slim\Container $c) {
     $httpHelper = new \PP\Module\Helper\HttpClientHelper($c);
 
     return $httpHelper;
+};
+
+$container['CSRFHelper'] = function (\Slim\Container $c) {
+    return new \PP\Module\Helper\CSRFHelper($c);
 };
