@@ -15,6 +15,11 @@ $app->get('/login-ed', 'PP\Claims\Controller\Logined')
 $app->get('/logout', 'PP\Claims\Controller\Logout')
     ->setName('Logout');
 
+$app->get('/user', 'PP\Claims\Controller\User\Info')
+    ->setName('UserInfo')
+    ->add($container->get('csrf')) 
+    ->add($authLoginArea); // redirect to login-ed page if login-ed
+
 //test
 $app->get('/test/upload', 'PP\Claims\Controller\Test\UploadIndex')
         ->setName('upload');

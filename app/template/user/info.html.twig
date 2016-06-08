@@ -1,0 +1,13 @@
+<h1>edit address</h1>
+<form action="{{ path_for('UserInfo') }}" method="POST">
+<div style="float: left">
+    <p>Home_Address_1 : <input type="text" name="" value="{{ User.Home_Address_1 }}" ></p>
+    <p>Home_Address_2 : <input type="text" name="" value="{{ User.Home_Address_2 }}" ></p>
+    <p>Home_Address_3 : <input type="text" name="" value="{{ User.Home_Address_3 }}"></p>
+    <p>Home_Address_4 : <input type="text" name="" value="{{ User.Home_Address_4 }}"></p>
+    <p>Home_Address_5 : <input type="text" name="" value="{{ User.Home_Address_5 }}"></p>
+    {% include 'include/csrf.twig' %}
+    
+    <p><input type="submit"></p>
+</div>
+</form>
