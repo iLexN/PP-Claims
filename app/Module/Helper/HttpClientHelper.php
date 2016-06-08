@@ -2,7 +2,7 @@
 
 namespace PP\Module\Helper;
 
-use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * handle of fileUploadModule from Slim3.
@@ -20,11 +20,11 @@ class HttpClientHelper
     }
 
     /**
-     * @param ResponseInterface $response
+     * @param \GuzzleHttp\Psr7\Response $response
      *
      * @return bool
      */
-    public function verifyResponse(ResponseInterface $response)
+    public function verifyResponse(Response $response)
     {
         $log = [
                 'getStatusCode' => $response->getStatusCode(),
