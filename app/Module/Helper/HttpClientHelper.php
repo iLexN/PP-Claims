@@ -39,7 +39,7 @@ class HttpClientHelper
 
         $result = json_decode((string) $response->getBody(), 1);
         if (isset($result['errors'])) {
-            $this->c->logger->info('post file response', $log);
+            $this->c->logger->error('post file response', $log);
 
             return false;
         }

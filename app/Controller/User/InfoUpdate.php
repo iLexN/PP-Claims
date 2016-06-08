@@ -30,15 +30,11 @@ class InfoUpdate
     {
         $data = (array) $request->getParsedBody();
 
-        $this->c->logger->info($data);
-
         if ( $this->c['loginModule']->postUserInfoByAPI($data['user']) ) {
             $this->c['flash']->addMessage('sysMsg', 'Address update success');
             return $response->withStatus(301)
                     ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }
-
-        $this->c->logger->error('Address update fail');
 
         $nameKey = $this->c['csrf']->getTokenNameKey();
         $valueKey = $this->c['csrf']->getTokenValueKey();
