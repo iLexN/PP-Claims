@@ -32,24 +32,17 @@ class InfoUpdate
 
         if ( $this->c['loginModule']->postUserInfoByAPI($data['user']) ) {
             $this->c['flash']->addMessage('sysMsg', 'Address update success');
+
+            //todo:clear user data cache
+
             return $response->withStatus(301)
                     ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }
 
-        $nameKey = $this->c['csrf']->getTokenNameKey();
-        $valueKey = $this->c['csrf']->getTokenValueKey();
-        $name = $request->getAttribute($nameKey);
-        $value = $request->getAttribute($valueKey);
-        
         return $this->c['view']->render($response, 'user/info.html.twig', [
             'sysMsg'  => 'Address update fail',
             'User'    => $this->c['user'],
-            'token' => [
-                'nameKey'  => $nameKey,
-                'name'     => $name,
-                'valueKey' => $valueKey,
-                'value'    => $value,
-            ],
+            'token' => $this->c['CSRFHelper']->getToken($request),
         ]);
     }
 }
