@@ -37,9 +37,7 @@ class Js
                         'private',
                         86400
                     );
-
-            $this->c->logger->info('js', $args);
-
+            
             return $this->c['view']->render($response, $template, [])
                     ->withHeader('Content-Type', 'application/javascript;charset=utf-8');
         }

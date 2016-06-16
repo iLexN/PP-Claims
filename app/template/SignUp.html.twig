@@ -1,0 +1,115 @@
+{# empty Twig template #}
+<style>
+    .passInfo{display: none;}
+    .invalid{color: red}
+    .valid{color:green}
+</style>
+
+<form>
+    <p>    
+        <label for="username">Username:</label>
+        <span><input name="username" type="text" /></span>
+    </p>
+    <p>
+        <label for="pswd">Password:</label>
+        <span><input id="pswd" class="jsPassword1" type="password" name="pswd" /></span>
+    </p>
+    <p>
+        <label for="pswd2">confirm Password:</label>
+        <span><input id="pswd2" class="jsPassword2" type="password" name="pswd2" /></span>
+    </p>
+    <p>
+        <button class="jsSignUpBtn" type="submit" disabled="disabled">Signup</button></p>
+
+
+    {% include 'include/csrf.twig' %}
+</form>
+
+<div class="jsPassInfo passInfo">
+    <h4>Password must meet the following requirements:</h4>
+    <ul>
+        <li class="jsLetter invalid">At least <strong>one Case Diff letter</strong></li>
+        <li class="jsNumber invalid">At least <strong>one number</strong></li>
+        <li class="jsLength invalid">Be at least <strong>8 characters</strong></li>
+        <li class="jsPassSame invalid">confirm password</li>
+    </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+<script src="{{ base_url() }}/assets/js/module.js">
+<script>
+    $(function () {
+        var $jsPassInfo = $(".jsPassInfo");
+        var $btn = $('.jsSignUpBtn');
+        $('.jsPassword1').on({
+            keyup: function () {
+                var pswd = $(this).val();
+                var pswd2 = $('.jsPassword2').val();
+                var $length = $('.jsLength');
+                var $letter = $('.jsLetter');
+                var $num = $('.jsNumber');
+                var $passSame = $('.jsPassSame');
+
+
+                if (passwordModule.isLenghtPass(pswd, 8)) {
+                    $length.removeClass('valid').addClass('invalid');
+                } else {
+                    $length.removeClass('invalid').addClass('valid');
+                }
+
+                //validate letter
+                if (passwordModule.hasUpperCase(pswd) && passwordModule.hasLowerCase(pswd)) {
+                    $letter.removeClass('invalid').addClass('valid');
+                } else {
+                    $letter.removeClass('valid').addClass('invalid');
+                }
+
+                //validate number
+                if (passwordModule.hasNumber(pswd)) {
+                    $num.removeClass('invalid').addClass('valid');
+                } else {
+                    $num.removeClass('valid').addClass('invalid');
+                }
+
+                if (passwordModule.isPassSame(pswd, pswd1)) {
+                    $passSame.removeClass('invalid').addClass('valid');
+                } else {
+                    $passSame.removeClass('valid').addClass('invalid');
+                }
+
+                if ($jsPassInfo.find('li').hasClass('invalid') === false) {
+                    $btn.prop("disabled", false);
+                } else {
+                    $btn.prop("disabled", true);
+                }
+            }, focus: function () {
+                $jsPassInfo.show();
+            }, blur: function () {
+                $jsPassInfo.hide();
+            }
+        });
+        $('.jsPassword2').on({
+            keyup: function () {
+                var pswd = $('.jsPassword1').val();
+                var pswd2 = $(this).val();
+                var $passSame = $('.jsPassSame');
+
+                if (passwordModule.isPassSame(pswd, pswd1)) {
+                    $passSame.removeClass('invalid').addClass('valid');
+                } else {
+                    $passSame.removeClass('valid').addClass('invalid');
+                }
+
+                if ($jsPassInfo.find('li').hasClass('invalid') === false) {
+                    $btn.prop("disabled", false);
+                } else {
+                    $btn.prop("disabled", true);
+                }
+            }, focus: function () {
+                $jsPassInfo.show();
+            }, blur: function () {
+                $jsPassInfo.hide();
+            }
+        });
+    });
+</script>

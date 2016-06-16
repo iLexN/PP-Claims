@@ -5,6 +5,12 @@ $app->get('/', 'PP\Claims\Controller\HomePage\Index')
     ->add($container->get('csrf')) // for login form
     ->add($authCheckLogined); // redirect to login-ed page if login-ed
 
+$app->get('/signup', 'PP\Claims\Controller\SignUp\Index')
+    ->setName('SignUp')
+    ->add($container->get('csrf')) // for login form
+    ->add($authCheckLogined); // redirect to login-ed page if login-ed
+
+
 $app->post('/', 'PP\Claims\Controller\HomePage\Action')
     ->add($container->get('csrf')); // check form
 
@@ -23,6 +29,9 @@ $app->post('/user', 'PP\Claims\Controller\User\InfoUpdate')
     ->add($container->get('csrf'))
     ->add($authLoginArea);
 
+$app->get('/js/{filename}.js', 'PP\Claims\Controller\Test\Js')
+        ->setName('jsFile');
+
 //test
 $app->get('/test/upload', 'PP\Claims\Controller\Test\UploadIndex')
         ->setName('upload');
@@ -31,8 +40,6 @@ $app->get('/test/download/{filename}', 'PP\Claims\Controller\Test\DownloadIndex'
         ->setName('downlaodFile');
 //$app->get('/email-authenticate/{token}', 'PP\Claims\Controller\Test\EmailAuth')
 //    ->setName('Email-Auth');
-$app->get('/test/{filename}.js', 'PP\Claims\Controller\Test\Js')
-        ->setName('jsFile');
 
 //helper for development
 $app->get('/helper/router', 'PP\Claims\Controller\Helper\Router')
