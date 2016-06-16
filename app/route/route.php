@@ -23,7 +23,7 @@ $app->get('/logout', 'PP\Claims\Controller\Logout')
 
 $app->get('/user', 'PP\Claims\Controller\User\Info')
     ->setName('UserInfo')
-    ->add($container->get('csrf')) 
+    ->add($container->get('csrf'))
     ->add($authLoginArea);
 $app->post('/user', 'PP\Claims\Controller\User\InfoUpdate')
     ->add($container->get('csrf'))
