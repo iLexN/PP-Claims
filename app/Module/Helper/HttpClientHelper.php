@@ -34,6 +34,7 @@ class HttpClientHelper
 
         if ($response->getStatusCode() != 200) {
             $this->c->logger->error('getStatusCode != 200', $log);
+
             return false;
         }
 

@@ -5,7 +5,7 @@ namespace PP\Module\Helper;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * CSRF helper
+ * CSRF helper.
  */
 class CSRFHelper
 {

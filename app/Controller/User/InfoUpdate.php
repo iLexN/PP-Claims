@@ -30,7 +30,7 @@ class InfoUpdate
     {
         $data = (array) $request->getParsedBody();
 
-        if ( $this->c['loginModule']->postUserInfoByAPI($data['user']) ) {
+        if ($this->c['loginModule']->postUserInfoByAPI($data['user'])) {
             $this->c['flash']->addMessage('sysMsg', 'Address update success');
 
             //todo:clear user data cache
@@ -42,7 +42,7 @@ class InfoUpdate
         return $this->c['view']->render($response, 'user/info.html.twig', [
             'sysMsg'  => 'Address update fail',
             'User'    => $this->c['user'],
-            'token' => $this->c['CSRFHelper']->getToken($request),
+            'token'   => $this->c['CSRFHelper']->getToken($request),
         ]);
     }
 }

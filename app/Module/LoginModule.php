@@ -99,8 +99,10 @@ class LoginModule
     }
 
     /**
-     * getUserInfo From API
+     * getUserInfo From API.
+     *
      * @param int $id
+     *
      * @return array
      */
     private function getUserByAPI($id)
@@ -114,9 +116,9 @@ class LoginModule
         return $result['data'];
     }
 
-    public function postUserInfoByAPI($data){
-
-        $this->c->logger->info('user info in postUserInfoByAPI' , $data);
+    public function postUserInfoByAPI($data)
+    {
+        $this->c->logger->info('user info in postUserInfoByAPI', $data);
 
         $response = $this->c['httpClient']->request('POST', 'user/'.$this->user['Client_NO'], [
                 'form_params' => $data,

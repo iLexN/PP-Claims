@@ -20,7 +20,7 @@ class PolicyModule
     }
 
     /**
-     * getPolices list by user client no
+     * getPolices list by user client no.
      *
      * @return array
      */
@@ -42,11 +42,11 @@ class PolicyModule
         return $policies;
     }
 
-
     /**
-     * get policies from API
+     * get policies from API.
      *
      * @param int $id
+     *
      * @return array
      */
     private function getPoliciesByAPI($id)
