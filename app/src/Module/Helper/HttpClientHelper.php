@@ -10,6 +10,8 @@ use PP\WebPortal\AbstractClass\AbstractContainer;
  */
 final class HttpClientHelper extends AbstractContainer
 {
+    private $errorMessages = [];
+
     /**
      * @param \GuzzleHttp\Psr7\Response $response
      *
@@ -21,21 +23,25 @@ final class HttpClientHelper extends AbstractContainer
                 'getStatusCode' => $response->getStatusCode(),
                 'body'          => (string) $response->getBody(),
             ];
-        $this->c->logger->info('post file response', $log);
 
         if ($response->getStatusCode() != 200) {
             $this->c->logger->error('getStatusCode != 200', $log);
+            $this->errorMessages = ['title'=>'API Error'];
 
             return false;
         }
 
         $result = json_decode((string) $response->getBody(), 1);
         if (isset($result['errors'])) {
-            $this->c->logger->error('post file response', $log);
-
+            $this->errorMessages = $result['errors'];
             return false;
         }
 
         return $result;
+    }
+
+    public function getErrorMessages()
+    {
+        return $this->errorMessages;
     }
 }
