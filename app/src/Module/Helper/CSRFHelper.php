@@ -2,23 +2,14 @@
 
 namespace PP\WebPortal\Module\Helper;
 
+use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * CSRF helper.
  */
-final class CSRFHelper
+final class CSRFHelper extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *

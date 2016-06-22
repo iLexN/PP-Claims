@@ -2,21 +2,12 @@
 
 namespace PP\WebPortal\Controller\Helper;
 
+use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class Router
+final class Router extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * Login Post action.
      *

@@ -2,23 +2,15 @@
 
 namespace PP\WebPortal\Module;
 
+use PP\WebPortal\AbstractClass\AbstractContainer;
+
 /**
  * Description of PolicyModule.
  *
  * @author user
  */
-final class PolicyModule
+final class PolicyModule extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * getPolices list by user client no.
      *

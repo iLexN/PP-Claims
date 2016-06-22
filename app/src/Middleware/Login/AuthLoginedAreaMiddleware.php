@@ -2,23 +2,15 @@
 
 namespace PP\WebPortal\Middleware\Login;
 
+use PP\WebPortal\AbstractClass\AbstractContainer;
+
 /**
  * use for need login-ed page
  * go to homeage when login expired
  * get user info when user already login.
  */
-final class AuthLoginedAreaMiddleware
+final class AuthLoginedAreaMiddleware extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * go to homeage when login expired.
      * get user info when user already login.

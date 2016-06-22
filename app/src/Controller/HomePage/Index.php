@@ -2,21 +2,12 @@
 
 namespace PP\WebPortal\Controller\HomePage;
 
+use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class Index
+final class Index extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

@@ -2,24 +2,14 @@
 
 namespace PP\WebPortal\Module;
 
-use PP\Claims\dbModel\User;
+use PP\WebPortal\AbstractClass\AbstractContainer;
 
-final class LoginModule
+final class LoginModule extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
     /**
      * @var array
      */
     public $user;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
 
     /**
      * user email to login.

@@ -2,23 +2,14 @@
 
 namespace PP\WebPortal\Module\Helper;
 
+use PP\WebPortal\AbstractClass\AbstractContainer;
 use GuzzleHttp\Psr7\Response;
 
 /**
  * http client helper.
  */
-final class HttpClientHelper
+final class HttpClientHelper extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * @param \GuzzleHttp\Psr7\Response $response
      *

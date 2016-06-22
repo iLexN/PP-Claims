@@ -2,29 +2,15 @@
 
 namespace PP\WebPortal\Middleware;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+use PP\WebPortal\AbstractClass\AbstractContainer;
 
 /**
  * Description of HttpCache.
  *
  * @author user
  */
-final class HttpCache
+final class HttpCache extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * add default Cache-Control no cache.
      *
