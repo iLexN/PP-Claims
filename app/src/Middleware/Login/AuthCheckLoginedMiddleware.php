@@ -28,8 +28,6 @@ final class AuthCheckLoginedMiddleware extends AbstractContainer
                 ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         }
 
-        $response = $next($request, $response);
-
-        return $response;
+        return $next($request, $response);
     }
 }

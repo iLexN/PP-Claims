@@ -36,8 +36,6 @@ final class AuthLoginedAreaMiddleware extends AbstractContainer
         $this->c['user'] = $loginModule->getUserByLoginSession();
         $this->c['view']['User'] = $this->c['user'];
 
-        $response = $next($request, $response);
-
-        return $response;
+        return $next($request, $response);
     }
 }
