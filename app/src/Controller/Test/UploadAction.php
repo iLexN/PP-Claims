@@ -8,11 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class UploadAction extends AbstractContainer
 {
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * Email Auth Check action.
      *
