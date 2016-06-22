@@ -5,10 +5,7 @@ session_name('PP-Claims');
 session_start();
 
 $autoloader = require '../vendor/autoload.php';
-$autoloader->addPsr4('PP\Claims\Controller\\', __DIR__.'/../app/Controller');
-$autoloader->addPsr4('PP\Claims\dbModel\\', __DIR__.'/../app/DB-Model');
-$autoloader->addPsr4('PP\Module\\', __DIR__.'/../app/Module');
-$autoloader->addPsr4('PP\Middleware\\', __DIR__.'/../app/Middleware');
+$autoloader->addPsr4('PP\WebPortal\\', __DIR__.'/../app/src');
 
 date_default_timezone_set('Asia/Hong_Kong');
 
@@ -23,7 +20,7 @@ $app = new \Slim\App($settings);
 require __DIR__.'/../app/setup/dependencies.php';
 
 //db setup
-require __DIR__.'/../app/setup/db-setup.php';
+//require __DIR__.'/../app/setup/db-setup.php';
 
 //Middleware
 require __DIR__.'/../app/setup/middleware.php';

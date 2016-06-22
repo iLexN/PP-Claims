@@ -2,8 +2,8 @@
 
 //Last In First Executed
 
-$authLoginArea = new PP\Middleware\Login\AuthLoginedAreaMiddleware($container);
+$authLoginArea = new PP\WebPortal\Middleware\Login\AuthLoginedAreaMiddleware($container);
 
-$authCheckLogined = new PP\Middleware\Login\AuthCheckLoginedMiddleware($container);
+$authCheckLogined = new PP\WebPortal\Middleware\Login\AuthCheckLoginedMiddleware($container);
 
-$app->add(new PP\Middleware\HttpCache($container));
+$app->add(new PP\WebPortal\Middleware\HttpCache($container));

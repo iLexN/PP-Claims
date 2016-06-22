@@ -102,22 +102,22 @@ if (!$container['settings']['displayErrorDetails']) {
 
 //custome Module.
 $container['loginModule'] = function (\Slim\Container $c) {
-    $loginModule = new \PP\Module\LoginModule($c);
+    $loginModule = new \PP\WebPortal\Module\LoginModule($c);
 
     return $loginModule;
 };
 $container['policyModule'] = function (\Slim\Container $c) {
-    $policyModule = new \PP\Module\PolicyModule($c);
+    $policyModule = new \PP\WebPortal\Module\PolicyModule($c);
 
     return $policyModule;
 };
 
 $container['httpHelper'] = function (\Slim\Container $c) {
-    $httpHelper = new \PP\Module\Helper\HttpClientHelper($c);
+    $httpHelper = new \PP\WebPortal\Module\Helper\HttpClientHelper($c);
 
     return $httpHelper;
 };
 
 $container['CSRFHelper'] = function (\Slim\Container $c) {
-    return new \PP\Module\Helper\CSRFHelper($c);
+    return new \PP\WebPortal\Module\Helper\CSRFHelper($c);
 };

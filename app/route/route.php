@@ -1,46 +1,44 @@
 <?php
 
-$app->get('/', 'PP\Claims\Controller\HomePage\Index')
+$app->get('/', 'PP\WebPortal\Controller\HomePage\Index')
     ->setName('Homepage')
     ->add($container->get('csrf')) // for login form
     ->add($authCheckLogined); // redirect to login-ed page if login-ed
+$app->post('/', 'PP\WebPortal\Controller\HomePage\Action')
+    ->add($container->get('csrf')); // check form
 
-$app->get('/signup', 'PP\Claims\Controller\SignUp\Index')
+$app->get('/signup', 'PP\WebPortal\Controller\SignUp\Index')
     ->setName('SignUp')
     ->add($container->get('csrf')) // for login form
     ->add($authCheckLogined); // redirect to login-ed page if login-ed
 
-
-$app->post('/', 'PP\Claims\Controller\HomePage\Action')
-    ->add($container->get('csrf')); // check form
-
-$app->get('/login-ed', 'PP\Claims\Controller\Logined')
+$app->get('/login-ed', 'PP\WebPortal\Controller\Logined')
     ->setName('Login-ed')
     ->add($authLoginArea); // redirect to home page if login expired
 
-$app->get('/logout', 'PP\Claims\Controller\Logout')
+$app->get('/logout', 'PP\WebPortal\Controller\Logout')
     ->setName('Logout');
 
-$app->get('/user', 'PP\Claims\Controller\User\Info')
+$app->get('/user', 'PP\WebPortal\Controller\User\Info')
     ->setName('UserInfo')
     ->add($container->get('csrf'))
     ->add($authLoginArea);
-$app->post('/user', 'PP\Claims\Controller\User\InfoUpdate')
+$app->post('/user', 'PP\WebPortal\Controller\User\InfoUpdate')
     ->add($container->get('csrf'))
     ->add($authLoginArea);
 
-$app->get('/js/{filename}.js', 'PP\Claims\Controller\Test\Js')
+$app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
 
 //test
-$app->get('/test/upload', 'PP\Claims\Controller\Test\UploadIndex')
+$app->get('/test/upload', 'PP\WebPortal\Controller\Test\UploadIndex')
         ->setName('upload');
-$app->post('/test/upload', 'PP\Claims\Controller\Test\UploadAction');
-$app->get('/test/download/{filename}', 'PP\Claims\Controller\Test\DownloadIndex')
+$app->post('/test/upload', 'PP\WebPortal\Controller\Test\UploadAction');
+$app->get('/test/download/{filename}', 'PP\WebPortal\Controller\Test\DownloadIndex')
         ->setName('downlaodFile');
 //$app->get('/email-authenticate/{token}', 'PP\Claims\Controller\Test\EmailAuth')
 //    ->setName('Email-Auth');
 
 //helper for development
-$app->get('/helper/router', 'PP\Claims\Controller\Helper\Router')
+$app->get('/helper/router', 'PP\WebPortal\Controller\Helper\Router')
         ->setName('helperRouter');
