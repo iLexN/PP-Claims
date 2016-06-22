@@ -43,14 +43,14 @@ final class LoginModule extends AbstractContainer
      *
      * @return User
      */
-    public function checkToken($token)
-    {
-        $this->user = User::where('token', $token)
-                ->where_gt('tokenExpireDatetime', date('Y-m-d H:i:s'))
-                ->findOne();
-
-        return $this->user;
-    }
+//    public function checkToken($token)
+//    {
+//        $this->user = User::where('token', $token)
+//                ->where_gt('tokenExpireDatetime', date('Y-m-d H:i:s'))
+//                ->findOne();
+//
+//        return $this->user;
+//    }
 
     /**
      * set login.
