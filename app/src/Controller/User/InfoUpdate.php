@@ -32,7 +32,6 @@ final class InfoUpdate extends AbstractContainer
 
         return $this->c['view']->render($response, 'user/info.html.twig', [
             'sysMsg'  => 'Address update fail',
-            'User'    => $this->c['user'],
             'token'   => $this->c['CSRFHelper']->getToken($request),
         ]);
     }

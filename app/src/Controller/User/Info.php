@@ -25,7 +25,6 @@ final class Info extends AbstractContainer
         $value = $request->getAttribute($valueKey);
 
         return $this->c['view']->render($response, 'user/info.html.twig', [
-            'User'    => $this->c['user'],
             'token'   => [
                 'nameKey'  => $nameKey,
                 'name'     => $name,

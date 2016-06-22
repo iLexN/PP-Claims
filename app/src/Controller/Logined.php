@@ -21,7 +21,6 @@ final class Logined extends AbstractContainer
     {
         return $this->c['view']->render($response, 'logined.html.twig', [
             'sysMsg'  => 'Logined',
-            'User'    => $this->c['user'],
             'Polices' => $this->c['policyModule']->getPolices(),
         ]);
     }
