@@ -9,8 +9,6 @@ use Psr\Http\Message\ServerRequestInterface;
 final class UploadIndex extends AbstractContainer
 {
     /**
-     * Email Auth Check action.
-     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
      * @param array                  $args

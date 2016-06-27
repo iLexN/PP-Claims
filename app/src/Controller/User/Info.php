@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class Info extends AbstractContainer
 {
     /**
-     * Login-ed Page.
+     * user info.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

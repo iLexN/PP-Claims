@@ -9,7 +9,8 @@ use Psr\Http\Message\ServerRequestInterface;
 final class Js extends AbstractContainer
 {
     /**
-     * Email Auth Check action.
+     * Load js, add cache.
+     * todo:min.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

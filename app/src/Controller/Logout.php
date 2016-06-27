@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class Logout extends AbstractContainer
 {
     /**
-     * Login-ed Page.
+     * Logout Page.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

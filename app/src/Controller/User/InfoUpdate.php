@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class InfoUpdate extends AbstractContainer
 {
     /**
-     * Login-ed Page.
+     * user info action - update.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
