@@ -1,10 +1,12 @@
 {# empty Twig template #}
 <h1>Upload a file</h1>
-        <form method="POST" action="{{ path_for('upload') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ path_for('upload') }}" enctype="multipart/form-data" id='f'>
             <label>Select file to upload:</label>
             <input type="file" name="newfile">
             <input type="file" name="newfile2">
+            <input type="text" name="doreme" value="doreme">
             <button type="submit">Upload</button>
+            <button type="button" class='jsAjaxUpload'>ajax Upload</button>
         </form>
 
 <div style="color:red">{{ errorMsg | join(',') }}</div>
@@ -12,3 +14,20 @@
 <div>
     <a href="{{ path_for('downlaodFile', {"filename": filename} ) }}">{{ filename }}</a>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+<script>
+    $(".jsAjaxUpload").on('click',function(){
+        var form = $("#f")[0];
+        var formData = new FormData(form);
+        $.ajax({
+            url: '{{ path_for('upload') }}',
+            type : 'POST',
+            data: formData,
+            contentType: false,
+            processData: false
+        }).done(function(msg){
+            console.log(msg);
+        });
+    });
+</script>

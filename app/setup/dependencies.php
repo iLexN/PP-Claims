@@ -29,7 +29,7 @@ $container['logger'] = function (\Slim\Container $c) {
     $logger = new \Monolog\Logger($settings['name']);
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     //$logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'],$settings['mailSubject'],$settings['mailFrom']));
-    $logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
+    //$logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
 
     return $logger;
 };

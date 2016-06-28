@@ -19,11 +19,15 @@ final class UploadAction extends AbstractContainer
     {
         $files = $request->getUploadedFiles();
 
+        $this->c->logger->info('post',$request->getParsedBody());
+
         if (empty($files['newfile'])) {
             throw new \Exception('Expected a newfile');
         }
 
         $newfile = $this->handerFile($files['newfile']);
+
+        return $response->write($newfile->getClientFilename());
 
         return $this->c['view']->render($response, 'test/upload.html.twig', [
             'filename' => $newfile->getClientFilename(),
@@ -38,8 +42,8 @@ final class UploadAction extends AbstractContainer
      */
     private function handerFile($file)
     {
-        /* @var $newfile \PP\Module\FileUploadModule */
-        $newfile = new \PP\Module\FileUploadModule($file);
+        /* @var $newfile \PP\WebPortal\Module\FileUploadModule */
+        $newfile = new \PP\WebPortal\Module\FileUploadModule($file);
         $newfile->setAllowFilesize('2M');
         $newfile->setAllowMimetype(['image/png', 'image/gif', 'image/jpeg']);
 
