@@ -1,0 +1,27 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebPortal</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        {% block cssStyle %}
+            
+        {% endblock %}
+        
+    </head>
+    <body>
+        {% block bodyHTML %}
+            
+        {% endblock %}    
+        
+        
+        {% block jsBottom %}
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+        <script src="{{ base_url() }}/assets/js/module.js"></script>
+        {% endblock %}
+        
+    </body>
+</html>
+{% endspaceless %}

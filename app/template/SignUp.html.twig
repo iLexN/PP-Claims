@@ -1,10 +1,12 @@
-{# empty Twig template #}
+{% extends "template/base.html.twig" %}
+{% block cssStyle %}
 <style>
     .passInfo{display: none;}
     .invalid{color: red}
     .valid{color:green}
 </style>
-
+{% endblock %}
+{% block bodyHTML %}
 <form>
     <p>    
         <label for="username">Username:</label>
@@ -34,10 +36,11 @@
         <li class="jsPassSame invalid">confirm password</li>
     </ul>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
-<script src="{{ base_url() }}/assets/js/module.js"></script>
-<script>
+{% endblock %}
+    
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
     $(function () {
         var $jsPassInfo = $(".jsPassInfo");
         var $btn = $('.jsSignUpBtn');
@@ -112,3 +115,5 @@
         });
     });
 </script>
+{% endblock %}
+

@@ -3,19 +3,19 @@
 namespace PP\WebPortal\Controller\Test;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class UploadAction extends AbstractContainer
 {
     /**
      * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
+     * @param Response      $response
      * @param array                  $args
      *
      * @return ResponseInterface
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $files = $request->getUploadedFiles();
 
@@ -28,11 +28,11 @@ final class UploadAction extends AbstractContainer
         $newfile = $this->handerFile($files['newfile']);
 
         return $response->write($newfile->getClientFilename());
-
+/*
         return $this->c['view']->render($response, 'test/upload.html.twig', [
             'filename' => $newfile->getClientFilename(),
             'errorMsg' => $newfile->getValidationMsg(),
-        ]);
+        ]);*/
     }
 
     /**
