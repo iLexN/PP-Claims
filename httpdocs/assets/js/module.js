@@ -1,5 +1,5 @@
 var passwordModule = (function () {
-    'use strict'
+    'use strict';
     var password1 = '';
     var password2 = '';
     function isLenghtPass(passLenght) {
