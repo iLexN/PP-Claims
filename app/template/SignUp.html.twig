@@ -48,32 +48,36 @@
             keyup: function () {
                 var pswd = $(this).val();
                 var pswd2 = $('.jsPassword2').val();
+                
+                passwordModule.password1 = pswd ;
+                passwordModule.password2 = pswd2;
+                
                 var $length = $('.jsLength');
                 var $letter = $('.jsLetter');
                 var $num = $('.jsNumber');
                 var $passSame = $('.jsPassSame');
 
-                if (passwordModule.isLenghtPass(pswd, 8)) {
+                if (passwordModule.isLenghtPass(8)) {
                     $length.removeClass('valid').addClass('invalid');
                 } else {
                     $length.removeClass('invalid').addClass('valid');
                 }
 
                 //validate letter
-                if (passwordModule.hasUpperCase(pswd) && passwordModule.hasLowerCase(pswd)) {
+                if (passwordModule.hasUpperCase() && passwordModule.hasLowerCase()) {
                     $letter.removeClass('invalid').addClass('valid');
                 } else {
                     $letter.removeClass('valid').addClass('invalid');
                 }
 
                 //validate number
-                if (passwordModule.hasNumber(pswd)) {
+                if (passwordModule.hasNumber()) {
                     $num.removeClass('invalid').addClass('valid');
                 } else {
                     $num.removeClass('valid').addClass('invalid');
                 }
 
-                if (passwordModule.isPassSame(pswd, pswd2)) {
+                if (passwordModule.isPassSame()) {
                     $passSame.removeClass('invalid').addClass('valid');
                 } else {
                     $passSame.removeClass('valid').addClass('invalid');
@@ -94,6 +98,10 @@
             keyup: function () {
                 var pswd = $('.jsPassword1').val();
                 var pswd2 = $(this).val();
+                
+                passwordModule.password1 = pswd ;
+                passwordModule.password2 = pswd2;
+                
                 var $passSame = $('.jsPassSame');
 
                 if (passwordModule.isPassSame(pswd, pswd2)) {

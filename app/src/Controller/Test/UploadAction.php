@@ -3,23 +3,23 @@
 namespace PP\WebPortal\Controller\Test;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 final class UploadAction extends AbstractContainer
 {
     /**
      * @param ServerRequestInterface $request
-     * @param Response      $response
+     * @param Response               $response
      * @param array                  $args
      *
-     * @return ResponseInterface
+     * @return Response
      */
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $files = $request->getUploadedFiles();
 
-        $this->c->logger->info('post',$request->getParsedBody());
+        $this->c->logger->info('post', $request->getParsedBody());
 
         if (empty($files['newfile'])) {
             throw new \Exception('Expected a newfile');
@@ -38,7 +38,7 @@ final class UploadAction extends AbstractContainer
     /**
      * @param \Slim\Http\UploadedFile $file
      *
-     * @return \PP\Module\FileUploadModule
+     * @return \PP\WebPortal\Module\FileUploadModule
      */
     private function handerFile($file)
     {
