@@ -3,7 +3,7 @@ var passwordModule = (function () {
     var password1 = '';
     var password2 = '';
     function isLenghtPass(passLenght) {
-        return this.password1.length < passLenght;
+        return this.password1.length >= passLenght;
     }
     function hasUpperCase() {
         return this.password1.match(/[A-Z]/);

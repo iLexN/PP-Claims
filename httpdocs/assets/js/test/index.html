@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Module Test</title>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.0.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.0.0.js"></script>
+  <script src="../module.js"></script>
+  <script>
+    QUnit.test( "password moduel", function( assert ) {
+      passwordModule.password1 = '1';
+      passwordModule.password1 = '2';
+      assert.notOk( passwordModule.isLenghtPass(8),"need 8 lenght" );
+      assert.notOk( passwordModule.hasUpperCase(),"hasUpperCase" );
+      assert.notOk( passwordModule.hasLowerCase(),"hasLowerCase" );
+      assert.ok( passwordModule.hasNumber(),"hasNumber" );
+      assert.notOk( passwordModule.isPassSame(),"isPassSame" );
+      
+      passwordModule.password1 = 'a';
+      assert.notOk( passwordModule.isLenghtPass(8),"need 8 lenght" );
+      assert.notOk( passwordModule.hasUpperCase(),"hasUpperCase" );
+      assert.ok( passwordModule.hasLowerCase(),"hasLowerCase" );
+      assert.notOk( passwordModule.hasNumber(),"hasNumber" );
+      assert.notOk( passwordModule.isPassSame(),"isPassSame" );
+      
+      passwordModule.password1 = 'A';
+      assert.notOk( passwordModule.isLenghtPass(8),"need 8 lenght" );
+      assert.ok( passwordModule.hasUpperCase(),"hasUpperCase" );
+      assert.notOk( passwordModule.hasLowerCase(),"hasLowerCase" );
+      assert.notOk( passwordModule.hasNumber(),"hasNumber" );
+      assert.notOk( passwordModule.isPassSame(),"isPassSame" );
+      
+      passwordModule.password1 = 'Aab123456';
+      passwordModule.password2 = 'Aab123456';
+      assert.ok( passwordModule.isLenghtPass(8),"need 8 lenght" );
+      assert.ok( passwordModule.hasUpperCase(),"hasUpperCase" );
+      assert.ok( passwordModule.hasLowerCase(),"hasLowerCase" );
+      assert.ok( passwordModule.hasNumber(),"hasNumber" );
+      assert.ok( passwordModule.isPassSame(),"isPassSame" );
+    });
+  </script>
+</body>
+</html>

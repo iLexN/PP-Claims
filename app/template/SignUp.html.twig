@@ -47,20 +47,17 @@
         $('.jsPassword1').on({
             keyup: function () {
                 var pswd = $(this).val();
-                var pswd2 = $('.jsPassword2').val();
-                
                 passwordModule.password1 = pswd ;
-                passwordModule.password2 = pswd2;
-                
+
                 var $length = $('.jsLength');
                 var $letter = $('.jsLetter');
                 var $num = $('.jsNumber');
                 var $passSame = $('.jsPassSame');
 
                 if (passwordModule.isLenghtPass(8)) {
-                    $length.removeClass('valid').addClass('invalid');
-                } else {
                     $length.removeClass('invalid').addClass('valid');
+                } else {
+                    $length.removeClass('valid').addClass('invalid');
                 }
 
                 //validate letter
@@ -96,15 +93,12 @@
         });
         $('.jsPassword2').on({
             keyup: function () {
-                var pswd = $('.jsPassword1').val();
                 var pswd2 = $(this).val();
-                
-                passwordModule.password1 = pswd ;
                 passwordModule.password2 = pswd2;
                 
                 var $passSame = $('.jsPassSame');
 
-                if (passwordModule.isPassSame(pswd, pswd2)) {
+                if (passwordModule.isPassSame()) {
                     $passSame.removeClass('invalid').addClass('valid');
                 } else {
                     $passSame.removeClass('valid').addClass('invalid');
