@@ -43,7 +43,7 @@
     <script>
     $(function () {
         'use strict';
-        passwordControl.setting({
+        var setting = {
             jsPassInfo : $(".jsPassInfo"),
             btn : $('.jsSignUpBtn'),
             length : $('.jsLength'),
@@ -52,10 +52,13 @@
             passSame : $('.jsPassSame'),
             validClass : 'valid',
             invalidClass: 'invalid'
-        });
+        };
+        passwordControl.setting(setting);
+        var $jsPassInfo = $(".jsPassInfo");
         $('.jsPassword1').on({
             keyup: function () {
-                passwordControl.setP1($(this).val()) ;
+                var pswd = $(this).val();
+                passwordControl.setP1(pswd) ;
                 passwordControl.check();
             }, focus: function () {
                 passwordControl.infoShow();
@@ -65,7 +68,8 @@
         });
         $('.jsPassword2').on({
             keyup: function () {
-                passwordControl.setP2($(this).val());
+                var pswd2 = $(this).val();
+                passwordControl.setP2(pswd2);
                 passwordControl.check();
             }, focus: function () {
                 passwordControl.infoShow();
@@ -76,3 +80,4 @@
     });
 </script>
 {% endblock %}
+
