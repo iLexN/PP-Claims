@@ -1,6 +1,6 @@
 var passwordModule = (function () {
     'use strict';
-    var password1,password2;
+    var password1, password2;
     function isLenghtPass(passLenght) {
         return password1.length >= passLenght;
     }
@@ -33,11 +33,10 @@ var passwordModule = (function () {
     };
 })();
 
-
-var passwordControl = (function () {
-    'use strict';
-    var $jsPassInfo,$btn,$length,$letter,$num,$passSame;
-    var validCssClass,inValidCssClass;
+// control dom flow ?
+var SignUpControl = (function () {
+    var $jsPassInfo, $btn, $length, $letter, $num, $passSame;
+    var validCssClass, inValidCssClass;
 
     function setting(obj) {
         $jsPassInfo = obj.jsPassInfo;
@@ -49,11 +48,13 @@ var passwordControl = (function () {
         validCssClass = obj.validClass;
         inValidCssClass = obj.invalidClass;
     }
-    function setP1(val) {
-        passwordModule.setP1(val);
+    function setP1() {
+        passwordModule.setP1($(this).val());
+        check();
     }
-    function setP2(val) {
-        passwordModule.setP2(val);
+    function setP2() {
+        passwordModule.setP2($(this).val());
+        check();
     }
     function valid($obj) {
         $obj.removeClass(inValidCssClass).addClass(validCssClass);
@@ -98,8 +99,22 @@ var passwordControl = (function () {
         setting: setting,
         setP1: setP1,
         setP2: setP2,
-        check: check,
         infoShow: infoShow,
         infoHide: infoHide
     };
 })();
+
+//helper
+$.extend({
+    jshook: function (hookName) {
+        var selector;
+        if (!hookName || hookName === '*') {
+            // select all data-hooks
+            selector = '[data-hook]';
+        } else {
+            // select specific data-hook
+            selector = '[data-hook~="' + hookName + '"]';
+        }
+        return $(selector);
+    }
+});
