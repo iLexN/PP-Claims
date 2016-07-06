@@ -9,26 +9,26 @@
         </p>
         <p>
             <label for="pswd">Password:</label>
-            <span><input data-hook="password1" type="password" name="pswd" /></span>
+            <span><input data-jshook="password1" type="password" name="pswd" /></span>
         </p>
         <p>
             <label for="pswd2">confirm Password:</label>
-            <span><input data-hook="password2" type="password" name="pswd2" /></span>
+            <span><input data-jshook="password2" type="password" name="pswd2" /></span>
         </p>
         <p>
-            <button data-hook="SignUpBtn" type="submit" disabled="disabled">Signup</button></p>
+            <button data-jshook="SignUpBtn" type="submit" disabled="disabled">Signup</button></p>
 
 
         {% include 'include/csrf.twig' %}
     </form>
 
-    <div data-hook="passCheckInfo" class="passInfo">
+    <div data-jshook="passCheckInfo" class="passInfo">
         <h4>Password must meet the following requirements:</h4>
         <ul>
-            <li data-hook="Letter" class="invalid">At least <strong>one Case Diff letter</strong></li>
-            <li data-hook="Number" class="invalid">At least <strong>one number</strong></li>
-            <li data-hook="Length" class="invalid">Be at least <strong>8 characters</strong></li>
-            <li data-hook="PassSame" class="invalid">confirm password</li>
+            <li data-jshook="Letter" class="invalid">At least <strong>one Case Diff letter</strong></li>
+            <li data-jshook="Number" class="invalid">At least <strong>one number</strong></li>
+            <li data-jshook="Length" class="invalid">Be at least <strong>8 characters</strong></li>
+            <li data-jshook="PassSame" class="invalid">confirm password</li>
         </ul>
     </div>
 {% endblock %}
@@ -38,6 +38,77 @@
     <script>
         $(function () {
             'use strict';
+            var SignUpControl = (function () {
+                var $jsPassInfo, $btn, $length, $letter, $num, $passSame;
+                var validCssClass, inValidCssClass;
+                
+                //todo:check username dupe?
+
+                function setting(obj) {
+                    $jsPassInfo = obj.jsPassInfo;
+                    $btn = obj.btn;
+                    $length = obj.length;
+                    $letter = obj.letter;
+                    $num = obj.num;
+                    $passSame = obj.passSame;
+                    validCssClass = obj.validClass;
+                    inValidCssClass = obj.invalidClass;
+                }
+                function setP1() {
+                    passwordModule.setP1($(this).val());
+                    check();
+                }
+                function setP2() {
+                    passwordModule.setP2($(this).val());
+                    check();
+                }
+                function valid($obj) {
+                    $obj.removeClass(inValidCssClass).addClass(validCssClass);
+                }
+                function inValid($obj) {
+                    $obj.removeClass(validCssClass).addClass(inValidCssClass);
+                }
+                function check() {
+                    if (passwordModule.isLenghtPass(8)) {
+                        valid($length);
+                    } else {
+                        inValid($length);
+                    }
+                    if (passwordModule.hasUpperCase() && passwordModule.hasLowerCase()) {
+                        valid($letter);
+                    } else {
+                        inValid($letter);
+                    }
+                    if (passwordModule.hasNumber()) {
+                        valid($num);
+                    } else {
+                        inValid($num);
+                    }
+                    if (passwordModule.isPassSame()) {
+                        valid($passSame);
+                    } else {
+                        inValid($passSame);
+                    }
+                    if ($jsPassInfo.find('li').hasClass('invalid') === false) {
+                        $btn.prop("disabled", false);
+                    } else {
+                        $btn.prop("disabled", true);
+                    }
+                }
+                function infoShow() {
+                    $jsPassInfo.show();
+                }
+                function infoHide() {
+                    $jsPassInfo.hide();
+                }
+                return {
+                    setting: setting,
+                    setP1: setP1,
+                    setP2: setP2,
+                    infoShow: infoShow,
+                    infoHide: infoHide
+                };
+            })();
             SignUpControl.setting({
                 jsPassInfo: $.jshook('passCheckInfo'),
                 btn: $.jshook('SignUpBtn'),
