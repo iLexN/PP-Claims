@@ -2,10 +2,10 @@
 
 namespace PP\WebPortal\Middleware\Dev;
 
-use PP\WebPortal\AbstractClass\AbstractContainer;
-use Symfony\Component\Finder\Finder;
 use JShrink\Minifier;
 use MatthiasMullie\Minify;
+use PP\WebPortal\AbstractClass\AbstractContainer;
+use Symfony\Component\Finder\Finder;
 
 class Dev extends AbstractContainer
 {
@@ -30,10 +30,10 @@ class Dev extends AbstractContainer
     {
         $finder = new Finder();
         $folder = $docRoot.'/assets/js/';
-        $finder->files()->in($folder)->name('*.js')->notName('*.min.js');
+        $finder->files()->in($folder)->exclude('test')->name('*.js')->notName('*.min.js');
         /* @var $file \Symfony\Component\Finder\SplFileInfo */
         foreach ($finder as $file) {
-            $minifiedCode = Minifier::minify($content = $file->getContents());
+            $minifiedCode = Minifier::minify($file->getContents());
             $newFile = $folder.$file->getRelativePath().'/'.$file->getBasename('.js').'.min.js';
             file_put_contents($newFile, $minifiedCode);
         }
@@ -44,7 +44,7 @@ class Dev extends AbstractContainer
         $finder = new Finder();
         $folder = $docRoot.'/assets/css/';
         $finder->files()->in($folder)->name('*.css')->notName('*.min.css')->
-                sort(function (\SplFileInfo $a, \SplFileInfo $b) {
+                sort(function (\SplFileInfo $a) {
                     if ($a->getBasename() == 'normalize.css') {
                         return false;
                     }
