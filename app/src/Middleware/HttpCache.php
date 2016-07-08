@@ -4,11 +4,6 @@ namespace PP\WebPortal\Middleware;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
 
-/**
- * Description of HttpCache.
- *
- * @author user
- */
 final class HttpCache extends AbstractContainer
 {
     /**

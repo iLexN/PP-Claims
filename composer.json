@@ -20,5 +20,10 @@
         "phpmailer/phpmailer" : "v5.2.16",
         "tedivm/stash": "0.14.*",
         "mobiledetect/mobiledetectlib":"2.8.22"
+    },
+    "require-dev": {
+        "symfony/finder": "v3.*",
+        "tedivm/jshrink": "v1.1.0",
+        "matthiasmullie/minify" : "1.*"
     }
 }

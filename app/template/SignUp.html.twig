@@ -9,11 +9,11 @@
         </p>
         <p>
             <label for="pswd">Password:</label>
-            <span><input data-jshook="password1" type="password" name="pswd" /></span>
+            <span><input data-jshook="password1 checkPass" type="password" name="pswd" /></span>
         </p>
         <p>
             <label for="pswd2">confirm Password:</label>
-            <span><input data-jshook="password2" type="password" name="pswd2" /></span>
+            <span><input data-jshook="password2 checkPass" type="password" name="pswd2" /></span>
         </p>
         <p>
             <button data-jshook="SignUpBtn" type="submit" disabled="disabled">Signup</button></p>
@@ -39,28 +39,22 @@
         $(function () {
             'use strict';
             var SignUpControl = (function () {
-                var $jsPassInfo, $btn, $length, $letter, $num, $passSame;
-                var validCssClass, inValidCssClass;
-                
                 //todo:check username dupe?
+                // need ajax? so here otherwise move to *.js 
+                var $jsPassInfo = $.jshook('passCheckInfo');
+                var $btn = $.jshook('SignUpBtn');
+                var $length = $.jshook('Length');
+                var $letter = $.jshook('Letter');
+                var $num = $.jshook('Number');
+                var $passSame = $.jshook('PassSame');
+                var validCssClass = 'valid';
+                var inValidCssClass = 'invalid';
 
-                function setting(obj) {
-                    $jsPassInfo = obj.jsPassInfo;
-                    $btn = obj.btn;
-                    $length = obj.length;
-                    $letter = obj.letter;
-                    $num = obj.num;
-                    $passSame = obj.passSame;
-                    validCssClass = obj.validClass;
-                    inValidCssClass = obj.invalidClass;
-                }
                 function setP1() {
                     passwordModule.setP1($(this).val());
-                    check();
                 }
                 function setP2() {
                     passwordModule.setP2($(this).val());
-                    check();
                 }
                 function valid($obj) {
                     $obj.removeClass(inValidCssClass).addClass(validCssClass);
@@ -102,33 +96,28 @@
                     $jsPassInfo.hide();
                 }
                 return {
-                    setting: setting,
                     setP1: setP1,
                     setP2: setP2,
+                    check: check,
                     infoShow: infoShow,
                     infoHide: infoHide
                 };
             })();
-            SignUpControl.setting({
-                jsPassInfo: $.jshook('passCheckInfo'),
-                btn: $.jshook('SignUpBtn'),
-                length: $.jshook('Length'),
-                letter: $.jshook('Letter'),
-                num: $.jshook('Number'),
-                passSame: $.jshook('PassSame'),
-                validClass: 'valid',
-                invalidClass: 'invalid'
-            });
             //setup dom event
             $.jshook('password1').on({
-                keyup: SignUpControl.setP1,
+                'keyup.set': SignUpControl.setP1,
                 focus: SignUpControl.infoShow,
-                blur: SignUpControl.infoHide
+                blur: SignUpControl.infoHide,
+                paste: false
             });
             $.jshook('password2').on({
-                keyup: SignUpControl.setP2,
+                'keyup.set': SignUpControl.setP2,
                 focus: SignUpControl.infoShow,
-                blur: SignUpControl.infoHide
+                blur: SignUpControl.infoHide,
+                paste: false
+            });
+            $.jshook('checkPass').on({
+                'keyup.check': SignUpControl.check
             });
         });
     </script>

@@ -7,3 +7,8 @@ $authLoginArea = new PP\WebPortal\Middleware\Login\AuthLoginedAreaMiddleware($co
 $authCheckLogined = new PP\WebPortal\Middleware\Login\AuthCheckLoginedMiddleware($container);
 
 $app->add(new PP\WebPortal\Middleware\HttpCache($container));
+
+if ($container['settings']['displayErrorDetails']) {
+    //css js min
+    $app->add(new PP\WebPortal\Middleware\Dev\Dev($container));
+}
