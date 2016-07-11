@@ -1,30 +1,35 @@
-<h1>Home</h1>
-<!--
-{% if detect.isMobile() and not detect.isTablet() %}
-<div>M</div>
-{% elseif detect.isTablet() %}
-<div>T</div>
-{% else %}
-<div>D</div>
-{% endif %}
+{% extends "template/s1.html.twig" %}
 
-{% if detect.isiOS() %}
-<div>ios</div>
-{% endif %}
-    
-{% if detect.isAndroidOS() %}
-<div>Android</div>
-{% endif %}  
--->
-<form action="" method="POST">
-    <label for="clientID">Client ID : <input type="text" name="clientID" value="" id="clientID"></label>
-    <br/>
-    <label for="password">Password : <input type="text" name="password" value="" id="password"></label>
-    <br/>
-{% include 'include/csrf.twig' %}
-<input type="submit" value="Submit">
-</form>
+{% block centerBlock %}
+    <h1>Home</h1>
+    <a href="{{ path_for('SignUp') }}">Signup</a>
+    <!--
+    {% if detect.isMobile() and not detect.isTablet() %}
+    <div>M</div>
+    {% elseif detect.isTablet() %}
+    <div>T</div>
+    {% else %}
+    <div>D</div>
+    {% endif %}
 
-{% if flash.loginError is not empty %}
+    {% if detect.isiOS() %}
+    <div>ios</div>
+    {% endif %}
+
+    {% if detect.isAndroidOS() %}
+    <div>Android</div>
+    {% endif %}  
+    -->
+    <form action="" method="POST">
+        <label for="clientID">Client ID : <input type="text" name="clientID" value="" id="clientID"></label>
+        <br/>
+        <label for="password">Password : <input type="text" name="password" value="" id="password"></label>
+        <br/>
+        {% include 'include/csrf.twig' %}
+    <input type="submit" value="Submit">
+    </form>
+
+    {% if flash.loginError is not empty %}
         <p style="color:red">{{ flash.loginError.0  }}</p>
-        {% endif %}
+    {% endif %}
+{% endblock %}
