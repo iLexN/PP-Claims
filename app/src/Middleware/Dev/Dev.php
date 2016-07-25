@@ -42,7 +42,7 @@ class Dev extends AbstractContainer
     private function minCSS($docRoot)
     {
         $finder = new Finder();
-        $folder = $docRoot.'/assets/css/';
+        $folder = $docRoot.'/assets/css/common/';
         $finder->files()->in($folder)->name('*.css')->notName('*.min.css')->
                 sort(function (\SplFileInfo $a) {
                     if ($a->getBasename() == 'normalize.css') {

@@ -3,23 +3,7 @@
 {% block centerBlock %}
     <h1>Home</h1>
     <a href="{{ path_for('SignUp') }}">Signup</a>
-    <!--
-    {% if detect.isMobile() and not detect.isTablet() %}
-    <div>M</div>
-    {% elseif detect.isTablet() %}
-    <div>T</div>
-    {% else %}
-    <div>D</div>
-    {% endif %}
-
-    {% if detect.isiOS() %}
-    <div>ios</div>
-    {% endif %}
-
-    {% if detect.isAndroidOS() %}
-    <div>Android</div>
-    {% endif %}  
-    -->
+        
     <form action="" method="POST">
         <label for="clientID">Client ID : <input type="text" name="clientID" value="" id="clientID"></label>
         <br/>

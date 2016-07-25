@@ -5,8 +5,18 @@
         <title>WebPortal</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/build.min.css">
         {% include 'include/icon.twig' %}
+        <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/common/build.min.css">
+        {% if is_mobile() %}
+            <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/mobile.css">
+        {% endif %}
+        {% if is_tablet() %}
+            <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/tablet.css">
+        {% endif %}
+        {% if is_pc() %}
+            <link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/pc.css">
+        {% endif %}
+
         {% block cssStyle %}
             
         {% endblock %}
