@@ -112,6 +112,11 @@ $container['policyModule'] = function (\Slim\Container $c) {
 
     return $policyModule;
 };
+$container['passwordModule'] = function (\Slim\Container $c) {
+    $passwordModule = new \PP\WebPortal\Module\PasswordModule($c);
+
+    return $passwordModule;
+};
 
 $container['httpHelper'] = function (\Slim\Container $c) {
     $httpHelper = new \PP\WebPortal\Module\Helper\HttpClientHelper($c);

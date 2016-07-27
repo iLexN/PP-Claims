@@ -11,6 +11,14 @@ $app->get('/signup', 'PP\WebPortal\Controller\SignUp\Index')
     ->setName('SignUp')
     ->add($container->get('csrf')) // for login form
     ->add($authCheckLogined); // redirect to login-ed page if login-ed
+$app->get('/forgot-password/{token}', 'PP\WebPortal\Controller\ForgotSetPassword\Index')
+    ->setName('ForgotSetPassword')
+    ->add($container->get('csrf')) // for form
+    ->add($authCheckLogined); // redirect to login-ed page if login-ed
+$app->post('/forgot-password/{token}', 'PP\WebPortal\Controller\ForgotSetPassword\Action')
+    ->add($container->get('csrf')) // check form
+    ->add($authCheckLogined); // redirect to login-ed page if login-ed
+
 
 $app->get('/login-ed', 'PP\WebPortal\Controller\Logined')
     ->setName('Login-ed')
