@@ -30,6 +30,7 @@ final class LoginModule extends AbstractContainer
     public function isUserExistByToken($token)
     {
         $response = $this->c['httpClient']->request('GET', 'forgot-passowrd/'.$token);
+
         return $this->c['httpHelper']->verifyResponse($response);
     }
 
@@ -125,12 +126,14 @@ final class LoginModule extends AbstractContainer
         return  $this->c['httpHelper']->verifyResponse($response);
     }
 
-    public function postNewPassword($pass,$token){
+    public function postNewPassword($pass, $token)
+    {
         $response = $this->c['httpClient']->request('POST', 'forgot-passowrd/'.$token, [
                 'form_params' => [
-                    'new_password'=>$pass,
+                    'new_password' => $pass,
                 ],
             ]);
+
         return  $this->c['httpHelper']->verifyResponse($response);
     }
 

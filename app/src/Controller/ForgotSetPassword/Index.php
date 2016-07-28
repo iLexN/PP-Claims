@@ -19,13 +19,13 @@ final class Index extends AbstractContainer
     {
         $result = $this->c['loginModule']->isUserExistByToken($args['token']);
 
-        if ( !$result){
+        if (!$result) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
         return $this->c['view']->render($response, 'ForgotSetPassword.html.twig', [
             'token' => $this->c['CSRFHelper']->getToken($request),
-            'User' => $result['data'],
+            'User'  => $result['data'],
         ]);
     }
 }
