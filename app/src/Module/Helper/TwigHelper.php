@@ -1,13 +1,14 @@
 <?php
+
 namespace PP\WebPortal\Module\Helper;
 
 /**
- * Description of TwigHelper
+ * Description of TwigHelper.
  *
  * @author user
  */
-class TwigHelper extends \Twig_Extension{
-
+class TwigHelper extends \Twig_Extension
+{
     /**
      * @var \Mobile_Detect
      */
@@ -21,9 +22,9 @@ class TwigHelper extends \Twig_Extension{
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('is_mobile', array($this, 'isMobile')),
-            new \Twig_SimpleFunction('is_tablet', array($this, 'isTablet')),
-            new \Twig_SimpleFunction('is_pc', array($this, 'isPC')),
+            new \Twig_SimpleFunction('is_mobile', [$this, 'isMobile']),
+            new \Twig_SimpleFunction('is_tablet', [$this, 'isTablet']),
+            new \Twig_SimpleFunction('is_pc', [$this, 'isPC']),
         ];
     }
 
@@ -42,7 +43,8 @@ class TwigHelper extends \Twig_Extension{
         return $this->detect->isTablet();
     }
 
-    public function isPC(){
+    public function isPC()
+    {
         return !$this->detect->isMobile() && !$this->detect->isTablet();
     }
 }
