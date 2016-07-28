@@ -26,8 +26,6 @@ final class Action extends AbstractContainer
         $pass = $request->getParsedBody()['pswd'];
         $pass2 = $request->getParsedBody()['pswd2'];
 
-
-
         if ( $pass !== $pass2 ){
             return $this->c['view']->render($response, 'ForgotSetPassword.success.html.twig', [
                 'token' => $this->c['CSRFHelper']->getToken($request),
@@ -42,9 +40,7 @@ final class Action extends AbstractContainer
             ]);
         }
 
-        $result = $this->c['loginModule']->postNewPassword($pass,$args['token']);
-
-        
+        $this->c['loginModule']->postNewPassword($pass,$args['token']);
 
         return $this->c['view']->render($response, 'ForgotSetPassword.success.html.twig', [
             'token' => $this->c['CSRFHelper']->getToken($request),
