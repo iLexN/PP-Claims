@@ -3,8 +3,8 @@
 namespace PP\WebPortal\Controller\Ajax;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 final class Username extends AbstractContainer
 {
@@ -17,7 +17,7 @@ final class Username extends AbstractContainer
      *
      * @return ResponseInterface
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         $apiResponse = $this->c['httpClient']->request('GET', 'check-username/'.$request->getQueryParam('username'));
         $result = $this->c['httpHelper']->verifyResponse($apiResponse);
