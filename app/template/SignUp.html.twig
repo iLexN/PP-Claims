@@ -13,10 +13,7 @@
             <label for="pswd2">confirm Password:</label>
             <span><input data-jshook="password2 checkPass" type="password" name="pswd2" /></span>
         </p>
-        <p>
-            <button data-jshook="SignUpBtn" type="submit" disabled="disabled">Signup</button></p>
-
-
+        <p><button data-jshook="SignUpBtn" type="submit" disabled="disabled">Signup</button></p>
         {% include 'include/csrf.twig' %}
     </form>
 
@@ -54,10 +51,23 @@
 
                 var passwordModule = createpasswordModule();
 
-                function setUsername(){
+                var checkUsername = debounce(function () {
+                    $loading.removeClass('hidden');
+                    $.getJSON("{{ path_for('Ajax.Username') }}", {'username': username}, function (data) {
+                        if (data.code === 2060) {
+                            valid($usernamePass);
+                        } else {
+                            inValid($usernamePass);
+                        }
+                        canSubmit();
+                        $loading.addClass('hidden');
+                    });
+                }, 750);
+                function setUsername() {
                     inValid($usernamePass);
                     canSubmit();
                     username = $(this).val();
+                    checkUsername();
                 }
                 function setP1() {
                     passwordModule.setP1($(this).val());
@@ -71,19 +81,7 @@
                 function inValid($obj) {
                     $obj.removeClass(validCssClass).addClass(inValidCssClass);
                 }
-                function checkUsername(){
-                    $loading.removeClass('hidden');
-                    $.getJSON( "{{ path_for('Ajax.Username') }}", {'username':username} , function( data ) {
-                        console.log(data);
-                        if ( data.code === 2060 ) {
-                            valid($usernamePass);
-                        } else {
-                            inValid($usernamePass);
-                        }
-                        canSubmit();
-                        $loading.addClass('hidden');
-                    });
-                }
+
                 function check() {
                     if (passwordModule.isLenghtPass(8)) {
                         valid($length);
@@ -107,7 +105,7 @@
                     }
                     canSubmit();
                 }
-                function canSubmit(){
+                function canSubmit() {
                     if ($jsPassInfo.find('li').hasClass('invalid') === false) {
                         $btn.prop("disabled", false);
                     } else {
@@ -126,8 +124,8 @@
                     check: check,
                     infoShow: infoShow,
                     infoHide: infoHide,
-                    setUsername : setUsername,
-                    checkUsername : checkUsername,
+                    setUsername: setUsername,
+                    checkUsername: checkUsername,
                 };
             })();
             //setup dom event
@@ -147,8 +145,10 @@
                 'keyup.check': SignUpControl.check
             });
             $.jshook('username').on({
-                'keyup.set': SignUpControl.setUsername,
-                blur: SignUpControl.checkUsername
+                'keyup.set': SignUpControl.setUsername
+            });
+            $.jshook('SignUpBtn').on({
+                click: BtnStatus.disable
             });
         });
     </script>

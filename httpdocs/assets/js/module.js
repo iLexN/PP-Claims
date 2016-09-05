@@ -1,4 +1,4 @@
-function createpasswordModule(){
+function createpasswordModule() {
     'use strict';
     var password1, password2;
     function isLenghtPass(passLenght) {
@@ -33,7 +33,37 @@ function createpasswordModule(){
     };
 }
 
+var BtnStatus = (function () {
+    function disableBtn() {
+        $(this).prop("disabled", true);
+    }
+    function enableBtn() {
+        $(this).prop("disabled", false);
+    }
+    return {
+        'disable': disableBtn,
+        'enable': enableBtn
+    };
+})();
+
 //helper
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate)
+                func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow)
+            func.apply(context, args);
+    };
+}
+
 $.extend({
     jshook: function (hookName) {
         var selector;
