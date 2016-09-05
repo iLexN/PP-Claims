@@ -1,4 +1,4 @@
-var passwordModule = (function () {
+function createpasswordModule(){
     'use strict';
     var password1, password2;
     function isLenghtPass(passLenght) {
@@ -31,7 +31,7 @@ var passwordModule = (function () {
         hasNumber: hasNumber,
         isPassSame: isPassSame
     };
-})();
+}
 
 //helper
 $.extend({

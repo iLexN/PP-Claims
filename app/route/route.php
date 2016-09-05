@@ -38,6 +38,11 @@ $app->post('/user', 'PP\WebPortal\Controller\User\InfoUpdate')
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
 
+//ajax
+$app->get('/ajax/user/username', 'PP\WebPortal\Controller\Ajax\Username')
+        ->setName('Ajax.Username');
+
+
 //test
 $app->get('/test/upload', 'PP\WebPortal\Controller\Test\UploadIndex')
         ->setName('upload');

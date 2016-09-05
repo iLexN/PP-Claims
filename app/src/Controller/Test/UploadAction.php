@@ -23,7 +23,7 @@ final class UploadAction extends AbstractContainer
 
         $this->c->logger->info('post', $request->getParsedBody());
 
-        var_dump($files);
+        //var_dump($files);
 
         //if (empty($files['newfile'])) {
         //    return $response->write('no file');
