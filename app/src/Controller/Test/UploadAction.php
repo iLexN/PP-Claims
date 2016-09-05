@@ -17,13 +17,19 @@ final class UploadAction extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
+
+
         $files = $request->getUploadedFiles();
 
         $this->c->logger->info('post', $request->getParsedBody());
 
-        if (empty($files['newfile'])) {
-            throw new \Exception('Expected a newfile');
-        }
+        var_dump($files);
+
+        //if (empty($files['newfile'])) {
+        //    return $response->write('no file');
+        //}
+
+        $this->c->logger->info('aa');
 
         $newfile = $this->handerFile($files['newfile']);
 

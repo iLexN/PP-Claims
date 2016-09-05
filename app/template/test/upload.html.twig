@@ -2,7 +2,8 @@
 <h1>Upload a file</h1>
         <form method="POST" action="{{ path_for('upload') }}" enctype="multipart/form-data" id='f'>
             <label>Select file to upload:</label>
-            <input type="file" name="newfile">
+            <input type="file" name="newfile[]" accept=
+"application/pdf, image/jpeg, image/png" multiple>
             <input type="file" name="newfile2">
             <input type="text" name="doreme" value="doreme">
             <button type="submit">Upload</button>
