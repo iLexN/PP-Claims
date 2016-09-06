@@ -18,16 +18,16 @@ final class PolicyModule extends AbstractContainer
      */
     public function getPolices()
     {
-        $user = $this->c['user'];
+        $user = $this->c['userModule']->user;
 
         /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->c['pool']->getItem('User/'.$user['Client_NO'].'/Policies');
+        $item = $this->c['pool']->getItem('User/'.$user['ppmid'].'/Policies');
         $policies = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $policies = $this->getPoliciesByAPI($user['Client_NO']);
+            $policies = $this->getPoliciesByAPI($user['ppmid']);
             $this->c['pool']->save($item->set($policies));
         }
 

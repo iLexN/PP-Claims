@@ -33,8 +33,8 @@ final class AuthLoginedAreaMiddleware extends AbstractContainer
                 ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
         }
 
-        $this->c['user'] = $loginModule->getUserByLoginSession();
-        $this->c['view']['User'] = $this->c['user'];
+        $loginModule->getUserByLoginSession();
+        $this->c['view']['User'] = $this->c['userModule']->user;
 
         return $next($request, $response);
     }

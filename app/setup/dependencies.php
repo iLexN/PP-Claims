@@ -103,25 +103,20 @@ if (!$container['settings']['displayErrorDetails']) {
 
 //custome Module.
 $container['loginModule'] = function (\Slim\Container $c) {
-    $loginModule = new \PP\WebPortal\Module\LoginModule($c);
-
-    return $loginModule;
+    return new \PP\WebPortal\Module\LoginModule($c);
+};
+$container['userModule'] = function (\Slim\Container $c) {
+    return new \PP\WebPortal\Module\UserModule($c);
 };
 $container['policyModule'] = function (\Slim\Container $c) {
-    $policyModule = new \PP\WebPortal\Module\PolicyModule($c);
-
-    return $policyModule;
+    return new \PP\WebPortal\Module\PolicyModule($c);
 };
 $container['passwordModule'] = function (\Slim\Container $c) {
-    $passwordModule = new \PP\WebPortal\Module\PasswordModule($c);
-
-    return $passwordModule;
+    return new \PP\WebPortal\Module\PasswordModule($c);
 };
 
 $container['httpHelper'] = function (\Slim\Container $c) {
-    $httpHelper = new \PP\WebPortal\Module\Helper\HttpClientHelper($c);
-
-    return $httpHelper;
+    return new \PP\WebPortal\Module\Helper\HttpClientHelper($c);
 };
 
 $container['CSRFHelper'] = function (\Slim\Container $c) {

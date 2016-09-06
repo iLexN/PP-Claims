@@ -2,6 +2,6 @@
 
 return [
     'uploadConfig' => [
-        'path' => __DIR__.'/../../upload',
+        'path' => __DIR__.'/../upload',
     ],
 ];

@@ -17,7 +17,7 @@ final class Action extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $result = $this->c['loginModule']->isUserExistByToken($args['token']);
+        $result = $this->c['userModule']->isUserExistByToken($args['token']);
 
         if (!$result) {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -40,7 +40,7 @@ final class Action extends AbstractContainer
             ]);
         }
 
-        $this->c['loginModule']->postNewPassword($pass, $args['token']);
+        $this->c['userModule']->postNewPassword($pass, $args['token']);
 
         return $this->c['view']->render($response, 'ForgotSetPassword.success.html.twig', [
             'token'  => $this->c['CSRFHelper']->getToken($request),

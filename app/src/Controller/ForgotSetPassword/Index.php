@@ -17,7 +17,7 @@ final class Index extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $result = $this->c['loginModule']->isUserExistByToken($args['token']);
+        $result = $this->c['userModule']->isUserExistByToken($args['token']);
 
         if (!$result) {
             throw new \Slim\Exception\NotFoundException($request, $response);

@@ -8,61 +8,38 @@
 {% endif %}
 
 <div style="float: left">
-    <p>Client : {{ User.Client_NO }}</p>
-    <p>Title : {{ User.Title }}</p>
-    <p>First: {{ User.First_Name }}</p>
-    <p>Middle : {{ User.Middle_Name }}</p>
-    <p>Surname : {{ User.Surname }}</p>
-    <p>Company : {{ User.Company_Name }}</p>
-    <p>Mobile : {{ User.Mobile_One }}</p>
-    <p>Mobile : {{ User.Mobile_Two }}</p>
-    <p>Phone : {{ User.Home_Phone }}</p>
-    <p>Business_Phone : {{ User.Business_Phone }}</p>
-    <p>Home_Fax : {{ User.Home_Fax }}</p>
-    <p>Business_Fax : {{ User.Business_Fax }}</p>
-    <p>Email: {{ User.Email }}</p>
-    <p>Second_Email : {{ User.Second_Email }}</p>
-    <p>Person_One_Skype : {{ User.Person_One_Skype }}</p>
-    <p>Home_Address_1 : {{ User.Home_Address_1 }}</p>
-    <p>Home_Address_2 : {{ User.Home_Address_2 }}</p>
-    <p>Home_Address_3 : {{ User.Home_Address_3 }}</p>
-    <p>Home_Address_4 : {{ User.Home_Address_4 }}</p>
-    <p>Home_Address_5 : {{ User.Home_Address_5 }}</p>
+    <p>Client : {{ User.ppmid }}</p>
+    <p>Title : {{ User.title }}</p>
+    <p>First: {{ User.first_name }}</p>
+    <p>Middle : {{ User.middle_name }}</p>
+    <p>Surname : {{ User.last_name }}</p>
+    <p>Company : {{ User.date_of_birth }}</p>
+    <p>Mobile : {{ User.user_name }}</p>
+    <p>Mobile : {{ User.nationality }}</p>
+    <p>Phone : {{ User.email }}</p>
+    <p>Business_Phone : {{ User.phone_1 }}</p>
+    <p>Home_Fax : {{ User.address_line_2 }}</p>
+    <p>Business_Fax : {{ User.address_line_3 }}</p>
+    
     <p><a href="{{ path_for('UserInfo') }}">Edit address</a></p>
 </div>
 
 <table border="1" cellpadding="5">
     <tr>
-        <td>Sale_Date</td>
-        <td>New_Or_Renew</td>
-        <td>Policy_Type</td>
-        <td>Policy_Details</td>
-        <td>Insurance_Company</td>
-        <td>Distributing_Agent</td>
-        <td>Responsibility</td>
-        <td>POSITION</td>
-        <td>STATUS</td>
-        <td>Policy_Issue_Date</td>
-        <td>Issue_Responsibility</td>
-        <td>Policy_Number</td>
-        <td>Renewal_Status</td>
+        <td>policy_id</td>
+        <td>insurer</td>
+        <td>plan_name</td>
+        <td>responsibility_id</td>
+        <td>user_policy_id</td>
     </tr>
     
     {% for Policy in Polices %}
     <tr>
-        <td>{{ Policy.Sale_Date }}</td>
-        <td>{{ Policy.New_Or_Renew }}</td>
-        <td>{{ Policy.Policy_Type }}</td>
-        <td>{{ Policy.Policy_Details }}</td>
-        <td>{{ Policy.Insurance_Company }}</td>
-        <td>{{ Policy.Distributing_Agent }}</td>
-        <td>{{ Policy.Responsibility }}</td>
-        <td>{{ Policy.Position }}</td>
-        <td>{{ Policy.Status }}</td>
-        <td>{{ Policy.Policy_Issue_Date }}</td>
-        <td>{{ Policy.Issue_Responsibility }}</td>
-        <td>{{ Policy.Policy_Number }}</td>
-        <td>{{ Policy.Renewal_Status }}</td>
+        <td>{{ Policy.policy_id }}</td>
+        <td>{{ Policy.insurer }}</td>
+        <td>{{ Policy.plan_name }}</td>
+        <td>{{ Policy.responsibility_id }}</td>
+        <td>{{ Policy.user_policy_id }}</td>
     </tr>
     {% endfor %}
 </table>

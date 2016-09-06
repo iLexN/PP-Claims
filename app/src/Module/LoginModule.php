@@ -7,12 +7,7 @@ use PP\WebPortal\AbstractClass\AbstractContainer;
 final class LoginModule extends AbstractContainer
 {
     /**
-     * @var array
-     */
-    public $user;
-
-    /**
-     * user email to login.
+     * user login.
      *
      * @param array $input
      *
@@ -27,49 +22,7 @@ final class LoginModule extends AbstractContainer
         return $this->c['httpHelper']->verifyResponse($response);
     }
 
-    public function isUserExistByToken($token)
-    {
-        $response = $this->c['httpClient']->request('GET', 'forgot-passowrd/'.$token);
-
-        return $this->c['httpHelper']->verifyResponse($response);
-    }
-
-    /**
-     * gen token for login and save into db.
-     */
-//    public function genToken()
-//    {
-//        $this->user->genToken();
-//        $this->user->save();
-//    }
-
-    /**
-     * check token from the email , token expire 1 hr.
-     *
-     * @param string $token
-     *
-     * @return User
-     */
-//    public function checkToken($token)
-//    {
-//        $this->user = User::where('token', $token)
-//                ->where_gt('tokenExpireDatetime', date('Y-m-d H:i:s'))
-//                ->findOne();
-//
-//        return $this->user;
-//    }
-
-    /**
-     * set login.
-     *
-     * @param type $data
-     */
-    public function setLogined($data)
-    {
-        $this->c->logger->info('user', $data);
-        //$_SESSION['userLogin'] = $this->user->id;
-        $_SESSION['userLogin'] = $data;
-    }
+    
 
     /**
      * get User info from session.
@@ -78,63 +31,7 @@ final class LoginModule extends AbstractContainer
      */
     public function getUserByLoginSession()
     {
-        //var_dump($_SESSION['userLogin']);
-        $this->c->logger->info('getUserByLoginSession', $_SESSION['userLogin']);
-
-        /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->c['pool']->getItem('User/'.$_SESSION['userLogin']['id'].'/info');
-        $this->user = $item->get();
-
-        if ($item->isMiss()) {
-            $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $this->user = $this->getUserByAPI($_SESSION['userLogin']['id']);
-            $this->c['pool']->save($item->set($this->user));
-        }
-
-        return $this->user;
-    }
-
-    /**
-     * getUserInfo From API.
-     *
-     * @param int $id
-     *
-     * @return array
-     */
-    private function getUserByAPI($id)
-    {
-        $this->c->logger->info('cache user');
-
-        $response = $this->c['httpClient']->request('GET', 'user/'.$id);
-
-        $result = $this->c['httpHelper']->verifyResponse($response);
-
-        return $result['data'];
-    }
-
-    public function postUserInfoByAPI($data)
-    {
-        $this->c->logger->info('user info in postUserInfoByAPI', $data);
-
-        $response = $this->c['httpClient']->request('POST', 'user/'.$this->user['Client_NO'], [
-                'form_params' => $data,
-            ]);
-
-        $this->c['pool']->clear('User/'.$this->user['Client_NO'].'/info');
-
-        return  $this->c['httpHelper']->verifyResponse($response);
-    }
-
-    public function postNewPassword($pass, $token)
-    {
-        $response = $this->c['httpClient']->request('POST', 'forgot-passowrd/'.$token, [
-                'form_params' => [
-                    'new_password' => $pass,
-                ],
-            ]);
-
-        return  $this->c['httpHelper']->verifyResponse($response);
+        $this->c['userModule']->getUser($_SESSION['userLogin']['id']);
     }
 
     /**
@@ -145,6 +42,16 @@ final class LoginModule extends AbstractContainer
     public function isLogined()
     {
         return isset($_SESSION['userLogin']);
+    }
+
+    /**
+     * set login.
+     *
+     * @param array $data
+     */
+    public function setLogined($data)
+    {
+        $_SESSION['userLogin'] = $data;
     }
 
     public function setLogout()
