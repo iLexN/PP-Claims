@@ -11,15 +11,12 @@ final class UserModule extends AbstractContainer
      */
     public $user;
 
-    
     public function isUserExistByToken($token)
     {
         $response = $this->c['httpClient']->request('GET', 'forgot-passowrd/'.$token);
 
         return $this->c['httpHelper']->verifyResponse($response);
     }
-
-    
 
     /**
      * get User info from session.
@@ -28,7 +25,7 @@ final class UserModule extends AbstractContainer
      */
     public function getUser($id)
     {
-        
+
         /* @var $item Stash\Interfaces\ItemInterface */
         $item = $this->c['pool']->getItem('User/'.$id.'/info');
         $this->user = $item->get();
@@ -39,7 +36,7 @@ final class UserModule extends AbstractContainer
             $this->user = $this->getUserByAPI($id);
             $this->c['pool']->save($item->set($this->user));
         }
-$this->c['logger']->info('userinfo',$this->user);
+        $this->c['logger']->info('userinfo', $this->user);
         //return $this->user;
     }
 
