@@ -26,7 +26,7 @@ final class Router extends AbstractContainer
         //exclude route
         $router->removeNamedRoute('helperRouter');
 
-        return $this->c['view']->render($response, 'helper/router.html.twig', [
+        return $this->view->render($response, 'helper/router.html.twig', [
             'router' => $router,
         ]);
     }

@@ -18,7 +18,7 @@ final class Index extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         return $this->c['view']->render($response, 'SignUp.html.twig', [
-            'token' => $this->c['CSRFHelper']->getToken($request),
+            'token' => $this->csrfHelper->getToken($request),
         ]);
     }
 }

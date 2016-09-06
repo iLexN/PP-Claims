@@ -2,7 +2,7 @@
 
 namespace PP\WebPortal\Module\Helper;
 
-use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
 use PP\WebPortal\AbstractClass\AbstractContainer;
 
 /**
@@ -13,11 +13,11 @@ final class HttpClientHelper extends AbstractContainer
     private $errorMessages = [];
 
     /**
-     * @param \GuzzleHttp\Psr7\Response $response
+     * @param Psr\Http\Message\ResponseInterface $response
      *
      * @return bool
      */
-    public function verifyResponse(Response $response)
+    public function verifyResponse(ResponseInterface $response)
     {
         $log = [
                 'getStatusCode' => $response->getStatusCode(),
