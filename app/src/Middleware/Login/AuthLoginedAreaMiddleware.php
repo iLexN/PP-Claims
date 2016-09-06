@@ -23,18 +23,15 @@ final class AuthLoginedAreaMiddleware extends AbstractContainer
      */
     public function __invoke($request, $response, $next)
     {
-        /* @var $loginModule \PP\Module\LoginModule */
-        $loginModule = $this->c['loginModule'];
-
-        if (!$loginModule->isLogined()) {
+        if (!$this->loginModule->isLogined()) {
             $this->c['flash']->addMessage('loginError', 'Login expired');
 
             return $response->withStatus(301)
                 ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
         }
 
-        $loginModule->getUserByLoginSession();
-        $this->c['view']['User'] = $this->c['userModule']->user;
+        $this->loginModule->getUserByLoginSession();
+        $this->view['User'] = $this->userModule->user;
 
         return $next($request, $response);
     }

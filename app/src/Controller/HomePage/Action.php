@@ -22,12 +22,12 @@ final class Action extends AbstractContainer
         $result = $this->isUserExist((array) $request->getParsedBody());
 
         if ($result) {
-            $this->c['loginModule']->setLogined($result['data']);
+            $this->loginModule->setLogined($result['data']);
 
             return $response->withStatus(301)
                     ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         } else {
-            $this->c['flash']->addMessage('loginError', 'Login Fail');
+            $this->flash->addMessage('loginError', 'Login Fail');
 
             return $response->withStatus(301)
                     ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
@@ -43,6 +43,6 @@ final class Action extends AbstractContainer
      */
     private function isUserExist($input)
     {
-        return $this->c['loginModule']->isUserExist($input);
+        return $this->loginModule->isUserExist($input);
     }
 }

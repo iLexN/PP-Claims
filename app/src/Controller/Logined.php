@@ -19,9 +19,9 @@ final class Logined extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        return $this->c['view']->render($response, 'logined.html.twig', [
+        return $this->view->render($response, 'logined.html.twig', [
             'sysMsg'  => 'Logined',
-            'Polices' => $this->c['policyModule']->getPolices(),
+            'Polices' => $this->policyModule->getPolices(),
         ]);
     }
 }

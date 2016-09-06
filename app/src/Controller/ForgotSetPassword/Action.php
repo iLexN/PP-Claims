@@ -17,7 +17,7 @@ final class Action extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $result = $this->c['userModule']->isUserExistByToken($args['token']);
+        $result = $this->userModule->isUserExistByToken($args['token']);
 
         if (!$result) {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -27,23 +27,23 @@ final class Action extends AbstractContainer
         $pass2 = $request->getParsedBody()['pswd2'];
 
         if ($pass !== $pass2) {
-            return $this->c['view']->render($response, 'ForgotSetPassword.success.html.twig', [
-                'token'  => $this->c['CSRFHelper']->getToken($request),
+            return $this->view->render($response, 'ForgotSetPassword.success.html.twig', [
+                'token'  => $this->csrfHelper->getToken($request),
                 'result' => 'password need same',
             ]);
         }
 
         if (!$this->c['passwordModule']->isStrongPassword($pass)) {
-            return $this->c['view']->render($response, 'ForgotSetPassword.success.html.twig', [
-                'token'  => $this->c['CSRFHelper']->getToken($request),
+            return $this->view->render($response, 'ForgotSetPassword.success.html.twig', [
+                'token'  => $this->csrfHelper->getToken($request),
                 'result' => 'password not strong',
             ]);
         }
 
         $this->c['userModule']->postNewPassword($pass, $args['token']);
 
-        return $this->c['view']->render($response, 'ForgotSetPassword.success.html.twig', [
-            'token'  => $this->c['CSRFHelper']->getToken($request),
+        return $this->view->render($response, 'ForgotSetPassword.success.html.twig', [
+            'token'  => $this->csrfHelper->getToken($request),
             'result' => 'success',
         ]);
     }

@@ -19,9 +19,9 @@ final class Logout extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $this->c['loginModule']->setLogout();
+        $this->loginModule->setLogout();
 
-        $this->c['flash']->addMessage('loginError', 'Logout');
+        $this->flash->addMessage('loginError', 'Logout');
 
         return $response->withStatus(301)
                 ->withHeader('Location', $this->c['router']->pathFor('Homepage'));

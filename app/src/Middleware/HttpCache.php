@@ -20,7 +20,7 @@ final class HttpCache extends AbstractContainer
         $response = $next($request, $response);
 
         if (!$response->hasHeader('Cache-Control')) {
-            return $this->c->httpCache->denyCache($response);
+            return $this->httpCache->denyCache($response);
         }
 
         return $response;

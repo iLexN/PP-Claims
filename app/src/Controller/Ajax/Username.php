@@ -19,8 +19,8 @@ final class Username extends AbstractContainer
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $apiResponse = $this->c['httpClient']->request('GET', 'check-username/'.$request->getQueryParam('username'));
-        $result = $this->c['httpHelper']->verifyResponse($apiResponse);
+        $apiResponse = $this->httpClient->request('GET', 'check-username/'.$request->getQueryParam('username'));
+        $result = $this->httpHelper->verifyResponse($apiResponse);
 
         return $response->write(json_encode($result['data']));
     }

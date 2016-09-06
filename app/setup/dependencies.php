@@ -119,6 +119,6 @@ $container['httpHelper'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\Helper\HttpClientHelper($c);
 };
 
-$container['CSRFHelper'] = function (\Slim\Container $c) {
+$container['csrfHelper'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\Helper\CSRFHelper($c);
 };

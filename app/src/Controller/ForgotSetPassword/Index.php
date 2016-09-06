@@ -17,14 +17,14 @@ final class Index extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $result = $this->c['userModule']->isUserExistByToken($args['token']);
+        $result = $this->userModule->isUserExistByToken($args['token']);
 
         if (!$result) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
         return $this->c['view']->render($response, 'ForgotSetPassword.html.twig', [
-            'token' => $this->c['CSRFHelper']->getToken($request),
+            'token' => $this->csrfHelper->getToken($request),
             'User'  => $result['data'],
         ]);
     }
