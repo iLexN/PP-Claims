@@ -17,8 +17,6 @@ final class UploadAction extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-
-
         $files = $request->getUploadedFiles();
 
         $this->c->logger->info('post', $request->getParsedBody());
