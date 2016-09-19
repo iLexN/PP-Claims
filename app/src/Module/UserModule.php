@@ -36,8 +36,6 @@ final class UserModule extends AbstractContainer
             $this->user = $this->getUserByAPI($id);
             $this->c['pool']->save($item->set($this->user));
         }
-        $this->c['logger']->info('userinfo', $this->user);
-        //return $this->user;
     }
 
     /**
@@ -50,7 +48,6 @@ final class UserModule extends AbstractContainer
     private function getUserByAPI($id)
     {
         $response = $this->c['httpClient']->request('GET', 'user/'.$id);
-
         $result = $this->c['httpHelper']->verifyResponse($response);
 
         return $result['data'];

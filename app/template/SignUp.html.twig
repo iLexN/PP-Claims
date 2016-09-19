@@ -3,15 +3,18 @@
     <form>
         <p>    
             <label for="username">Username:</label>
-            <span><input data-jshook="username" name="username" type="text" /></span>
+            <span><input data-jshook="username" name="username" type="text" class="form-input" /></span>
+            <span data-jshook="usernameok" style="display:none">&#10003;</span>
+            <span data-jshook="usernameerror" style="display:none;color:red">&#10005;</span>
+            <i data-jshook="loading" class="fa fa-spinner fa-pulse hidden"></i>
         </p>
         <p>
             <label for="pswd">Password:</label>
-            <span><input data-jshook="password1 checkPass" type="password" name="pswd" /></span>
+            <span><input data-jshook="password1 checkPass" type="password" name="pswd" class="form-input" /></span>
         </p>
         <p>
             <label for="pswd2">confirm Password:</label>
-            <span><input data-jshook="password2 checkPass" type="password" name="pswd2" /></span>
+            <span><input data-jshook="password2 checkPass" type="password" name="pswd2" class="form-input" /></span>
         </p>
         <p><button data-jshook="SignUpBtn" type="submit" disabled="disabled">Signup</button></p>
         {% include 'include/csrf.twig' %}
@@ -20,7 +23,7 @@
     <div data-jshook="passCheckInfo" >
         <!--<h4>Password must meet the following requirements:</h4>-->
         <ul>
-            <li data-jshook="UserNamePass" class="invalid">Username <strong>can use</strong>&nbsp;&nbsp;<i data-jshook="loading" class="fa fa-spinner fa-pulse hidden"></i></li>
+            <li data-jshook="UserNamePass" class="invalid">Username <strong>can use</strong>&nbsp;&nbsp;</li>
             <li data-jshook="Letter" class="invalid">At least <strong>one Case Diff letter</strong></li>
             <li data-jshook="Number" class="invalid">At least <strong>one number</strong></li>
             <li data-jshook="Length" class="invalid">Be at least <strong>8 characters</strong></li>
@@ -48,16 +51,28 @@
                 var validCssClass = 'valid';
                 var inValidCssClass = 'invalid';
                 var username;
+                var $username = $.jshook('username');
+                var $usernameok = $.jshook('usernameok');
+                var $usernameerror = $.jshook('usernameerror');
 
                 var passwordModule = createpasswordModule();
 
                 var checkUsername = debounce(function () {
                     $loading.removeClass('hidden');
+                    $usernameok.hide();
+                    $usernameerror.hide();
+                            
                     $.getJSON("{{ path_for('Ajax.Username') }}", {'username': username}, function (data) {
                         if (data.code === 2060) {
                             valid($usernamePass);
+                            $username.removeClass('form-error');
+                            $usernameok.show();
+                            $usernameerror.hide();
                         } else {
                             inValid($usernamePass);
+                            $username.addClass('form-error');
+                            $usernameok.hide();
+                            $usernameerror.show();
                         }
                         canSubmit();
                         $loading.addClass('hidden');

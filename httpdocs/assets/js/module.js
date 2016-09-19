@@ -1,6 +1,6 @@
 function createpasswordModule() {
     'use strict';
-    var password1, password2;
+    var password1='', password2='';
     function isLenghtPass(passLenght) {
         return password1.length >= passLenght;
     }
