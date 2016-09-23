@@ -1060,16 +1060,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.2",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7"
+                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
-                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f16a634ab08d87e520da5671ec52153d627f10f6",
+                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6",
                 "shasum": ""
             },
             "require": {
@@ -1082,7 +1082,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.24-dev"
+                    "dev-master": "1.25-dev"
                 }
             },
             "autoload": {
@@ -1117,22 +1117,22 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-09-01 17:50:53"
+            "time": "2016-09-21 23:05:12"
         }
     ],
     "packages-dev": [
         {
             "name": "matthiasmullie/minify",
-            "version": "1.3.36",
+            "version": "1.3.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matthiasmullie/minify.git",
-                "reference": "52139dad41dc15f6e3556236bd326a98cdc269d6"
+                "reference": "325e9b9dc1016929f05edaa47401dc2337519b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/52139dad41dc15f6e3556236bd326a98cdc269d6",
-                "reference": "52139dad41dc15f6e3556236bd326a98cdc269d6",
+                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/325e9b9dc1016929f05edaa47401dc2337519b2f",
+                "reference": "325e9b9dc1016929f05edaa47401dc2337519b2f",
                 "shasum": ""
             },
             "require": {
@@ -1175,7 +1175,7 @@
                 "minifier",
                 "minify"
             ],
-            "time": "2016-09-14 11:31:25"
+            "time": "2016-09-20 12:58:02"
         },
         {
             "name": "matthiasmullie/path-converter",
