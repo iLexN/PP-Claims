@@ -21,7 +21,7 @@ final class InfoUpdate extends AbstractContainer
     {
         $data = (array) $request->getParsedBody();
 
-        if ($this->c['loginModule']->postUserInfoByAPI($data['user'])) {
+        if ($this->c['userModule']->postUserInfoByAPI($data['user'])) {
             $this->c['flash']->addMessage('sysMsg', 'Address update success');
 
             //todo:clear user data cache

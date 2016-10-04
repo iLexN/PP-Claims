@@ -46,6 +46,20 @@ var BtnStatus = (function () {
     };
 })();
 
+function isOnLine(e){
+    if (navigator.onLine) {
+        console.log('online');
+    } else {
+        e.preventDefault();
+        console.log('offline');
+    }
+}
+$('form').on({
+    'submit' : isOnLine
+});
+window.addEventListener('online',  isOnLine);
+window.addEventListener('offline', isOnLine);
+
 //helper
 function debounce(func, wait, immediate) {
     var timeout;

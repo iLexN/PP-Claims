@@ -5,15 +5,85 @@
     <a href="{{ path_for('SignUp') }}">Signup</a>
         
     <form action="" method="POST">
-        <label for="user_name">Client ID : <input type="text" name="user_name" value="" id="clientID"></label>
-        <br/>
-        <label for="password">Password : <input type="text" name="password" value="" id="password"></label>
+        
+        <div class="row">
+            <div class="col s1">
+                name
+            </div>
+            <div class="input-field col s6">
+                <input type="email" name="user" placeholder="Placeholder" value="" id="clientID" class="validate" data-icon="/f/apple-touch-icon-72x72.png">
+                
+            </div>
+        </div>
+        <div class="row">    
+            <div class="input-field col s6">
+                <input type="password" name="password" placeholder="Placeholder" value="" id="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        
         <br/>
         {% include 'include/csrf.twig' %}
-    <input type="submit" value="Submit">
+    <!--<input type="submit" value="Submit">-->
+    <input class="btn waves-effect waves-light" type="submit" value="Submit">
     </form>
 
     {% if flash.loginError is not empty %}
         <p style="color:red">{{ flash.loginError.0  }}</p>
     {% endif %}
+    
+    <div data-jshook="divtest" class="cat-div">
+        <div class="cat-div-1">
+            <div class="cat-div-1-title">Hello</div>
+        </div>    
+        <div class="cat-div-2">
+            <div class="cat-div-1-title">Hello</div>
+            <div class="cat-div-1-desc">long text long text long text long text long text </div>
+        </div>    
+    </div>
+    <div data-jshook="divtest" class="cat-div">
+        <div class="cat-div-1">
+            <div class="cat-div-1-title">Hello</div>
+        </div>    
+        <div class="cat-div-2">
+            <div class="cat-div-1-title">Hello</div>
+            <div class="cat-div-1-desc">long text long text long text long text long text </div>
+        </div>    
+    </div>
+    <div data-jshook="divtest" class="cat-div">
+        <div class="cat-div-1">
+            <div class="cat-div-1-title">Hello</div>
+        </div>    
+        <div class="cat-div-2">
+            <div class="cat-div-1-title">Hello</div>
+            <div class="cat-div-1-desc">long text long text long text long text long text </div>
+        </div>    
+    </div>
+    
+{% endblock %}
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
+    var $div = $.jshook('divtest');
+    
+    var animMove = (function () {
+    
+    function enter(){
+        $(this).find('.cat-div-2').stop().slideDown();
+    }
+    function leave(){
+        $(this).find('.cat-div-2').stop().slideUp();
+    }
+    return {
+        'enter': enter,
+        'leave': leave
+    };
+})();
+    
+    $div.on({
+        'mouseenter' : animMove.enter,
+        'mouseleave' : animMove.leave
+    });
+    </script>
 {% endblock %}
