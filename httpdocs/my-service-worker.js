@@ -10,9 +10,9 @@
   // The route for the images
   toolbox.router.get('/assets/(.*)', global.toolbox.cacheFirst, {
     cache: {
-          name: 'v1.11',
-          maxEntries: 10,
-          maxAgeSeconds: 86400 // cache for a day
+          name: 'v1.21',
+          //maxEntries: 10,
+          //maxAgeSeconds: 86400 // cache for a day
         }
   });
 
