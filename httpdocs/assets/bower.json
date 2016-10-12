@@ -1,0 +1,23 @@
+{
+  "name": "pp-claim",
+  "homepage": "http://portal.pacificprime.com/",
+  "authors": [
+    "iLexN <ilex.job@gmail.com>"
+  ],
+  "description": "pp-claim",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sw-toolbox": "^3.3.0",
+    "jquery": "^3.1.1",
+    "materialize": "^0.97.7"
+  }
+}
