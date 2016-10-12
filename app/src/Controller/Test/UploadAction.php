@@ -31,7 +31,11 @@ final class UploadAction extends AbstractContainer
 
         $newfile = $this->handerFile($files['newfile']);
 
-        return $response->write($newfile->getClientFilename());
+        if ( !$newfile->hasValidationError ) {
+            return $response->write($newfile->getClientFilename());
+        } else {
+            return $response->write('have error');
+        }
 /*
         return $this->c['view']->render($response, 'test/upload.html.twig', [
             'filename' => $newfile->getClientFilename(),

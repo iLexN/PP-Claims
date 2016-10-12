@@ -2,7 +2,7 @@
   'use strict';
 
   // Load the sw-tookbox library.
-  importScripts('assets/components/sw-toolbox-3.3.0/sw-toolbox.js');
+  importScripts('assets/components/sw-toolbox/sw-toolbox.js');
 
   // Turn on debug logging, visible in the Developer Tools' console.
   global.toolbox.options.debug = true;
@@ -10,7 +10,7 @@
   // The route for the images
   toolbox.router.get('/assets/(.*)', global.toolbox.cacheFirst, {
     cache: {
-          name: 'v1.1',
+          name: 'v1.11',
           maxEntries: 10,
           maxAgeSeconds: 86400 // cache for a day
         }
