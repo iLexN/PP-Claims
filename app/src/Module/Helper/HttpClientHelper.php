@@ -35,6 +35,7 @@ final class HttpClientHelper extends AbstractContainer
         if (isset($result['errors'])) {
             $this->errorMessages = $result['errors'];
             $this->logger->emerg('API return error', $log);
+
             return false;
         }
 
