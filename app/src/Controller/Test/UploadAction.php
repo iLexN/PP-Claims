@@ -19,16 +19,6 @@ final class UploadAction extends AbstractContainer
     {
         $files = $request->getUploadedFiles();
 
-        $this->c->logger->info('post', $request->getParsedBody());
-
-        //var_dump($files);
-
-        //if (empty($files['newfile'])) {
-        //    return $response->write('no file');
-        //}
-
-        $this->c->logger->info('aa');
-
         $newfile = $this->handerFile($files['newfile']);
 
         if ( !$newfile->hasValidationError ) {
@@ -36,11 +26,6 @@ final class UploadAction extends AbstractContainer
         } else {
             return $response->write('have error');
         }
-/*
-        return $this->c['view']->render($response, 'test/upload.html.twig', [
-            'filename' => $newfile->getClientFilename(),
-            'errorMsg' => $newfile->getValidationMsg(),
-        ]);*/
     }
 
     /**
