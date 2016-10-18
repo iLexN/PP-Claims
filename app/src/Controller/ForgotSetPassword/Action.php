@@ -26,17 +26,10 @@ final class Action extends AbstractContainer
         $pass = $request->getParsedBody()['pswd'];
         $pass2 = $request->getParsedBody()['pswd2'];
 
-        if ($pass !== $pass2) {
+        if ($msg = $this->isInValid($pass, $pass2)) {
             return $this->view->render($response, 'ForgotSetPassword.success.html.twig', [
                 'token'  => $this->csrfHelper->getToken($request),
-                'result' => 'password need same',
-            ]);
-        }
-
-        if (!$this->c['passwordModule']->isStrongPassword($pass)) {
-            return $this->view->render($response, 'ForgotSetPassword.success.html.twig', [
-                'token'  => $this->csrfHelper->getToken($request),
-                'result' => 'password not strong',
+                'result' => $msg,
             ]);
         }
 
@@ -46,5 +39,17 @@ final class Action extends AbstractContainer
             'token'  => $this->csrfHelper->getToken($request),
             'result' => 'success',
         ]);
+    }
+
+    private function isInValid($p1,$p2){
+        $msg = false;
+
+        if ($pass !== $pass2) {
+            $msg = 'password need same';
+        }
+        if (!$this->c['passwordModule']->isStrongPassword($p1)) {
+            $msg = 'password not strong';
+        }
+        return $msg;
     }
 }
