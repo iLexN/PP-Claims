@@ -19,18 +19,32 @@
     <a href="{{ path_for('downlaodFile', {"filename": filename} ) }}">{{ filename }}</a>
 </div>
 
-<script src="{{ base_url() }}/assets/components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="{{ base_url() }}/components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="{{ base_url() }}/components/push.js/push.js" type="text/javascript"></script>
 <script>
     
     
     
     $(".jsAjaxUpload").on('click', function () {
         
+        if( window.FormData === undefined ) {
+            console.log('not support');
+            return;
+        }
+        
         var formData = new FormData();
-        var f1 = $("#f1")[0].files[0];
+        var f = $("#f1")[0].files;
         //console.log(f1[0].files[0].size);
-        formData.append('newfile', f1);
+        
         //return ;
+        
+        if ( f.length !== 1) {
+            console.log('no file');
+            return;
+        }
+        
+        var f1 = f[0];
+        formData.append('newfile', f1);
         
         if ( f1.size > 2000000 ) {
             console.log('File size too big' + f1.size);
@@ -39,7 +53,7 @@
         $.ajax({
             beforeSend: function () {
                 // Show modal
-                //$("#modal_system").modal('show');       
+                $('#h').css('width', 0);
             },
             url: '{{ path_for('upload') }}',
             type: 'POST',
@@ -68,6 +82,19 @@
             }
         }).done(function (data, textStatus, jqXHR) {
             console.log(data);
+            Push.create('Hello World!', {
+    body: 'This is some body content!',
+    icon: {
+        x16: 'images/icon-x16.png',
+        x32: 'images/icon-x32.png'
+    },
+    onClick: function () {
+        window.focus();
+        this.close();
+    },
+    requireInteraction : true
+});
+            
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.info('try again');
             console.log(errorThrown);

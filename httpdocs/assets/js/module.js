@@ -1,6 +1,6 @@
 function createpasswordModule() {
     'use strict';
-    var password1='', password2='';
+    var password1 = '', password2 = '';
     function isLenghtPass(passLenght) {
         return password1.length >= passLenght;
     }
@@ -46,7 +46,7 @@ var BtnStatus = (function () {
     };
 })();
 
-function isOnLine(e){
+function isOnLine(e) {
     if (navigator.onLine) {
         console.log('online');
     } else {
@@ -54,11 +54,21 @@ function isOnLine(e){
         console.log('offline');
     }
 }
-$('form').on({
-    'submit' : isOnLine
-});
-window.addEventListener('online',  isOnLine);
+window.addEventListener('online', isOnLine);
 window.addEventListener('offline', isOnLine);
+
+var animMove = (function () {
+    function enter() {
+        $(this).find('.cat-div-2').stop().slideDown(1000);
+    }
+    function leave() {
+        $(this).find('.cat-div-2').stop().slideUp(1000);
+    }
+    return {
+        'enter': enter,
+        'leave': leave
+    };
+})();
 
 //helper
 function debounce(func, wait, immediate) {

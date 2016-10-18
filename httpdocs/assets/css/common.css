@@ -1,4 +1,5 @@
 html{box-sizing: border-box;font-size:16px;}
+body{cursor: default;}
 /*--------------------------------------------------------------
 Layout structure
 --------------------------------------------------------------*/
@@ -49,31 +50,60 @@ general
     color:red;
 }
 
-
-.cat-div {
-    width:30%;
-    padding:20px;
-    text-align: center;
-    
-    background-color: #fff;
+.view {
+    width: 300px;
+    height: 200px;
+    float: left;
+    margin : 1rem;
+    overflow: hidden;
     position: relative;
+    text-align: center;
+    cursor: default;
+    background-color: #000;
 }
-.cat-div-1{
+
+.view1{
     width:100%;
-    height:100%;
-}
-.cat-div-1-title{
-    
-}
-.cat-div-2{
-    display:none;
+    height: 100%;
+    position: absolute;
+    top:0;left:0px;font-size: 1.5rem;
+    text-align: center;}
+.view3{
     position: absolute;
     width:100%;
     height:100%;
-    bottom:0px;
-    left:0px;
-    background-color:#fff;    
+    text-align: center;
+    top: 0; padding: 8rem 0 0;
+    opacity: 0;
+    transform: scale(0.5);
+    transform: translateY(1.5rem);
 }
-.cat-div-1-title{
-    padding-top:10px;
+.view3 hr{
+    border-color: red;
+    border-image: none;
+    border-style: solid none none;
+    border-width: 1px medium medium;
+    height: 1px;
+    margin: 0 auto 0.2rem;
+    width: 20%;
+    opacity: 0;
+}
+.view:hover span{
+    transition: all 0.2s linear;
+    transform: translateY(-1.875rem);
+}
+.view:hover .view3{
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    transform: scale(1.1);
+    transform: translateY(-2.5rem);
+}
+.view:hover .view3 hr{
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    width: 80%;
+}
+
+#h{
+    transition: all 0.3s ease-in-out;
 }

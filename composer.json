@@ -21,9 +21,9 @@
         "tedivm/stash": "0.14.*",
         "mobiledetect/mobiledetectlib":"2.8.22"
     },
-    "require-dev": {
-        "symfony/finder": "v3.1.*",
-        "tedivm/jshrink": "v1.1.0",
-        "matthiasmullie/minify" : "1.*"
+    "autoload": {
+        "psr-4": {
+            "PP\\WebPortal\\": "app/src"
+        }
     }
 }

@@ -5,7 +5,7 @@ session_name('PP-Claims');
 session_start();
 
 $autoloader = require '../vendor/autoload.php';
-$autoloader->addPsr4('PP\WebPortal\\', __DIR__.'/../app/src');
+//$autoloader->addPsr4('PP\WebPortal\\', __DIR__.'/../app/src');
 
 date_default_timezone_set('Asia/Hong_Kong');
 

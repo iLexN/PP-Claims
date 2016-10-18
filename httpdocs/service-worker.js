@@ -8,22 +8,22 @@
     global.toolbox.options.debug = true;
 
     // The route for the images
-    toolbox.router.get('/assets/(.*)', global.toolbox.cacheFirst, {
+    global.toolbox.router.get('/assets/(.*)', global.toolbox.cacheFirst, {
         cache: {
-            name: 'assets20161013',
+            name: 'assets20161014-d',
             maxAgeSeconds: 60 * 60 * 24 * 7 // cache for a week
         }
     });
-    toolbox.router.get('/components/(.*)', global.toolbox.cacheFirst, {
+    global.toolbox.router.get('/components/(.*)', global.toolbox.cacheFirst, {
         cache: {
-            name: 'components-v0.2',
+            name: 'components-v0.3',
             maxAgeSeconds: 60 * 60 * 24 * 31 // cache for a month
         }
     });
 
     // By default, all requests that don't match our custom handler will use the toolbox.networkFirst
     // cache strategy, and their responses will be stored in the default cache.
-    //global.toolbox.router.default = global.toolbox.networkFirst;
+    global.toolbox.router.default = global.toolbox.networkFirst;
 
     // Boilerplate to ensure our service worker takes control of the page as soon as possible.
     global.addEventListener('install', event => event.waitUntil(global.skipWaiting()));
