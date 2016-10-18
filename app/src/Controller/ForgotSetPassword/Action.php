@@ -17,9 +17,7 @@ final class Action extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $result = $this->userModule->isUserExistByToken($args['token']);
-
-        if (!$result) {
+        if (!$this->userModule->isUserExistByToken($args['token'])) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
