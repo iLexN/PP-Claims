@@ -18,7 +18,7 @@ final class PolicyModule extends AbstractContainer
      */
     public function getPolices()
     {
-        $user = $this->c['userModule']->user;
+        $user = $this->userModule->user;
 
         /* @var $item Stash\Interfaces\ItemInterface */
         $item = $this->c['pool']->getItem('User/'.$user['ppmid'].'/Policies');

@@ -29,7 +29,7 @@ final class LoginModule extends AbstractContainer
      */
     public function getUserByLoginSession()
     {
-        $this->c['userModule']->getUser($_SESSION['userLogin']['id']);
+        $this->userModule->getUser($_SESSION['userLogin']['id']);
     }
 
     /**

@@ -19,27 +19,37 @@ final class HttpClientHelper extends AbstractContainer
      */
     public function verifyResponse(ResponseInterface $response)
     {
+        $result = json_decode((string) $response->getBody(), 1);
+
+        if (!$this->hasErrors($response)) {
+            return false;
+        }
+
+        return $result;
+    }
+
+    private function hasErrors($response)
+    {
         $log = [
                 'getStatusCode' => $response->getStatusCode(),
                 'body'          => (string) $response->getBody(),
             ];
 
         if ($response->getStatusCode() != 200) {
-            $this->c->logger->error('getStatusCode != 200', $log);
+            $this->logger->emerg('getStatusCode != 200', $log);
             $this->errorMessages = ['title' => 'API Error'];
 
             return false;
         }
 
-        $result = json_decode((string) $response->getBody(), 1);
         if (isset($result['errors'])) {
             $this->errorMessages = $result['errors'];
-            $this->logger->emerg('API return error', $log);
+            $this->logger->error('API return error', $log);
 
             return false;
         }
 
-        return $result;
+        return true;
     }
 
     public function getErrorMessages()

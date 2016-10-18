@@ -21,6 +21,8 @@ final class Action extends AbstractContainer
     {
         $result = $this->isUserExist((array) $request->getParsedBody());
 
+
+
         if ($result) {
             $this->loginModule->setLogined($result['data']);
 

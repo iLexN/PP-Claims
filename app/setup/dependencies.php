@@ -115,6 +115,7 @@ $container['passwordModule'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\PasswordModule($c);
 };
 
+// custome Helper
 $container['httpHelper'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\Helper\HttpClientHelper($c);
 };
