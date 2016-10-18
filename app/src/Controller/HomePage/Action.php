@@ -27,8 +27,6 @@ final class Action extends AbstractContainer
             return $response->withStatus(301)
                     ->withHeader('Location', $this->c['router']->pathFor('Login-ed'));
         } else {
-
-            
             $this->logger->info('login error', $this->httpHelper->getErrorMessages());
 
             $this->flash->addMessage('loginError', 'Login Fail');

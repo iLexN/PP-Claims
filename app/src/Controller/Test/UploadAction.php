@@ -21,7 +21,7 @@ final class UploadAction extends AbstractContainer
 
         $newfile = $this->handerFile($files['newfile']);
 
-        if ( !$newfile->hasValidationError ) {
+        if (!$newfile->hasValidationError) {
             return $response->write($newfile->getClientFilename());
         } else {
             return $response->write('have error');
