@@ -28,7 +28,10 @@ final class HttpClientHelper extends AbstractContainer
         return $result;
     }
 
-    private function hasErrors($response)
+    /**
+     * @param ResponseInterface $response
+     */
+    private function hasErrors(ResponseInterface $response)
     {
         $log = [
                 'getStatusCode' => $response->getStatusCode(),
