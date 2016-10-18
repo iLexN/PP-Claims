@@ -44,7 +44,7 @@ final class Action extends AbstractContainer
     private function isInValid($p1,$p2){
         $msg = false;
 
-        if ($pass !== $p2) {
+        if ($p1 !== $p2) {
             $msg = 'password need same';
         }
         if (!$this->c['passwordModule']->isStrongPassword($p1)) {
