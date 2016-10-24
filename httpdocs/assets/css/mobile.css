@@ -3,5 +3,55 @@ html,body {
     -webkit-position: sticky
 }
 body{
-        color : red;
+    color : red;
+}
+
+/*--------------------------------------------------------------
+over write materialize style
+--------------------------------------------------------------*/
+input:not([type]).validate+label, input[type=text].validate+label, input[type=password].validate+label, input[type=email].validate+label, input[type=url].validate+label, input[type=time].validate+label, input[type=date].validate+label, input[type=datetime].validate+label, input[type=datetime-local].validate+label, input[type=tel].validate+label, input[type=number].validate+label, input[type=search].validate+label, textarea.materialize-textarea.validate+label {
+    width: 95%;
+}
+/*--------------------------------------------------------------
+Layout structure
+--------------------------------------------------------------*/
+header{
+    position: fixed;
+    width: 100%;
+    top:0;
+    z-index:100;
+    background-color: #3e2723;
+}
+.header_space{
+    height: 1.5rem;
+}
+
+/*--------------------------------------------------------------
+page style
+--------------------------------------------------------------*/
+.home_verify_div{
+    height: 10rem;
+}
+.home_verify_msg{
+    height: 6rem;
+}
+
+.home_footer_space{
+    display:none;
+}
+/** main page block effect **/
+.view{
+    height: 8rem;
+}
+.view span{
+    transform: translateY(-1rem);
+}
+.view3{
+    opacity: 1;
+    transform: scale(1.1);
+    transform: translateY(-3.5rem);
+}
+.view3 hr{
+    opacity: 1;
+    width: 80%;
 }

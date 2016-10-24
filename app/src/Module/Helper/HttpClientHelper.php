@@ -12,6 +12,8 @@ final class HttpClientHelper extends AbstractContainer
 {
     private $errorMessages = [];
 
+    public $result;
+
     /**
      * @param Psr\Http\Message\ResponseInterface $response
      *
@@ -19,13 +21,13 @@ final class HttpClientHelper extends AbstractContainer
      */
     public function verifyResponse(ResponseInterface $response)
     {
-        $result = json_decode((string) $response->getBody(), 1);
+        $this->result = json_decode((string) $response->getBody(), 1);
 
         if (!$this->hasErrors($response)) {
             return false;
         }
 
-        return $result;
+        return $this->result;
     }
 
     /**

@@ -16,6 +16,8 @@ $container['view'] = function (\Slim\Container $c) {
     //set global
     $view['flash'] = $c->get('flash')->getMessages();
 
+    $view['langText'] = require ($c['settings']['systemMessage'].'en/text.php');
+
     return $view;
 };
 
@@ -54,13 +56,13 @@ $container['httpCache'] = function () {
 
 $container['csrf'] = function (\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
-    $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
+    /*$guard->setFailureCallable(function ($request, $response, $next) use ($c) {
         $c->logger->error('csrf wrong');
         $c->flash->addMessage('loginError', 'Login Session Expire');
 
         return $c->response->withStatus(301)
                 ->withHeader('Location', $c->router->pathFor('Homepage'));
-    });
+    });*/
 
     return $guard;
 };

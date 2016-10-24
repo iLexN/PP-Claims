@@ -1,0 +1,55 @@
+{% extends "template/base.html.twig" %}
+
+{% import "macro/forms.twig" as forms %}
+
+
+{% block cssStyle %}
+    <style>
+        body{color : #005580}
+        .body_container {width:70%;margin-left:3rem}
+        pre{
+            border: 1px solid #ccc;
+            padding:1rem ;
+            color :#000  
+        }    
+        code{display:block}
+    </style>
+{% endblock %}
+
+{% block bodyHTML %}
+    <h2>Form</h2>
+
+    {% verbatim %}
+        <pre>{% import "macro/forms.twig" as forms %}</pre>
+    {% endverbatim %}
+
+    <h4>input</h4>
+    <div class="row">
+        <div class="input-field col s3" >
+            {{ forms.MD_input(langText.username,'text','user_name') }}
+        </div>
+    </div>
+    <code>forms.MD_input('label','type','id','value')</code>
+
+    {% verbatim %}
+        <pre>{{ forms.MD_input('username', 'text', 'user_name')}}</pre>
+    {% endverbatim %}
+
+    <h4>Button</h4>
+    <code>forms.MD_button_1('jshooks-name','BtnText','BtnType')</code>
+    {{ forms.MD_button_1('loginBtn',langText.loginBtn,'button') }}
+    {% verbatim %}
+        <pre>{{ forms.MD_button_1('loginBtn',langText.loginBtn,'button') }}</pre>
+    {% endverbatim %}
+    
+    
+    <h2>Other</h2>
+    
+    <h4>a link</h4>
+    <code>components.a_link_style1('titleText','URL', 'target')</code>
+    {{ components.a_link_style1(langText.home_verify_btn,'#v') }}
+    {% verbatim %}
+        <pre>{{ components.a_link_style1(langText.home_verify_btn,'#v') }}</pre>
+    {% endverbatim %}
+
+{% endblock %}

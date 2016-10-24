@@ -2,3 +2,59 @@ body{
     color : green;
 }
 
+/*--------------------------------------------------------------
+Layout structure
+--------------------------------------------------------------*/
+.body_container{
+    min-height: 100vh;
+    position: relative;
+}
+.wrap{
+    min-width: 768px;
+}
+
+/*--------------------------------------------------------------
+page style
+--------------------------------------------------------------*/
+.home_verify_div{
+    height: 15rem;
+}
+.home_verify_msg{
+    height: 10.7rem;
+}
+.home_footer_div{
+    position: absolute;
+    bottom: 0;
+    left : 0;
+    width: 100%;
+}
+.home_footer_space{
+    height:6.25rem;
+}
+
+.general_footer_div{
+    position: absolute;
+    bottom: 0;
+    left : 0;
+    width: 100%;
+}
+
+/** main page block effect **/
+.view{
+    height: 10rem;
+}
+.view:hover span{
+    transition: all 0.2s linear;
+    transform: translateY(-1.5rem);
+}
+.view:hover .view3{
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    transform: scale(1.1);
+    transform: translateY(-2.5rem);
+}
+.view:hover .view3 hr{
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    width: 100%;
+}

@@ -1,0 +1,8 @@
+{% macro MD_input(label, type , name, value  ) %}
+<input placeholder="" type="{{ type }}" name="{{ name }}" id="{{ name }}" class="validate" value="{{ value }}">
+<label for="{{ name }}">{{ label }}</label>
+{% endmacro %}
+
+{% macro MD_button_1(jshookname,label,type) %}
+<button data-jshook="{{ jshookname }}" class="btn waves-effect waves-light orange" type="{{ type |default('button')}}">{{ label |default('missing label')}}</button>
+{% endmacro %}

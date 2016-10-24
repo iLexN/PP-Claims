@@ -2,3 +2,27 @@ body{
         color : blue;
 }
 
+/*--------------------------------------------------------------
+over write materialize style
+--------------------------------------------------------------*/
+.container{
+    min-height: 100vh;
+    position: relative;
+}
+
+/*--------------------------------------------------------------
+page style
+--------------------------------------------------------------*/
+.home_verify_div{
+    height: 15rem;
+}
+.home_verify_msg{
+    height: 11.5rem;
+}
+
+
+.footer_div{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

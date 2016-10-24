@@ -1,0 +1,35 @@
+{% extends "template/base.html.twig" %}
+
+{% block bodyHTML %}
+
+    <div class="wrap">
+
+        {% if is_mobile() %}
+            {% include 'include/header/mobile-header.twig' %}
+        {% else %}
+            {% include 'include/header/pc-header.twig' %}
+        {% endif %}
+
+        {% include 'include/components/offline.twig' %}
+        
+        
+        {% block mainHTML %}
+
+        {% endblock %}
+    </div>
+
+    {% include 'include/footer/pc-footer.twig' %}
+
+{% endblock %}
+
+{% block jsBottom %}
+    {% if is_mobile() %}
+        <script>
+            $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            });
+        </script>
+    {% endif %}
+{% endblock %}

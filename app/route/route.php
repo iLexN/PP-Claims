@@ -41,7 +41,10 @@ $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
 //ajax
 $app->get('/ajax/user/username', 'PP\WebPortal\Controller\Ajax\Username')
         ->setName('Ajax.Username');
-
+$app->post('/ajax/system/login', 'PP\WebPortal\Controller\Ajax\System\Login')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->setName('Ajax.System.Login');
 
 //test
 $app->get('/test/upload', 'PP\WebPortal\Controller\Test\UploadIndex')
@@ -55,3 +58,5 @@ $app->get('/test/download/{filename}', 'PP\WebPortal\Controller\Test\DownloadInd
 //helper for development
 $app->get('/helper/router', 'PP\WebPortal\Controller\Helper\Router')
         ->setName('helperRouter');
+$app->get('/helper/style', 'PP\WebPortal\Controller\Helper\Style')
+        ->setName('Style');

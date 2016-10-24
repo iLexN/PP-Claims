@@ -1,0 +1,11 @@
+{# empty Twig template #}
+{% macro main_block_effect( title , desc , link ) %}
+    <div class="view hoverable">  
+        <div class="view3"><hr>{{ desc }}</div>
+        <a href="{{ link }}" class="view1 valign-wrapper"><span class="valign" style="width:100%">{{ title }}</span></a>
+    </div>
+{% endmacro %}
+
+{% macro a_link_style1( title , link , target ) %}
+    <a class="btn waves-effect waves-light orange" href="{{ link }}" target="{{ target | default('_self') }}">{{ title }}</a>
+{% endmacro %}
