@@ -20,7 +20,7 @@ final class CsrfResponseHeader extends AbstractContainer
             $nameKey  => $name,
             $valueKey => $value,
         ];
-        
+
         // Update response with added token header
         $response = $response->withAddedHeader('X-CSRF-Token', json_encode($tokenArray));
 
