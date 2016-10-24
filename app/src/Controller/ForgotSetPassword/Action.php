@@ -39,7 +39,8 @@ final class Action extends AbstractContainer
         ]);
     }
 
-    private function isInValid($p1,$p2){
+    private function isInValid($p1, $p2)
+    {
         $msg = false;
 
         if ($p1 !== $p2) {
@@ -48,6 +49,7 @@ final class Action extends AbstractContainer
         if (!$this->c['passwordModule']->isStrongPassword($p1)) {
             $msg = 'password not strong';
         }
+
         return $msg;
     }
 }
