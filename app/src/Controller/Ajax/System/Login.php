@@ -8,10 +8,8 @@ use Slim\Http\Response;
 
 final class Login extends AbstractContainer
 {
-
     public function __invoke(Request $request, Response $response, array $args)
     {
-
         $result = $this->loginModule->isUserExist((array) $request->getParsedBody());
 
         if ($result) {

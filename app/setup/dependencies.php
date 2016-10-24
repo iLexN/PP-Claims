@@ -16,7 +16,7 @@ $container['view'] = function (\Slim\Container $c) {
     //set global
     $view['flash'] = $c->get('flash')->getMessages();
 
-    $view['langText'] = require ($c['settings']['systemMessage'].'en/text.php');
+    $view['langText'] = require $c['settings']['systemMessage'].'en/text.php';
 
     return $view;
 };

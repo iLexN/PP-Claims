@@ -6,7 +6,6 @@ use PP\WebPortal\AbstractClass\AbstractContainer;
 
 final class CsrfResponseHeader extends AbstractContainer
 {
-
     public function __invoke($request, $response, $next)
     {
         // Generate new token and update request
@@ -18,8 +17,8 @@ final class CsrfResponseHeader extends AbstractContainer
         $name = $request->getAttribute($nameKey);
         $value = $request->getAttribute($valueKey);
         $tokenArray = [
-            $nameKey => $name,
-            $valueKey => $value
+            $nameKey  => $name,
+            $valueKey => $value,
         ];
 
         $this->logger->info('midware', $tokenArray);
