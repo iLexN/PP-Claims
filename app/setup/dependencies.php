@@ -54,17 +54,8 @@ $container['httpCache'] = function () {
     return new \Slim\HttpCache\CacheProvider();
 };
 
-$container['csrf'] = function (\Slim\Container $c) {
-    $guard = new \Slim\Csrf\Guard();
-    /*$guard->setFailureCallable(function ($request, $response, $next) use ($c) {
-        $c->logger->error('csrf wrong');
-        $c->flash->addMessage('loginError', 'Login Session Expire');
-
-        return $c->response->withStatus(301)
-                ->withHeader('Location', $c->router->pathFor('Homepage'));
-    });*/
-
-    return $guard;
+$container['csrf'] = function () {
+    return new \Slim\Csrf\Guard();
 };
 
 //data cache
