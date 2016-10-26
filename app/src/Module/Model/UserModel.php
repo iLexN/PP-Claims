@@ -1,4 +1,5 @@
 <?php
+
 namespace PP\WebPortal\Module\Model;
 
 class UserModel implements \ArrayAccess

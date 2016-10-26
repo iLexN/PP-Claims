@@ -58,7 +58,8 @@ $container['csrf'] = function (\Slim\Container $c) {
     $guard = new \Slim\Csrf\Guard();
     $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
         $response = $c['csrfHelper']->addResponseHeader($request, $response);
-        return $response->write(json_encode(['errors'=>['title'=>$c['langText']['csrfError']]]));
+
+        return $response->write(json_encode(['errors' => ['title' => $c['langText']['csrfError']]]));
     });
     return $guard;
 };

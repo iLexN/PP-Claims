@@ -30,7 +30,7 @@ final class CSRFHelper extends AbstractContainer
             ];
     }
 
-    public function addResponseHeader($request,$response)
+    public function addResponseHeader($request, $response)
     {
         $ar = $this->getToken($request);
         $tokenArray = [
