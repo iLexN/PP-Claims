@@ -22,26 +22,26 @@ final class DownloadIndex extends AbstractContainer
             return $this->sendFile($response, $filename);
         }
 
-        if ($this->downloadFromAPI($id, $filename)) {
+        if ($this->downloadFromAPI($args['id'], $filename,$args['filename'])) {
             return $this->sendFile($response, $filename);
         }
 
         throw new \Slim\Exception\NotFoundException($request, $response);
     }
 
-    private function sendFile($response, $filename)
+    private function sendFile($response, $filename , $outFileName)
     {
         $stream = fopen($filename, 'r');
 
         return $response
                 ->withBody(new \Slim\Http\Stream($stream))
                 ->withHeader('Content-Type', mime_content_type($filename))
-                ->withHeader('Content-Disposition', 'attachment; filename="'.$args['filename'].'"');
+                ->withHeader('Content-Disposition', 'attachment; filename="'.$outFileName.'"');
     }
 
     private function downloadFromAPI($id, $filename)
     {
-        $id = 3;
+        $id = 100;
         $response = $this->c['httpClient']->request('GET', 'attachment/'.$id);
 
         if ($response->getStatusCode() !== 200) {

@@ -8,7 +8,7 @@ use PP\WebPortal\Module\Model\UserModel;
 final class UserModule extends AbstractContainer
 {
     /**
-     * @var array
+     * @var UserModel
      */
     public $user;
 

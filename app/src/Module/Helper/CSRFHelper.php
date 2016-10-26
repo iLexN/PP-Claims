@@ -37,8 +37,7 @@ final class CSRFHelper extends AbstractContainer
             $ar['nameKey']  => $ar['name'],
             $ar['valueKey'] => $ar['value'],
         ];
-        $this->logger->info('helper', $tokenArray);
 
-        return $response = $response->withAddedHeader('X-CSRF-Token', json_encode($tokenArray));
+        return $response->withAddedHeader('X-CSRF-Token', json_encode($tokenArray));
     }
 }
