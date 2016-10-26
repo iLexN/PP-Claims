@@ -29,4 +29,9 @@ final class CSRFHelper extends AbstractContainer
                 'value'    => $value,
             ];
     }
+
+    public function addResponseHeader($request)
+    {
+        $ar = $this->getToken($request);
+    }
 }

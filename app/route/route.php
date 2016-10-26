@@ -4,8 +4,7 @@ $app->get('/', 'PP\WebPortal\Controller\HomePage\Index')
     ->setName('Homepage')
     ->add($container->get('csrf')) // for login form
     ->add($authCheckLogined); // redirect to login-ed page if login-ed
-$app->post('/', 'PP\WebPortal\Controller\HomePage\Action')
-    ->add($container->get('csrf')); // check form
+
 
 $app->get('/signup', 'PP\WebPortal\Controller\SignUp\Index')
     ->setName('SignUp')
@@ -52,8 +51,6 @@ $app->get('/test/upload', 'PP\WebPortal\Controller\Test\UploadIndex')
 $app->post('/test/upload', 'PP\WebPortal\Controller\Test\UploadAction');
 $app->get('/test/download/{filename}', 'PP\WebPortal\Controller\Test\DownloadIndex')
         ->setName('downlaodFile');
-//$app->get('/email-authenticate/{token}', 'PP\Claims\Controller\Test\EmailAuth')
-//    ->setName('Email-Auth');
 
 //helper for development
 $app->get('/helper/router', 'PP\WebPortal\Controller\Helper\Router')

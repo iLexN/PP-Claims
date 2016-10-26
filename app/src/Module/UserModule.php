@@ -3,6 +3,7 @@
 namespace PP\WebPortal\Module;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
+use PP\WebPortal\Module\Model\UserModel;
 
 final class UserModule extends AbstractContainer
 {
@@ -33,7 +34,7 @@ final class UserModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $this->user = $this->getUserByAPI($id);
+            $this->user = new UserModel($this->getUserByAPI($id));
             $this->c['pool']->save($item->set($this->user));
         }
     }
@@ -48,7 +49,7 @@ final class UserModule extends AbstractContainer
     private function getUserByAPI($id)
     {
         $response = $this->c['httpClient']->request('GET', 'user/'.$id);
-        $result = $this->c['httpHelper']->verifyResponse($response);
+        $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
     }

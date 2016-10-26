@@ -64,22 +64,39 @@ var BtnStatus = (function () {
 
 isOnLine = (function () {
     var $msgDiv = $.jshook('offlineMsg');
+    var $formBtn = $.jshook('formBtn');
+    
     function check(){
         if (navigator.onLine) {
-            console.log('online');
+            //console.log('online');
+            return true;
+        } else {
+            //console.log('offline');
+            return false;
+        }
+    }
+    function ui(){
+        if (check()) {
             $msgDiv.addClass('hide');
         } else {
-            console.log('offline');
             $msgDiv.removeClass('hide');
         }
     }
+    function init(){
+        ui();
+        window.addEventListener('online', ui);
+        window.addEventListener('offline', ui);
+    }
     return {
-        'check': check
+        'check' : check,
+        'ui': ui,
+        'init': init
     };
 })();
-isOnLine.check();
-window.addEventListener('online', isOnLine.check);
-window.addEventListener('offline', isOnLine.check);
+isOnLine.init();
+//isOnLine.ui();
+//window.addEventListener('online', isOnLine.ui);
+//window.addEventListener('offline', isOnLine.ui);
 
 var csrf = (function () {
     var nameKey = '';
@@ -104,6 +121,9 @@ var csrf = (function () {
     }
     function setObj(str){
         var obj = jQuery.parseJSON(str);
+        if ( obj === null ) {
+            return ;
+        }
         setNameKey(obj.csrf_name);
         setValueKey(obj.csrf_value);
     }
@@ -147,11 +167,13 @@ var loginForm = (function () {
     var $loginMsg =  $.jshook('loginMsg');
     
     function submit(){
+        if ( !isOnLine.check()) {
+            return false;
+        }
         var data = (csrf.getFormObj($form.serializeArray()));
         $.ajax({
             beforeSend: function () {
-                $btn.prop("disabled", true);
-                $loginMsg.html('').addClass('hide');
+                ajaxStart();
             },
             url: '/ajax/system/login',
             type: 'POST',
@@ -164,12 +186,19 @@ var loginForm = (function () {
                 return;
             }
             //fail
-            $btn.prop("disabled", false);
-            loadingBox.close();
-            $loginMsg.html(data.errors.title).removeClass('hide');
+            ajaxEnd(data.errors.title);
         }).fail(function (jqXHR, textStatus, errorThrown) {
-            //$btn.prop("disabled", false);
+            ajaxEnd(textStatus);
         });
+    }
+    function ajaxStart(){
+        $btn.prop("disabled", true);
+        $loginMsg.html('').addClass('hide');
+    }
+    function ajaxEnd(msg){
+        $loginMsg.html(msg).removeClass('hide');
+        loadingBox.close();
+        $btn.prop("disabled", false);
     }
     return {
         'submit': submit

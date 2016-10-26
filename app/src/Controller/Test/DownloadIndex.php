@@ -19,14 +19,37 @@ final class DownloadIndex extends AbstractContainer
     {
         $filename = $this->c->get('uploadConfig')['path'].'/'.$args['filename'];
         if (file_exists($filename)) {
-            $stream = fopen($filename, 'r');
+            return $this->sendFile($response, $filename);
+        }
 
-            return $response
-                ->withBody(new \Slim\Http\Stream($stream))
-                ->withHeader('Content-Type', mime_content_type($filename))
-                ->withHeader('Content-Disposition', 'attachment; filename="'.$args['filename'].'"');
+        if ($this->downloadFromAPI($id, $filename)) {
+            return $this->sendFile($response, $filename);
         }
 
         throw new \Slim\Exception\NotFoundException($request, $response);
+    }
+
+    private function sendFile($response, $filename)
+    {
+        $stream = fopen($filename, 'r');
+
+        return $response
+                ->withBody(new \Slim\Http\Stream($stream))
+                ->withHeader('Content-Type', mime_content_type($filename))
+                ->withHeader('Content-Disposition', 'attachment; filename="'.$args['filename'].'"');
+    }
+
+    private function downloadFromAPI($id, $filename)
+    {
+        $id= 3;
+        $response = $this->c['httpClient']->request('GET', 'attachment/'.$id);
+
+        if ($response->getStatusCode() !== 200) {
+            return false;
+        }
+
+        file_put_contents($filename, $response->getBody());
+
+        return true;
     }
 }
