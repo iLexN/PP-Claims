@@ -12,6 +12,9 @@ final class UserModule extends AbstractContainer
      */
     public $user;
 
+    /**
+     * @return \Psr\Http\Message\ServerRequestInterface
+     */
     public function isUserExistByToken($token)
     {
         $response = $this->c['httpClient']->request('GET', 'forgot-passowrd/'.$token);

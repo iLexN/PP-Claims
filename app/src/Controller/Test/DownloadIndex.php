@@ -41,7 +41,7 @@ final class DownloadIndex extends AbstractContainer
 
     private function downloadFromAPI($id, $filename)
     {
-        $id= 3;
+        $id = 3;
         $response = $this->c['httpClient']->request('GET', 'attachment/'.$id);
 
         if ($response->getStatusCode() !== 200) {

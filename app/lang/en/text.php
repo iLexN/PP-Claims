@@ -33,5 +33,7 @@ return [
     'loginBtn' => 'Login',
 
 
+    //system
+    'csrfError' => 'Please try again',
 
 ];

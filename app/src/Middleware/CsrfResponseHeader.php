@@ -9,20 +9,10 @@ final class CsrfResponseHeader extends AbstractContainer
     public function __invoke($request, $response, $next)
     {
         // Generate new token and update request
-        $request = $this->csrf->generateNewToken($request);
-
-        // Build Header Token
-        $nameKey = $this->csrf->getTokenNameKey();
-        $valueKey = $this->csrf->getTokenValueKey();
-        $name = $request->getAttribute($nameKey);
-        $value = $request->getAttribute($valueKey);
-        $tokenArray = [
-            $nameKey  => $name,
-            $valueKey => $value,
-        ];
+        //$request = $this->csrf->generateNewToken($request);
 
         // Update response with added token header
-        $response = $response->withAddedHeader('X-CSRF-Token', json_encode($tokenArray));
+        $response = $this->csrfHelper->addResponseHeader($request, $response);
 
         return $next($request, $response);
     }

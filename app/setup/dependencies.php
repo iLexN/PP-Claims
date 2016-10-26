@@ -16,7 +16,7 @@ $container['view'] = function (\Slim\Container $c) {
     //set global
     $view['flash'] = $c->get('flash')->getMessages();
 
-    $view['langText'] = require $c['settings']['systemMessage'].'en/text.php';
+    $view['langText'] = $c['langText'];
 
     return $view;
 };
@@ -54,8 +54,13 @@ $container['httpCache'] = function () {
     return new \Slim\HttpCache\CacheProvider();
 };
 
-$container['csrf'] = function () {
-    return new \Slim\Csrf\Guard();
+$container['csrf'] = function (\Slim\Container $c) {
+    $guard = new \Slim\Csrf\Guard();
+    $guard->setFailureCallable(function ($request, $response, $next) use ($c) {
+        $response = $c['csrfHelper']->addResponseHeader($request, $response);
+        return $response->write(json_encode(['errors'=>['title'=>$c['langText']['csrfError']]]));
+    });
+    return $guard;
 };
 
 //data cache
@@ -115,4 +120,8 @@ $container['httpHelper'] = function (\Slim\Container $c) {
 
 $container['csrfHelper'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\Helper\CSRFHelper($c);
+};
+
+$container['langText'] = function (\Slim\Container $c) {
+    return require $c['settings']['systemMessage'].'en/text.php';
 };

@@ -6,7 +6,7 @@ class UserModel implements \ArrayAccess
     //put your code here
 
     /**
-     * user info
+     * user info.
      *
      * @var array
      */
@@ -19,7 +19,7 @@ class UserModel implements \ArrayAccess
 
     public function fullName()
     {
-        return $this->user['first_name'] . ' ' .  $this->user['middle_name'] . ' ' . $this->user['last_name'];
+        return $this->user['first_name'].' '.$this->user['middle_name'].' '.$this->user['last_name'];
     }
 
 
