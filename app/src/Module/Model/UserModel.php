@@ -23,7 +23,6 @@ class UserModel implements \ArrayAccess
         return $this->user['first_name'].' '.$this->user['middle_name'].' '.$this->user['last_name'];
     }
 
-
     public function offsetSet($offset, $value)
     {
         $this->user[$offset] = $value;

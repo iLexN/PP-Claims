@@ -61,6 +61,7 @@ $container['csrf'] = function (\Slim\Container $c) {
 
         return $response->write(json_encode(['errors' => ['title' => $c['langText']['csrfError']]]));
     });
+
     return $guard;
 };
 
