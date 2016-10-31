@@ -9,8 +9,3 @@ $authCheckLogined = new PP\WebPortal\Middleware\Login\AuthCheckLoginedMiddleware
 $app->add(new PP\WebPortal\Middleware\HttpCache($container));
 
 $csrfResponse = new PP\WebPortal\Middleware\CsrfResponseHeader($container);
-
-//if ($container['settings']['displayErrorDetails']) {
-//    //css js min
-//    $app->add(new PP\WebPortal\Middleware\Dev\Dev($container));
-//}

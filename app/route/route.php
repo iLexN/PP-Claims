@@ -44,6 +44,8 @@ $app->post('/ajax/system/login', 'PP\WebPortal\Controller\Ajax\System\Login')
         ->add($csrfResponse)
         ->add($container->get('csrf'))
         ->setName('Ajax.System.Login');
+$app->get('/ajax/preload', 'PP\WebPortal\Controller\Ajax\Preload')
+        ->setName('Ajax.Main.Preload');
 
 //test
 $app->get('/test/upload', 'PP\WebPortal\Controller\Test\UploadIndex')

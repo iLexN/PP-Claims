@@ -65,8 +65,7 @@ var BtnStatus = (function () {
 isOnLine = (function () {
     var $msgDiv = $.jshook('offlineMsg');
     var $formBtn = $.jshook('formBtn');
-    
-    function check(){
+    function check() {
         if (navigator.onLine) {
             //console.log('online');
             return true;
@@ -75,33 +74,34 @@ isOnLine = (function () {
             return false;
         }
     }
-    function ui(){
+    function ui() {
         if (check()) {
             $msgDiv.addClass('hide');
+            $formBtn.removeClass('disabled');
         } else {
             $msgDiv.removeClass('hide');
+            $formBtn.addClass('disabled');
         }
     }
-    function init(){
+    function init() {
         ui();
         window.addEventListener('online', ui);
         window.addEventListener('offline', ui);
     }
+    
+    init(); 
+
     return {
-        'check' : check,
+        'check': check,
         'ui': ui,
         'init': init
     };
 })();
-isOnLine.init();
-//isOnLine.ui();
-//window.addEventListener('online', isOnLine.ui);
-//window.addEventListener('offline', isOnLine.ui);
+//isOnLine.init();
 
 var csrf = (function () {
     var nameKey = '';
     var valueKey = '';
-    
     function setNameKey(val) {
         nameKey = val;
     }
@@ -114,15 +114,15 @@ var csrf = (function () {
     function getValueKey() {
         return valueKey;
     }
-    function getFormObj(obj){
-        obj.push({name:'csrf_name',value:getNameKey()});
-        obj.push({name:'csrf_value',value:getValueKey()});
+    function getFormObj(obj) {
+        obj.push({name: 'csrf_name', value: getNameKey()});
+        obj.push({name: 'csrf_value', value: getValueKey()});
         return obj;
     }
-    function setObj(str){
+    function setObj(str) {
         var obj = jQuery.parseJSON(str);
-        if ( obj === null ) {
-            return ;
+        if (obj === null) {
+            return;
         }
         setNameKey(obj.csrf_name);
         setValueKey(obj.csrf_value);
@@ -130,29 +130,29 @@ var csrf = (function () {
     return {
         'setNameKey': setNameKey,
         'setValueKey': setValueKey,
-        'getFormObj' : getFormObj,
-        'setObj' : setObj
+        'getFormObj': getFormObj,
+        'setObj': setObj
     };
 })();
-
-$( document ).ajaxComplete(function( event, jqXHR, settings ) {
-  csrf.setObj(jqXHR.getResponseHeader('X-CSRF-Token'));
+//
+$(document).ajaxComplete(function (event, jqXHR, settings) {
+    csrf.setObj(jqXHR.getResponseHeader('X-CSRF-Token'));
 });
-$( document ).ajaxStart(function() {
-  loadingBox.open();
+$(document).ajaxStart(function () {
+    loadingBox.open();
 });
 
-var loadingBox = (function(){
-    function open(){
+var loadingBox = (function () {
+    function open() {
         $('#loadingBox').openModal({
             dismissible: false,
             starting_top: '30%',
             ending_top: '30%',
-            in_duration : 500,
-            out_duration : 100
+            in_duration: 500,
+            out_duration: 100
         });
     }
-    function close(){
+    function close() {
         $('#loadingBox').closeModal();
     }
     return {
@@ -162,12 +162,12 @@ var loadingBox = (function(){
 })();
 
 var loginForm = (function () {
-    var $form =  $.jshook('loginForm');
-    var $btn =  $.jshook('loginBtn');
-    var $loginMsg =  $.jshook('loginMsg');
-    
-    function submit(){
-        if ( !isOnLine.check()) {
+    var $form = $.jshook('loginForm');
+    var $btn = $.jshook('loginBtn');
+    var $loginMsg = $.jshook('loginMsg');
+
+    function submit() {
+        if (!isOnLine.check()) {
             return false;
         }
         var data = (csrf.getFormObj($form.serializeArray()));
@@ -180,7 +180,7 @@ var loginForm = (function () {
             data: data,
             dataType: "json"
         }).done(function (data, textStatus, jqXHR) {
-            if ( data.status_code === 2081 ) {
+            if (data.status_code === 2081) {
                 //success
                 window.location.replace("/login-ed");
                 return;
@@ -191,11 +191,11 @@ var loginForm = (function () {
             ajaxEnd(textStatus);
         });
     }
-    function ajaxStart(){
+    function ajaxStart() {
         $btn.prop("disabled", true);
         $loginMsg.html('').addClass('hide');
     }
-    function ajaxEnd(msg){
+    function ajaxEnd(msg) {
         $loginMsg.html(msg).removeClass('hide');
         loadingBox.close();
         $btn.prop("disabled", false);
@@ -206,19 +206,31 @@ var loginForm = (function () {
 })();
 
 //helper
-function debounce(func, wait, immediate) {
-    var timeout;
+var debounce = function (func, wait) {
+    // we need to save these in the closure
+    var timeout, args, context, timestamp;
     return function () {
-        var context = this, args = arguments;
+        // save details of latest call
+        context = this;
+        args = [].slice.call(arguments, 0);
+        timestamp = new Date();
+        // this is where the magic happens
         var later = function () {
-            timeout = null;
-            if (!immediate)
+            // how long ago was the last call
+            var last = (new Date()) - timestamp;
+            // if the latest call was less that the wait period ago
+            // then we reset the timeout to wait for the difference
+            if (last < wait) {
+                timeout = setTimeout(later, wait - last);
+                // or if not we can null out the timer and run the latest
+            } else {
+                timeout = null;
                 func.apply(context, args);
+            }
         };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow)
-            func.apply(context, args);
-    };
-}
+        // we only need to set the timer now if one isn't already running
+        if (!timeout) {
+            timeout = setTimeout(later, wait);
+        }
+    }
+};

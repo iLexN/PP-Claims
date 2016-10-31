@@ -35,7 +35,7 @@ final class PolicyModule extends AbstractContainer
     }
 
     /**
-     * get policies from API.
+     * get policies list from API.
      *
      * @param int $id
      *

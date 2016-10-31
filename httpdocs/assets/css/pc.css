@@ -1,7 +1,6 @@
 body{
     color : green;
 }
-
 /*--------------------------------------------------------------
 Layout structure
 --------------------------------------------------------------*/
@@ -28,17 +27,18 @@ page style
     left : 0;
     width: 100%;
 }
-.home_footer_space{
+/*--------------------------------------------------------------
+include components
+--------------------------------------------------------------*/
+.footer_space{
     height:6.25rem;
 }
-
 .general_footer_div{
     position: absolute;
     bottom: 0;
     left : 0;
     width: 100%;
 }
-
 /** main page block effect **/
 .view{
     height: 10rem;

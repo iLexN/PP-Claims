@@ -33,44 +33,13 @@ page style
     font-size:0.8rem;
 }
 
+/*--------------------------------------------------------------
+include components
+--------------------------------------------------------------*/
 .general_footer_div{
     font-size:0.8rem;
     background-color: #0088cc;
 }
-
-/*--------------------------------------------------------------
-general
---------------------------------------------------------------*/
-.form-input {
-    border-top:0;
-    border-left:0;
-    border-right:0;
-    border-bottom: 2px solid blue;
-}
-.form-input:focus{
-    border-bottom: 2px solid green;
-}
-.form-error{
-    border-bottom: 2px solid red;
-}
-.form-error,.form-error:focus{
-    border-bottom: 2px solid red;
-}
-
-
-.hidden{
-    display: none;
-}
-.invalid{
-    color:red;
-}
-.valid{
-    color:green;
-}
-.error{
-    color:red;
-}
-
 /** main page block effect **/
 .view {
     overflow: hidden;
@@ -110,6 +79,55 @@ general
     opacity: 0;
     will-change: transform;
 }
+/*** offline box ****/
+.offline{
+    background-color: red;
+    color : #fff;
+    padding : 1rem;
+}
+/*** Loading box ****/
+.loadingBox_c{
+    background: transparent none repeat scroll 0 0;
+    box-shadow: none;
+    height: 7rem;
+    text-align: center;
+    
+}
+
+/*--------------------------------------------------------------
+general
+--------------------------------------------------------------*/
+.form-input {
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom: 2px solid blue;
+}
+.form-input:focus{
+    border-bottom: 2px solid green;
+}
+.form-error{
+    border-bottom: 2px solid red;
+}
+.form-error,.form-error:focus{
+    border-bottom: 2px solid red;
+}
+
+
+.hidden{
+    display: none;
+}
+.invalid{
+    color:red;
+}
+.valid{
+    color:green;
+}
+.error{
+    color:red;
+}
+
+
 
 
 /* upload bar*/
@@ -118,18 +136,3 @@ general
 }
 
 
-/*** offline box ****/
-.offline{
-    background-color: red;
-    color : #fff;
-    padding : 1rem;
-}
-
-.loadingBox_c{
-    background: transparent none repeat scroll 0 0;
-    box-shadow: none;
-    height: 7rem;
-    
-    text-align: center;
-    
-}

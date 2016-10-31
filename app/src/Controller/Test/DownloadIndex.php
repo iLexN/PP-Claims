@@ -29,7 +29,7 @@ final class DownloadIndex extends AbstractContainer
         throw new \Slim\Exception\NotFoundException($request, $response);
     }
 
-    private function sendFile($response, $filename , $outFileName)
+    private function sendFile($response, $filename, $outFileName)
     {
         $stream = fopen($filename, 'r');
 

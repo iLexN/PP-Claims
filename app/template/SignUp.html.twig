@@ -1,5 +1,5 @@
-{% extends "template/s1.html.twig" %}
-{% block centerBlock %}
+{% extends "template/base.html.twig" %}
+{% block bodyHTML %}
     <form>
         <p>    
             <label for="username">Username:</label>
@@ -57,32 +57,38 @@
 
                 var passwordModule = createpasswordModule();
 
-                var checkUsername = debounce(function () {
+                var checkUsername = function () {
                     $loading.removeClass('hidden');
                     $usernameok.hide();
                     $usernameerror.hide();
-                            
-                    $.getJSON("{{ path_for('Ajax.Username') }}", {'username': username}, function (data) {
-                        if (data.code === 2060) {
-                            valid($usernamePass);
-                            $username.removeClass('form-error');
-                            $usernameok.show();
-                            $usernameerror.hide();
-                        } else {
-                            inValid($usernamePass);
-                            $username.addClass('form-error');
-                            $usernameok.hide();
-                            $usernameerror.show();
+                    
+                    $.get({
+                        url : '{{ path_for('Ajax.Username') }}',
+                        data: {'username': username},
+                        dataType: "json",
+                        global : false,
+                        success : function (data) {
+                                if (data.code === 2060) {
+                                valid($usernamePass);
+                                $username.removeClass('form-error');
+                                $usernameok.show();
+                                $usernameerror.hide();
+                            } else {
+                                inValid($usernamePass);
+                                $username.addClass('form-error');
+                                $usernameok.hide();
+                                $usernameerror.show();
+                            }
+                            canSubmit();
+                            $loading.addClass('hidden');
                         }
-                        canSubmit();
-                        $loading.addClass('hidden');
                     });
-                }, 1000);
+                };
                 function setUsername() {
                     inValid($usernamePass);
-                    canSubmit();
                     username = $(this).val();
                     checkUsername();
+                    canSubmit();
                 }
                 function setP1() {
                     passwordModule.setP1($(this).val());
@@ -160,7 +166,7 @@
                 'keyup.check': SignUpControl.check
             });
             $.jshook('username').on({
-                'keyup.set': SignUpControl.setUsername
+                'keyup.set': debounce(SignUpControl.setUsername,1500)
             });
             $.jshook('SignUpBtn').on({
                 click: BtnStatus.disable

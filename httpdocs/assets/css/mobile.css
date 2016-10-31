@@ -5,7 +5,6 @@ html,body {
 body{
     color : red;
 }
-
 /*--------------------------------------------------------------
 over write materialize style
 --------------------------------------------------------------*/
@@ -34,10 +33,6 @@ page style
 }
 .home_verify_msg{
     height: 6rem;
-}
-
-.home_footer_space{
-    display:none;
 }
 /** main page block effect **/
 .view{
