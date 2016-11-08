@@ -144,7 +144,13 @@ $(document).ajaxStart(function () {
 
 var loadingBox = (function () {
     function open() {
-        $('#loadingBox').openModal({
+        $('#loadingBox').modal('open');
+    }
+    function close() {
+        $('#loadingBox').modal('close');
+    }
+    function init(){
+        $('#loadingBox').modal({
             dismissible: false,
             starting_top: '30%',
             ending_top: '30%',
@@ -152,9 +158,7 @@ var loadingBox = (function () {
             out_duration: 100
         });
     }
-    function close() {
-        $('#loadingBox').closeModal();
-    }
+    init();
     return {
         'open': open,
         'close': close

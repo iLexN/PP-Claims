@@ -90,8 +90,7 @@ include components
     background: transparent none repeat scroll 0 0;
     box-shadow: none;
     height: 7rem;
-    text-align: center;
-    
+    text-align: center; 
 }
 
 /*--------------------------------------------------------------
