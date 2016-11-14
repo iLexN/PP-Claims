@@ -19,7 +19,7 @@ final class ForgotSetPassword extends AbstractContainer
     {
         $t = $request->getParsedBody()['token'];
         if (!$this->userModule->isUserExistByToken($t)) {
-            return $response->write(json_encode(['errors'=>['title'=>'Expire please try again']]));
+            return $response->write(json_encode(['errors'=>['title'=>$this->langText['forgotSetPasswordExpire']]]));
         }
 
         $pass = $request->getParsedBody()['forgot_new_password'];
