@@ -23,9 +23,10 @@ final class Index extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        return $this->c['view']->render($response, 'ForgotSetPassword.html.twig', [
+        return $this->c['view']->render($response, 'page/ForgotSetPassword.html.twig', [
             'token' => $this->csrfHelper->getToken($request),
             'User'  => $result['data'],
+            'forgotToken'=>$args['token']
         ]);
     }
 }

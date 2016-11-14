@@ -15,7 +15,7 @@ $container['view'] = function (\Slim\Container $c) {
 
     //set global
     $view['flash'] = $c->get('flash')->getMessages();
-
+    $view['isLoggin'] = $c->get('loginModule')->isLogined();
     $view['langText'] = $c['langText'];
 
     return $view;

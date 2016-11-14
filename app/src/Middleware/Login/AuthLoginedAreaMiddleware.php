@@ -26,8 +26,12 @@ final class AuthLoginedAreaMiddleware extends AbstractContainer
         if (!$this->loginModule->isLogined()) {
             $this->c['flash']->addMessage('loginError', 'Login expired');
 
-            return $response->withStatus(301)
-                ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
+            if ($request->isXhr()) {
+                return $response;
+            } else {
+                return $response->withStatus(301)
+                    ->withHeader('Location', $this->c['router']->pathFor('Homepage'));
+            }
         }
 
         $this->loginModule->getUserByLoginSession();

@@ -20,12 +20,6 @@ final class Preload extends AbstractContainer
     public function __invoke(Request $request, Response $response, array $args)
     {
         // this will increase the api server loading
-        if (!$this->loginModule->isLogined()) {
-            return $response;
-        }
-
-        $this->loginModule->getUserByLoginSession();
-
         $this->policyModule->getPolices();
 
         $this->logger->info('here pre load');

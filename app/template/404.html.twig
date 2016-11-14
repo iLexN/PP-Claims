@@ -2,11 +2,33 @@
 
 {% import "macro/forms.twig" as forms %}
 
+{% block cssStyle %}
+    <style>
+        body{color:#fff}
+        {% if is_mobile() %}
+            .body_container{
+                background: #40c4ff; /* For browsers that do not support gradients */
+                background: -webkit-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(-45deg, #2398da, #a4e3f3); /* Standard syntax (must be last) */
+            }
+        {% else %}
+            .body_container{
+                background-image: url('/assets/images/home_bg.jpg');
+                background-repeat: no-repeat;
+                background-position: top center;
+                background-size:cover;
+            } 
+        {% endif %}
+    </style>
+{% endblock %}
+
 {% block bodyHTML %}
     <div class="wrap">
 
         <div class="row">
-            <div class="col s12">Logo</div>
+            <div class="col s12" style="padding-top:1.25rem"><img src="/assets/images/logo.png"></div>
         </div>
 
         <div class="row">

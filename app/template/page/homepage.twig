@@ -2,36 +2,61 @@
 
 {% import "macro/forms.twig" as forms %}
 
+{% block cssStyle %}
+    <style>
+        body{color:#fff}
+        {% if is_mobile() %}
+            .body_container{
+                background: #40c4ff; /* For browsers that do not support gradients */
+                background: -webkit-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(-45deg, #2398da, #a4e3f3); /* Standard syntax (must be last) */
+            }
+        {% else %}
+            .body_container{
+                background-image: url('/assets/images/home_bg.jpg');
+                background-repeat: no-repeat;
+                background-position: top center;
+                background-size:cover;
+            } 
+        {% endif %}
+    </style>
+{% endblock %}
+
 {% block bodyHTML %}
     <div class="wrap">
-        {% include 'include/components/offline.twig' %}
-        <div class="row">
-            <div class="col s12">Logo</div>
-        </div>
 
+        <div class="row">
+            <div class="col s12" style="padding-top:1.25rem"><img src="/assets/images/logo.png"></div>
+        </div>
+        {% include 'include/components/offline.twig' %}
         <div class="row">
             <div class="col s12 m7 l6 offset-m5 offset-l5">
                 <div class="row">
                     <div class="col s12">
-                        <h5>{{ langText.home_headling | nl2br }}</h5>
+                        <h1 class="home_h1">{{ langText.home_headling | nl2br }}</h1>
                     </div>
                     <div class="col s12 m12 l6">
                         <div class="row">    
-                            <form data-jshook="loginForm"  action="" method="POST">
+                            <form data-jshook="loginForm" class="form-style-1">
                                 <div class="input-field col s12">
                                     {{ forms.MD_input(langText.username,'text','user_name') }}
                                 </div>
                                 <div class="input-field col s12" >
                                     {{ forms.MD_input(langText.passowrd,'password','password') }}
                                 </div>
-                                <div data-jshook="loginMsg" class="col s12 m12 l12 hide login_form_msg" >
+                                <div data-jshook="loginMsg" class="col s12 m12 l12 hide errors_msg" >
                                 </div>
-                                <div class="col s6 m12 l12" >
+                                <div class="col s12" >
                                     {{ forms.MD_button_1('loginBtn formBtn',langText.loginBtn,'button') }}
                                 </div>
                             </form>
-                            <div class="input-field col s6 m12 l12">
-                                {{ langText.home_help_link }}
+                            <div class="input-field col s12">
+                                <a href="#forgotPassword" class="alink_1">{{ langText.home_forgot_password_link }}</a>
+                            </div>
+                            <div class="input-field col s12">
+                                <a href="#forogtUsername" class="alink_1">{{ langText.home_forgot_username_link }}</a>
                             </div>
                         </div>
                     </div>
@@ -40,25 +65,26 @@
                             <div class="home_verify_msg valign-wrapper">
                                 <div class="valign home_verify_msg_text">{{ langText.home_verify_msg }}</div>
                             </div>
-                            <div>{{ components.a_link_style1(langText.home_verify_btn,'#v') }}</div>
+                            <div>{{ components.a_link_style1(langText.home_verify_btn,'#userVerify') }}</div>
                         </div>
                     </div>
                 </div>
             </div>   
         </div>
     </div>
-    
-
 
     <div class="footer_space hide-on-small-only"></div>
-    <div class="home_footer_div">
+    <footer class="home_footer_div">
         <div class="row wrap">
             <div class="col s12 m8 l6 offset-m4 offset-l5">
                 <p>{{ langText.footer_copyright }}<br/>{{ langText.footer_address }}<br/>{{ langText.footer_licensed }}</p>
             </div>
         </div>
-    </div>
+    </footer>
 
+    {% include 'include/components/forogt-password.twig' %}
+    {% include 'include/components/forogt-username.twig' %}
+    {% include 'include/components/user-verify.twig' %}
 {% endblock %}
 
 
@@ -67,9 +93,5 @@
     <script>
         csrf.setNameKey('{{ token.name }}');
         csrf.setValueKey('{{ token.value }}');
-
-        $.jshook('loginBtn').on({
-            'click.login': loginForm.submit
-        });
     </script>
 {% endblock %}

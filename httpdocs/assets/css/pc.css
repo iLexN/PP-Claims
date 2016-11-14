@@ -1,11 +1,9 @@
-body{
-    color : green;
-}
 /*--------------------------------------------------------------
 Layout structure
 --------------------------------------------------------------*/
 .body_container{
     min-height: 100vh;
+    min-width: 768px;
     position: relative;
 }
 .wrap{
@@ -30,6 +28,13 @@ page style
 /*--------------------------------------------------------------
 include components
 --------------------------------------------------------------*/
+header {
+    padding-top:1.25rem;
+}
+.header_nav_bar{
+    padding:0 1.25rem;
+    font-size: 1.125rem;
+}
 .footer_space{
     height:6.25rem;
 }
@@ -42,6 +47,14 @@ include components
 /** main page block effect **/
 .view{
     height: 10rem;
+}
+.view:hover{
+    transition: all 0.2s linear;
+    background: #40c4ff; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-45deg, #2398da, #a4e3f3); /* Standard syntax (must be last) */
 }
 .view:hover span{
     transition: all 0.2s linear;
@@ -58,3 +71,5 @@ include components
     opacity: 1;
     width: 100%;
 }
+
+.home_model { width:50%;max-height: 80%}

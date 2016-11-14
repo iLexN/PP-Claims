@@ -23,6 +23,57 @@ final class UserModule extends AbstractContainer
     }
 
     /**
+     * @return \Psr\Http\Message\ServerRequestInterface
+     */
+    public function userForgotPassword($username)
+    {
+        $response = $this->c['httpClient']->request('POST', 'forgot-passowrd', [
+                'form_params' => [
+                    'user_name' => $username,
+                ],
+            ]);
+
+        return  $this->c['httpHelper']->verifyResponse($response);
+    }
+
+    /**
+     * @return \Psr\Http\Message\ServerRequestInterface
+     */
+    public function userForgotUsername($data)
+    {
+        $response = $this->c['httpClient']->request('POST', 'forgot-username', [
+                'form_params' => $data,
+            ]);
+
+        return  $this->c['httpHelper']->verifyResponse($response);
+    }
+
+    /**
+     * @return \Psr\Http\Message\ServerRequestInterface
+     */
+    public function userVerify($data)
+    {
+        $response = $this->c['httpClient']->request('POST', 'verify', [
+                'form_params' => $data,
+            ]);
+
+        return  $this->c['httpHelper']->verifyResponse($response);
+    }
+
+    /**
+     * @return \Psr\Http\Message\ServerRequestInterface
+     */
+    public function userSign($data, $id)
+    {
+        $response = $this->c['httpClient']->request('POST', 'user/'.$id.'/signup', [
+                'form_params' => $data,
+            ]);
+
+        return  $this->c['httpHelper']->verifyResponse($response);
+    }
+
+
+    /**
      * get User info from session.
      *
      * @return array

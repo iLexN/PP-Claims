@@ -49,7 +49,17 @@ final class LoginModule extends AbstractContainer
      */
     public function setLogined($data)
     {
+        $this->logger->info('setlogin', $data);
         $_SESSION['userLogin'] = $data;
+    }
+
+    public function setSignUpID($id)
+    {
+        $_SESSION['tempID'] = $id;
+    }
+    public function getSignUpID()
+    {
+        return $_SESSION['tempID'];
     }
 
     public function setLogout()

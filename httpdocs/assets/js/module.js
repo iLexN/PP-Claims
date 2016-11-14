@@ -67,10 +67,8 @@ isOnLine = (function () {
     var $formBtn = $.jshook('formBtn');
     function check() {
         if (navigator.onLine) {
-            //console.log('online');
             return true;
         } else {
-            //console.log('offline');
             return false;
         }
     }
@@ -88,9 +86,7 @@ isOnLine = (function () {
         window.addEventListener('online', ui);
         window.addEventListener('offline', ui);
     }
-    
     init(); 
-
     return {
         'check': check,
         'ui': ui,
@@ -152,6 +148,7 @@ var loadingBox = (function () {
     function init(){
         $('#loadingBox').modal({
             dismissible: false,
+            opacity: .4, 
             starting_top: '30%',
             ending_top: '30%',
             in_duration: 500,
@@ -164,8 +161,8 @@ var loadingBox = (function () {
         'close': close
     };
 })();
-
-var loginForm = (function () {
+//login
+(function () {
     var $form = $.jshook('loginForm');
     var $btn = $.jshook('loginBtn');
     var $loginMsg = $.jshook('loginMsg');
@@ -204,9 +201,293 @@ var loginForm = (function () {
         loadingBox.close();
         $btn.prop("disabled", false);
     }
-    return {
-        'submit': submit
-    };
+    function init(){
+        $btn.on({
+            'click.login': submit
+        });
+    }
+    init();
+})();
+//forgot password
+(function () {
+    var $form = $.jshook('forgotPasswordForm');
+    var $btn = $.jshook('forgotpasswordBtn');
+    var $msg = $.jshook('ForgotPasswordMsg');
+    var $success = $.jshook('forgotPasswordSuccess');
+    var $closeBtn = $.jshook('forgotpasswordBtnClose');
+
+    function submit() {
+        if (!isOnLine.check()) {
+            return false;
+        }
+        var data = (csrf.getFormObj($form.serializeArray()));
+        $.ajax({
+            beforeSend: function () {
+                ajaxStart();
+            },
+            url: '/ajax/system/forgot-password',
+            type: 'POST',
+            data: data,
+            dataType: "json"
+        }).done(function (data, textStatus, jqXHR) {
+            if (data.status_code === 2540) {
+                //success
+                $form.addClass('hide');
+                $success.removeClass('hide');
+                ajaxEnd();
+                return;
+            }
+            //fail
+            ajaxEnd(data.errors.title);
+            //$("#forgotpassword_username").addClass('invalid');
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            ajaxEnd(textStatus);
+        });
+    }
+    function ajaxStart() {
+        $btn.prop("disabled", true);
+        $msg.html('').addClass('hide');
+        //$("#forgotpassword_username").removeClass('invalid');
+    }
+    function ajaxEnd(msg) {
+        $msg.html(msg).removeClass('hide');
+        loadingBox.close();
+        $btn.prop("disabled", false);
+    }
+    function modelClose(){
+        $('#forgotPassword').modal('close');
+    }
+    function init(){
+        $('#forgotPassword').modal({
+            dismissible: true,
+            opacity: .4,
+            starting_top: '10%',
+            ending_top: '10%',
+            in_duration: 500,
+            out_duration: 100
+        });
+        $btn.on({
+            'click.forgotpassword': submit
+        });
+        $closeBtn.on({
+            click : modelClose
+        });
+    }
+    init();
+})();
+//forgot username
+(function () {
+    var $m = $('#forogtUsername');
+    var $form = $.jshook('forgotUsernameForm');
+    var $btn = $.jshook('forgotUsernameBtn');
+    var $msg = $.jshook('ForgotUsernameMsg');
+    var $success = $.jshook('forgotUsernameSuccess');
+    var $closeBtn = $.jshook('forgotUsernameBtnClose');
+
+    function submit() {
+        if (!isOnLine.check()) {
+            return false;
+        }
+        var data = (csrf.getFormObj($form.serializeArray()));
+        $.ajax({
+            beforeSend: function () {
+                ajaxStart();
+            },
+            url: '/ajax/system/forgot-username',
+            type: 'POST',
+            data: data,
+            dataType: "json"
+        }).done(function (data, textStatus, jqXHR) {
+            if (data.status_code === 2550) {
+                //success
+                $form.addClass('hide');
+                $success.removeClass('hide');
+                ajaxEnd();
+                return;
+            }
+            //fail
+            ajaxEnd(data.errors.title);
+            $m.scrollTop(10);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            ajaxEnd(textStatus);
+        });
+    }
+    function ajaxStart() {
+        $btn.prop("disabled", true);
+        $msg.html('').addClass('hide');
+    }
+    function ajaxEnd(msg) {
+        $msg.html(msg).removeClass('hide');
+        loadingBox.close();
+        $btn.prop("disabled", false);
+    }
+    function modelClose(){
+        $m.modal('close');
+    }
+    function init(){
+        $m.modal({
+            dismissible: true,
+            opacity: .4,
+            starting_top: '10%',
+            ending_top: '10%',
+            in_duration: 500,
+            out_duration: 100
+        });
+        $btn.on({
+            'click.forgotusername': submit
+        });
+        $closeBtn.on({
+            click : modelClose
+        });
+    }
+    init();
+})();
+//user verfiy
+(function () {
+    var $m = $("#userVerify");
+    var $form = $.jshook('userVerifyForm');
+    var $btn = $.jshook('userVerifyBtn');
+    var $msg = $.jshook('userVerifyMsg');
+    
+    var $formSignup = $.jshook('userSignForm');
+    var $btnSignup = $.jshook('userSignupBtn');
+    var $msgSignup = $.jshook('userSignUpMsg');
+
+    function submit() {
+        if (!isOnLine.check()) {
+            return false;
+        }
+        var data = (csrf.getFormObj($form.serializeArray()));
+        $.ajax({
+            beforeSend: function () {
+                ajaxStart();
+            },
+            url: '/ajax/system/user-verify',
+            type: 'POST',
+            data: data,
+            dataType: "json"
+        }).done(function (data, textStatus, jqXHR) {
+            if (data.status_code === 2040) {
+                //already Register
+                ajaxEnd(data.data.title);
+                return;
+            }
+            if (data.status_code === 2050) {
+                //go next
+                $form.addClass('hide');
+                $formSignup.removeClass('hide');
+                ajaxEnd();
+                return;
+            }
+            //fail
+            ajaxEnd(data.errors.title);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            ajaxEnd(textStatus);
+        });
+    }
+    function submitSignUp() {
+        if (!isOnLine.check()) {
+            return false;
+        }
+        var data = (csrf.getFormObj($formSignup.serializeArray()));
+        $.ajax({
+            beforeSend: function () {
+                ajaxStart();
+            },
+            url: '/ajax/system/user-singup',
+            type: 'POST',
+            data: data,
+            dataType: "json"
+        }).done(function (data, textStatus, jqXHR) {
+            if (data.status_code === 2030) {
+                window.location.replace("/login-ed");
+                return;
+            }
+            //fail
+            ajaxEnd(data.errors.title);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            ajaxEnd(textStatus);
+        });
+    }
+    function ajaxStart() {
+        $btn.prop("disabled", true);
+        $btnSignup.prop("disabled", true);
+        $msg.html('').addClass('hide');
+        $msgSignup.html('').addClass('hide');
+    }
+    function ajaxEnd(msg) {
+        $msg.html(msg).removeClass('hide');
+        $msgSignup.html(msg).removeClass('hide');
+        loadingBox.close();
+        $btn.prop("disabled", false);
+        $btnSignup.prop("disabled", false);
+        $m.scrollTop(10);
+    }
+    function init(){
+        $m.modal({
+            dismissible: true,
+            opacity: .4,
+            starting_top: '10%',
+            ending_top: '10%',
+            in_duration: 500,
+            out_duration: 100
+        });
+        $btn.on({
+            'click.verfiy': submit
+        });
+        $btnSignup.on({
+            'click.signup': submitSignUp
+        });
+    }
+    init();
+})();
+//set forgot password
+(function () {
+    var $form = $.jshook('setforgotPasswordForm');
+    var $btn = $.jshook('setforgotpasswordBtn');
+    var $msg = $.jshook('setForgotPasswordMsg');
+    var $success = $.jshook('setforgotPasswordSuccess');
+
+    function submit() {
+        if (!isOnLine.check()) {
+            return false;
+        }
+        var data = (csrf.getFormObj($form.serializeArray()));
+        $.ajax({
+            beforeSend: function () {
+                ajaxStart();
+            },
+            url: '/ajax/system/forgot-set-password',
+            type: 'POST',
+            data: data,
+            dataType: "json"
+        }).done(function (data, textStatus, jqXHR) {
+            if (data.status_code === 2570) {
+                //success
+                window.location.replace("/login-ed");
+                return;
+            }
+            //fail
+            ajaxEnd(data.errors.title);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            ajaxEnd(textStatus);
+        });
+    }
+    function ajaxStart() {
+        $btn.prop("disabled", true);
+        $msg.html('').addClass('hide');
+    }
+    function ajaxEnd(msg) {
+        $msg.html(msg).removeClass('hide');
+        loadingBox.close();
+        $btn.prop("disabled", false);
+    }
+    function init(){
+        $btn.on({
+            'click.setforgotpass': submit
+        });
+    }
+    init();
 })();
 
 //helper

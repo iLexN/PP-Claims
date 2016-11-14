@@ -1,0 +1,54 @@
+<div id="userVerify" class="modal home_model">
+    <div class="home_model-content">
+        <div class="row">
+            <div class="col s12">
+                <h4>{{ langText.userVerify_title }}</h4>
+            </div>
+            <form class="form-style-2" data-jshook="userVerifyForm">
+            <div class="col s12">
+                <p class="home_model-content_p">{{ langText.userVerify_desc }}</p>
+            </div>
+            <div class="col s12 m12 l10 offset-l1 hide errors_msg" data-jshook="userVerifyMsg">
+                
+            </div>
+            <div class="input-field col s12 m12 l10 offset-l1">
+                {{ forms.MD_input(langText.ppmid_code,'text','ppmid') }}
+            </div>
+            <div class="col s12 m4 l4 offset-l1">
+                {{ forms.MD_select_year(langText.year,'year') }}
+            </div>
+            <div class="col s12 m4 l3">
+                {{ forms.MD_select_month(langText.month,'month') }}
+            </div>
+            <div class="col s12 m4 l3">
+                {{ forms.MD_select_day(langText.day,'day') }}
+            </div>
+            <div class="col s12 m12 l8 offset-l2 center-align" style="margin-top:1.2rem">
+                {{ forms.MD_button_2('userVerifyBtn formBtn',langText.submitBtn,'button' , 'send') }}
+            </div>
+            </form>
+            
+            <form class="form-style-2 hide" data-jshook="userSignForm">
+            <div class="col s12">
+                <p class="home_model-content_p">{{ langText.userSignup_desc }}</p>
+            </div>
+            <div class="col s12 m12 l8 offset-l2 hide errors_msg" data-jshook="userSignUpMsg">
+                
+            </div>
+            <div class="input-field col s12 m12 l8 offset-l2">
+                {{ forms.MD_input(langText.username,'text','singup_username') }}
+            </div>
+            <div class="input-field col s12 m12 l8 offset-l2">
+                {{ forms.MD_input(langText.new_password,'password','singup_new_password') }}
+            </div>
+            <div class="input-field col s12 m12 l8 offset-l2">
+                {{ forms.MD_input(langText.confirm_password,'password','singup_new_password2') }}
+            </div>
+            
+            <div class="col s12 m12 l8 offset-l2 center-align" style="margin-top:1.2rem">
+                {{ forms.MD_button_2('userSignupBtn formBtn',langText.submitBtn,'button' , 'send') }}
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

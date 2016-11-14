@@ -1,11 +1,14 @@
 <header class="row">
     <div class="col s10">
-        logo
+        <img src="/assets/images/logo.png">
     </div>
+    {% if isLoggin  %}
     <div class="col s2"><a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a></div>
+    {% endif %}
 </header>
 <div class="header_space"></div>
 <!-- side nav -->
+{% if isLoggin  %}
 <nav id="slide-out" class="side-nav">
     <a href="#">{{ langText.title_profile }}</a>
     <a href="#">{{ langText.title_claims }}</a>
@@ -13,3 +16,4 @@
     <a href="#">{{ langText.title_contact }}</a>
     <a href="{{ path_for('Logout') }}">{{ langText.logout }}</a>
 </nav>
+{% endif %}

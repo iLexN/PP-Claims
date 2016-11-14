@@ -44,7 +44,28 @@ $app->post('/ajax/system/login', 'PP\WebPortal\Controller\Ajax\System\Login')
         ->add($csrfResponse)
         ->add($container->get('csrf'))
         ->setName('Ajax.System.Login');
+$app->post('/ajax/system/forgot-password', 'PP\WebPortal\Controller\Ajax\System\ForgotPassword')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->setName('Ajax.System.ForgotPassword');
+$app->post('/ajax/system/forgot-username', 'PP\WebPortal\Controller\Ajax\System\ForgotUsername')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->setName('Ajax.System.ForgotUsername');
+$app->post('/ajax/system/user-verify', 'PP\WebPortal\Controller\Ajax\System\UserVerify')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->setName('Ajax.System.UserVerify');
+$app->post('/ajax/system/user-singup', 'PP\WebPortal\Controller\Ajax\System\Signup')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->setName('Ajax.System.Signup');
+$app->post('/ajax/system/forgot-set-password', 'PP\WebPortal\Controller\Ajax\System\ForgotSetPassword')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->setName('Ajax.System.ForgotSetPassword');
 $app->get('/ajax/preload', 'PP\WebPortal\Controller\Ajax\Preload')
+        ->add($authLoginArea)
         ->setName('Ajax.Main.Preload');
 
 //test

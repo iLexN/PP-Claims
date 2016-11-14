@@ -19,7 +19,8 @@ return [
     'home_headling'   => "Welcome to \n Pacific Prime Claims Portal",
     'home_verify_msg' => 'Please verify at your first login.',
     'home_verify_btn' => 'Verify',
-    'home_help_link'  => 'need Help?',
+    'home_forgot_password_link'  => 'Forgot Password?',
+    'home_forgot_username_link'  => 'Forgot Username?',
 
     //main page
     'desc_profile' => 'Profile desc desc',
@@ -30,7 +31,34 @@ return [
     //form
     'username' => 'Username',
     'passowrd' => 'Password',
+    'new_password' => 'New Password',
+    'confirm_password' => 'Confirm Password',
+    'name' => 'Name',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'ppmid_code' => 'Provided Code',
+    'year' => 'Year',
+    'month' => 'Month',
+    'day' => 'Day',
+
+    //form btn
     'loginBtn' => 'Login',
+    'submitBtn'=>'Submit',
+    'closeBtn'=>'Close',
+
+    //components
+    //forgotpassword
+    'forgotpassword_title'=>'Forgot Password',
+    'forgotpassword_desc'=>'Please provide long text Please provide long text Please provide long text',
+    'forgotpassword_success'=>'Please check your email and reset your password',
+    //forgotusername
+    'forgotusername_title'=>'Forgot Username',
+    'forgotusername_desc'=>'Please provide long text Please provide long text Please provide long text',
+    'forgotusername_success'=>'Please check your email',
+    //user verify
+    'userVerify_title'=>'Verify',
+    'userVerify_desc'=>'Please provide long text Please provide long text Please provide',
+    'userSignup_desc'=>'password At least one Case Diff letter , At least one number , Be at least 8 characters',
 
 
     //system

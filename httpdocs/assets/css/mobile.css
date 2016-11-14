@@ -2,9 +2,6 @@ html,body {
     -webkit-overflow-scrolling: touch;
     -webkit-position: sticky
 }
-body{
-    color : red;
-}
 /*--------------------------------------------------------------
 over write materialize style
 --------------------------------------------------------------*/
@@ -34,6 +31,9 @@ page style
 .home_verify_msg{
     height: 6rem;
 }
+.home_h1{
+    margin-top: 0;
+}
 /** main page block effect **/
 .view{
     height: 8rem;
@@ -50,3 +50,5 @@ page style
     opacity: 1;
     width: 80%;
 }
+
+.home_model { width:90%;max-height: 80%}
