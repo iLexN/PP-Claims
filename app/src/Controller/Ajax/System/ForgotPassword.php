@@ -12,6 +12,8 @@ final class ForgotPassword extends AbstractContainer
     {
         $username = $request->getParsedBodyParam('forgotpassword_username');
 
+        $this->userModule->userForgotPassword($username);
+
         return $response->write(json_encode($this->httpHelper->result));
     }
 }

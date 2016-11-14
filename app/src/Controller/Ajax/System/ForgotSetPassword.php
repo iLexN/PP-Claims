@@ -25,7 +25,7 @@ final class ForgotSetPassword extends AbstractContainer
         $pass = $request->getParsedBody()['forgot_new_password'];
         $pass2 = $request->getParsedBody()['forgot_new_password2'];
 
-        if ($msg = $this->isInValid($pass, $pass2)) {
+        if ($msg = $this->helper->isPasswordInValid($pass, $pass2)) {
             return $response->write(json_encode(['errors'=>['title'=>$msg]]));
         }
 
@@ -38,17 +38,4 @@ final class ForgotSetPassword extends AbstractContainer
         return $response->write(json_encode($this->httpHelper->result));
     }
 
-    private function isInValid($p1, $p2)
-    {
-        $msg = false;
-
-        if ($p1 !== $p2) {
-            $msg = 'password need same';
-        }
-        if (!$this->c['passwordModule']->isStrongPassword($p1)) {
-            $msg = 'password not strong';
-        }
-
-        return $msg;
-    }
 }

@@ -16,6 +16,8 @@ namespace PP\WebPortal\AbstractClass;
  * @property \PP\WebPortal\Module\PasswordModule $passwordModule
  * @property \PP\WebPortal\Module\Helper\HttpClientHelper $httpHelper
  * @property \PP\WebPortal\Module\Helper\CSRFHelper $csrfHelper
+ * @property \PP\WebPortal\Module\Helper\Helper $helper
+ * @property array $langText
  */
 abstract class AbstractContainer
 {

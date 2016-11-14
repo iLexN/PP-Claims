@@ -123,6 +123,9 @@ $container['httpHelper'] = function (\Slim\Container $c) {
 $container['csrfHelper'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\Helper\CSRFHelper($c);
 };
+$container['helper'] = function (\Slim\Container $c) {
+    return new \PP\WebPortal\Module\Helper\Helper($c);
+};
 
 $container['langText'] = function (\Slim\Container $c) {
     return require $c['settings']['systemMessage'].'en/text.php';
