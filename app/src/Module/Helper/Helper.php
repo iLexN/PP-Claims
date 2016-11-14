@@ -22,5 +22,4 @@ final class Helper extends AbstractContainer
 
         return $msg;
     }
-
 }

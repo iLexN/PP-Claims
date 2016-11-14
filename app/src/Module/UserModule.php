@@ -72,7 +72,6 @@ final class UserModule extends AbstractContainer
         return  $this->c['httpHelper']->verifyResponse($response);
     }
 
-
     /**
      * get User info from session.
      *
