@@ -17,19 +17,17 @@ final class ForgotSetPassword extends AbstractContainer
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $t = $request->getParsedBody()['token'];
-        if (!$this->userModule->isUserExistByToken($t)) {
+        $data = $request->getParsedBody();
+
+        if (!$this->userModule->isUserExistByToken($data['token'])) {
             return $response->write(json_encode(['errors'=>['title'=>$this->langText['forgotSetPasswordExpire']]]));
         }
 
-        $pass = $request->getParsedBody()['forgot_new_password'];
-        $pass2 = $request->getParsedBody()['forgot_new_password2'];
-
-        if ($msg = $this->helper->isPasswordInValid($pass, $pass2)) {
+        if ($msg = $this->helper->isPasswordInValid($data['forgot_new_password'], $data['forgot_new_password2'])) {
             return $response->write(json_encode(['errors'=>['title'=>$msg]]));
         }
 
-        $result = $this->c['userModule']->postNewPassword($pass, $t);
+        $result = $this->c['userModule']->postNewPassword($data['forgot_new_password'], $data['token']);
 
         if ($result) {
             $this->loginModule->setLogined(['id'=>$result['data']['ppmid']]);
