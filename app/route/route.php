@@ -19,7 +19,7 @@ $app->post('/forgot-password/{token}', 'PP\WebPortal\Controller\ForgotSetPasswor
     ->add($authCheckLogined); // redirect to login-ed page if login-ed
 
 
-$app->get('/login-ed', 'PP\WebPortal\Controller\Logined')
+$app->get('/main', 'PP\WebPortal\Controller\Logined')
     ->setName('Login-ed')
     ->add($authLoginArea); // redirect to home page if login expired
 

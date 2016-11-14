@@ -183,7 +183,7 @@ var loadingBox = (function () {
         }).done(function (data, textStatus, jqXHR) {
             if (data.status_code === 2081) {
                 //success
-                window.location.replace("/login-ed");
+                window.location.replace("/main");
                 return;
             }
             //fail
@@ -400,7 +400,7 @@ var loadingBox = (function () {
             dataType: "json"
         }).done(function (data, textStatus, jqXHR) {
             if (data.status_code === 2030) {
-                window.location.replace("/login-ed");
+                window.location.replace("/main");
                 return;
             }
             //fail
@@ -464,7 +464,7 @@ var loadingBox = (function () {
         }).done(function (data, textStatus, jqXHR) {
             if (data.status_code === 2570) {
                 //success
-                window.location.replace("/login-ed");
+                window.location.replace("/main");
                 return;
             }
             //fail
