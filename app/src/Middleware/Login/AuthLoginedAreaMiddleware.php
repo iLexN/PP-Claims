@@ -3,6 +3,8 @@
 namespace PP\WebPortal\Middleware\Login;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * use for need login-ed page
@@ -11,17 +13,7 @@ use PP\WebPortal\AbstractClass\AbstractContainer;
  */
 final class AuthLoginedAreaMiddleware extends AbstractContainer
 {
-    /**
-     * go to homeage when login expired.
-     * get user info when user already login.
-     *
-     * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
-     * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
-     * @param callable                                 $next     Next middleware
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function __invoke($request, $response, $next)
+    public function __invoke(Request $request, Response $response, $next)
     {
         if (!$this->loginModule->isLogined()) {
             $this->c['flash']->addMessage('loginError', 'Login expired');

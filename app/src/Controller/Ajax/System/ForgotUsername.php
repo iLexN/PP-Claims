@@ -12,7 +12,7 @@ final class ForgotUsername extends AbstractContainer
     {
         $data = $request->getParsedBody();
 
-        $result = $this->userModule->userForgotUsername($data);
+        $this->userModule->userForgotUsername($data);
 
         return $response->write(json_encode($this->httpHelper->result));
     }
