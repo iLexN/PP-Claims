@@ -63,5 +63,7 @@ return [
 
     //system
     'csrfError' => 'Please try again',
+    'passwordSameError' => 'password need same',
+    'passwordNotStrongError' => 'password not strong : password At least one Case Diff letter , At least one number , Be at least 8 characters',
 
 ];
