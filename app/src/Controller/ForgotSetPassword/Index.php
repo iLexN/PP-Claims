@@ -24,9 +24,9 @@ final class Index extends AbstractContainer
         }
 
         return $this->c['view']->render($response, 'page/ForgotSetPassword.html.twig', [
-            'token' => $this->csrfHelper->getToken($request),
-            'User'  => $result['data'],
-            'forgotToken'=>$args['token']
+            'token'       => $this->csrfHelper->getToken($request),
+            'User'        => $result['data'],
+            'forgotToken' => $args['token'],
         ]);
     }
 }

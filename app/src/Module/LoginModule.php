@@ -57,6 +57,7 @@ final class LoginModule extends AbstractContainer
     {
         $_SESSION['tempID'] = $id;
     }
+
     public function getSignUpID()
     {
         return $_SESSION['tempID'];

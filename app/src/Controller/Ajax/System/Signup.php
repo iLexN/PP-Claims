@@ -22,16 +22,16 @@ final class Signup extends AbstractContainer
         $pass2 = $request->getParsedBody()['singup_new_password2'];
 
         if ($msg = $this->helper->isPasswordInValid($pass, $pass2)) {
-            return $response->write(json_encode(['errors'=>['title'=>$msg]]));
+            return $response->write(json_encode(['errors' => ['title' => $msg]]));
         }
 
         $result = $this->userModule->userSign([
-            'user_name'=>$username,
-            'password'=>$pass,
+            'user_name' => $username,
+            'password'  => $pass,
         ], $this->loginModule->getSignUpID());
 
         if ($result) {
-            $this->loginModule->setLogined(['id'=>$this->loginModule->getSignUpID()]);
+            $this->loginModule->setLogined(['id' => $this->loginModule->getSignUpID()]);
         }
 
         return $response->write(json_encode($this->httpHelper->result));

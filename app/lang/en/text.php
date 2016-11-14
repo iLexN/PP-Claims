@@ -16,9 +16,9 @@ return [
     'title_contact' => 'Contact Us',
 
     // home page
-    'home_headling'   => "Welcome to \n Pacific Prime Claims Portal",
-    'home_verify_msg' => 'Please verify at your first login.',
-    'home_verify_btn' => 'Verify',
+    'home_headling'              => "Welcome to \n Pacific Prime Claims Portal",
+    'home_verify_msg'            => 'Please verify at your first login.',
+    'home_verify_btn'            => 'Verify',
     'home_forgot_password_link'  => 'Forgot Password?',
     'home_forgot_username_link'  => 'Forgot Username?',
 
@@ -29,42 +29,42 @@ return [
     'desc_contact' => 'Contact Us desc desc',
 
     //form
-    'username' => 'Username',
-    'passowrd' => 'Password',
-    'new_password' => 'New Password',
+    'username'         => 'Username',
+    'passowrd'         => 'Password',
+    'new_password'     => 'New Password',
     'confirm_password' => 'Confirm Password',
-    'name' => 'Name',
-    'email' => 'Email',
-    'phone' => 'Phone',
-    'ppmid_code' => 'Provided Code',
-    'year' => 'Year',
-    'month' => 'Month',
-    'day' => 'Day',
+    'name'             => 'Name',
+    'email'            => 'Email',
+    'phone'            => 'Phone',
+    'ppmid_code'       => 'Provided Code',
+    'year'             => 'Year',
+    'month'            => 'Month',
+    'day'              => 'Day',
 
     //form btn
-    'loginBtn' => 'Login',
-    'submitBtn'=>'Submit',
-    'closeBtn'=>'Close',
+    'loginBtn'  => 'Login',
+    'submitBtn' => 'Submit',
+    'closeBtn'  => 'Close',
 
     //components
     //forgotpassword
-    'forgotpassword_title'=>'Forgot Password',
-    'forgotpassword_desc'=>'Please provide long text Please provide long text Please provide long text',
-    'forgotpassword_success'=>'Please check your email and reset your password',
+    'forgotpassword_title'   => 'Forgot Password',
+    'forgotpassword_desc'    => 'Please provide long text Please provide long text Please provide long text',
+    'forgotpassword_success' => 'Please check your email and reset your password',
     //forgotusername
-    'forgotusername_title'=>'Forgot Username',
-    'forgotusername_desc'=>'Please provide long text Please provide long text Please provide long text',
-    'forgotusername_success'=>'Please check your email',
+    'forgotusername_title'   => 'Forgot Username',
+    'forgotusername_desc'    => 'Please provide long text Please provide long text Please provide long text',
+    'forgotusername_success' => 'Please check your email',
     //user verify
-    'userVerify_title'=>'Verify',
-    'userVerify_desc'=>'Please provide long text Please provide long text Please provide',
-    'userSignup_desc'=>'password At least one Case Diff letter , At least one number , Be at least 8 characters',
+    'userVerify_title' => 'Verify',
+    'userVerify_desc'  => 'Please provide long text Please provide long text Please provide',
+    'userSignup_desc'  => 'password At least one Case Diff letter , At least one number , Be at least 8 characters',
 
 
     //system
-    'csrfError' => 'Please try again',
-    'passwordSameError' => 'password need same',
-    'passwordNotStrongError' => 'password not strong : password At least one Case Diff letter , At least one number , Be at least 8 characters',
+    'csrfError'               => 'Please try again',
+    'passwordSameError'       => 'password need same',
+    'passwordNotStrongError'  => 'password not strong : password At least one Case Diff letter , At least one number , Be at least 8 characters',
     'forgotSetPasswordExpire' => 'Expire please try again',
 
 ];

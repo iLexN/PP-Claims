@@ -25,7 +25,7 @@ final class UserVerify extends AbstractContainer
     {
         $out = [];
         $out['ppmid'] = $data['ppmid'];
-        $out['date_of_birth'] = $data['year']  . '-' . $data['month'] . '-' . $data['day'];
+        $out['date_of_birth'] = $data['year'].'-'.$data['month'].'-'.$data['day'];
 
         return $out;
     }
