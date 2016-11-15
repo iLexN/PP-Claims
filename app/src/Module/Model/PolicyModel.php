@@ -17,7 +17,6 @@ class PolicyModel implements \ArrayAccess
     }
 
     /**
-     *
      * @return bool
      */
     public function isActive()
@@ -26,7 +25,6 @@ class PolicyModel implements \ArrayAccess
     }
 
     /**
-     *
      * @return string
      */
     public function getPremiumPaid()
@@ -35,7 +33,6 @@ class PolicyModel implements \ArrayAccess
     }
 
     /**
-     *
      * @return array
      */
     public function getAdvisor()
