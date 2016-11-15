@@ -3,6 +3,7 @@
 namespace PP\WebPortal\Module;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
+use PP\WebPortal\Module\Model\PolicyModel;
 
 /**
  * Description of PolicyModule.
@@ -27,7 +28,7 @@ final class PolicyModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $policies = $this->getPoliciesByAPI($user['ppmid']);
+            $policies = $this->policyFactory($this->getPoliciesByAPI($user['ppmid']));
             $this->c['pool']->save($item->set($policies));
         }
 
@@ -48,5 +49,14 @@ final class PolicyModule extends AbstractContainer
         $result = $this->c['httpHelper']->verifyResponse($response);
 
         return $result['data'];
+    }
+
+    private function policyFactory($list)
+    {
+        $newList = [];
+        foreach ($list as $policyInfo) {
+            $newList[] = new PolicyModel($policyInfo);
+        }
+        return $newList;
     }
 }

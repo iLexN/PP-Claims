@@ -22,8 +22,6 @@ final class Preload extends AbstractContainer
         // this will increase the api server loading
         $this->policyModule->getPolices();
 
-        $this->logger->info('here pre load');
-
         return $response;
     }
 }
