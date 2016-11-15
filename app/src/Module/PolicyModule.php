@@ -57,6 +57,7 @@ final class PolicyModule extends AbstractContainer
         foreach ($list as $policyInfo) {
             $newList[] = new PolicyModel($policyInfo);
         }
+
         return $newList;
     }
 }

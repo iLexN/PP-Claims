@@ -18,7 +18,8 @@ class Dev extends AbstractContainer
     public function __invoke($request, $response, $next)
     {
         $this->minJS($request->getServerParams()['DOCUMENT_ROOT']);
-        return $response = $next($request, $response);
+
+        return $next($request, $response);
     }
 
     private function minJS($docRoot)

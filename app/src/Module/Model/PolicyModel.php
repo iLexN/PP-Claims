@@ -40,7 +40,6 @@ class PolicyModel implements \ArrayAccess
         return $this->policy['advisor'];
     }
 
-
     public function offsetSet($offset, $value)
     {
         $this->policy[$offset] = $value;
