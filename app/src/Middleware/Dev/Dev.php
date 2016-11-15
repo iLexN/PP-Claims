@@ -29,7 +29,7 @@ class Dev extends AbstractContainer
         $files[] = $docRoot.'/components/webfontloader/webfontloader.js';
 
         $out = '';
-        foreach ( $files as $filePath ){
+        foreach ($files as $filePath) {
             $out .= file_get_contents($filePath);
         }
         file_put_contents($docRoot.'/assets/js/build.min.js', $out);
