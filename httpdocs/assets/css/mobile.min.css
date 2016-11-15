@@ -1,5 +1,4 @@
 html{box-sizing: border-box;font-size:16px;font-family: 'Open Sans'}
-body{cursor: default;}
 /*--------------------------------------------------------------
 Layout structure
 --------------------------------------------------------------*/
@@ -11,31 +10,32 @@ Layout structure
     max-width:1200px;
     margin: 0 auto;
 }
-
-
 /*--------------------------------------------------------------
 page style
 --------------------------------------------------------------*/
 .home_verify_div{
     background-color: #298ec3;
     text-align: center;
+    font-size: 20px;
     font-size:1.25rem;
 }
 .home_verify_msg{
+    padding: 0 40px;
     padding: 0 2.5rem;
 }
 .home_verify_msg_text{
     width:100%
 }
 .home_footer_div{
+    font-size: 10px;
     font-size:0.625rem;
 }
-.home_h1{font-size:2.25rem;font-weight: 300;}
-
+.home_h1{font-size: 36px;font-size:2.25rem;font-weight: 300;}
 /*--------------------------------------------------------------
 include components
 --------------------------------------------------------------*/
 .general_footer_div{
+    font-size: 10px;
     font-size:0.625rem;
     background-color: #0088cc;
     color:#fff;
@@ -47,13 +47,14 @@ include components
     text-align: center;
     cursor: default;
     background-color: #0088cc;
+    margin-bottom: 16px;
     margin-bottom: 1rem;
 }
 .view1{
     width:100%;
     height: 100%;
     position: absolute;
-    top:0;left:0px;font-size: 1.5rem;
+    top:0;left:0px;font-size: 24px;font-size: 1.5rem;
     text-align: center;
     will-change: transform;
 }
@@ -62,20 +63,26 @@ include components
     width:100%;
     height:100%;
     text-align: center;
-    top: 0; padding: 8rem 2rem 0;
+    top: 0; padding: 128px 32px 0; padding: 8rem 2rem 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
-    transform: scale(0.5);
-    transform: translateY(1.5rem);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform: translateY(1.5rem);
+            transform: translateY(1.5rem);
     will-change: transform;
 }
 .view3 hr{
     border-color: red;
-    border-image: none;
+    -o-border-image: none;
+       border-image: none;
     border-style: solid none none;
     border-width: 1px medium medium;
     height: 1px;
+    margin: 0 auto 3.2px;
     margin: 0 auto 0.2rem;
     width: 20%;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
     will-change: transform;
 }
@@ -83,36 +90,41 @@ include components
 .offline{
     background-color: red;
     color : #fff;
+    padding: 16px;
     padding : 1rem;
 }
 /*** Loading box ****/
 .loadingBox_c{
     background: transparent none repeat scroll 0 0;
     box-shadow: none;
+    height: 112px;
     height: 7rem;
     text-align: center; 
 }
 /**** forgot password ****/
 .home_model-content{
     color : #000;
+    padding: 24px;
     padding : 1.5rem;
 }
 .home_model-content h4{
+    font-size: 18px;
     font-size:1.125rem;
 }
 .home_model-content_p{
+    font-size: 14px;
     font-size:0.875rem;
     color:#555;
+    padding-bottom: 16px;
     padding-bottom: 1rem;
 }
-
 /*--------------------------------------------------------------
 general
 --------------------------------------------------------------*/
-.general_h1{font-size:2rem; margin-top: 1rem;}
+.general_h1{font-size: 32px;font-size:2rem; margin-top: 16px; margin-top: 1rem;}
 .general_sub{border-top:2px solid red;background-color: #298ec3; color :#fff;
+padding: 16px;
 padding:1rem}
-
 /* form style*/
 .form-style-1 .input-field label {
      color: #096190;
@@ -218,6 +230,7 @@ border-bottom: 1px solid #096190;
 .form-style-1 textarea.materialize-textarea:focus.invalid + label:after {
   content: attr(data-error);
   color: #F44336;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   opacity: 1;
 }
 /* form style*/
@@ -325,6 +338,7 @@ border-bottom: 1px solid #a1a1a1;
 .form-style-2 textarea.materialize-textarea:focus.invalid + label:after {
   content: attr(data-error);
   color: #F44336;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   opacity: 1;
 }
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
@@ -383,18 +397,39 @@ textarea.materialize-textarea:disabled + label,
 textarea.materialize-textarea[readonly="readonly"] + label {
   color: #096190;
 }
-
-
 .alink_1{
     color:#096190;
+    font-size: 12px;
     font-size:0.75rem;
     text-decoration: underline;
 }
-
 .errors_msg{
     color:red;
+    font-size: 12px;
     font-size:0.75rem;
 }
 .valid_msg{
     color :#4CAF50;
 }
+html,body{-webkit-overflow-scrolling: touch;-webkit-position: -webkit-sticky}
+/*--------------------------------------------------------------
+over write materialize style
+--------------------------------------------------------------*/
+input:not([type]).validate+label, input[type=text].validate+label, input[type=password].validate+label, input[type=email].validate+label, input[type=url].validate+label, input[type=time].validate+label, input[type=date].validate+label, input[type=datetime].validate+label, input[type=datetime-local].validate+label, input[type=tel].validate+label, input[type=number].validate+label, input[type=search].validate+label, textarea.materialize-textarea.validate+label{width: 95%}
+/*--------------------------------------------------------------
+Layout structure
+--------------------------------------------------------------*/
+header{position: fixed;width: 100%;top: 0;z-index: 100;background-color: #3e2723}
+.header_space{height: 24px;height: 1.5rem}
+/*--------------------------------------------------------------
+page style
+--------------------------------------------------------------*/
+.home_verify_div{height: 160px;height: 10rem}
+.home_verify_msg{height: 96px;height: 6rem}
+.home_h1{margin-top: 0}
+/** main page block effect **/
+.view{height: 128px;height: 8rem}
+.view span{-webkit-transform: translateY(-1rem);transform: translateY(-1rem)}
+.view3{-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";opacity: 1;-webkit-transform: scale(1.1);transform: scale(1.1);-webkit-transform: translateY(-3.5rem);transform: translateY(-3.5rem)}
+.view3 hr{-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";opacity: 1;width: 80%}
+.home_model{width: 90%;max-height: 80%}

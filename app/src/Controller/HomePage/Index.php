@@ -17,6 +17,13 @@ final class Index extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
+        $response = $response->withAddedHeader('Link', '</assets/css/pc.min.css>; rel=preload; as=stylesheet');
+        $response = $response->withAddedHeader('Link', '</assets/css/mobile.min.css>; rel=preload; as=stylesheet');
+        $response = $response->withAddedHeader('Link', '</components/materialize/dist/css/materialize.min.css>; rel=preload; as=stylesheet');
+        $response = $response->withAddedHeader('Link', '</assets/images/home_bg.jpg>; rel=preload; as=image');
+        $response = $response->withAddedHeader('Link', '</assets/js/build.min.js>; rel=preload; as=script');
+        $response = $response->withAddedHeader('Link', '</assets/js/module.js>; rel=preload; as=script');
+
         return $this->view->render($response, 'page/homepage.twig', [
         //return $this->view->render($response, 'homepage.html.twig', [
             'token' => $this->csrfHelper->getToken($request),

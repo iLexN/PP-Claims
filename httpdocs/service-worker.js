@@ -10,16 +10,20 @@
     // The route for the images
     global.toolbox.router.get('/assets/(.*)', global.toolbox.cacheFirst, {
         cache: {
-            name: 'assets20161014-d',
+            name: 'assets20161014-f',
             maxAgeSeconds: 60 * 60 * 24 * 7 // cache for a week
         }
     });
     global.toolbox.router.get('/components/(.*)', global.toolbox.cacheFirst, {
         cache: {
-            name: 'components-v0.3',
+            name: 'components-v0.5',
             maxAgeSeconds: 60 * 60 * 24 * 31 // cache for a month
         }
     });
+    
+    global.toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {origin: 'https://fonts.gstatic.com'});
+    global.toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {origin: 'https://fonts.googleapis.com'});
+    
 
     // By default, all requests that don't match our custom handler will use the toolbox.networkFirst
     // cache strategy, and their responses will be stored in the default cache.
