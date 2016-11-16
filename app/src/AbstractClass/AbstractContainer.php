@@ -17,6 +17,7 @@ namespace PP\WebPortal\AbstractClass;
  * @property \PP\WebPortal\Module\Helper\HttpClientHelper $httpHelper
  * @property \PP\WebPortal\Module\Helper\CSRFHelper $csrfHelper
  * @property \PP\WebPortal\Module\Helper\Helper $helper
+ * @property \Mobile_Detect $mobileDetect
  * @property array $langText
  */
 abstract class AbstractContainer

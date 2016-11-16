@@ -17,8 +17,11 @@ final class Index extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $response = $response->withAddedHeader('Link', '</assets/css/pc.min.css>; rel=preload; as=stylesheet');
-        $response = $response->withAddedHeader('Link', '</assets/css/mobile.min.css>; rel=preload; as=stylesheet');
+        if ( $this->helper->isMobile()){
+            $response = $response->withAddedHeader('Link', '</assets/css/pc.min.css>; rel=preload; as=stylesheet');
+        } else {
+            $response = $response->withAddedHeader('Link', '</assets/css/mobile.min.css>; rel=preload; as=stylesheet');
+        }
         $response = $response->withAddedHeader('Link', '</components/materialize/dist/css/materialize.min.css>; rel=preload; as=stylesheet');
         $response = $response->withAddedHeader('Link', '</assets/images/home_bg.jpg>; rel=preload; as=image');
         $response = $response->withAddedHeader('Link', '</assets/js/build.min.js>; rel=preload; as=script');

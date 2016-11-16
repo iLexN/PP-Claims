@@ -3,6 +3,7 @@
 namespace PP\WebPortal\Module\Helper;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
+use Mobile_Detect;
 
 /**
  * CSRF helper.
@@ -21,5 +22,20 @@ final class Helper extends AbstractContainer
         }
 
         return $msg;
+    }
+
+    public function isMobile()
+    {
+        return $this->mobileDetect->isMobile() && !$this->mobileDetect->isTablet();
+    }
+
+    public function isTablet()
+    {
+        return $this->mobileDetect->isTablet();
+    }
+
+    public function isPC()
+    {
+        return !$this->mobileDetect->isMobile() && !$this->mobileDetect->isTablet();
     }
 }
