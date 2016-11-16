@@ -3,7 +3,6 @@
 namespace PP\WebPortal\Module\Helper;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
-use Mobile_Detect;
 
 /**
  * CSRF helper.
