@@ -90,8 +90,5 @@
 
 
 {% block jsBottom %}
-    <script>
-        csrf.setNameKey('{{ token.name }}');
-        csrf.setValueKey('{{ token.value }}');
-    </script>
+    {% include 'include/components/csrf.twig' %}
 {% endblock %}

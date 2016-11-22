@@ -22,7 +22,6 @@ final class Username extends AbstractContainer
         $apiResponse = $this->httpClient->request('GET', 'check-username/'.$request->getQueryParam('username'));
         $result = $this->httpHelper->verifyResponse($apiResponse);
 
-        //return $response->write(json_encode($result['data']));
         return $response->withJson($result['data']);
     }
 }

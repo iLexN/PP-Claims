@@ -20,12 +20,10 @@ final class ForgotSetPassword extends AbstractContainer
         $data = $request->getParsedBody();
 
         if (!$this->userModule->isUserExistByToken($data['token'])) {
-            //return $response->write(json_encode(['errors' => ['title' => $this->langText['forgotSetPasswordExpire']]]));
             return $response->withJson(['errors' => ['title' => $this->langText['forgotSetPasswordExpire']]]);
         }
 
         if ($msg = $this->helper->isPasswordInValid($data['forgot_new_password'], $data['forgot_new_password2'])) {
-            //return $response->write(json_encode(['errors' => ['title' => $msg]]));
             return $response->withJson(['errors' => ['title' => $msg]]);
         }
 
@@ -35,7 +33,6 @@ final class ForgotSetPassword extends AbstractContainer
             $this->loginModule->setLogined(['id' => $result['data']['ppmid']]);
         }
 
-        //return $response->write(json_encode($this->httpHelper->result));
         return $response->withJson($this->httpHelper->result);
     }
 }
