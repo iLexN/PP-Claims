@@ -18,7 +18,8 @@ final class UserVerify extends AbstractContainer
             $this->loginModule->setSignUpID($data['ppmid']);
         }
 
-        return $response->write(json_encode($this->httpHelper->result));
+        //return $response->write(json_encode($this->httpHelper->result));
+        return $response->withJson($this->httpHelper->result);
     }
 
     private function processData($data)

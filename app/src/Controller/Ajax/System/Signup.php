@@ -34,6 +34,7 @@ final class Signup extends AbstractContainer
             $this->loginModule->setLogined(['id' => $this->loginModule->getSignUpID()]);
         }
 
-        return $response->write(json_encode($this->httpHelper->result));
+        //return $response->write(json_encode($this->httpHelper->result));
+        return $response->withJson($this->httpHelper->result);
     }
 }

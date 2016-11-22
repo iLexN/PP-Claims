@@ -18,6 +18,7 @@ final class Login extends AbstractContainer
             $this->logger->info('login error', $this->httpHelper->getErrorMessages());
         }
 
-        return $response->write(json_encode($this->httpHelper->result));
+        //return $response->write(json_encode($this->httpHelper->result));
+        return $response->withJson($this->httpHelper->result);
     }
 }

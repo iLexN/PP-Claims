@@ -14,6 +14,7 @@ final class ForgotPassword extends AbstractContainer
 
         $this->userModule->userForgotPassword($username);
 
-        return $response->write(json_encode($this->httpHelper->result));
+        //return $response->write(json_encode($this->httpHelper->result));
+        return $response->withJson($this->httpHelper->result);
     }
 }
