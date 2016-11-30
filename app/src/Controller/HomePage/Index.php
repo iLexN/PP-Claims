@@ -17,6 +17,18 @@ final class Index extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
+        if ( !isset($_SESSION['h2Push']) ){
+            $response = $this->addH2ServerPush($response);
+            $_SESSION['h2Push'] = true;
+        }
+
+        return $this->view->render($response, 'page/homepage.twig', [
+            'token' => $this->csrfHelper->getToken($request),
+        ]);
+    }
+
+    private function addH2ServerPush($response)
+    {
         if ($this->helper->isMobile()) {
             $response = $response->withAddedHeader('Link', '</assets/css/mobile.min.css>; rel=preload; as=stylesheet');
         } else {
@@ -26,9 +38,6 @@ final class Index extends AbstractContainer
         $response = $response->withAddedHeader('Link', '</assets/images/home_bg.jpg>; rel=preload; as=image');
         $response = $response->withAddedHeader('Link', '</assets/js/build.min.js>; rel=preload; as=script');
         $response = $response->withAddedHeader('Link', '</assets/js/module.js>; rel=preload; as=script');
-
-        return $this->view->render($response, 'page/homepage.twig', [
-            'token' => $this->csrfHelper->getToken($request),
-        ]);
+        return $response;
     }
 }
