@@ -38,7 +38,7 @@ final class Index extends AbstractContainer
         $response = $response->withAddedHeader('Link', '</assets/images/home_bg.jpg>; rel=preload; as=image');
         $response = $response->withAddedHeader('Link', '</assets/js/build.min.js>; rel=preload; as=script');
         $response = $response->withAddedHeader('Link', '</assets/js/module.js>; rel=preload; as=script');
-        
+
         return $response;
     }
 }
