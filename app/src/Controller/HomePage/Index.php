@@ -17,7 +17,7 @@ final class Index extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        if ( !isset($_SESSION['h2Push']) ){
+        if (!isset($_SESSION['h2Push'])) {
             $response = $this->addH2ServerPush($response);
             $_SESSION['h2Push'] = true;
         }
