@@ -20,6 +20,9 @@
         "tedivm/stash": "0.14.*",
         "mobiledetect/mobiledetectlib":"2.8.24"
     },
+    "require-dev" :{
+        "facebook/webdriver": "1.2.0"
+    },
     "autoload": {
         "psr-4": {
             "PP\\WebPortal\\": "app/src"
