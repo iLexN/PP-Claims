@@ -1,4 +1,10 @@
 #### [Current]
+ * [cc46c63](../../commit/cc46c63) - __(2016-12-05 12:32:44 +0800)__ Merge origin/master
+ * [5b56823](../../commit/5b56823) - __(2016-12-05 12:29:49 +0800)__ Merge pull request  [#1](../../issues/1)8 from iLexN/analysis-qMw7dv
+ * [fb48abd](../../commit/fb48abd) - __(2016-12-05 04:29:41 +0000)__ Apply fixes from StyleCI
+ * [f1a47b8](../../commit/f1a47b8) - __(2016-12-05 12:28:18 +0800)__ update browser test
+ * [44f957d](../../commit/44f957d) - __(2016-12-05 12:13:55 +0800)__ package version update : monolog
+ * [437e8be](../../commit/437e8be) - __(2016-12-05 11:19:48 +0800)__ add change log
  * [3b8f180](../../commit/3b8f180) - __(2016-12-05 11:17:23 +0800)__ add dev package
 
 #### [0.0.1]
