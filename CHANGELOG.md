@@ -1,4 +1,6 @@
 #### [Current]
+ * [353ff6c](../../commit/353ff6c) - __(2016-12-05 16:17:04 +0800)__ remove old backup file in template
+ * [f4a1ef6](../../commit/f4a1ef6) - __(2016-12-05 12:34:46 +0800)__ change log
  * [cc46c63](../../commit/cc46c63) - __(2016-12-05 12:32:44 +0800)__ Merge origin/master
  * [5b56823](../../commit/5b56823) - __(2016-12-05 12:29:49 +0800)__ Merge pull request  [#1](../../issues/1)8 from iLexN/analysis-qMw7dv
  * [fb48abd](../../commit/fb48abd) - __(2016-12-05 04:29:41 +0000)__ Apply fixes from StyleCI
