@@ -21,7 +21,7 @@ class MainPagePcTest extends \BaseTestCase
     {
         $this->login();
 
-        $this->assertEquals($this->url . 'main', $this->webDriver->getCurrentURL());
+        $this->assertEquals($this->url.'main', $this->webDriver->getCurrentURL());
         $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main.jpg');
 
         $div = $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/div[2]/div/div/div[2]/div'));

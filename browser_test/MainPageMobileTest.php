@@ -20,17 +20,17 @@ class MainPageMobileTest extends \BaseTestCase
     public function testLoginl()
     {
         $this->login();
-        $this->assertEquals($this->url . 'main', $this->webDriver->getCurrentURL());
+        $this->assertEquals($this->url.'main', $this->webDriver->getCurrentURL());
         $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main.jpg');
 
         $slideNav = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='slide-out']"));
         $this->assertFalse($slideNav->isDisplayed());
         //nav
-        $this->webDriver->findElement(WebDriverBy::xpath("html/body/div[1]/div[1]/header/div[2]/a/i"))->click();
+        $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/header/div[2]/a/i'))->click();
         $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/slide.jpg');
         $this->assertTrue($slideNav->isDisplayed());
 
-        $this->webDriver->findElement(WebDriverBy::className("drag-target"))->click();
+        $this->webDriver->findElement(WebDriverBy::className('drag-target'))->click();
         $this->assertFalse($slideNav->isDisplayed());
     }
 
@@ -40,7 +40,7 @@ class MainPageMobileTest extends \BaseTestCase
 
         $slideNav = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='slide-out']"));
         //nav
-        $this->webDriver->findElement(WebDriverBy::xpath("html/body/div[1]/div[1]/header/div[2]/a/i"))->click();
+        $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/header/div[2]/a/i'))->click();
 
         $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='slide-out']/a[5]"))->click();
         $this->assertEquals($this->url, $this->webDriver->getCurrentURL());

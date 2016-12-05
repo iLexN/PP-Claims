@@ -1,4 +1,5 @@
 #### [Current]
+ * [df86782](../../commit/df86782) - __(2016-12-05 17:56:41 +0800)__ add browser test - main page
  * [353ff6c](../../commit/353ff6c) - __(2016-12-05 16:17:04 +0800)__ remove old backup file in template
  * [f4a1ef6](../../commit/f4a1ef6) - __(2016-12-05 12:34:46 +0800)__ change log
  * [cc46c63](../../commit/cc46c63) - __(2016-12-05 12:32:44 +0800)__ Merge origin/master
