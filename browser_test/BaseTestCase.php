@@ -50,6 +50,11 @@ class BaseTestCase extends TestCase
         $this->webDriver = RemoteWebDriver::create('http://localhost:9515', $caps);
     }
 
+    public function tearDown()
+    {
+        $this->webDriver->close();
+    }
+
 
     public function waitJquery()
     {

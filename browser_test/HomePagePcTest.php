@@ -18,11 +18,6 @@ class HomePagePcTest extends \BaseTestCase
         $this->desktopSetUp();
     }
 
-    public function tearDown()
-    {
-        $this->webDriver->close();
-    }
-
     public function testLoginFail()
     {
         $this->webDriver->get($this->url);

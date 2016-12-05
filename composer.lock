@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "45208ac48ccabcdfb1eb1835bc8df6de",
-    "content-hash": "d0d3663742858818e763509d2d3cd7c2",
+    "hash": "c80dfca03fed587cfb65a9df945d0912",
+    "content-hash": "d984423c5969ace66bcd9d0cafc097ce",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1196,7 +1196,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.2.0-RC2",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -1246,9 +1246,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "symfony/process": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

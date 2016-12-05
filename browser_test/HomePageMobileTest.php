@@ -18,11 +18,6 @@ class HomePageMobileTest extends \BaseTestCase
         $this->mobileSetUp();
     }
 
-    public function tearDown()
-    {
-        $this->webDriver->close();
-    }
-
     public function testLoginFail()
     {
         $this->webDriver->get($this->url);
