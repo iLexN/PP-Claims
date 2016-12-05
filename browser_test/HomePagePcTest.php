@@ -2,17 +2,16 @@
 
 use Facebook\WebDriver\WebDriverBy;
 
-include_once (__DIR__ . '/../vendor/autoload.php');
-include_once (__DIR__ . '/BaseTestCase.php');
+include_once __DIR__.'/../vendor/autoload.php';
+include_once __DIR__.'/BaseTestCase.php';
 
 /**
- * Description of newSeleneseTest
+ * Description of newSeleneseTest.
  *
  * @author user
  */
 class HomePagePcTest extends \BaseTestCase
 {
-
     protected function setUp()
     {
         $this->desktopSetUp();
@@ -21,24 +20,23 @@ class HomePagePcTest extends \BaseTestCase
     public function testLoginFail()
     {
         $this->webDriver->get($this->url);
-        $this->webDriver->takeScreenshot(__Dir__ . '/screen/'.$this->type.'/home.jpg');
+        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home.jpg');
 
         $this->webDriver->findElement(WebDriverBy::id('user_name'))->sendKeys('alex1');
         $this->webDriver->findElement(WebDriverBy::id('password'))->sendKeys('123Psadfs');
 
-        $this->webDriver->findElement(WebDriverBy::xpath("html/body/div[1]/div[1]/div[3]/div/div/div[2]/div/form/div[4]/button"))->click();
+        $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/div[3]/div/div/div[2]/div/form/div[4]/button'))->click();
 
         $this->waitJquery();
         $this->assertContains('Login Fail', $this->webDriver->getPageSource());
     }
 
-
     public function testForgotPassword()
     {
         $this->webDriver->get($this->url);
-        $this->webDriver->findElement(WebDriverBy::xpath("html/body/div[1]/div[1]/div[3]/div/div/div[2]/div/div[1]/a"))
+        $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/div[3]/div/div/div[2]/div/div[1]/a'))
                 ->click();
-        $this->webDriver->takeScreenshot(__Dir__ . '/screen/'.$this->type.'/home-forgotPassword.jpg');
+        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotPassword.jpg');
 
         $box = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='forgotpassword_username']"))
                 ->isDisplayed();
@@ -67,7 +65,7 @@ class HomePagePcTest extends \BaseTestCase
 
         $successBox = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='forgotPassword']/div/div/div[2]"));
         $this->assertTrue($successBox->isDisplayed());
-        $this->webDriver->takeScreenshot(__Dir__ . '/screen/'.$this->type.'/home-forgotPassword-success.jpg');
+        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotPassword-success.jpg');
 
         $closeBtn = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='forgotPassword']/div/div/div[2]/button"));
         $closeBtn->click();
@@ -87,13 +85,12 @@ class HomePagePcTest extends \BaseTestCase
         $btn = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='forogtUsername']/div/div/form/div[6]/button"));
         $failMsg = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='forogtUsername']/div/div/form/div[2]"));
 
-        $this->webDriver->findElement(WebDriverBy::xpath("html/body/div[1]/div[1]/div[3]/div/div/div[2]/div/div[2]/a"))
+        $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/div[3]/div/div/div[2]/div/div[2]/a'))
                 ->click();
-        $this->webDriver->takeScreenshot(__Dir__ . '/screen/'.$this->type.'/home-forgotUsername.jpg');
+        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotUsername.jpg');
 
         $this->assertTrue($box->isDisplayed());
         $this->assertFalse($failMsg->isDisplayed());
-
 
         $btn->click();
         $this->waitJquery();
@@ -115,12 +112,11 @@ class HomePagePcTest extends \BaseTestCase
         $this->assertFalse($failMsg->isDisplayed());
 
         $success = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='forogtUsername']/div/div/div[2]"));
-        $this->webDriver->takeScreenshot(__Dir__ . '/screen/'.$this->type.'/home-forgotUsername-success.jpg');
+        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotUsername-success.jpg');
 
         $this->assertTrue($success->isDisplayed());
         $closeBtn = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='forogtUsername']/div/div/div[2]/button"));
         $closeBtn->click();
         $this->assertFalse($box->isDisplayed());
     }
-
 }

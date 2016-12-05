@@ -60,7 +60,6 @@ return [
     'userVerify_desc'  => 'Please provide long text Please provide long text Please provide',
     'userSignup_desc'  => 'password At least one Case Diff letter , At least one number , Be at least 8 characters',
 
-
     //system
     'csrfError'               => 'Please try again',
     'passwordSameError'       => 'password need same',

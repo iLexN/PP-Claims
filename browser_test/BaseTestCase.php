@@ -1,18 +1,17 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
+use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Facebook\WebDriver\Chrome\ChromeOptions;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Description of newSeleneseTest
+ * Description of newSeleneseTest.
  *
  * @author user
  */
 class BaseTestCase extends TestCase
 {
-
     /**
      * @var \RemoteWebDriver
      */
@@ -22,7 +21,7 @@ class BaseTestCase extends TestCase
 
     protected $type = 'mobile';
     protected $timeout = 10;
-    protected $interval  = 200;
+    protected $interval = 200;
 
     public function mobileSetUp()
     {
@@ -38,7 +37,8 @@ class BaseTestCase extends TestCase
         $this->webDriver = RemoteWebDriver::create('http://localhost:9515', $caps);
     }
 
-    public function desktopSetUp(){
+    public function desktopSetUp()
+    {
         $pc = [
             'start-maximized',
         ];
@@ -55,7 +55,6 @@ class BaseTestCase extends TestCase
         $this->webDriver->close();
     }
 
-
     public function waitJquery()
     {
         $this->webDriver->wait($this->timeout, $this->interval)->until(function () {
@@ -63,6 +62,7 @@ class BaseTestCase extends TestCase
             // Prototype: "Ajax.activeRequestCount"
             // Dojo: "dojo.io.XMLHTTPTransport.inFlight.length"
             $condition = 'return ($.active == 0);';
+
             return $this->webDriver->executeScript($condition);
         });
     }
