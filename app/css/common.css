@@ -1,3 +1,5 @@
+@import url("../../../httpdocs/components/materialize/dist/css/materialize.min.css");
+
 html{box-sizing: border-box;font-size:16px;font-family: 'Open Sans'}
 /*--------------------------------------------------------------
 Layout structure

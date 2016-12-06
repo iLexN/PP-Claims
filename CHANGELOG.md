@@ -1,4 +1,6 @@
 #### [Current]
+ * [d06d679](../../commit/d06d679) - __(2016-12-06 10:36:45 +0800)__ add . file
+ * [ec79a21](../../commit/ec79a21) - __(2016-12-05 18:05:30 +0800)__ cs fix
  * [df86782](../../commit/df86782) - __(2016-12-05 17:56:41 +0800)__ add browser test - main page
  * [353ff6c](../../commit/353ff6c) - __(2016-12-05 16:17:04 +0800)__ remove old backup file in template
  * [f4a1ef6](../../commit/f4a1ef6) - __(2016-12-05 12:34:46 +0800)__ change log

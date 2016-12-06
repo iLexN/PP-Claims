@@ -34,7 +34,7 @@ final class Index extends AbstractContainer
         } else {
             $response = $response->withAddedHeader('Link', '</assets/css/pc.min.css>; rel=preload; as=stylesheet');
         }
-        $response = $response->withAddedHeader('Link', '</components/materialize/dist/css/materialize.min.css>; rel=preload; as=stylesheet');
+        //$response = $response->withAddedHeader('Link', '</components/materialize/dist/css/materialize.min.css>; rel=preload; as=stylesheet');
         $response = $response->withAddedHeader('Link', '</assets/images/home_bg.jpg>; rel=preload; as=image');
         $response = $response->withAddedHeader('Link', '</assets/js/build.min.js>; rel=preload; as=script');
         $response = $response->withAddedHeader('Link', '</assets/js/module.js>; rel=preload; as=script');
