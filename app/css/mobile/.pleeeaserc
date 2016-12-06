@@ -1,0 +1,6 @@
+{
+  "in": ["../common.css","mobile.css"],
+  "out": "../../../httpdocs/assets/css/mobile.min.css",
+  "minifier": false
+}
+

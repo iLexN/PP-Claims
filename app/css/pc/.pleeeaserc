@@ -1,0 +1,6 @@
+{
+  "in": ["../common.css","pc.css"],
+  "out": "../../../httpdocs/assets/css/pc.min.css",
+  "minifier": false
+}
+
