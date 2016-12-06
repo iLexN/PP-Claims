@@ -27,12 +27,18 @@ class BaseTestCase extends TestCase
     public function mobileSetUp()
     {
         $mobile = [
-            '--user-agent=Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2725.0 Mobile Safari/537.36',
-            '--window-size=375,667',
-            '--hide-scrollbars',
+            //'--user-agent=Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2725.0 Mobile Safari/537.36',
+            '--window-size=450,900',
+            //'--hide-scrollbars',
         ];
         $options = new ChromeOptions();
         $options->addArguments($mobile);
+
+        //may need later .... set download dir
+        //$prefs = array('download.default_directory' => 'c:/temp/');
+        //$options->setExperimentalOption('prefs', $prefs);
+
+        $options->setExperimentalOption('mobileEmulation', ['deviceName' => 'Apple iPhone 6']);
         $caps = DesiredCapabilities::chrome();
         $caps->setCapability(ChromeOptions::CAPABILITY, $options);
         $this->webDriver = RemoteWebDriver::create('http://localhost:9515', $caps);

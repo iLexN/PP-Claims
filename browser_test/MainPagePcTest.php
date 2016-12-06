@@ -42,6 +42,9 @@ class MainPagePcTest extends \BaseTestCase
         $div->click();
 
         $this->assertTrue($dropDown->isDisplayed());
+
+        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main-logout-btn.jpg');
+
         $dropDown->click();
 
         $this->assertEquals($this->url, $this->webDriver->getCurrentURL());
