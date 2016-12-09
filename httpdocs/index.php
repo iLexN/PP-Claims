@@ -1,5 +1,7 @@
 <?php
 
+$appVersion = '0.0.2';
+
 session_cache_limiter('');
 session_name('PP-Claims');
 session_start();
@@ -12,6 +14,7 @@ date_default_timezone_set('Asia/Hong_Kong');
 // get config
 $conf = new Noodlehaus\Config(__DIR__.'/../config');
 $settings = $conf->all() ?: [];
+$settings['appVersion'] = $appVersion;
 
 // app init
 $app = new \Slim\App($settings);
