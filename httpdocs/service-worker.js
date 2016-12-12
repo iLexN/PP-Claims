@@ -24,6 +24,7 @@
     global.toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {origin: 'https://fonts.gstatic.com'});
     global.toolbox.router.get('/(.*)', global.toolbox.cacheFirst, {origin: 'https://fonts.googleapis.com'});
     
+    global.toolbox.router.post('/(.*)', global.toolbox.networkOnly);
 
     // By default, all requests that don't match our custom handler will use the toolbox.networkFirst
     // cache strategy, and their responses will be stored in the default cache.
