@@ -1,4 +1,9 @@
 #### [Current]
+ * [2532719](../../commit/2532719) - __(2016-12-12 15:24:58 +0800)__ landscape
+ * [83559d8](../../commit/83559d8) - __(2016-12-09 15:18:07 +0800)__ add {{ appVersion }} for css, js versioning for no cache
+ * [f03f974](../../commit/f03f974) - __(2016-12-06 17:56:44 +0800)__ css update
+ * [019ef49](../../commit/019ef49) - __(2016-12-06 17:56:25 +0800)__ browser test add logout btn screen
+ * [0a611f7](../../commit/0a611f7) - __(2016-12-06 12:41:17 +0800)__ PageSpeed Insights imporve to 85
  * [d06d679](../../commit/d06d679) - __(2016-12-06 10:36:45 +0800)__ add . file
  * [ec79a21](../../commit/ec79a21) - __(2016-12-05 18:05:30 +0800)__ cs fix
  * [df86782](../../commit/df86782) - __(2016-12-05 17:56:41 +0800)__ add browser test - main page

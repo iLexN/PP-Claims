@@ -89,11 +89,9 @@ isOnLine = (function () {
     init(); 
     return {
         'check': check,
-        'ui': ui,
-        'init': init
+        'ui': ui
     };
 })();
-//isOnLine.init();
 
 var csrf = (function () {
     var nameKey = '';
@@ -139,14 +137,15 @@ $(document).ajaxStart(function () {
 });
 
 var loadingBox = (function () {
+    var $m = $('#loadingBox');
     function open() {
-        $('#loadingBox').modal('open');
+        $m.modal('open');
     }
     function close() {
-        $('#loadingBox').modal('close');
+        $m.modal('close');
     }
     function init(){
-        $('#loadingBox').modal({
+        $m.modal({
             dismissible: false,
             opacity: .4, 
             starting_top: '30%',
@@ -205,11 +204,15 @@ var loadingBox = (function () {
         $btn.on({
             'click.login': submit
         });
+        $form.on({
+            submit : false
+        });
     }
     init();
 })();
 //forgot password
 (function () {
+    var $m = $("#forgotPassword");
     var $form = $.jshook('forgotPasswordForm');
     var $btn = $.jshook('forgotpasswordBtn');
     var $msg = $.jshook('ForgotPasswordMsg');
@@ -239,7 +242,6 @@ var loadingBox = (function () {
             }
             //fail
             ajaxEnd(data.errors.title);
-            //$("#forgotpassword_username").addClass('invalid');
         }).fail(function (jqXHR, textStatus, errorThrown) {
             ajaxEnd(textStatus);
         });
@@ -247,7 +249,6 @@ var loadingBox = (function () {
     function ajaxStart() {
         $btn.prop("disabled", true);
         $msg.html('').addClass('hide');
-        //$("#forgotpassword_username").removeClass('invalid');
     }
     function ajaxEnd(msg) {
         $msg.html(msg).removeClass('hide');
@@ -255,10 +256,10 @@ var loadingBox = (function () {
         $btn.prop("disabled", false);
     }
     function modelClose(){
-        $('#forgotPassword').modal('close');
+        $m.modal('close');
     }
     function init(){
-        $('#forgotPassword').modal({
+        $m.modal({
             dismissible: true,
             opacity: .4,
             starting_top: '10%',
@@ -268,6 +269,9 @@ var loadingBox = (function () {
         });
         $btn.on({
             'click.forgotpassword': submit
+        });
+        $form.on({
+            submit : false
         });
         $closeBtn.on({
             click : modelClose
@@ -335,6 +339,9 @@ var loadingBox = (function () {
         });
         $btn.on({
             'click.forgotusername': submit
+        });
+        $form.on({
+            submit : false
         });
         $closeBtn.on({
             click : modelClose
@@ -438,6 +445,12 @@ var loadingBox = (function () {
         $btnSignup.on({
             'click.signup': submitSignUp
         });
+        $form.on({
+            submit : false
+        });
+        $formSignup.on({
+            submit : false
+        });
     }
     init();
 })();
@@ -485,6 +498,9 @@ var loadingBox = (function () {
     function init(){
         $btn.on({
             'click.setforgotpass': submit
+        });
+        $form.on({
+            submit : false
         });
     }
     init();
