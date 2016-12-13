@@ -1,6 +1,6 @@
 <?php
 
-use Facebook\WebDriver\WebDriverBy;
+//use Facebook\WebDriver\WebDriverBy;
 
 include_once __DIR__.'/../vendor/autoload.php';
 include_once __DIR__.'/BaseTestCase.php';
