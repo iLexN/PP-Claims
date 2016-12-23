@@ -41,6 +41,9 @@ return [
     'month'            => 'Month',
     'day'              => 'Day',
 
+    //form error
+    'email_erorr'              => 'invalid email',
+
     //form btn
     'loginBtn'  => 'Login',
     'submitBtn' => 'Submit',

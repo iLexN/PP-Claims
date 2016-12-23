@@ -1,6 +1,6 @@
-{% macro MD_input(label, type , name, value  ) %}
-    <input placeholder="" type="{{ type }}" name="{{ name }}" id="{{ name }}" class="" value="{{ value }}">
-    <label for="{{ name }}">{{ label }}</label>
+{% macro MD_input(label, type , name, value , errorMsg = false  ) %}
+    <input placeholder="" type="{{ type }}" name="{{ name }}" id="{{ name }}" class="validate" value="{{ value }}">
+    <label for="{{ name }}" {% if errorMsg %}data-error="{{ errorMsg }}"{% endif %} >{{ label }}</label>
 {% endmacro %}
 
 {% macro MD_button_1(jshookname,label,type) %}

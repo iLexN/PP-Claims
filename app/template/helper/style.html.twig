@@ -39,6 +39,9 @@
         <div class="input-field col s3" >
             {{ forms.MD_input(langText.username,'text','user_name') }}
         </div>
+        <div class="input-field col s3" >
+            {{ forms.MD_input('click field to show invlide','email','email','not a email',langText.email_erorr) }}
+        </div>
     </div>
         <code>add class to form .form-style-1<br/>
         forms.MD_input('label','type','id','value')</code>

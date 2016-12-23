@@ -103,7 +103,7 @@ include components
 .home_model-content_p{
     font-size:0.875rem;
     color:#555;
-    padding-bottom: 1rem;
+    padding-bottom: 1rem
 }
 
 /*--------------------------------------------------------------
@@ -114,6 +114,21 @@ general
 padding:1rem}
 
 /* form style*/
+.btn{ text-transform: none; font-weight: 600 }
+/** style1 **/
+.form-style-1 .input-field input[type="text"].valid,
+.form-style-1 .input-field input[type="password"].valid,
+.form-style-1 .input-field input[type="email"].valid,
+.form-style-1 .input-field input[type="url"].valid,
+.form-style-1 .input-field input[type="time"].valid,
+.form-style-1 .input-field input[type="date"].valid,
+.form-style-1 .input-field input[type="datetime"].valid,
+.form-style-1 .input-field input[type="tel"].valid,
+.form-style-1 .input-field input[type="number"].valid,
+.form-style-1 .input-field input[type="search"].valid{
+     border-bottom: 1px solid #096190;
+     box-shadow: none;
+}
 .form-style-1 .input-field label {
      color: #096190;
 }
@@ -221,6 +236,19 @@ border-bottom: 1px solid #096190;
   opacity: 1;
 }
 /* form style*/
+.form-style-2 .input-field input[type="text"].valid,
+.form-style-2 .input-field input[type="password"].valid,
+.form-style-2 .input-field input[type="email"].valid,
+.form-style-2 .input-field input[type="url"].valid,
+.form-style-2 .input-field input[type="time"].valid,
+.form-style-2 .input-field input[type="date"].valid,
+.form-style-2 .input-field input[type="datetime"].valid,
+.form-style-2 .input-field input[type="tel"].valid,
+.form-style-2 .input-field input[type="number"].valid,
+.form-style-2 .input-field input[type="search"].valid{
+     border-bottom: 1px solid #a1a1a1;
+     box-shadow: none;
+}
 .form-style-2 .input-field label {
      color: #a1a1a1;
 }
