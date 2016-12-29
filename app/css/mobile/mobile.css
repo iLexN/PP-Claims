@@ -12,14 +12,23 @@ input:not([type]).validate+label, input[type=text].validate+label, input[type=pa
 Layout structure
 --------------------------------------------------------------*/
 header{
+    padding-top:0.5rem;
     position: fixed;
     width: 100%;
     top:0;
     z-index:100;
-    background-color: #3e2723;
+    background-color: #ececec;
 }
 .header_space{
-    height: 1.5rem;
+    height: 4rem;
+}
+.mobile_nav_icon{
+    display:block;
+    margin-top: 1rem;
+}
+.mobile_nav_icon i{
+    color: #039be5;
+    font-size: 2rem;
 }
 
 /*--------------------------------------------------------------
@@ -41,14 +50,19 @@ page style
 .view span{
     transform: translateY(-1rem);
 }
+.view1 img{
+    margin-right:0.5rem;
+}
 .view3{
     opacity: 1;
+    padding-left:1rem;
+    padding-right:1rem;
     transform: scale(1.1);
-    transform: translateY(-3.5rem);
+    transform: translateY(-3.2rem);
 }
 .view3 hr{
     opacity: 1;
-    width: 80%;
+    width: 100%;
 }
 
 .home_model { width:90%;max-height: 80%}

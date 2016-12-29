@@ -37,9 +37,11 @@ return [
     'email'            => 'Email',
     'phone'            => 'Phone',
     'ppmid_code'       => 'Provided Code',
+    'dob'              => 'Date of Birth',
     'year'             => 'Year',
     'month'            => 'Month',
     'day'              => 'Day',
+    'date'             => 'Date',
 
     //form error
     'email_erorr'              => 'invalid email',

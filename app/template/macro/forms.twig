@@ -13,9 +13,10 @@
 {% endmacro %}
 
 {% macro MD_select_year(label, name ) %}
+    {% set y = "now"|date("Y") %}
     <label for="{{ name }}">{{ label }}</label>
     <select name="{{ name }}" id="{{ name }}" class="browser-default">
-        {% for i in 1867..2017 %}
+        {% for i in 1920..y %}
             <option value="{{ i }}">{{ i }}</option>
         {% endfor %}
     </select>

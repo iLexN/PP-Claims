@@ -14,6 +14,9 @@
             <div class="input-field col s12 m12 l10 offset-l1">
                 {{ forms.MD_input(langText.ppmid_code,'text','ppmid') }}
             </div>
+            <div class="col s12 m12 l10 offset-l1">
+                <span style="color:#a1a1a1;font-size:0.8rem">{{ langText.dob }}</span>
+            </div>
             <div class="col s12 m4 l4 offset-l1">
                 {{ forms.MD_select_year(langText.year,'year') }}
             </div>
@@ -21,7 +24,7 @@
                 {{ forms.MD_select_month(langText.month,'month') }}
             </div>
             <div class="col s12 m4 l3">
-                {{ forms.MD_select_day(langText.day,'day') }}
+                {{ forms.MD_select_day(langText.date,'day') }}
             </div>
             <div class="col s12 m12 l8 offset-l2 center-align" style="margin-top:1.2rem">
                 {{ forms.MD_button_2('userVerifyBtn formBtn',langText.submitBtn,'button' , 'send') }}

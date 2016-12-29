@@ -25,6 +25,8 @@ class Dev extends AbstractContainer
     private function minJS($docRoot)
     {
         $files = [];
+        $files[] = $docRoot.'/components/vue/dist/vue.min.js';
+        //$files[] = $docRoot.'/components/vue/dist/vue.js';
         $files[] = $docRoot.'/components/jquery/dist/jquery.min.js';
         $files[] = $docRoot.'/components/materialize/dist/js/materialize.min.js';
         $files[] = $docRoot.'/components/webfontloader/webfontloader.js';

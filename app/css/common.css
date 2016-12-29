@@ -1,6 +1,7 @@
 @import url("../../../httpdocs/components/materialize/dist/css/materialize.min.css");
 
 html{box-sizing: border-box;font-size:16px;font-family: 'Open Sans'}
+body{background-color: #ececec;}
 /*--------------------------------------------------------------
 Layout structure
 --------------------------------------------------------------*/
@@ -11,6 +12,11 @@ Layout structure
     width: 100%;
     max-width:1200px;
     margin: 0 auto;
+}
+main{
+    background-color:#fff;
+    padding: 0 0 1rem;
+    margin: 1.5rem 0 0;
 }
 
 /*--------------------------------------------------------------
@@ -56,8 +62,14 @@ include components
     top:0;left:0px;font-size: 1.5rem;
     text-align: center;
     will-change: transform;
+    color : #fff;
+    font-weight: l00;
+    font-size:2.25rem;
+    font-weight: 100;
 }
 .view3{
+    font-size:0.875rem;
+    color: #555;
     position: absolute;
     width:100%;
     height:100%;
@@ -69,7 +81,7 @@ include components
     will-change: transform;
 }
 .view3 hr{
-    border-color: red;
+    border-color: #fff;
     border-image: none;
     border-style: solid none none;
     border-width: 1px medium medium;

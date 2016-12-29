@@ -31,12 +31,33 @@ include components
 header {
     padding-top:1.25rem;
 }
-.header_nav_bar{
-    padding:0 1.2rem;
-    font-size: 1.125rem;
+.header_nav{
+    margin-top:1rem;
 }
+.header_nav_bar{
+    padding:0 1rem;
+    
+}
+.header_nav_bar a{
+    font-size: 1.125rem;
+    color : #363636;
+}
+.header_nav_bar a.header_nav_bar_active{
+    color : #0292e4;
+}
+.hearder_nav_bar_username{
+    text-decoration: underline;
+}
+.header_nav_bar .dropdown-content {
+    background-color: #555;
+}
+.header_nav_bar .dropdown-content li > a, .dropdown-content li > span {
+color: #fff;
+text-align: center;
+}
+
 .footer_space{
-    height:6.25rem;
+    height:4.0625rem;
 }
 .general_footer_div{
     position: absolute;
@@ -48,13 +69,16 @@ header {
 .view{
     height: 10rem;
 }
+.view1 img{
+    margin-right:1rem;
+}
 .view:hover{
     transition: all 0.2s linear;
     background: #40c4ff; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(-45deg, #2398da, #a4e3f3); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(-45deg, #2398da, #a4e3f3); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(left top, #2398da, #a4e3f3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #2398da, #a4e3f3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #2398da, #a4e3f3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #2398da, #a4e3f3); /* Standard syntax */
 }
 .view:hover span{
     transition: all 0.2s linear;

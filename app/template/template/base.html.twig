@@ -26,9 +26,10 @@
 
             <script src="{{ base_url() }}/assets/js/build.min.js?{{ appVersion }}" type="text/javascript"></script>
             <script>
+                Vue.config.devtools = true;
                 WebFont.load({
                     google: {
-                        families: ['Open Sans', 'Material Icons']
+                        families: ['Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i', 'Material Icons']
                     }
                 });
             </script>

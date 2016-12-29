@@ -1,8 +1,8 @@
 {# empty Twig template #}
-{% macro main_block_effect( title , desc , link ) %}
+{% macro main_block_effect( title , desc , img , link ) %}
     <div class="view hoverable">  
         <div class="view3"><hr>{{ desc }}</div>
-        <a href="{{ link }}" class="view1 valign-wrapper"><span class="valign" style="width:100%">{{ title }}</span></a>
+        <a href="{{ link }}" class="view1 valign-wrapper"><span class="valign" style="width:100%"><img src="{{ img }}">{{ title }}</span></a>
     </div>
 {% endmacro %}
 

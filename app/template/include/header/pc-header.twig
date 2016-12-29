@@ -1,12 +1,12 @@
-<header class="row">
-    <div class="col s12 m3 l3" ><img src="/assets/images/logo.png" class="responsive-img"></div>
+<header>
+    <div><img src="/assets/images/logo.png">
     {% if isLoggin  %}
-    <div class="col s12 m9 l8 offset-l1">
-        <div class="right header_nav_bar"><a href="#">{{ langText.title_contact }}</a></div>
+    <div class="right header_nav">
+        <div class="right header_nav_bar"><a href="#" class="header_nav_bar_active">{{ langText.title_contact }}</a></div>
         <div class="right header_nav_bar"><a href="#">{{ langText.title_policy }}</a></div>
         <div class="right header_nav_bar"><a href="#">{{ langText.title_claims }}</a></div>
         <div class="right header_nav_bar"><a href="#">{{ langText.title_profile }}</a></div>
-        <div class="right header_nav_bar"><a class='dropdown-button' data-beloworigin="true" href='#' data-activates='dropdown1'>{{ User.fullName() }}</a></div>
+        <div class="right header_nav_bar"><a class='dropdown-button header_nav_bar_active' data-beloworigin="true" href='#' data-activates='dropdown1'><img src="assets/images/icon_user.png" style="margin-right:0.5rem;"><span class="hearder_nav_bar_username">{{ User.fullName() }}</span></a></div>
     </div>
     {% endif %}
 </header>
