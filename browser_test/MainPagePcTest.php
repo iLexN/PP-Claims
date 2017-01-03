@@ -24,7 +24,7 @@ class MainPagePcTest extends \BaseTestCase
         $this->assertEquals($this->url.'main', $this->webDriver->getCurrentURL());
         $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main.jpg');
 
-        $div = $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/div[2]/div/div/div[2]/div'));
+        $div = $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/main/div/div/div[1]/div[2]/div/a'));
 
         $this->webDriver->action()->moveToElement($div)->perform();
         sleep(1);
@@ -38,7 +38,7 @@ class MainPagePcTest extends \BaseTestCase
         $dropDown = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='dropdown1']/li/a"));
         $this->assertFalse($dropDown->isDisplayed());
 
-        $div = $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/header/div[2]/div[5]/a'));
+        $div = $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/header/div/div/div[5]/a/span'));
         $div->click();
 
         $this->assertTrue($dropDown->isDisplayed());

@@ -30,6 +30,9 @@ header{
     color: #039be5;
     font-size: 2rem;
 }
+.side-nav a.nav_active {
+    color : #0292e4;
+}
 
 /*--------------------------------------------------------------
 page style

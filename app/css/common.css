@@ -86,7 +86,7 @@ include components
     border-style: solid none none;
     border-width: 1px medium medium;
     height: 1px;
-    margin: 0 auto 0.2rem;
+    margin: 0 auto 0.5rem;
     width: 20%;
     opacity: 0;
     will-change: transform;

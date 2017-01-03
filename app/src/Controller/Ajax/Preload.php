@@ -20,7 +20,9 @@ final class Preload extends AbstractContainer
     public function __invoke(Request $request, Response $response, array $args)
     {
         // this will increase the api server loading
-        $this->policyModule->getPolices();
+        $p = $this->policyModule->getPolices();
+
+        print_r($p);
 
         return $response;
     }

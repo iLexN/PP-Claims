@@ -42,7 +42,7 @@ header {
     font-size: 1.125rem;
     color : #363636;
 }
-.header_nav_bar a.header_nav_bar_active{
+.header_nav_bar a.nav_active{
     color : #0292e4;
 }
 .hearder_nav_bar_username{
@@ -51,11 +51,13 @@ header {
 .header_nav_bar .dropdown-content {
     background-color: #555;
 }
+.header_nav_bar .dropdown-content li:hover{
+    background-color: #555;
+}
 .header_nav_bar .dropdown-content li > a, .dropdown-content li > span {
 color: #fff;
 text-align: center;
 }
-
 .footer_space{
     height:4.0625rem;
 }
@@ -96,4 +98,4 @@ text-align: center;
     width: 100%;
 }
 
-.home_model { width:50%;max-height: 80%}
+.home_model { width:55%;max-height: 80%}

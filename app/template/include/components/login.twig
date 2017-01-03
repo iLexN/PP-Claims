@@ -1,0 +1,19 @@
+<form data-jshook="loginForm" class="form-style-1">
+    <div class="input-field col s12">
+        {{ forms.MD_input(langText.username,'text','user_name') }}
+    </div>
+    <div class="input-field col s12" >
+        {{ forms.MD_input(langText.passowrd,'password','password') }}
+    </div>
+    <div data-jshook="loginMsg" class="col s12 m12 l12 hide errors_msg" >
+    </div>
+    <div class="col s12" >
+        {{ forms.MD_button_1('loginBtn formBtn',langText.loginBtn,'button') }}
+    </div>
+</form>
+<div class="input-field col s12">
+    <a href="#forgotPassword" class="alink_1">{{ langText.home_forgot_password_link }}</a>
+</div>
+<div class="input-field col s12">
+    <a href="#forogtUsername" class="alink_1">{{ langText.home_forgot_username_link }}</a>
+</div>
