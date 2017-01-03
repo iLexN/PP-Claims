@@ -17,8 +17,8 @@ final class CSRFHelper extends AbstractContainer
      */
     public function getToken(ServerRequestInterface $request)
     {
-        $nameKey = $this->c['csrf']->getTokenNameKey();
-        $valueKey = $this->c['csrf']->getTokenValueKey();
+        $nameKey = $this->csrf->getTokenNameKey();
+        $valueKey = $this->csrf->getTokenValueKey();
         $name = $request->getAttribute($nameKey);
         $value = $request->getAttribute($valueKey);
 

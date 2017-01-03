@@ -27,7 +27,7 @@ final class ForgotSetPassword extends AbstractContainer
             return $response->withJson(['errors' => ['title' => $msg]]);
         }
 
-        $result = $this->c['userModule']->postNewPassword($data['forgot_new_password'], $data['token']);
+        $result = $this->userModule->postForgotPassword($data['forgot_new_password'], $data['token']);
 
         if ($result) {
             $this->loginModule->setLogined(['id' => $result['data']['ppmid']]);

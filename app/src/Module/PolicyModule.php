@@ -22,14 +22,14 @@ final class PolicyModule extends AbstractContainer
         $user = $this->userModule->user;
 
         /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->c['pool']->getItem('User/'.$user['ppmid'].'/Policies');
+        $item = $this->pool->getItem('User/'.$user['ppmid'].'/Policies');
         $policies = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             $policies = $this->policyFactory($this->getPoliciesByAPI($user['ppmid']));
-            $this->c['pool']->save($item->set($policies));
+            $this->pool->save($item->set($policies));
         }
 
         return $policies;
@@ -44,9 +44,9 @@ final class PolicyModule extends AbstractContainer
      */
     private function getPoliciesByAPI($id)
     {
-        $response = $this->c['httpClient']->request('GET', 'user/'.$id.'/policy');
+        $response = $this->httpClient->request('GET', 'user/'.$id.'/policy');
 
-        $result = $this->c['httpHelper']->verifyResponse($response);
+        $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
     }

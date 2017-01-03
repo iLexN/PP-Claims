@@ -15,11 +15,11 @@ final class LoginModule extends AbstractContainer
      */
     public function isUserExist($input)
     {
-        $response = $this->c['httpClient']->request('POST', 'login', [
+        $response = $this->httpClient->request('POST', 'login', [
                 'form_params' => $input,
             ]);
 
-        return $this->c['httpHelper']->verifyResponse($response);
+        return $this->httpHelper->verifyResponse($response);
     }
 
     /**
@@ -29,7 +29,7 @@ final class LoginModule extends AbstractContainer
      */
     public function getUserByLoginSession()
     {
-        $this->userModule->getUser($_SESSION['userLogin']['id']);
+        $this->userModule->user = $this->userModule->getUser($_SESSION['userLogin']['id']);
     }
 
     /**
@@ -49,7 +49,6 @@ final class LoginModule extends AbstractContainer
      */
     public function setLogined($data)
     {
-        $this->logger->info('setlogin', $data);
         $_SESSION['userLogin'] = $data;
     }
 
@@ -66,5 +65,6 @@ final class LoginModule extends AbstractContainer
     public function setLogout()
     {
         unset($_SESSION['userLogin']);
+        session_destroy();
     }
 }

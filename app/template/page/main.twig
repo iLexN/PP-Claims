@@ -20,7 +20,15 @@
                 </div>
             </div>
             <div>
-                <div class="col s12"><img src="assets/images/banner_apps.jpg" class="responsive-img"></div>
+                <div class="col s12">
+                    <img 
+                    {% if is_mobile() %}
+                        src="assets/images/logo.png" 
+                    {% else %}
+                        src="assets/images/banner_apps.jpg" 
+                    {% endif %}
+                    class="responsive-img">
+                    </div>
             </div>
         </div>
     </div>

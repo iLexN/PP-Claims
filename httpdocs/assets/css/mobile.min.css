@@ -1824,6 +1824,8 @@ header{padding-top:8px;padding-top: 0.5rem;position: fixed;width: 100%;top: 0;z-
 .header_space{height:64px;height: 4rem}
 .mobile_nav_icon{display: block;margin-top:16px;margin-top: 1rem}
 .mobile_nav_icon i{color: #039be5;font-size:32px;font-size: 2rem}
+.side-nav{background-color: #ececec}
+.side-nav a{color: #363636}
 .side-nav a.nav_active{color: #0292e4}
 /*--------------------------------------------------------------
 page style

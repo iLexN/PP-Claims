@@ -8,6 +8,8 @@ use PP\WebPortal\Module\Model\UserModel;
 final class UserModule extends AbstractContainer
 {
     /**
+     * logined user
+     *
      * @var UserModel
      */
     public $user;
@@ -17,9 +19,9 @@ final class UserModule extends AbstractContainer
      */
     public function isUserExistByToken($token)
     {
-        $response = $this->c['httpClient']->request('GET', 'forgot-passowrd/'.$token);
+        $response = $this->httpClient->request('GET', 'forgot-passowrd/'.$token);
 
-        return $this->c['httpHelper']->verifyResponse($response);
+        return $this->httpHelper->verifyResponse($response);
     }
 
     /**
@@ -27,13 +29,13 @@ final class UserModule extends AbstractContainer
      */
     public function userForgotPassword($username)
     {
-        $response = $this->c['httpClient']->request('POST', 'forgot-passowrd', [
+        $response = $this->httpClient->request('POST', 'forgot-passowrd', [
                 'form_params' => [
                     'user_name' => $username,
                 ],
             ]);
 
-        return  $this->c['httpHelper']->verifyResponse($response);
+        return  $this->httpHelper->verifyResponse($response);
     }
 
     /**
@@ -41,11 +43,11 @@ final class UserModule extends AbstractContainer
      */
     public function userForgotUsername($data)
     {
-        $response = $this->c['httpClient']->request('POST', 'forgot-username', [
+        $response = $this->httpClient->request('POST', 'forgot-username', [
                 'form_params' => $data,
             ]);
 
-        return  $this->c['httpHelper']->verifyResponse($response);
+        return  $this->httpHelper->verifyResponse($response);
     }
 
     /**
@@ -53,11 +55,11 @@ final class UserModule extends AbstractContainer
      */
     public function userVerify($data)
     {
-        $response = $this->c['httpClient']->request('POST', 'verify', [
+        $response = $this->httpHelper->request('POST', 'verify', [
                 'form_params' => $data,
             ]);
 
-        return  $this->c['httpHelper']->verifyResponse($response);
+        return  $this->httpHelper->verifyResponse($response);
     }
 
     /**
@@ -65,31 +67,32 @@ final class UserModule extends AbstractContainer
      */
     public function userSign($data, $id)
     {
-        $response = $this->c['httpClient']->request('POST', 'user/'.$id.'/signup', [
+        $response = $this->httpClient->request('POST', 'user/'.$id.'/signup', [
                 'form_params' => $data,
             ]);
 
-        return  $this->c['httpHelper']->verifyResponse($response);
+        return  $this->httpHelper->verifyResponse($response);
     }
 
     /**
      * get User info from session.
      *
-     * @return array
+     * @return UserModel
      */
     public function getUser($id)
     {
-
         /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->c['pool']->getItem('User/'.$id.'/info');
-        $this->user = $item->get();
+        $item = $this->pool->getItem('User/'.$id.'/info');
+        $user = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $this->user = new UserModel($this->getUserByAPI($id));
-            $this->c['pool']->save($item->set($this->user));
+            $user = new UserModel($this->getUserByAPI($id));
+            $this->pool->save($item->set($user));
         }
+
+        return $user;
     }
 
     /**
@@ -101,7 +104,7 @@ final class UserModule extends AbstractContainer
      */
     private function getUserByAPI($id)
     {
-        $response = $this->c['httpClient']->request('GET', 'user/'.$id);
+        $response = $this->httpClient->request('GET', 'user/'.$id);
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
@@ -109,23 +112,23 @@ final class UserModule extends AbstractContainer
 
     public function postUserInfoByAPI($data)
     {
-        $response = $this->c['httpClient']->request('POST', 'user/'.$this->user['ppmid'], [
+        $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'], [
                 'form_params' => $data,
             ]);
 
-        $this->c['pool']->clear('User/'.$this->user['ppmid'].'/info');
+        $this->pool->clear('User/'.$this->user['ppmid'].'/info');
 
-        return  $this->c['httpHelper']->verifyResponse($response);
+        return  $this->httpHelper->verifyResponse($response);
     }
 
-    public function postNewPassword($pass, $token)
+    public function postForgotPassword($pass, $token)
     {
-        $response = $this->c['httpClient']->request('POST', 'forgot-passowrd/'.$token, [
+        $response = $this->httpClient->request('POST', 'forgot-passowrd/'.$token, [
                 'form_params' => [
                     'new_password' => $pass,
                 ],
             ]);
 
-        return  $this->c['httpHelper']->verifyResponse($response);
+        return  $this->httpHelper->verifyResponse($response);
     }
 }

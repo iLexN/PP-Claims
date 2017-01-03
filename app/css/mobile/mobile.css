@@ -30,6 +30,12 @@ header{
     color: #039be5;
     font-size: 2rem;
 }
+.side-nav{
+    background-color:#ececec
+}
+.side-nav a {
+    color : #363636;
+}
 .side-nav a.nav_active {
     color : #0292e4;
 }

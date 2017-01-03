@@ -16,7 +16,7 @@ final class Helper extends AbstractContainer
         if ($p1 !== $p2) {
             $msg = $this->langText['passwordSameError'];
         }
-        if (!$this->c['passwordModule']->isStrongPassword($p1)) {
+        if (!$this->passwordModule->isStrongPassword($p1)) {
             $msg = $this->langText['passwordNotStrongError'];
         }
 
