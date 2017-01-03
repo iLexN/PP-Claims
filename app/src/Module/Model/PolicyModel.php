@@ -2,18 +2,13 @@
 
 namespace PP\WebPortal\Module\Model;
 
-class PolicyModel implements \ArrayAccess
-{
-    /**
-     * policy info.
-     *
-     * @var array
-     */
-    private $policy;
+use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
 
-    public function __construct($policy)
+class PolicyModel extends ModelAbstract
+{
+    public function __construct($data)
     {
-        $this->policy = $policy;
+        $this->data = $data;
     }
 
     /**
@@ -21,7 +16,7 @@ class PolicyModel implements \ArrayAccess
      */
     public function isActive()
     {
-        return $this->policy['status'] === 'Active' ? true : false;
+        return $this->data['status'] === 'Active' ? true : false;
     }
 
     /**
@@ -29,7 +24,7 @@ class PolicyModel implements \ArrayAccess
      */
     public function getPremiumPaid()
     {
-        return $this->policy['pivot']['premium_paid'];
+        return $this->data['pivot']['premium_paid'];
     }
 
     /**
@@ -37,26 +32,6 @@ class PolicyModel implements \ArrayAccess
      */
     public function getAdvisor()
     {
-        return $this->policy['advisor'];
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        $this->policy[$offset] = $value;
-    }
-
-    public function offsetExists($offset)
-    {
-        return isset($this->policy[$offset]);
-    }
-
-    public function offsetUnset($offset)
-    {
-        unset($this->policy[$offset]);
-    }
-
-    public function offsetGet($offset)
-    {
-        return isset($this->policy[$offset]) ? $this->policy[$offset] : null;
+        return $this->data['advisor'];
     }
 }

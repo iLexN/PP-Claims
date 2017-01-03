@@ -2,44 +2,17 @@
 
 namespace PP\WebPortal\Module\Model;
 
-class UserModel implements \ArrayAccess
+use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
+
+class UserModel extends ModelAbstract
 {
-    //put your code here
-
-    /**
-     * user info.
-     *
-     * @var array
-     */
-    private $user;
-
-    public function __construct($user)
+    public function __construct($data)
     {
-        $this->user = $user;
+        $this->data = $data;
     }
 
     public function fullName()
     {
-        return $this->user['first_name'].' '.$this->user['middle_name'].' '.$this->user['last_name'];
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        $this->user[$offset] = $value;
-    }
-
-    public function offsetExists($offset)
-    {
-        return isset($this->user[$offset]);
-    }
-
-    public function offsetUnset($offset)
-    {
-        unset($this->user[$offset]);
-    }
-
-    public function offsetGet($offset)
-    {
-        return isset($this->user[$offset]) ? $this->user[$offset] : null;
+        return $this->data['first_name'].' '.$this->data['middle_name'].' '.$this->data['last_name'];
     }
 }
