@@ -8,14 +8,14 @@ use PP\WebPortal\Module\Model\UserModel;
 final class UserModule extends AbstractContainer
 {
     /**
-     * logined user
+     * logined user.
      *
      * @var UserModel
      */
     public $user;
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface
+     * @return \Psr\Http\Message\ServerRequestInterface|boolean
      */
     public function isUserExistByToken($token)
     {
@@ -25,7 +25,7 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface
+     * @return \Psr\Http\Message\ServerRequestInterface|boolean
      */
     public function userForgotPassword($username)
     {
@@ -39,7 +39,7 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface
+     * @return \Psr\Http\Message\ServerRequestInterface|boolean
      */
     public function userForgotUsername($data)
     {
@@ -51,11 +51,11 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface
+     * @return \Psr\Http\Message\ServerRequestInterface|boolean
      */
     public function userVerify($data)
     {
-        $response = $this->httpHelper->request('POST', 'verify', [
+        $response = $this->httpClient->request('POST', 'verify', [
                 'form_params' => $data,
             ]);
 
@@ -63,7 +63,7 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface
+     * @return \Psr\Http\Message\ServerRequestInterface|boolean
      */
     public function userSign($data, $id)
     {
@@ -116,7 +116,7 @@ final class UserModule extends AbstractContainer
                 'form_params' => $data,
             ]);
 
-        $this->pool->clear('User/'.$this->user['ppmid'].'/info');
+        $this->pool->deleteItem('User/'.$this->user['ppmid'].'/info');
 
         return  $this->httpHelper->verifyResponse($response);
     }
