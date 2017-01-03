@@ -15,7 +15,8 @@ final class UserModule extends AbstractContainer
     public $user;
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface|boolean
+     * @param string $token
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function isUserExistByToken($token)
     {
@@ -25,7 +26,8 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface|boolean
+     * @param string $username
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userForgotPassword($username)
     {
@@ -39,7 +41,8 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface|boolean
+     * @param array $data
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userForgotUsername($data)
     {
@@ -51,7 +54,8 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface|boolean
+     * @param array $data
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userVerify($data)
     {
@@ -63,7 +67,9 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * @return \Psr\Http\Message\ServerRequestInterface|boolean
+     * @param array $data
+     * @param int $id
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userSign($data, $id)
     {
@@ -76,7 +82,7 @@ final class UserModule extends AbstractContainer
 
     /**
      * get User info from session.
-     *
+     * @param int $id
      * @return UserModel
      */
     public function getUser($id)
@@ -110,6 +116,10 @@ final class UserModule extends AbstractContainer
         return $result['data'];
     }
 
+    /**
+     * @param array $data
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
+     */
     public function postUserInfoByAPI($data)
     {
         $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'], [
@@ -121,6 +131,12 @@ final class UserModule extends AbstractContainer
         return  $this->httpHelper->verifyResponse($response);
     }
 
+    /**
+     * setnew password from forgotPassword.
+     * @param string $pass
+     * @param string $token
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
+     */
     public function postForgotPassword($pass, $token)
     {
         $response = $this->httpClient->request('POST', 'forgot-passowrd/'.$token, [
