@@ -20,7 +20,6 @@
                 <div class="right_side">
                     <div class="min-text">{{ langText.contact_office_title }}</div>
                     {% for contact in contacts %}
-                        {{ contact.toJson }}
                         {% include 'include/components/office-map.twig' %}
                     {% endfor %}
                 </div>

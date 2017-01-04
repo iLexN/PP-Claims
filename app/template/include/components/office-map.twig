@@ -1,10 +1,10 @@
 <section class="row office_map">
     <h2>{{ contact.region_full }}</h2>
     <div class="z-depth-3">
-        <a href="{{ contact.gmailLink }}" target="_blank"><img src="assets/images/map_office_{{ contact.region }}.jpg" class="responsive-img"></a>
+        <a href="{{ contact.gmailLink }}" target="_blank"><img src="{{ base_url() }}/assets/images/map_office_{{ contact.region }}.jpg" class="responsive-img"></a>
         <div class="office_map_textbox">
             <div class="left office_map_iconbox"><i class="material-icons icon_color_2">phone</i></div>
-            <div class="office_map_infobox"><b>{{ contact.tel_1 }}</b></div>
+            <div class="office_map_infobox"><b>{{ contact.tel('tel_1') }}</b></div>
 
             <div class="left office_map_iconbox"><i class="material-icons icon_color_2">place</i></div>
             <div class="office_map_infobox">{{ contact.fullAddess() }}</div>

@@ -10,7 +10,7 @@ final class ForgotUsername extends AbstractContainer
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $data = $request->getParsedBody();
+        $data = (array)$request->getParsedBody();
 
         $this->userModule->userForgotUsername($data);
 

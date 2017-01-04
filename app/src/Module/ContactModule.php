@@ -36,8 +36,6 @@ final class ContactModule extends AbstractContainer
     /**
      * get policies list from API.
      *
-     * @param int $id
-     *
      * @return array
      */
     private function getByAPI()
