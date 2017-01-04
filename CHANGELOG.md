@@ -1,4 +1,16 @@
 #### [Current]
+ * [b6e1d04](../../commit/b6e1d04) - __(2017-01-04 15:20:53 +0800)__ bug fix , contact phone trim (char)
+ * [b81bdc3](../../commit/b81bdc3) - __(2017-01-04 14:46:09 +0800)__ contact us page update
+ * [62eefa1](../../commit/62eefa1) - __(2017-01-03 16:16:35 +0800)__ doc update
+ * [44e706e](../../commit/44e706e) - __(2017-01-03 16:08:39 +0800)__ ci & cs fix
+ * [a6c8e9e](../../commit/a6c8e9e) - __(2017-01-03 15:54:51 +0800)__ $this->c['xxxx'] => $this->xxxx
+ * [6a15b10](../../commit/6a15b10) - __(2017-01-03 11:58:22 +0800)__ ci and cs fix
+ * [cc4cc99](../../commit/cc4cc99) - __(2017-01-03 11:39:41 +0800)__ model code improve
+ * [f27b5c9](../../commit/f27b5c9) - __(2017-01-03 10:40:41 +0800)__ currency long form -> short form
+ * [0498fa3](../../commit/0498fa3) - __(2016-12-29 14:31:25 +0800)__ main page ui done
+ * [89a2165](../../commit/89a2165) - __(2016-12-23 11:27:44 +0800)__ add style for invlide input
+ * [2913f78](../../commit/2913f78) - __(2016-12-13 09:33:29 +0800)__ browser test update
+ * [7c39e15](../../commit/7c39e15) - __(2016-12-12 18:07:51 +0800)__ js update for form submit false
  * [2532719](../../commit/2532719) - __(2016-12-12 15:24:58 +0800)__ landscape
  * [83559d8](../../commit/83559d8) - __(2016-12-09 15:18:07 +0800)__ add {{ appVersion }} for css, js versioning for no cache
  * [f03f974](../../commit/f03f974) - __(2016-12-06 17:56:44 +0800)__ css update
