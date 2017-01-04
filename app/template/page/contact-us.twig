@@ -1,36 +1,18 @@
-{% extends "template/general.twig" %}
+{% extends "template/general_left_right_col.twig" %}
 
-{% block mainHTML %}
+{% block leftHTML %}
+    <h1>{{ langText.title_contact }}</h1>
+    {% for police in polices %}
+        {% include 'include/components/policy-contact.twig' %}
+    {% endfor %}
+    <div class="min-text">{{ langText.contact_footnote }}</div>
+{% endblock %}
 
-    <main class="general">
-
-        <div class="row">
-            <div class="col s12 m8 l7 offset-l1">
-
-                <h1>{{ langText.title_contact }}</h1>
-
-                {% for police in polices %}
-                    {% include 'include/components/policy-contact.twig' %}
-                {% endfor %}
-                <div class="min-text">{{ langText.contact_footnote }}</div>
-            </div>
-
-
-            <div class="col s12 m4 l3">
-                <div class="right_side">
-                    <div class="min-text">{{ langText.contact_office_title }}</div>
-                    {% for contact in contacts %}
-                        {% include 'include/components/office-map.twig' %}
-                    {% endfor %}
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </main>
-
+{% block rightHTML %}
+    <div class="min-text">{{ langText.contact_office_title }}</div>
+    {% for contact in contacts %}
+        {% include 'include/components/office-map.twig' %}
+    {% endfor %}
 {% endblock %}
 
 {% block jsBottom %}

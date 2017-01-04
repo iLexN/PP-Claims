@@ -1,0 +1,22 @@
+{% extends "template/center_1_col.twig" %}
+
+{% block mainHTML %}
+    <main class="general">
+        <div class="row">
+            <div class="col s12 m8 l7 offset-l1">
+                {% block leftHTML %}
+                    
+                {% endblock %}
+            </div>
+
+            <div class="col s12 m4 l3">
+                <div class="right_side">
+                    {% block rightHTML %}    
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+
