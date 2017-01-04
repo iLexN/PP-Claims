@@ -1,4 +1,8 @@
 #### [Current]
+ * [f2dee37](../../commit/f2dee37) - __(2017-01-04 15:51:13 +0800)__ header fix fullname in Tablet
+
+#### [0.0.2]
+ * [2d81a70](../../commit/2d81a70) - __(2017-01-04 15:30:29 +0800)__ changelog
  * [b6e1d04](../../commit/b6e1d04) - __(2017-01-04 15:20:53 +0800)__ bug fix , contact phone trim (char)
  * [b81bdc3](../../commit/b81bdc3) - __(2017-01-04 14:46:09 +0800)__ contact us page update
  * [62eefa1](../../commit/62eefa1) - __(2017-01-03 16:16:35 +0800)__ doc update
