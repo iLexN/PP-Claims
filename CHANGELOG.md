@@ -1,4 +1,9 @@
 #### [Current]
+ * [fd22003](../../commit/fd22003) - __(2017-01-04 17:23:59 +0800)__ fix header style
+ * [1ec0320](../../commit/1ec0320) - __(2017-01-04 16:46:07 +0800)__ template change name , add 2 col template
+
+#### [0.1.1]
+ * [5735f89](../../commit/5735f89) - __(2017-01-04 15:51:30 +0800)__ change log
  * [f2dee37](../../commit/f2dee37) - __(2017-01-04 15:51:13 +0800)__ header fix fullname in Tablet
 
 #### [0.0.2]

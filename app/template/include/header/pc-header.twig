@@ -1,14 +1,15 @@
 <header>
-    <div><img src="/assets/images/logo.png">
+    <a href="{{ path_for('Main') }}"><img src="/assets/images/logo.png"></a>
     {% if isLoggin  %}
     <div class="right header_nav">
-        <div class="right header_nav_bar"><a href="#" data-jshook="contact" class="header_nav_bar_active">{{ langText.title_contact }}</a></div>
+        <div class="right header_nav_bar"><a href="{{ path_for('ContactUs') }}" data-jshook="contact" class="header_nav_bar_active">{{ langText.title_contact }}</a></div>
         <div class="right header_nav_bar"><a href="#" data-jshook="policy">{{ langText.title_policy }}</a></div>
         <div class="right header_nav_bar"><a href="#" data-jshook="claims">{{ langText.title_claims }}</a></div>
         <div class="right header_nav_bar"><a href="#" data-jshook="profile">{{ langText.title_profile }}</a></div>
         <div class="right header_nav_bar"><a class='dropdown-button nav_active' data-beloworigin="true" href='#' data-activates='dropdown1'><img src="assets/images/icon_user.png" style="margin-right:0.5rem;"><span class="hearder_nav_bar_username hide-on-med-only">{{ User.fullName() }}</span></a></div>
     </div>
     {% endif %}
+    
 </header>
 
 <!-- Dropdown Structure -->
