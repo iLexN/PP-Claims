@@ -112,6 +112,9 @@ $container['userModule'] = function (\Slim\Container $c) {
 $container['policyModule'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\PolicyModule($c);
 };
+$container['contactModule'] = function (\Slim\Container $c) {
+    return new \PP\WebPortal\Module\ContactModule($c);
+};
 $container['passwordModule'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\PasswordModule($c);
 };

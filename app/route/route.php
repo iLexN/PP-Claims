@@ -32,6 +32,12 @@ $app->post('/user', 'PP\WebPortal\Controller\User\InfoUpdate')
     ->add($container->get('csrf'))
     ->add($authLoginArea);
 
+//contact us
+$app->get('/contact-us', 'PP\WebPortal\Controller\Page\ContactUs')
+    ->setName('ContactUs')
+    ->add($authLoginArea); // redirect to home page if login expired
+
+
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
 

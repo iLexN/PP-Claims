@@ -3,36 +3,34 @@
 namespace PP\WebPortal\Module;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
+use PP\WebPortal\Module\Model\ContactModel;
 
 /**
  * Description of PolicyModule.
  *
  * @author user
  */
-final class PolicyModule extends AbstractContainer
+final class ContactModule extends AbstractContainer
 {
     /**
      * getPolices list by user client no.
      *
      * @return array
      */
-    public function getPolices()
+    public function getContact()
     {
-        $user = $this->userModule->user;
 
         /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->pool->getItem('User/'.$user['ppmid'].'/Policies');
-        $policies = $item->get();
+        $item = $this->pool->getItem('OfficeContact');
+        $data = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$policies = $this->policyFactory($this->getPoliciesByAPI($user['ppmid']));
-            $policies = $this->getPoliciesByAPI($user['ppmid']);
-            $this->pool->save($item->set($policies));
+            $data = $this->factory( $this->getByAPI());
+            $this->pool->save($item->set($data));
         }
-
-        return $policies;
+        return $data;
     }
 
     /**
@@ -42,22 +40,22 @@ final class PolicyModule extends AbstractContainer
      *
      * @return array
      */
-    private function getPoliciesByAPI($id)
+    private function getByAPI()
     {
-        $response = $this->httpClient->request('GET', 'user/'.$id.'/policy');
+        $response = $this->httpClient->request('GET', 'office-info');
 
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
     }
-/*
-    private function policyFactory($list)
+
+    private function factory($list)
     {
         $newList = [];
-        foreach ($list as $policyInfo) {
-            $newList[] = new PolicyModel($policyInfo);
+        foreach ($list as $data) {
+            $newList[] = new ContactModel($data);
         }
 
         return $newList;
-    }*/
+    }
 }

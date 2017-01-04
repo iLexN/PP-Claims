@@ -28,6 +28,10 @@ return [
     'desc_policy'  => 'Policy desc desc desc desc desc  desc desc',
     'desc_contact' => 'Contact Us desc desc',
 
+    //contact page
+    'contact_office_title'=>'Our Office',
+    'contact_footnote'=>'If you need any help or clarification contact your advisor who will be happy to help.',
+
     //form
     'username'         => 'Username',
     'passowrd'         => 'Password',
@@ -64,6 +68,10 @@ return [
     'userVerify_title' => 'Verify',
     'userVerify_desc'  => 'Please provide long text Please provide long text Please provide',
     'userSignup_desc'  => 'password At least one Case Diff letter , At least one number , Be at least 8 characters',
+
+    //policy contact
+    'policy_contact_title'=>'Policy:',
+    'policy_contact_advisor'=>'Your advisor is',
 
     //system
     'csrfError'               => 'Please try again',

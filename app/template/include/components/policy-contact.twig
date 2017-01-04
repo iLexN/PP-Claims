@@ -1,0 +1,19 @@
+<section class="row policy_contact">
+    <div class="col s12 min-text">
+        {{ langText.policy_contact_title }}
+
+    </div>
+    <div class="col s12">
+        <h3>{{ police.plan_name }}</h3>
+    </div>
+    <div class="col s12 m9 l9">
+        <div class="row policy_contact_bg_box">
+            <div class="col s11 offset-s1 min-text">{{ langText.policy_contact_advisor }}</div>
+            <div class="col s11 offset-s1"><div class="policy_contact_name">{{ police.advisor.name }}</div></div>
+            <div class="col s11 offset-s1">
+                <div class="policy_contact_detail"><i class="material-icons icon_color_1">email</i> {{ police.advisor.email }}</div>
+                <div class="policy_contact_detail"><i class="material-icons icon_color_1">phone</i> {{ police.advisor.office_phone }}</div>
+            </div>
+        </div>
+    </div>
+</section>

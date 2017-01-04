@@ -1491,6 +1491,47 @@ include components
     padding-bottom:16px;
     padding-bottom: 1rem
 }
+/**** policy_contact ****/
+.policy_contact{
+    border-bottom: 1px solid #c2c2c2;
+}
+.policy_contact_bg_box{
+    background-color: #f2fcff;
+    padding:24px 0;
+    padding: 1.5rem 0;
+}
+.policy_contact_name{
+    font-size:20px;
+    font-size:1.25rem;
+    color:#86bc43;
+    font-weight: 600;
+    margin:8px 0 16px;
+    margin: 0.5rem 0 1rem;
+}
+.policy_contact_detail{
+    padding:0 0 8px 0;
+    padding:0 0 0.5rem 0;
+}
+/****office map*****/
+.office_map{}
+.office_map_iconbox{
+    margin:0 8px;
+    margin:0 0.5rem;
+}
+.office_map_textbox{
+    padding:16px 0;
+    padding:1rem 0;
+}
+.office_map_infobox{
+    font-size:14px;
+    font-size: 0.875rem;
+    margin-bottom:8px;
+    margin-bottom: 0.5rem;
+    padding-left:40px;
+    padding-left: 2.5rem;
+    padding-right:16px;
+    padding-right: 1rem;
+}
 /*--------------------------------------------------------------
 general
 --------------------------------------------------------------*/
@@ -1498,6 +1539,57 @@ general
 .general_sub{border-top:2px solid red;background-color: #298ec3; color :#fff;
 padding:16px;
 padding:1rem}
+.general{
+    color:#555;
+}
+.general h1{
+    font-size:30px;
+    font-size:1.875rem;
+    color :#555;
+    font-weight: 600;
+    padding-bottom:16px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #84dcf2;
+}
+.general h2{
+    font-size:22px;
+    font-size:1.375rem;
+    color:#416478;
+    margin:16px 0;
+    margin: 1rem 0;
+    
+}
+.general h3{
+    font-size:18px;
+    font-size:1.125rem;
+    color : #416478;
+    font-weight: 600;
+    margin:16px 0;
+    margin:1rem 0;
+}
+.general .right_side{
+    margin-top:80px;
+    margin-top: 5rem;
+}
+.icon_color_1{
+    color:#2297da;
+    font-size:16px;
+    font-size: 1rem;
+    margin-right:8px;
+    margin-right: 0.5rem;
+}
+.icon_color_2{
+    color:#636363;
+    font-size:16px;
+    font-size: 1rem;
+    margin-left:8px;
+    margin-left: 0.5rem;
+}
+.min-text{
+    font-size:13px;
+    font-size: 0.8125rem;
+    color:#555;
+}
 /* form style*/
 .btn{ text-transform: none; font-weight: 600 }
 /** style1 **/

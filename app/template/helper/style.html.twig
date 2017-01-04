@@ -77,7 +77,30 @@
     <a href="#" class="alink_1">Forgot Username?</a>
     
     
+    <div class="general">
     
+        <h1>header 1</h1>
+        <h2>header 2</h2>
+        <h3>header 3</h3>
+    
+        icon_color_1 <i class="material-icons icon_color_1">phone</i>
+        icon_color_2 <i class="material-icons icon_color_2">phone</i>
+        <p class="min-text">.min-text</p>
+    <div>
+    
+        
+        <h2>component</h2>
+        
+        <h4>police contact</h4>
+        {% set police = {"policy_id":1,"insurer":"Best Doctors","plan_name":"Ultracare","deductible":"85","cover":"WorldWide","options":"Travel","medical_currency":"USD","payment_frequency":"Annual","payment_method":"Cheque","start_date":"2015-01-30","end_date":"2020-02-17","responsibility_id":19,"status":"Active","Policy_Number":null,"renew_date":"2020-02-18","is_end":false,"pivot":{"ppmid":"9677","policy_id":"1","id":2,"premium_paid":"0.00"},"advisor":{"responsibility_id":19,"name":"Ken Chung","email":"ken@kwiksure.com","office_phone":"3588 2914","contact_details_id":1}}  %}
+        {% include 'include/components/policy-contact.twig' %}
+    
+        
+        <h4>office map</h4>
+        {% set contact = {"contact_details_id":1,"region":"HK","region_full":"Hong Kong","tel_1":"852 3113 2112 (Chinese)","tel_2":"852 3113 1331 (English)","fax_1":"852 3113 2332","fax_2":"852 2915 7770","fax_3":"852 2915 6603","address_1":"Unit 1-11","address_2":"35th Floor","address_3":"One Hung To Road","address_4":"Kwun Tong","address_5":"Hong Kong","gmap_lat":"22.3148666","gmap_lng":"114.2189591","gmap_keyword":"Pacific Prime"}  %}
+        {% include 'include/components/office-map.twig' %}
+        
+        
     <div style="height:50px;"></div>
     
 {% endblock %}
