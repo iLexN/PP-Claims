@@ -9,24 +9,24 @@
                 {{ forms.MD_button_1('forgotUsernameBtnClose',langText.closeBtn,'button') }}
             </div>
             <form class="form-style-2" data-jshook="forgotUsernameForm">
-            <div class="col s12">
-                <p class="home_model-content_p">{{ langText.forgotusername_desc }}</p>
-            </div>
-            <div class="col s12 m12 l8 offset-l2 hide errors_msg" data-jshook="ForgotUsernameMsg">
-                
-            </div>
-            <div class="input-field col s12 m12 l8 offset-l2">
-                {{ forms.MD_input(langText.name,'text','name') }}
-            </div>
-            <div class="input-field col s12 m12 l8 offset-l2">
-                {{ forms.MD_input(langText.email,'email','email','',langText.email_erorr) }}
-            </div>
-            <div class="input-field col s12 m12 l8 offset-l2">
-                {{ forms.MD_input(langText.phone,'tel','phone') }}
-            </div>
-            <div class="col s12 m12 l8 offset-l2 center-align">
-                {{ forms.MD_button_2('forgotUsernameBtn formBtn',langText.submitBtn,'button' , 'send') }}
-            </div>
+                <div class="col s12">
+                    <p class="home_model-content_p">{{ langText.forgotusername_desc }}</p>
+                </div>
+                <div class="col s12 m12 l8 offset-l2 hide errors_msg" data-jshook="ForgotUsernameMsg">
+
+                </div>
+                <div class="input-field col s12 m12 l8 offset-l2">
+                    {{ forms.MD_input(langText.name,'text','name') }}
+                </div>
+                <div class="input-field col s12 m12 l8 offset-l2">
+                    {{ forms.MD_input(langText.email,'email','email','',langText.email_erorr) }}
+                </div>
+                <div class="input-field col s12 m12 l8 offset-l2">
+                    {{ forms.MD_input(langText.phone,'tel','phone') }}
+                </div>
+                <div class="col s12 m12 l8 offset-l2 center-align">
+                    {{ forms.MD_button_2('forgotUsernameBtn formBtn',langText.submitBtn,'button' , 'send') }}
+                </div>
             </form>
         </div>
     </div>

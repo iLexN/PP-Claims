@@ -29,10 +29,10 @@ return [
     'desc_contact' => 'Contact Us desc desc',
 
     //contact page
-    'contact_office_title'=>'Our Office',
-    'contact_footnote'=>'If you need any help or clarification contact your advisor who will be happy to help.',
+    'contact_office_title'=> 'Our Office',
+    'contact_footnote'    => 'If you need any help or clarification contact your advisor who will be happy to help.',
 
-    //form
+    //form label
     'username'         => 'Username',
     'passowrd'         => 'Password',
     'new_password'     => 'New Password',
@@ -47,7 +47,7 @@ return [
     'day'              => 'Day',
     'date'             => 'Date',
 
-    //form error
+    //form gerenal error
     'email_erorr'              => 'invalid email',
 
     //form btn
@@ -70,8 +70,8 @@ return [
     'userSignup_desc'  => 'password At least one Case Diff letter , At least one number , Be at least 8 characters',
 
     //policy contact
-    'policy_contact_title'=>'Policy:',
-    'policy_contact_advisor'=>'Your advisor is',
+    'policy_contact_title'  => 'Policy:',
+    'policy_contact_advisor'=> 'Your advisor is',
 
     //system
     'csrfError'               => 'Please try again',

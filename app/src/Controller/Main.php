@@ -6,7 +6,7 @@ use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class Logined extends AbstractContainer
+final class Main extends AbstractContainer
 {
     /**
      * Login-ed Page.

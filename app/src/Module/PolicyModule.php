@@ -50,14 +50,4 @@ final class PolicyModule extends AbstractContainer
 
         return $result['data'];
     }
-/*
-    private function policyFactory($list)
-    {
-        $newList = [];
-        foreach ($list as $policyInfo) {
-            $newList[] = new PolicyModel($policyInfo);
-        }
-
-        return $newList;
-    }*/
 }

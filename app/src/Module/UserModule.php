@@ -16,6 +16,7 @@ final class UserModule extends AbstractContainer
 
     /**
      * @param string $token
+     *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function isUserExistByToken($token)
@@ -27,6 +28,7 @@ final class UserModule extends AbstractContainer
 
     /**
      * @param string $username
+     *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userForgotPassword($username)
@@ -42,6 +44,7 @@ final class UserModule extends AbstractContainer
 
     /**
      * @param array $data
+     *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userForgotUsername($data)
@@ -55,6 +58,7 @@ final class UserModule extends AbstractContainer
 
     /**
      * @param array $data
+     *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userVerify($data)
@@ -68,7 +72,8 @@ final class UserModule extends AbstractContainer
 
     /**
      * @param array $data
-     * @param int $id
+     * @param int   $id
+     *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function userSign($data, $id)
@@ -82,7 +87,9 @@ final class UserModule extends AbstractContainer
 
     /**
      * get User info from session.
+     *
      * @param int $id
+     *
      * @return UserModel
      */
     public function getUser($id)
@@ -118,6 +125,7 @@ final class UserModule extends AbstractContainer
 
     /**
      * @param array $data
+     *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function postUserInfoByAPI($data)
@@ -132,9 +140,11 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * setnew password from forgotPassword.
+     * set new password from forgotPassword.
+     *
      * @param string $pass
      * @param string $token
+     *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
     public function postForgotPassword($pass, $token)

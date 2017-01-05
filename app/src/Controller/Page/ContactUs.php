@@ -19,13 +19,12 @@ final class ContactUs extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-
         $polices = $this->policyModule->getPolices();
         $contact = $this->contactModule->getContact();
 
         return $this->view->render($response, 'page/contact-us.twig', [
-            'polices'=>$polices,
-            'contacts'=>$contact
+            'polices' => $polices,
+            'contacts'=> $contact,
         ]);
     }
 }

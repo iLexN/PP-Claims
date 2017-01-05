@@ -2,48 +2,37 @@
 
 {% block mainHTML %}
     <main>
-    <div class="row">
-        <div class="col s12 m10 l8 offset-m1 offset-l2">
-            <div class="row">
-                <div class="col s12"><p style="color:#555">Please Select service:</p></div>
-                <div class="col s12 m6 l6">
-                    {{ components.main_block_effect(langText.title_profile,langText.desc_profile , 'assets/images/icon_profile.png' ,'#1') }}
-                </div>
-                <div class="col s12 m6 l6">
-                    {{ components.main_block_effect(langText.title_claims,langText.desc_claims , 'assets/images/icon_claims.png' ,'#2') }}
-                </div>
-                <div class="col s12 m6 l6">
-                    {{ components.main_block_effect(langText.title_policy,langText.desc_policy, 'assets/images/icon_policy.png','#3') }}
-                </div>
-                <div class="col s12 m6 l6">
-                    {{ components.main_block_effect(langText.title_contact,langText.desc_contact,'assets/images/icon_contact.png',path_for('ContactUs')) }}
-                </div>
-            </div>
-            <div>
-                <div class="col s12">
-                    <img 
-                    {% if is_mobile() %}
-                        src="assets/images/logo.png" 
-                    {% else %}
-                        src="assets/images/banner_apps.jpg" 
-                    {% endif %}
-                    class="responsive-img">
+        <div class="row">
+            <div class="col s12 m10 l8 offset-m1 offset-l2">
+                <div class="row">
+                    <div class="col s12"><p style="color:#555">Please Select service:</p></div>
+                    <div class="col s12 m6 l6">
+                        {{ components.main_block_effect(langText.title_profile,langText.desc_profile , 'assets/images/icon_profile.png' ,'#1') }}
                     </div>
+                    <div class="col s12 m6 l6">
+                        {{ components.main_block_effect(langText.title_claims,langText.desc_claims , 'assets/images/icon_claims.png' ,'#2') }}
+                    </div>
+                    <div class="col s12 m6 l6">
+                        {{ components.main_block_effect(langText.title_policy,langText.desc_policy, 'assets/images/icon_policy.png','#3') }}
+                    </div>
+                    <div class="col s12 m6 l6">
+                        {{ components.main_block_effect(langText.title_contact,langText.desc_contact,'assets/images/icon_contact.png',path_for('ContactUs')) }}
+                    </div>
+                </div>
+                <div>
+                    <div class="col s12">
+                        {% if is_mobile() %}
+                            <img src="assets/images/logo.png" class="responsive-img">
+                        {% else %}
+                            <img src="assets/images/banner_apps.jpg" class="responsive-img">
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 {% endblock %}
 
 {% block jsBottom %}
     {{ parent() }}
-    <script>
-        // this will increase the api server loading
-        $.get({
-            url : "/ajax/preload",
-            global : false
-        });
-        //nav
-        //activeNav('contact');
-    </script>
 {% endblock %}

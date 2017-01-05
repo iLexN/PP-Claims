@@ -96,6 +96,7 @@ include components
     background-color: red;
     color : #fff;
     padding : 1rem;
+    margin: 1rem 0;
 }
 /*** Loading box ****/
 .loadingBox_c{
@@ -178,6 +179,9 @@ padding:1rem}
     color : #416478;
     font-weight: 600;
     margin:1rem 0;
+}
+.general a{
+    color:#555;
 }
 .general .right_side{
     margin-top: 5rem;

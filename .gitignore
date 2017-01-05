@@ -1,4 +1,4 @@
-/logs/claims-app.log
+/logs/*
 /httpdocs/info.php
 /php_error_log.txt
 /vendor/

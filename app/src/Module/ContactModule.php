@@ -4,6 +4,7 @@ namespace PP\WebPortal\Module;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
 use PP\WebPortal\Module\Model\ContactModel;
+use PP\WebPortal\Module\Model\ListModel;
 
 /**
  * Description of PolicyModule.
@@ -27,9 +28,10 @@ final class ContactModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $data = $this->factory( $this->getByAPI());
+            $data = $this->factory($this->getByAPI());
             $this->pool->save($item->set($data));
         }
+
         return $data;
     }
 
@@ -49,9 +51,9 @@ final class ContactModule extends AbstractContainer
 
     private function factory($list)
     {
-        $newList = [];
+        $newList = new ListModel;
         foreach ($list as $data) {
-            $newList[] = new ContactModel($data);
+            $newList->push(new ContactModel($data)) ;
         }
 
         return $newList;

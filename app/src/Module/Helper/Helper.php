@@ -37,4 +37,14 @@ final class Helper extends AbstractContainer
     {
         return !$this->mobileDetect->isMobile() && !$this->mobileDetect->isTablet();
     }
+
+    public function addH2Header($preLoad, $response)
+    {
+        foreach ($preLoad as $r => $pathArray) {
+            foreach ($pathArray as $path) {
+                $response = $response->withAddedHeader('Link', '<'.$path . '?' . $this->c->get('appVersion') .'>; rel=preload; as=' .$r);
+            }
+        }
+        return $response;
+    }
 }

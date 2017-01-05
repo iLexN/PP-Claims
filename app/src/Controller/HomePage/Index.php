@@ -19,7 +19,7 @@ final class Index extends AbstractContainer
     {
         if (!isset($_SESSION['h2Push'])) {
             $response = $this->addH2ServerPush($response);
-            $_SESSION['h2Push'] = true;
+            //$_SESSION['h2Push'] = true;
         }
 
         return $this->view->render($response, 'page/homepage.twig', [
@@ -29,15 +29,20 @@ final class Index extends AbstractContainer
 
     private function addH2ServerPush($response)
     {
+        $preLoad = [];
         if ($this->helper->isMobile()) {
-            $response = $response->withAddedHeader('Link', '</assets/css/mobile.min.css>; rel=preload; as=stylesheet');
+            $preLoad['stylesheet'][] = '/assets/css/mobile.min.css';
         } else {
-            $response = $response->withAddedHeader('Link', '</assets/css/pc.min.css>; rel=preload; as=stylesheet');
+            $preLoad['stylesheet'][] = '/assets/css/pc.min.css';
         }
-        //$response = $response->withAddedHeader('Link', '</components/materialize/dist/css/materialize.min.css>; rel=preload; as=stylesheet');
+        $preLoad['script'][] = '/assets/js/build.min.js';
+        $preLoad['script'][] = '/assets/js/module.js';
+        $preLoad['script'][] = '/assets/js/page/homepage.js';
+
+        $response = $this->helper->addH2Header($preLoad, $response);
+
         $response = $response->withAddedHeader('Link', '</assets/images/home_bg.jpg>; rel=preload; as=image');
-        $response = $response->withAddedHeader('Link', '</assets/js/build.min.js>; rel=preload; as=script');
-        $response = $response->withAddedHeader('Link', '</assets/js/module.js>; rel=preload; as=script');
+        $response = $response->withAddedHeader('Link', '</assets/images/logo.png>; rel=preload; as=image');
 
         return $response;
     }

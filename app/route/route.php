@@ -17,7 +17,7 @@ $app->post('/forgot-password/{token}', 'PP\WebPortal\Controller\ForgotSetPasswor
     ->add($container->get('csrf')) // check form
     ->add($authCheckLogined); // redirect to login-ed page if login-ed
 
-$app->get('/main', 'PP\WebPortal\Controller\Logined')
+$app->get('/main', 'PP\WebPortal\Controller\Main')
     ->setName('Main')
     ->add($authLoginArea); // redirect to home page if login expired
 
@@ -36,7 +36,6 @@ $app->post('/user', 'PP\WebPortal\Controller\User\InfoUpdate')
 $app->get('/contact-us', 'PP\WebPortal\Controller\Page\ContactUs')
     ->setName('ContactUs')
     ->add($authLoginArea); // redirect to home page if login expired
-
 
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
