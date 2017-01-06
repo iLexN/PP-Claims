@@ -20,6 +20,7 @@ namespace PP\WebPortal\AbstractClass;
  * @property \PP\WebPortal\Module\Helper\Helper $helper
  * @property \Mobile_Detect $mobileDetect
  * @property array $langText
+ * @property array $currencyText
  */
 abstract class AbstractContainer
 {

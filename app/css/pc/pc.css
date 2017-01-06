@@ -54,7 +54,7 @@ header {
 .header_nav_bar .dropdown-content li:hover{
     background-color: #555;
 }
-.header_nav_bar .dropdown-content li > a, .dropdown-content li > span {
+.header_nav_bar .dropdown-content li > a, .header_nav_bar .dropdown-content li > span {
 color: #fff;
 text-align: center;
 }

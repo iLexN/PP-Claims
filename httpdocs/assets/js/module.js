@@ -195,6 +195,26 @@ var debounce = function (func, wait) {
     }
 };
 
+//right_side
+pinTop = (function () {
+    function setWidth(){
+        $.jshook('pushpin').width($.jshook('pushpin').parent().width());
+    }
+    function init() {
+        setWidth();
+        $.jshook('pushpin').pushpin({
+                top: 190
+        });
+        $(window).resize(debounce(function(){
+            setWidth();
+        },500));
+    }
+    return {
+        'init' : init
+    };
+})();
+
+
 $(function () {
     Vue.config.devtools = true;
     WebFont.load({

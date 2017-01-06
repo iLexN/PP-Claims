@@ -9,3 +9,7 @@
 {% macro a_link_style1( title , link , target ) %}
     <a class="btn waves-effect waves-light orange lighten-1" href="{{ link }}" target="{{ target | default('_self') }}">{{ title }}</a>
 {% endmacro %}
+
+{% macro a_link_style2( title , link , target ) %}
+    <a class="btn waves-effect waves-light btn-style-1" href="{{ link }}" target="{{ target | default('_self') }}">{{ title }}</a>
+{% endmacro %}

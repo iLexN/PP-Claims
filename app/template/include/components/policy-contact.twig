@@ -1,16 +1,11 @@
 <section class="row policy_contact">
     <div class="col s12 min-text">{{ langText.policy_contact_title }}</div>
     <div class="col s12">
-        <h3>{{ police.plan_name }}</h3>
+        <h3>{{ police.plan.plan_name }}</h3>
     </div>
     <div class="col s12 m9 l9">
-        <div class="row policy_contact_bg_box">
-            <div class="col s11 offset-s1 min-text">{{ langText.policy_contact_advisor }}</div>
-            <div class="col s11 offset-s1"><div class="policy_contact_name">{{ police.advisor.name }}</div></div>
-            <div class="col s11 offset-s1">
-                <div class="policy_contact_detail"><i class="material-icons icon_color_1">email</i> <a href="mailto:{{ police.advisor.email }}">{{ police.advisor.email }}</a></div>
-                <div class="policy_contact_detail"><i class="material-icons icon_color_1">phone</i> {{ police.advisor.office_phone }}</div>
-            </div>
-        </div>
+        <advisor :p="plist[{{ loop.index0 }}]" inline-template>
+            {% include 'include/components/advisor.twig' %}
+        </advisor>
     </div>
 </section>

@@ -6,9 +6,18 @@ use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
 
 class PolicyModel extends ModelAbstract
 {
-    public function __construct($data)
+    private $currency;
+
+    public function __construct($data, $currency)
     {
         $this->data = $data;
+        $this->currency = $currency;
+        $this->init();
+    }
+
+    private function init()
+    {
+        $this->data['medical_currency_display'] = $this->data['medical_currency'] . ' '. $this->currency[$this->data['medical_currency']];
     }
 
     /**

@@ -1,0 +1,99 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+
+    <h1>{{ langText.title_policy }}</h1>
+
+    <div class="row form-style-3">
+        <div class="col s12">{{ langText.policy_info_intro }}</div>
+        <div class="input-field col s12 m9 l9">
+            <select data-jshook="planSelectBox" name="plist" id="plist">
+                <option v-for="(val, key) in plist" :value="key">${ val.plan.plan_name }</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row form-style-3">
+        <div class="input-field col s12 m5 l5">
+            {{ forms.MD_input(langText.insurer, 'text', '' , '' , false , true , 'v-model="p.insurer"')}}
+        </div>
+        <div class="input-field col s12 m5 l5 offset-m2 offset-l2">
+            {{ forms.MD_input(langText.cover, 'text', '' , '' , false , true, 'v-model="p.cover"' )}}
+        </div>
+        <div class="input-field col s12 m5 l5">
+            {{ forms.MD_input(langText.start_date, 'text', '' , '' , false , true, 'v-model="p.start_date"' )}}
+        </div>
+        <div class="input-field col s12 m5 l5 offset-m2 offset-l2">
+            {{ forms.MD_input(langText.renew_date, 'text', '' , '' , false , true, 'v-model="p.end_date"' )}}
+        </div>
+        <div class="input-field col s12 m5 l5">
+            {{ forms.MD_input(langText.currency_paid, 'text', '' , '' , false , true, 'v-model="p.medical_currency_display"' )}}
+        </div>
+        <div class="input-field col s12 m5 l5 offset-m2 offset-l2">
+            {{ forms.MD_input(langText.payment_frequency, 'text', '' , '' , false , true, 'v-model="p.payment_frequency"' )}}
+        </div>
+        <div class="input-field col s12 m5 l5">
+            {{ forms.MD_input(langText.payment_method, 'text', '' , '' , false , true, 'v-model="p.payment_method"' )}}
+        </div>
+    </div>
+
+    <h2>{{ langText.policy_info_premium }}</h2>
+    <policy-user  v-for="(val, key) in p.policyuser" :p="val" inline-template>
+        <div class="row premium_box">
+            <div class="col s6 m6 l5">
+                <div class="left premium_box_iconbox"><i class="material-icons icon_color_3">account_circle</i></div>
+                <div class="premium_box_namebox">${ fullname }</div>
+            </div>
+            <div class="col s6 m5 l5 offset-m1 offset-l2">{{ langText.policy_info_premium }}: <span class="premium_box_premium">${ p.premium_paid }</span></div>
+        </div>
+    </policy-user>
+
+    <div style="height:2rem"></div>
+
+    <div class="premium_box_advisor">
+        <advisor :p="p" inline-template>
+            {% include 'include/components/advisor.twig' %}
+        </advisor>
+        {#% for police in polices %#}
+            
+        {#% endfor %#}
+    </div>
+    <div class="min-text">{{ langText.policy_contact_footnote }}</div>
+
+
+{% endblock %}
+
+{% block rightHTML %}
+    
+    
+    <div class="col s12">
+        <div data-jshook="pushpin">
+            <h2><i class="material-icons icon_color_4">file_download</i> {{ langText.policy_info_download }}</h2>
+            {{ components.a_link_style2(langText.policy_info_tob,'#v') }}
+            {{ components.a_link_style2(langText.policy_info_wording,'#v') }}
+            {{ components.a_link_style2(langText.policy_info_cert,'#v') }}
+            {{ components.a_link_style2(langText.policy_info_hospital_network,'#v') }}
+            {{ components.a_link_style2(langText.policy_info_invoice,'#v') }}
+        </div>
+    </div>
+    
+
+
+{% endblock %}
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>var data = {{ polices.toJson() | raw }};</script>
+    <script src="{{ base_url() }}/assets/js/page/policy.js?{{ appVersion }}"></script>
+    <script>
+        activeNav('policy');
+        $(document).ready(function () {
+            $('select').material_select();
+            
+            {% if not is_mobile() %}
+            pinTop.init();
+            {% endif %}
+        });
+    </script>
+{% endblock %}

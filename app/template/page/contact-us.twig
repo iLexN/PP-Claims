@@ -5,7 +5,7 @@
     {% for police in polices %}
         {% include 'include/components/policy-contact.twig' %}
     {% endfor %}
-    <div class="min-text">{{ langText.contact_footnote }}</div>
+    <div class="min-text">{{ langText.policy_contact_footnote }}</div>
 {% endblock %}
 
 {% block rightHTML %}
@@ -17,5 +17,7 @@
 
 {% block jsBottom %}
     {{ parent() }}
+    <script>var data = {{ polices.toJson() | raw }};</script>
+    <script src="{{ base_url() }}/assets/js/page/policy.js?{{ appVersion }}"></script>
     <script>activeNav('contact');</script>
 {% endblock %}

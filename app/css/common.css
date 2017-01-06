@@ -135,6 +135,28 @@ include components
 .policy_contact_detail{
     padding:0 0 0.5rem 0;
 }
+/*** premium box ****/
+.premium_box{
+    padding:0.8125rem 0;
+    background-color: #ececec;
+    margin-bottom: 0.625rem;
+}
+.premium_box_iconbox{
+    margin:0 0.5rem 0 0;
+}
+.premium_box_namebox{
+    font-weight: bold;
+    color:  #416478;
+    padding-left: 1.5rem;
+}
+.premium_box_premium{
+    color:#464646;
+    font-weight: 600;
+}
+.premium_box_advisor{
+    border-bottom: 1px solid #c2c2c2;margin-bottom: 1rem;
+}
+
 /****office map*****/
 .office_map{};
 .office_map_iconbox{
@@ -197,11 +219,32 @@ i.icon_color_2{
     font-size: 1rem;
     margin-left: 0.5rem;
 }
+i.icon_color_3{
+    color:#959595;
+    font-size: 1rem;
+}
+i.icon_color_4{
+    font-size: 1.375rem;
+    color : #416478;
+}
+
 .min-text{
     font-size: 0.8125rem;
     color:#555;
 }
 
+/** link style */
+a.btn-style-1{
+    background-color: #84dcf2;
+    color: #000;
+    font-weight: 300;
+    height: auto;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    padding: 0.5rem 2rem;
+    text-align: center;
+    width: 100%;
+}
 
 
 /* form style*/
@@ -326,7 +369,7 @@ border-bottom: 1px solid #096190;
   color: #F44336;
   opacity: 1;
 }
-/* form style*/
+/* form style 2*/
 .form-style-2 .input-field input[type="text"].valid,
 .form-style-2 .input-field input[type="password"].valid,
 .form-style-2 .input-field input[type="email"].valid,
@@ -446,61 +489,184 @@ border-bottom: 1px solid #a1a1a1;
   color: #F44336;
   opacity: 1;
 }
-input:not([type]):disabled, input:not([type])[readonly="readonly"],
-input[type=text]:disabled,
-input[type=text][readonly="readonly"],
-input[type=password]:disabled,
-input[type=password][readonly="readonly"],
-input[type=email]:disabled,
-input[type=email][readonly="readonly"],
-input[type=url]:disabled,
-input[type=url][readonly="readonly"],
-input[type=time]:disabled,
-input[type=time][readonly="readonly"],
-input[type=date]:disabled,
-input[type=date][readonly="readonly"],
-input[type=datetime]:disabled,
-input[type=datetime][readonly="readonly"],
-input[type=datetime-local]:disabled,
-input[type=datetime-local][readonly="readonly"],
-input[type=tel]:disabled,
-input[type=tel][readonly="readonly"],
-input[type=number]:disabled,
-input[type=number][readonly="readonly"],
-input[type=search]:disabled,
-input[type=search][readonly="readonly"],
-textarea.materialize-textarea:disabled,
-textarea.materialize-textarea[readonly="readonly"] {
-  color: #096190;
-  border-bottom: 0px dotted rgba(0, 0, 0, 0.26);
+
+/* form style 3*/
+.form-style-3 .input-field input[type="text"].valid,
+.form-style-3 .input-field input[type="password"].valid,
+.form-style-3 .input-field input[type="email"].valid,
+.form-style-3 .input-field input[type="url"].valid,
+.form-style-3 .input-field input[type="time"].valid,
+.form-style-3 .input-field input[type="date"].valid,
+.form-style-3 .input-field input[type="datetime"].valid,
+.form-style-3 .input-field input[type="tel"].valid,
+.form-style-3 .input-field input[type="number"].valid,
+.form-style-3 .input-field input[type="search"].valid{
+     border-bottom: 1px solid #a1a1a1;
+     box-shadow: none;
 }
-input:not([type]):disabled + label,
-input:not([type])[readonly="readonly"] + label,
-input[type=text]:disabled + label,
-input[type=text][readonly="readonly"] + label,
-input[type=password]:disabled + label,
-input[type=password][readonly="readonly"] + label,
-input[type=email]:disabled + label,
-input[type=email][readonly="readonly"] + label,
-input[type=url]:disabled + label,
-input[type=url][readonly="readonly"] + label,
-input[type=time]:disabled + label,
-input[type=time][readonly="readonly"] + label,
-input[type=date]:disabled + label,
-input[type=date][readonly="readonly"] + label,
-input[type=datetime]:disabled + label,
-input[type=datetime][readonly="readonly"] + label,
-input[type=datetime-local]:disabled + label,
-input[type=datetime-local][readonly="readonly"] + label,
-input[type=tel]:disabled + label,
-input[type=tel][readonly="readonly"] + label,
-input[type=number]:disabled + label,
-input[type=number][readonly="readonly"] + label,
-input[type=search]:disabled + label,
-input[type=search][readonly="readonly"] + label,
-textarea.materialize-textarea:disabled + label,
-textarea.materialize-textarea[readonly="readonly"] + label {
-  color: #096190;
+.form-style-3 .input-field label {
+     color: #a1a1a1;
+}
+.form-style-3 input:not([type]), 
+.form-style-3 input[type="text"], 
+.form-style-3 input[type="password"], 
+.form-style-3 input[type="email"], 
+.form-style-3 input[type="url"], 
+.form-style-3 input[type="time"], 
+.form-style-3 input[type="date"], 
+.form-style-3 input[type="datetime"], 
+.form-style-3 input[type="datetime-local"], 
+.form-style-3 input[type="tel"], 
+.form-style-3 input[type="number"], 
+.form-style-3 input[type="search"], 
+.form-style-3 textarea.materialize-textarea {
+border-bottom: 1px solid #a1a1a1;
+}
+.form-style-3 .input-field input[type=text]:focus + label ,
+.form-style-3 .input-field input[type="password"]:focus + label, 
+.form-style-3 .input-field input[type="email"]:focus + label, 
+.form-style-3 .input-field input[type="url"]:focus + label, 
+.form-style-3 .input-field input[type="time"]:focus + label, 
+.form-style-3 .input-field input[type="date"]:focus + label, 
+.form-style-3 .input-field input[type="datetime"]:focus + label, 
+.form-style-3 .input-field input[type="datetime-local"]:focus + label, 
+.form-style-3 .input-field input[type="tel"]:focus + label, 
+.form-style-3 .input-field input[type="number"]:focus + label, 
+.form-style-3 .input-field input[type="search"]:focus + label, 
+.form-style-3 .input-field textarea.materialize-textarea:focus + label {
+     color: #2297da;
+   }
+.form-style-3 input:not([type]):focus:not([readonly]),
+.form-style-3 input[type=text]:focus:not([readonly]),
+.form-style-3 input[type=password]:focus:not([readonly]),
+.form-style-3 input[type=email]:focus:not([readonly]),
+.form-style-3 input[type=url]:focus:not([readonly]),
+.form-style-3 input[type=time]:focus:not([readonly]),
+.form-style-3 input[type=date]:focus:not([readonly]),
+.form-style-3 input[type=datetime]:focus:not([readonly]),
+.form-style-3 input[type=datetime-local]:focus:not([readonly]),
+.form-style-3 input[type=tel]:focus:not([readonly]),
+.form-style-3 input[type=number]:focus:not([readonly]),
+.form-style-3 input[type=search]:focus:not([readonly]),
+.form-style-3 textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #2297da;
+  box-shadow: 0 1px 0 0 #2297da;
+}
+.form-style-3 input:not([type]).invalid, input:not([type]):focus.invalid,
+.form-style-3 input[type=text].invalid,
+.form-style-3 input[type=text]:focus.invalid,
+.form-style-3 input[type=password].invalid,
+.form-style-3 input[type=password]:focus.invalid,
+.form-style-3 input[type=email].invalid,
+.form-style-3 input[type=email]:focus.invalid,
+.form-style-3 input[type=url].invalid,
+.form-style-3 input[type=url]:focus.invalid,
+.form-style-3 input[type=time].invalid,
+.form-style-3 input[type=time]:focus.invalid,
+.form-style-3 input[type=date].invalid,
+.form-style-3 input[type=date]:focus.invalid,
+.form-style-3 input[type=datetime].invalid,
+.form-style-3 input[type=datetime]:focus.invalid,
+.form-style-3 input[type=datetime-local].invalid,
+.form-style-3 input[type=datetime-local]:focus.invalid,
+.form-style-3 input[type=tel].invalid,
+.form-style-3 input[type=tel]:focus.invalid,
+.form-style-3 input[type=number].invalid,
+.form-style-3 input[type=number]:focus.invalid,
+.form-style-3 input[type=search].invalid,
+.form-style-3 input[type=search]:focus.invalid,
+.form-style-3 textarea.materialize-textarea.invalid,
+.form-style-3 textarea.materialize-textarea:focus.invalid {
+  border-bottom: 1px solid #F44336;
+  box-shadow: 0 1px 0 0 #F44336;
+}
+.form-style-3 input:not([type]).invalid + label:after,
+.form-style-3 input:not([type]):focus.invalid + label:after,
+.form-style-3 input[type=text].invalid + label:after,
+.form-style-3 input[type=text]:focus.invalid + label:after,
+.form-style-3 input[type=password].invalid + label:after,
+.form-style-3 input[type=password]:focus.invalid + label:after,
+.form-style-3 input[type=email].invalid + label:after,
+.form-style-3 input[type=email]:focus.invalid + label:after,
+.form-style-3 input[type=url].invalid + label:after,
+.form-style-3 input[type=url]:focus.invalid + label:after,
+.form-style-3 input[type=time].invalid + label:after,
+.form-style-3 input[type=time]:focus.invalid + label:after,
+.form-style-3 input[type=date].invalid + label:after,
+.form-style-3 input[type=date]:focus.invalid + label:after,
+.form-style-3 input[type=datetime].invalid + label:after,
+.form-style-3 input[type=datetime]:focus.invalid + label:after,
+.form-style-3 input[type=datetime-local].invalid + label:after,
+.form-style-3 input[type=datetime-local]:focus.invalid + label:after,
+.form-style-3 input[type=tel].invalid + label:after,
+.form-style-3 input[type=tel]:focus.invalid + label:after,
+.form-style-3 input[type=number].invalid + label:after,
+.form-style-3 input[type=number]:focus.invalid + label:after,
+.form-style-3 input[type=search].invalid + label:after,
+.form-style-3 input[type=search]:focus.invalid + label:after,
+.form-style-3 textarea.materialize-textarea.invalid + label:after,
+.form-style-3 textarea.materialize-textarea:focus.invalid + label:after {
+  content: attr(data-error);
+  color: #F44336;
+  opacity: 1;
+}
+
+.form-style-3 input:not([type]):disabled, input:not([type])[readonly="readonly"],
+.form-style-3 input[type=text]:disabled,
+.form-style-3 input[type=text][readonly="readonly"],
+.form-style-3 input[type=password]:disabled,
+.form-style-3 input[type=password][readonly="readonly"],
+.form-style-3 input[type=email]:disabled,
+.form-style-3 input[type=email][readonly="readonly"],
+.form-style-3 input[type=url]:disabled,
+.form-style-3 input[type=url][readonly="readonly"],
+.form-style-3 input[type=time]:disabled,
+.form-style-3 input[type=time][readonly="readonly"],
+.form-style-3 input[type=date]:disabled,
+.form-style-3 input[type=date][readonly="readonly"],
+.form-style-3 input[type=datetime]:disabled,
+.form-style-3 input[type=datetime][readonly="readonly"],
+.form-style-3 input[type=datetime-local]:disabled,
+.form-style-3 input[type=datetime-local][readonly="readonly"],
+.form-style-3 input[type=tel]:disabled,
+.form-style-3 input[type=tel][readonly="readonly"],
+.form-style-3 input[type=number]:disabled,
+.form-style-3 input[type=number][readonly="readonly"],
+.form-style-3 input[type=search]:disabled,
+.form-style-3 input[type=search][readonly="readonly"],
+.form-style-3 textarea.materialize-textarea:disabled,
+.form-style-3 textarea.materialize-textarea[readonly="readonly"] {
+  color: #464646;
+  font-weight: 600;
+  border-bottom: 1px solid 1px solid #a1a1a1;
+}
+.form-style-3 input:not([type]):disabled + label,
+.form-style-3 input:not([type])[readonly="readonly"] + label,
+.form-style-3 input[type=text]:disabled + label,
+.form-style-3 input[type=text][readonly="readonly"] + label,
+.form-style-3 input[type=password]:disabled + label,
+.form-style-3 input[type=password][readonly="readonly"] + label,
+.form-style-3 input[type=email]:disabled + label,
+.form-style-3 input[type=email][readonly="readonly"] + label,
+.form-style-3 input[type=url]:disabled + label,
+.form-style-3 input[type=url][readonly="readonly"] + label,
+.form-style-3 input[type=time]:disabled + label,
+.form-style-3 input[type=time][readonly="readonly"] + label,
+.form-style-3 input[type=date]:disabled + label,
+.form-style-3 input[type=date][readonly="readonly"] + label,
+.form-style-3 input[type=datetime]:disabled + label,
+.form-style-3 input[type=datetime][readonly="readonly"] + label,
+.form-style-3 input[type=datetime-local]:disabled + label,
+.form-style-3 input[type=datetime-local][readonly="readonly"] + label,
+.form-style-3 input[type=tel]:disabled + label,
+.form-style-3 input[type=tel][readonly="readonly"] + label,
+.form-style-3 input[type=number]:disabled + label,
+.form-style-3 input[type=number][readonly="readonly"] + label,
+.form-style-3 input[type=search]:disabled + label,
+.form-style-3 input[type=search][readonly="readonly"] + label,
+.form-style-3 textarea.materialize-textarea:disabled + label,
+.form-style-3 textarea.materialize-textarea[readonly="readonly"] + label {
+  color: #a1a1a1;
 }
 
 

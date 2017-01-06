@@ -29,23 +29,39 @@ return [
     'desc_contact' => 'Contact Us desc desc',
 
     //contact page
-    'contact_office_title'=> 'Our Office',
-    'contact_footnote'    => 'If you need any help or clarification contact your advisor who will be happy to help.',
+    'contact_office_title' => 'Our Office',
+
+    //Policy page
+    'policy_info_intro'            =>'Please select one of your policy:',
+    'policy_info_premium'          =>'Premium',
+    'policy_info_download'         =>'Download',
+    'policy_info_tob'              =>'Table of Benefits',
+    'policy_info_wording'          =>'Policy Wording',
+    'policy_info_cert'             =>'Certificate',
+    'policy_info_hospital_network' =>'Hospital Network',
+    'policy_info_invoice'          =>'Copy of Invoice/Receipt',
 
     //form label
-    'username'         => 'Username',
-    'passowrd'         => 'Password',
-    'new_password'     => 'New Password',
-    'confirm_password' => 'Confirm Password',
-    'name'             => 'Name',
-    'email'            => 'Email',
-    'phone'            => 'Phone',
-    'ppmid_code'       => 'Provided Code',
-    'dob'              => 'Date of Birth',
-    'year'             => 'Year',
-    'month'            => 'Month',
-    'day'              => 'Day',
-    'date'             => 'Date',
+    'username'          => 'Username',
+    'passowrd'          => 'Password',
+    'new_password'      => 'New Password',
+    'confirm_password'  => 'Confirm Password',
+    'name'              => 'Name',
+    'email'             => 'Email',
+    'phone'             => 'Phone',
+    'ppmid_code'        => 'Provided Code',
+    'dob'               => 'Date of Birth',
+    'year'              => 'Year',
+    'month'             => 'Month',
+    'day'               => 'Day',
+    'date'              => 'Date',
+    'insurer'           => 'Insurer',
+    'cover'             => 'Cover',
+    'start_date'        => 'Start Date',
+    'renew_date'        => 'Renew Date',
+    'currency_paid'     => 'Currency Paid',
+    'payment_frequency' => 'Payment Frequency',
+    'payment_method'    => 'Payment Method',
 
     //form gerenal error
     'email_erorr'              => 'invalid email',
@@ -70,8 +86,9 @@ return [
     'userSignup_desc'  => 'password At least one Case Diff letter , At least one number , Be at least 8 characters',
 
     //policy contact
-    'policy_contact_title'  => 'Policy:',
-    'policy_contact_advisor'=> 'Your advisor is',
+    'policy_contact_title'      => 'Policy:',
+    'policy_contact_advisor'    => 'Your advisor is',
+    'policy_contact_footnote'   => 'If you need any help or clarification contact your advisor who will be happy to help.',
 
     //system
     'csrfError'               => 'Please try again',

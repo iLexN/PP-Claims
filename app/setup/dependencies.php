@@ -137,3 +137,7 @@ $container['mobileDetect'] = function () {
 $container['langText'] = function (\Slim\Container $c) {
     return require $c['settings']['systemMessage'].'en/text.php';
 };
+
+$container['currencyText'] = function (\Slim\Container $c) {
+    return require $c['settings']['systemMessage'].'en/currency.php';
+};

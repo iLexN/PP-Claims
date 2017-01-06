@@ -34,9 +34,31 @@
             {{ forms.MD_input('click field to show invlide','email','email','not a email',langText.email_erorr) }}
         </div>
     </div>
+        
+        <h6>style3</h6>
+        
+        <div class="row form-style-3">
+             <div class="input-field col s12 m9 l9">
+            <select data-jshook="planSelectBox" name="plist" id="plist">
+                <option >aaaaaaaa</option>
+                <option >bbbbbbb</option>
+                <option >ccccccc</option>
+                <option >dddddd</option>
+            </select>
+        </div>
+            <div class="input-field col s12 m5 l5">
+            {{ forms.MD_input(langText.insurer, 'text', '' , 'read only' , false , true , 'v-model="p.insurer"')}}
+        </div>
+            
+        </div>
+        
+        
         <code>add class to form .form-style-1<br/>
         forms.MD_input('label','type','id','value')</code>
 
+        
+        
+        
     {% verbatim %}
         <pre>{{ forms.MD_input('username', 'text', 'user_name')}}</pre>
     {% endverbatim %}
@@ -64,6 +86,19 @@
         <pre>{{ components.a_link_style1(langText.home_verify_btn,'#v') }}</pre>
     {% endverbatim %}
 
+    
+    
+    
+    <code>components.a_link_style2('titleText','URL', 'target')</code>
+    <div style="width:25%">
+        {{ components.a_link_style2('long long long long long btn','#v') }}
+    </div>
+    {% verbatim %}
+        <pre>{{ components.a_link_style2(langText.home_verify_btn,'#v') }}</pre>
+    {% endverbatim %}
+
+
+    
     <code>class="alink_1"</code>
     <a href="#" class="alink_1">Forgot Username?</a>
     
@@ -76,6 +111,8 @@
     
         icon_color_1 <i class="material-icons icon_color_1">phone</i>
         icon_color_2 <i class="material-icons icon_color_2">phone</i>
+        icon_color_3 <i class="material-icons icon_color_3">phone</i>
+        icon_color_4 <i class="material-icons icon_color_4">phone</i>
         
         
         <p class="min-text">.min-text</p>
@@ -114,3 +151,10 @@
     <div style="height:50px;"></div>
     
 {% endblock %}
+
+
+{% block jsBottom %}
+    <script>
+     $('select').material_select();
+     </script>
+    {% endblock %}
