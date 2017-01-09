@@ -4,7 +4,7 @@
 
 
 {% block cssStyle %}
-    
+
 {% endblock %}
 
 {% block bodyHTML %}
@@ -17,15 +17,15 @@
     <h4>input</h4>
     <h6>style1</h6>
     <div style="background-color:#8FD7F0">
-    <div class="row form-style-1">
-        <div class="input-field col s3" >
-            {{ forms.MD_input(langText.username,'text','user_name') }}
+        <div class="row form-style-1">
+            <div class="input-field col s3" >
+                {{ forms.MD_input(langText.username,'text','user_name') }}
+            </div>
         </div>
     </div>
-    </div>
-        <code>add class to form .form-style-1<br/>
+    <code>add class to form .form-style-1<br/>
         forms.MD_input('label','type','id','value')</code>
-        <h6>style2</h6>
+    <h6>style2</h6>
     <div class="row form-style-2">
         <div class="input-field col s3" >
             {{ forms.MD_input(langText.username,'text','user_name') }}
@@ -34,11 +34,11 @@
             {{ forms.MD_input('click field to show invlide','email','email','not a email',langText.email_erorr) }}
         </div>
     </div>
-        
-        <h6>style3</h6>
-        
-        <div class="row form-style-3">
-             <div class="input-field col s12 m9 l9">
+
+    <h6>style3</h6>
+
+    <div class="row form-style-3">
+        <div class="input-field col s12 m9 l9">
             <select data-jshook="planSelectBox" name="plist" id="plist">
                 <option >aaaaaaaa</option>
                 <option >bbbbbbb</option>
@@ -46,19 +46,19 @@
                 <option >dddddd</option>
             </select>
         </div>
-            <div class="input-field col s12 m5 l5">
+        <div class="input-field col s12 m5 l5">
             {{ forms.MD_input(langText.insurer, 'text', '' , 'read only' , false , true , 'v-model="p.insurer"')}}
         </div>
-            
-        </div>
-        
-        
-        <code>add class to form .form-style-1<br/>
+
+    </div>
+
+
+    <code>add class to form .form-style-1<br/>
         forms.MD_input('label','type','id','value')</code>
 
-        
-        
-        
+
+
+
     {% verbatim %}
         <pre>{{ forms.MD_input('username', 'text', 'user_name')}}</pre>
     {% endverbatim %}
@@ -67,94 +67,119 @@
     <code>forms.MD_button_1('jshooks-name','BtnText','BtnType')</code>
     {{ forms.MD_button_1('loginBtn',langText.loginBtn,'button') }}
     {% verbatim %}
-        <pre>{{ forms.MD_button_1('loginBtn',langText.loginBtn,'button') }}</pre>
+        <pre>{{ forms.MD_button_1('loginBtn', langText.loginBtn, 'button')}}</pre>
     {% endverbatim %}
-    
+
     <code>forms.MD_button_2('jshooks-name','BtnText','BtnType','iconText')</code>
     {{ forms.MD_button_2('forgotpasswordBtn',langText.forgotpasswordBtn,'button' , 'send') }}
     {% verbatim %}
-        <pre>{{ forms.MD_button_2('forgotpasswordBtn',langText.forgotpasswordBtn,'button' , 'send') }}</pre>
+        <pre>{{ forms.MD_button_2('forgotpasswordBtn', langText.forgotpasswordBtn, 'button', 'send')}}</pre>
     {% endverbatim %}
-    
-    
+
+
     <h2>Other</h2>
-    
+
     <h4>a link</h4>
     <code>components.a_link_style1('titleText','URL', 'target')</code>
     {{ components.a_link_style1(langText.home_verify_btn,'#v') }}
     {% verbatim %}
-        <pre>{{ components.a_link_style1(langText.home_verify_btn,'#v') }}</pre>
+        <pre>{{ components.a_link_style1(langText.home_verify_btn, '#v')}}</pre>
     {% endverbatim %}
 
-    
-    
-    
+
+
+
     <code>components.a_link_style2('titleText','URL', 'target')</code>
     <div style="width:25%">
         {{ components.a_link_style2('long long long long long btn','#v') }}
     </div>
     {% verbatim %}
-        <pre>{{ components.a_link_style2(langText.home_verify_btn,'#v') }}</pre>
+        <pre>{{ components.a_link_style2(langText.home_verify_btn, '#v')}}</pre>
     {% endverbatim %}
 
 
-    
+
     <code>class="alink_1"</code>
     <a href="#" class="alink_1">Forgot Username?</a>
-    
+
     <h4>general class ( .general)</h4>
     <div class="general">
-    
+
         <h1>header 1</h1>
         <h2>header 2</h2>
         <h3>header 3</h3>
-    
+
         icon_color_1 <i class="material-icons icon_color_1">phone</i>
         icon_color_2 <i class="material-icons icon_color_2">phone</i>
         icon_color_3 <i class="material-icons icon_color_3">phone</i>
         icon_color_4 <i class="material-icons icon_color_4">phone</i>
-        
-        
+
+
         <p class="min-text">.min-text</p>
-        
-        
+
+
     </div>
-    
-        
-        <h2>component</h2>
-        
-        
-        <h4>police contact</h4>
-        {% verbatim %}
+
+
+    <h2>component</h2>
+
+
+    <h4>police contact</h4>
+    {% verbatim %}
         {% include 'include/components/policy-contact.twig' %}
-        {% endverbatim %}
-        <br/><br/><br/>
-        <div class="general">
+    {% endverbatim %}
+    <br/><br/><br/>
+    <div class="general">
         {% set police = {"policy_id":1,"insurer":"Best Doctors","plan_name":"Ultracare","deductible":"85","cover":"WorldWide","options":"Travel","medical_currency":"USD","payment_frequency":"Annual","payment_method":"Cheque","start_date":"2015-01-30","end_date":"2020-02-17","responsibility_id":19,"status":"Active","Policy_Number":null,"renew_date":"2020-02-18","is_end":false,"pivot":{"ppmid":"9677","policy_id":"1","id":2,"premium_paid":"0.00"},"advisor":{"responsibility_id":19,"name":"Ken Chung","email":"ken@kwiksure.com","office_phone":"3588 2914","contact_details_id":1}}  %}
         {% include 'include/components/policy-contact.twig' %}
-        </div>
-        
-        <div style="height:50px;"></div>
-        
-        <h4>office map</h4>
-        <div class="general">
-            {% verbatim %}
-        {% include 'include/components/office-map.twig' %}
+    </div>
+
+    <div style="height:50px;"></div>
+
+    <h4>office map</h4>
+    <div class="general">
+        {% verbatim %}
+            {% include 'include/components/office-map.twig' %}
         {% endverbatim %}
         <br/><br/><br/>
-            
+
         <div style="width:40%">
-        {% include 'include/components/office-map.twig' %}
+            {% include 'include/components/office-map.twig' %}
         </div>
-        </div>
-        
+    </div>
+
+
+
+    <h4>breadcrumb</h4>
+    <div class="general" style="width:50%">
+        <h1>{{ langText.title_claims }}</h1>
+
+        {% include 'include/components/claim-breadcrumb.twig' %}
+    </div>
+    {% verbatim %}
+        {% include 'include/components/claim-breadcrumb.twig' %}
+    {% endverbatim %}
     <div style="height:50px;"></div>
-    
+
+    <h4>claim menu ? </h4>
+    <div style="width:50%">
+    <div class="row">
+        <div class="col s12 m6 l5">
+            {{ components.claim_info_box2(langText.claim_saved_claim,'/assets/images/icon_claims_save.png' ,':href="savedClaimUrl"' ) }}
+        </div>
+        <div class="col s12 m6 l5">
+            {{ components.claim_info_box2(langText.claim_submitted_claims,'/assets/images/icon_claims_submit.png', ':href="submitedClaimUrl"' ) }}
+        </div>
+    </div></div>
+        {% verbatim %}
+        {{ components.claim_info_box2(langText.claim_submitted_claims,'/assets/images/icon_claims_submit.png', ':href="submitedClaimUrl"' ) }}
+    {% endverbatim %}
+<div style="height:50px;"></div>
 {% endblock %}
 
 
 {% block jsBottom %}
     <script>
-     $('select').material_select();
-     </script>
-    {% endblock %}
+        $('select').material_select();
+    </script>
+{% endblock %}

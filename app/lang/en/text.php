@@ -41,6 +41,18 @@ return [
     'policy_info_hospital_network' => 'Hospital Network',
     'policy_info_invoice'          => 'Copy of Invoice/Receipt',
 
+    //Claim Main
+    'claim_nav_select'       => 'Select Policy',
+    'claim_nav_details'      => 'Claim\'s Details',
+    'claim_nav_reimburse'    => 'Reimburse Details',
+    'claim_nav_doc'          => 'Supporting Documents',
+    'claim_dl_claim_title'   => 'Download Claim Form',
+    'claim_dl_claim_desc'    => 'Need to upload filled-in, signed form during online claims process?',
+    'claim_submit_new_claim' => 'Submit New Claim',
+    'claim_saved_claim'      => 'Saved Claims',
+    'claim_submitted_claims' => 'Submitted Claims',
+
+
     //form label
     'username'          => 'Username',
     'passowrd'          => 'Password',

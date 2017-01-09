@@ -76,3 +76,11 @@ page style
 }
 
 .home_model { width:90%;max-height: 80%}
+
+.general .right_side{
+    margin-top: 1rem;
+}
+
+.claim_info_box1_title,.claim_info_box1_desc{
+    padding-left: 4.9375rem;
+}

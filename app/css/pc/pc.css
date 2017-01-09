@@ -99,3 +99,11 @@ text-align: center;
 }
 
 .home_model { width:55%;max-height: 80%}
+
+.general .right_side{
+    margin-top: 5rem;
+}
+
+.claim_info_box1_title,.claim_info_box1_desc{
+    padding-left:5.4375rem;
+}

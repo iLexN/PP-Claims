@@ -10,7 +10,7 @@
                         {{ components.main_block_effect(langText.title_profile,langText.desc_profile , 'assets/images/icon_profile.png' ,'#1') }}
                     </div>
                     <div class="col s12 m6 l6">
-                        {{ components.main_block_effect(langText.title_claims,langText.desc_claims , 'assets/images/icon_claims.png' ,'#2') }}
+                        {{ components.main_block_effect(langText.title_claims,langText.desc_claims , 'assets/images/icon_claims.png' , path_for('Claim.Index') ) }}
                     </div>
                     <div class="col s12 m6 l6">
                         {{ components.main_block_effect(langText.title_policy,langText.desc_policy, 'assets/images/icon_policy.png', path_for('Policy') ) }}
@@ -20,12 +20,8 @@
                     </div>
                 </div>
                 <div>
-                    <div class="col s12">
-                        {% if is_mobile() %}
-                            <img src="assets/images/banner_apps_m.jpg" class="responsive-img">
-                        {% else %}
-                            <img src="assets/images/banner_apps.jpg" class="responsive-img">
-                        {% endif %}
+                    <div class="col s12">                        
+                        {{ components.responsiveImg( '/assets/images/banner_apps.jpg' , '/assets/images/banner_apps_m.jpg' ) }}
                     </div>
                 </div>
             </div>

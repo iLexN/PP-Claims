@@ -6,6 +6,37 @@
     </div>
 {% endmacro %}
 
+{% macro claim_info_box2( title , img , extraAttr = '' ) %}
+    <a class="claim_info_box2" {{ extraAttr | raw }}>
+        <img src="{{ img }}">
+        <span class="claim_info_box2_title">{{ title }}</span>
+    </a>
+{% endmacro %}
+
+{% macro responsiveImg( img_pc , img_mobile ) %}
+    {% if is_mobile() %}
+        <img src="{{ img_mobile }}" class="responsive-img">
+    {% else %}
+        <img src="{{ img_pc }}" class="responsive-img">
+    {% endif %}
+{% endmacro %}
+
+{% macro tel_phone( tel , vue = false) %}
+    {% if is_mobile() %}
+        {% if vue %}
+            <a :href="'tel:'+{{ tel }}">${ {{ tel | raw }} }</a>
+        {% else %}
+            <a href="tel:{{ tel }}">{{ tel }}</a>
+        {% endif %}
+    {% else %}
+        {% if vue %}
+            <span v-html="{{ tel }}"></span>
+        {% else %}
+            {{ tel }}
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
 {% macro a_link_style1( title , link , target ) %}
     <a class="btn waves-effect waves-light orange lighten-1" href="{{ link }}" target="{{ target | default('_self') }}">{{ title }}</a>
 {% endmacro %}

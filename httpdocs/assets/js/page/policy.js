@@ -37,6 +37,17 @@ var app = new Vue({
         'policy-user': policyuser,
         'advisor' : advisor
     },
+    computed : {
+      newClaimUrl : function(){
+          return 'user-policy/' + this.p.pivot.id + '/new-claim';
+      },
+      savedClaimUrl : function(){
+          return 'user-policy/' + this.p.pivot.id + '/save-claim';
+      },
+      submitedClaimUrl : function(){
+          return 'user-policy/' + this.p.pivot.id + '/submited-claim';
+      }
+    },
     methods: {
         changePlan: function (k) {
             this.p = this.plist[k];

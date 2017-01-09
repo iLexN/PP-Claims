@@ -3,8 +3,9 @@
 namespace PP\WebPortal\Module\Model;
 
 use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
+use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
 
-class ListModel implements \Iterator, ModelInterface
+class ListModel extends ModelAbstract implements \Iterator
 {
     private $position = 0;
 

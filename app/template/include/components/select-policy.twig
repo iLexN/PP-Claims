@@ -1,0 +1,8 @@
+<div class="row form-style-3">
+        <div class="col s12">{{ langText.policy_info_intro }}</div>
+        <div class="input-field col s12 m9 l9">
+            <select data-jshook="planSelectBox" name="plist" id="plist">
+                <option v-for="(val, key) in plist" :value="key">${ val.plan.plan_name }</option>
+            </select>
+        </div>
+    </div>

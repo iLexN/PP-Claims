@@ -41,6 +41,11 @@ $app->get('/policy', 'PP\WebPortal\Controller\Page\Policy')
     ->setName('Policy')
     ->add($authLoginArea); // redirect to home page if login expired
 
+//claim
+$app->get('/claim', 'PP\WebPortal\Controller\Claim\Index')
+    ->setName('Claim.Index')
+    ->add($authLoginArea); // redirect to home page if login expired
+
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
 
