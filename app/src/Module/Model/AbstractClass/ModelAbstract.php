@@ -2,9 +2,9 @@
 
 namespace PP\WebPortal\Module\Model\AbstractClass;
 
-use PP\WebPortal\Module\Model\Interfaces\ModelInterfaces;
+use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
 
-abstract class ModelAbstract implements \ArrayAccess,ModelInterfaces
+abstract class ModelAbstract implements \ArrayAccess, ModelInterface
 {
     /**
      * data info.

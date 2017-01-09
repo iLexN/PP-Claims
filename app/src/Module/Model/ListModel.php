@@ -2,19 +2,25 @@
 
 namespace PP\WebPortal\Module\Model;
 
-use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
-use PP\WebPortal\Module\Model\Interfaces\ModelInterfaces;
+use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
 
-class ListModel implements \Iterator,ModelInterfaces
+class ListModel implements \Iterator, ModelInterface
 {
     private $position = 0;
+
+    /**
+     * data info.
+     *
+     * @var array
+     */
+    protected $data;
 
     public function __construct()
     {
         $this->position = 0;
     }
 
-    public function push(ModelInterfaces $obj)
+    public function push(ModelInterface $obj)
     {
         $this->data[] = $obj;
     }

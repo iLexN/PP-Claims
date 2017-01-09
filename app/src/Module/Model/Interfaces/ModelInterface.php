@@ -2,7 +2,7 @@
 
 namespace PP\WebPortal\Module\Model\Interfaces;
 
-interface ModelInterfaces
+interface ModelInterface
 {
     public function toArray();
 

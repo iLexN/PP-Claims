@@ -1617,12 +1617,12 @@ i.icon_color_2{
 }
 i.icon_color_3{
     color:#959595;
-    font-size:16px;
-    font-size: 1rem;
+    font-size:18px;
+    font-size: 1.125rem;
 }
 i.icon_color_4{
-    font-size:22px;
-    font-size: 1.375rem;
+    font-size:18px;
+    font-size: 1.125rem;
     color : #416478;
 }
 .min-text{
