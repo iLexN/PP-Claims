@@ -3,8 +3,8 @@
 namespace PP\WebPortal\Module;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
-use PP\WebPortal\Module\Model\PolicyModel;
 use PP\WebPortal\Module\Model\ListModel;
+use PP\WebPortal\Module\Model\PolicyModel;
 
 /**
  * Description of PolicyModule.
@@ -29,8 +29,7 @@ final class PolicyModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$policies = $this->policyFactory($this->getPoliciesByAPI($user['ppmid']));
-            $policies = $this->factory( $this->getPoliciesByAPI($user['ppmid']));
+            $policies = $this->factory($this->getPoliciesByAPI($user['ppmid']));
             $this->pool->save($item->set($policies));
         }
 
@@ -55,9 +54,9 @@ final class PolicyModule extends AbstractContainer
 
     private function factory($list)
     {
-        $newList = new ListModel;
+        $newList = new ListModel();
         foreach ($list as $data) {
-            $newList->push(new PolicyModel($data, $this->currencyText)) ;
+            $newList->push(new PolicyModel($data, $this->currencyText));
         }
 
         return $newList;

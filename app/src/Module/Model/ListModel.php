@@ -32,6 +32,7 @@ class ListModel implements \Iterator, ModelInterface
         foreach ($this->data as $obj) {
             $out[] = $obj->toArray();
         }
+
         return $out;
     }
 

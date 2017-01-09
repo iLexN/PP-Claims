@@ -41,7 +41,6 @@ $app->get('/policy', 'PP\WebPortal\Controller\Page\Policy')
     ->setName('Policy')
     ->add($authLoginArea); // redirect to home page if login expired
 
-
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
 

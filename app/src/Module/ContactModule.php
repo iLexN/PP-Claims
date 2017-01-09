@@ -51,9 +51,9 @@ final class ContactModule extends AbstractContainer
 
     private function factory($list)
     {
-        $newList = new ListModel;
+        $newList = new ListModel();
         foreach ($list as $data) {
-            $newList->push(new ContactModel($data)) ;
+            $newList->push(new ContactModel($data));
         }
 
         return $newList;

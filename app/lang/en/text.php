@@ -32,14 +32,14 @@ return [
     'contact_office_title' => 'Our Office',
 
     //Policy page
-    'policy_info_intro'            =>'Please select one of your policy:',
-    'policy_info_premium'          =>'Premium',
-    'policy_info_download'         =>'Download',
-    'policy_info_tob'              =>'Table of Benefits',
-    'policy_info_wording'          =>'Policy Wording',
-    'policy_info_cert'             =>'Certificate',
-    'policy_info_hospital_network' =>'Hospital Network',
-    'policy_info_invoice'          =>'Copy of Invoice/Receipt',
+    'policy_info_intro'            => 'Please select one of your policy:',
+    'policy_info_premium'          => 'Premium',
+    'policy_info_download'         => 'Download',
+    'policy_info_tob'              => 'Table of Benefits',
+    'policy_info_wording'          => 'Policy Wording',
+    'policy_info_cert'             => 'Certificate',
+    'policy_info_hospital_network' => 'Hospital Network',
+    'policy_info_invoice'          => 'Copy of Invoice/Receipt',
 
     //form label
     'username'          => 'Username',

@@ -17,7 +17,7 @@ class PolicyModel extends ModelAbstract
 
     private function init()
     {
-        $this->data['medical_currency_display'] = $this->data['medical_currency'] . ' '. $this->currency[$this->data['medical_currency']];
+        $this->data['medical_currency_display'] = $this->data['medical_currency'].' '.$this->currency[$this->data['medical_currency']];
     }
 
     /**

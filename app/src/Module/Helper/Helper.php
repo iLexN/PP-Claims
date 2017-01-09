@@ -42,7 +42,7 @@ final class Helper extends AbstractContainer
     {
         foreach ($preLoad as $r => $pathArray) {
             foreach ($pathArray as $path) {
-                $response = $response->withAddedHeader('Link', '<'.$path . '?' . $this->c->get('appVersion') .'>; rel=preload; as=' .$r);
+                $response = $response->withAddedHeader('Link', '<'.$path .'?'.$this->c->get('appVersion').'>; rel=preload; as='.$r);
             }
         }
         return $response;
