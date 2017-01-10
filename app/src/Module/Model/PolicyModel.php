@@ -36,6 +36,16 @@ class PolicyModel extends ModelAbstract
         return $this->data['pivot']['premium_paid'];
     }
 
+    public function getUserID()
+    {
+        return (int) $this->data['pivot']['ppmid'];
+    }
+
+    public function isSelectPolicy($id)
+    {
+        return ( $this->data['pivot']['policy_id'] === $id );
+    }
+
     /**
      * @return array
      */

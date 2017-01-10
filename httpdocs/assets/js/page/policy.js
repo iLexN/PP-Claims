@@ -46,6 +46,9 @@ var app = new Vue({
       },
       submitedClaimUrl : function(){
           return 'user-policy/' + this.p.pivot.id + '/submited-claim';
+      },
+      claimFormUrl : function(){
+          return 'user-policy/' + this.p.pivot.id + '/claim-form';
       }
     },
     methods: {

@@ -45,6 +45,10 @@ $app->get('/policy', 'PP\WebPortal\Controller\Page\Policy')
 $app->get('/claim', 'PP\WebPortal\Controller\Claim\Index')
     ->setName('Claim.Index')
     ->add($authLoginArea); // redirect to home page if login expired
+$app->get('/user-policy/{id:\d+}/new-claim', 'PP\WebPortal\Controller\Claim\NewClaim')
+    ->setName('Claim.NewClaim')
+    ->add($userPolicyCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
 
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');

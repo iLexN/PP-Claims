@@ -1696,7 +1696,6 @@ include components
 }
 .breadcrumb:before{
     color : #959595;
-    content: "\\";
     font-size:20px;
     font-size:1.25rem;
 }

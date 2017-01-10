@@ -288,7 +288,6 @@ include components
 }
 .breadcrumb::before{
     color : #959595;
-    content: "\\";
     font-size:1.25rem;
 }
 .breadcrumb.active{
