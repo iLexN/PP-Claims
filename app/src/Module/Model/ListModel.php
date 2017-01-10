@@ -2,8 +2,8 @@
 
 namespace PP\WebPortal\Module\Model;
 
-use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
 use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
+use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
 
 class ListModel extends ModelAbstract implements \Iterator
 {

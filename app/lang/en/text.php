@@ -52,7 +52,6 @@ return [
     'claim_saved_claim'      => 'Saved Claims',
     'claim_submitted_claims' => 'Submitted Claims',
 
-
     //form label
     'username'          => 'Username',
     'passowrd'          => 'Password',
