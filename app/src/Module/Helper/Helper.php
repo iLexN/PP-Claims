@@ -45,6 +45,7 @@ final class Helper extends AbstractContainer
                 $response = $response->withAddedHeader('Link', '<'.$path.'?'.$this->c->get('appVersion').'>; rel=preload; as='.$r);
             }
         }
+
         return $response;
     }
 }

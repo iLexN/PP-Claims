@@ -1,5 +1,15 @@
 #### [Current]
- * [fd22003](../../commit/fd22003) - __(2017-01-04 17:23:59 +0800)__ fix header style
+ * [bad8b7f](../../commit/bad8b7f) - __(2017-01-10 10:08:36 +0800)__ ci fix
+ * [c3724b9](../../commit/c3724b9) - __(2017-01-09 18:12:47 +0800)__ claim index
+ * [bf92b36](../../commit/bf92b36) - __(2017-01-09 11:19:50 +0800)__ cs fix
+ * [9b277f6](../../commit/9b277f6) - __(2017-01-09 11:09:15 +0800)__ ci fix
+ * [c340fd0](../../commit/c340fd0) - __(2017-01-06 17:55:03 +0800)__ policy page
+ * [919e045](../../commit/919e045) - __(2017-01-05 12:44:40 +0800)__ add list model , fix css ,
+ * [e19b963](../../commit/e19b963) - __(2017-01-04 17:45:50 +0800)__ fix login redirct middleware
+ * [f7a51d5](../../commit/f7a51d5) - __(2017-01-04 17:24:22 +0800)__ fix header style
+
+#### [0.1.2]
+ * [f7a51d5](../../commit/f7a51d5) - __(2017-01-04 17:24:22 +0800)__ fix header style
  * [1ec0320](../../commit/1ec0320) - __(2017-01-04 16:46:07 +0800)__ template change name , add 2 col template
 
 #### [0.1.1]
