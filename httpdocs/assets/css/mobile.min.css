@@ -1442,27 +1442,30 @@ general
 }
 i.icon_color_1{
     color:#2297da;
-    font-size:16px;
-    font-size: 1rem;
-    margin-right:8px;
-    margin-right: 0.5rem;
 }
 i.icon_color_2{
     color:#636363;
-    font-size:16px;
-    font-size: 1rem;
-    margin-left:8px;
-    margin-left: 0.5rem;
 }
 i.icon_color_3{
-    color:#959595;
-    font-size:18px;
-    font-size: 1.125rem;
+    color:#959595;    
 }
 i.icon_color_4{
+    color : #416478;
+}
+i.icon_size_18{
     font-size:18px;
     font-size: 1.125rem;
-    color : #416478;
+    vertical-align: sub;
+}
+i.icon_size_22{
+    font-size:22px;
+    font-size: 1.375rem;
+    vertical-align: sub;
+}
+i.icon_color_24{
+    font-size:24px;
+    font-size: 1.5rem;
+    vertical-align: sub;
 }
 .min-text{
     font-size:13px;
@@ -1491,6 +1494,8 @@ include components
     font-size:0.625rem;
     background-color: #0088cc;
     color:#fff;
+    padding:16px;
+    padding:1rem;
 }
 /** main page block effect **/
 .view {
@@ -1629,8 +1634,8 @@ include components
 /****office map*****/
 .office_map{}
 .office_map_iconbox{
-    margin:0 8px;
-    margin:0 0.5rem;
+    margin:0 0 0 8px;
+    margin:0 0 0 0.5rem;
 }
 .office_map_textbox{
     padding:16px 0;
@@ -1641,10 +1646,12 @@ include components
     font-size: 0.875rem;
     margin-bottom:8px;
     margin-bottom: 0.5rem;
-    padding-left:40px;
-    padding-left: 2.5rem;
+    padding-left:32px;
+    padding-left: 2rem;
     padding-right:16px;
     padding-right: 1rem;
+    line-height:24px;
+    line-height: 1.5rem;
 }
 /***** contact box 2 ******/
 .contact_box2{
@@ -1677,29 +1684,37 @@ include components
     padding-left: 2rem;
     padding-right:16px;
     padding-right: 1rem;
+    line-height:25px;
+    line-height: 1.5625rem;
 }
 /***** breadcrumb ****/
-.nav {
+.claim_nav {
     border-bottom: 1px solid #84dcf2;
     margin-bottom:16px;
     margin-bottom: 1rem;
     padding-bottom:8px;
     padding-bottom: 0.5rem;
 }
-.breadcrumb {
+.claim_nav .breadcrumb {
     color : #959595;
     font-size:14px;
     font-size:0.875rem
 }
-.breadcrumb:last-child {
+.claim_nav .breadcrumb:last-child {
     color : #959595;
 }
-.breadcrumb:before{
+.claim_nav .breadcrumb:before{
     color : #959595;
     font-size:20px;
     font-size:1.25rem;
 }
-.breadcrumb.active{
+.claim_nav  a.breadcrumb{
+    color : #959595;
+}
+.claim_nav .breadcrumb.active{
+    color : #0292e4;
+}
+.claim_nav .breadcrumb.active:before{
     color : #0292e4;
 }
 /*** claim box 1 ****/
@@ -1741,6 +1756,9 @@ include components
     font-size:16px;
     font-size: 1rem;
     font-weight: 600;
+}
+.form_edit{
+    background-color: #FFEFF0;
 }
 /* form style*/
 .btn{ text-transform: none; font-weight: 600 }
@@ -1999,6 +2017,8 @@ include components
 .form-style-3 .input-field input[type="search"].valid{
     border-bottom: 1px solid #a1a1a1;
     box-shadow: none;
+    color: #464646;
+    font-weight: 600;
 }
 .form-style-3 .input-field label {
     color: #a1a1a1;
@@ -2017,6 +2037,8 @@ include components
 .form-style-3 input[type="search"], 
 .form-style-3 textarea.materialize-textarea {
     border-bottom: 1px solid #a1a1a1;
+    color: #464646;
+    font-weight: 600;
 }
 .form-style-3 .input-field input[type=text]:focus + label ,
 .form-style-3 .input-field input[type="password"]:focus + label, 
@@ -2031,6 +2053,7 @@ include components
 .form-style-3 .input-field input[type="search"]:focus + label, 
 .form-style-3 .input-field textarea.materialize-textarea:focus + label {
     color: #2297da;
+    
 }
 .form-style-3 input:not([type]):focus:not([readonly]),
 .form-style-3 input[type=text]:focus:not([readonly]),
@@ -2047,6 +2070,8 @@ include components
 .form-style-3 textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid #2297da;
     box-shadow: 0 1px 0 0 #2297da;
+    color: #2297da;
+    font-weight: 600;
 }
 .form-style-3 input:not([type]).invalid, input:not([type]):focus.invalid,
 .form-style-3 input[type=text].invalid,

@@ -80,22 +80,29 @@ general
 
 i.icon_color_1{
     color:#2297da;
-    font-size: 1rem;
-    margin-right: 0.5rem;
 }
 i.icon_color_2{
     color:#636363;
-    font-size: 1rem;
-    margin-left: 0.5rem;
 }
 i.icon_color_3{
-    color:#959595;
-    font-size: 1.125rem;
+    color:#959595;    
 }
 i.icon_color_4{
-    font-size: 1.125rem;
     color : #416478;
 }
+i.icon_size_18{
+    font-size: 1.125rem;
+    vertical-align: sub;
+}
+i.icon_size_22{
+    font-size: 1.375rem;
+    vertical-align: sub;
+}
+i.icon_color_24{
+    font-size: 1.5rem;
+    vertical-align: sub;
+}
+
 
 .min-text{
     font-size: 0.8125rem;
@@ -122,6 +129,7 @@ include components
     font-size:0.625rem;
     background-color: #0088cc;
     color:#fff;
+    padding:1rem;
 }
 /** main page block effect **/
 .view {
@@ -237,7 +245,7 @@ include components
 /****office map*****/
 .office_map{};
 .office_map_iconbox{
-    margin:0 0.5rem;
+    margin:0 0 0 0.5rem;
 }
 .office_map_textbox{
     padding:1rem 0;
@@ -245,8 +253,9 @@ include components
 .office_map_infobox{
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
-    padding-left: 2.5rem;
+    padding-left: 2rem;
     padding-right: 1rem;
+    line-height: 1.5rem;
 }
 /***** contact box 2 ******/
 .contact_box2{
@@ -272,27 +281,35 @@ include components
     margin-bottom: 0.5rem;
     padding-left: 2rem;
     padding-right: 1rem;
+    line-height: 1.5625rem;
 }
 /***** breadcrumb ****/
-.nav {
+.claim_nav {
     border-bottom: 1px solid #84dcf2;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
 }
-.breadcrumb {
+.claim_nav .breadcrumb {
     color : #959595;
     font-size:0.875rem
 }
-.breadcrumb:last-child {
+.claim_nav .breadcrumb:last-child {
     color : #959595;
 }
-.breadcrumb::before{
+.claim_nav .breadcrumb::before{
     color : #959595;
     font-size:1.25rem;
 }
-.breadcrumb.active{
+.claim_nav  a.breadcrumb{
+    color : #959595;
+}
+.claim_nav .breadcrumb.active{
     color : #0292e4;
 }
+.claim_nav .breadcrumb.active::before{
+    color : #0292e4;
+}
+
 /*** claim box 1 ****/
 .claim_info_box1{
     background-color: #0292e4;
@@ -327,6 +344,10 @@ include components
     font-weight: 600;
 }
 
+
+.form_edit{
+    background-color: #FFEFF0;
+}
 
 /* form style*/
 .btn{ text-transform: none; font-weight: 600 }
@@ -584,6 +605,8 @@ include components
 .form-style-3 .input-field input[type="search"].valid{
     border-bottom: 1px solid #a1a1a1;
     box-shadow: none;
+    color: #464646;
+    font-weight: 600;
 }
 .form-style-3 .input-field label {
     color: #a1a1a1;
@@ -602,6 +625,8 @@ include components
 .form-style-3 input[type="search"], 
 .form-style-3 textarea.materialize-textarea {
     border-bottom: 1px solid #a1a1a1;
+    color: #464646;
+    font-weight: 600;
 }
 .form-style-3 .input-field input[type=text]:focus + label ,
 .form-style-3 .input-field input[type="password"]:focus + label, 
@@ -616,6 +641,7 @@ include components
 .form-style-3 .input-field input[type="search"]:focus + label, 
 .form-style-3 .input-field textarea.materialize-textarea:focus + label {
     color: #2297da;
+    
 }
 .form-style-3 input:not([type]):focus:not([readonly]),
 .form-style-3 input[type=text]:focus:not([readonly]),
@@ -632,6 +658,8 @@ include components
 .form-style-3 textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid #2297da;
     box-shadow: 0 1px 0 0 #2297da;
+    color: #2297da;
+    font-weight: 600;
 }
 .form-style-3 input:not([type]).invalid, input:not([type]):focus.invalid,
 .form-style-3 input[type=text].invalid,

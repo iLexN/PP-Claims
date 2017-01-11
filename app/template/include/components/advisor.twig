@@ -2,8 +2,8 @@
     <div class="col s11 offset-s1 min-text">{{ langText.policy_contact_advisor }}</div>
     <div class="col s11 offset-s1"><div class="policy_contact_name">${ p.advisor.name }</div></div>
     <div class="col s11 offset-s1">
-        <div class="policy_contact_detail"><i class="material-icons icon_color_1">email</i> <a :href="'mailto:'+ p.advisor.email">${ p.advisor.email }</a></div>
-        <div class="policy_contact_detail"><i class="material-icons icon_color_1">phone</i> {{ components.tel_phone('p.advisor.office_phone' , true) }}</div>
+        <div class="policy_contact_detail"><i class="material-icons icon_color_1 icon_size_18">email</i> <a :href="'mailto:'+ p.advisor.email">${ p.advisor.email }</a></div>
+        <div class="policy_contact_detail"><i class="material-icons icon_color_1 icon_size_18">phone</i> {{ components.tel_phone('p.advisor.office_phone' , true) }}</div>
     </div>
 </div>
 

@@ -49,6 +49,14 @@
         <div class="input-field col s12 m5 l5">
             {{ forms.MD_input(langText.insurer, 'text', '' , 'read only' , false , true , 'v-model="p.insurer"')}}
         </div>
+    </div>
+
+    <div class="form_edit">
+        <div class="row form-style-3">
+            <div class="input-field col s12 m5 l5">
+                {{ forms.MD_input(langText.insurer, 'text', '' , 'default text' , false , false )}}
+            </div>
+        </div>
 
     </div>
 
@@ -110,10 +118,13 @@
         <h3>header 3</h3>
 
         icon_color_1 <i class="material-icons icon_color_1">phone</i>
-        icon_color_2 <i class="material-icons icon_color_2">phone</i>
-        icon_color_3 <i class="material-icons icon_color_3">phone</i>
-        icon_color_4 <i class="material-icons icon_color_4">phone</i>
+        <br/>icon_color_2 <i class="material-icons icon_color_2">phone</i>
+        <br/>icon_color_3 <i class="material-icons icon_color_3">phone</i>
+        <br/>icon_color_4 (general h2 color) <i class="material-icons icon_color_4">phone</i>
 
+        <br/>icon_size_18 ( follow text 16px, size : 18px) <i class="material-icons icon_color_1 icon_size_18">phone</i>
+        <br/>icon_size_22 (follow text bold 16px, size : 22px) <i class="material-icons icon_color_2 icon_size_22">phone</i>
+        <br/>icon_color_24  (follow h2 , size : 24px) <i class="material-icons icon_color_3 icon_size_24">phone</i>
 
         <p class="min-text">.min-text</p>
 
@@ -163,18 +174,18 @@
 
     <h4>claim menu ? </h4>
     <div style="width:50%">
-    <div class="row">
-        <div class="col s12 m6 l5">
-            {{ components.claim_info_box2(langText.claim_saved_claim,'/assets/images/icon_claims_save.png' ,':href="savedClaimUrl"' ) }}
-        </div>
-        <div class="col s12 m6 l5">
-            {{ components.claim_info_box2(langText.claim_submitted_claims,'/assets/images/icon_claims_submit.png', ':href="submitedClaimUrl"' ) }}
-        </div>
-    </div></div>
+        <div class="row">
+            <div class="col s12 m6 l5">
+                {{ components.claim_info_box2(langText.claim_saved_claim,'/assets/images/icon_claims_save.png' ,':href="savedClaimUrl"' ) }}
+            </div>
+            <div class="col s12 m6 l5">
+                {{ components.claim_info_box2(langText.claim_submitted_claims,'/assets/images/icon_claims_submit.png', ':href="submitedClaimUrl"' ) }}
+            </div>
+        </div></div>
         {% verbatim %}
-        {{ components.claim_info_box2(langText.claim_submitted_claims,'/assets/images/icon_claims_submit.png', ':href="submitedClaimUrl"' ) }}
+        {{ components.claim_info_box2(langText.claim_submitted_claims, '/assets/images/icon_claims_submit.png', ':href="submitedClaimUrl"')}}
     {% endverbatim %}
-<div style="height:50px;"></div>
+    <div style="height:50px;"></div>
 {% endblock %}
 
 

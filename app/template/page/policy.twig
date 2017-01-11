@@ -35,7 +35,7 @@
     <policy-user  v-for="(val, key) in p.policyuser" :p="val" inline-template>
         <div class="row premium_box">
             <div class="col s6 m6 l5">
-                <div class="left premium_box_iconbox"><i class="material-icons icon_color_3">account_circle</i></div>
+                <div class="left premium_box_iconbox"><i class="material-icons icon_color_3 icon_size_22">account_circle</i></div>
                 <div class="premium_box_namebox">${ fullname }</div>
             </div>
             <div class="col s6 m5 l5 offset-m1 offset-l2">{{ langText.policy_info_premium }}: <span class="premium_box_premium">${ p.premium_paid }</span></div>
@@ -62,7 +62,7 @@
     
     <div class="col s12 m10 l10 offset-m2 offset-l2">
         <div data-jshook="pushpin">
-            <h2><i class="material-icons icon_color_4">file_download</i> {{ langText.policy_info_download }}</h2>
+            <h2><i class="material-icons icon_color_4 icon_color_24">file_download</i> {{ langText.policy_info_download }}</h2>
             {{ components.a_link_style2(langText.policy_info_tob,'#v') }}
             {{ components.a_link_style2(langText.policy_info_wording,'#v') }}
             {{ components.a_link_style2(langText.policy_info_cert,'#v') }}
