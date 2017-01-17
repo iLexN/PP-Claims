@@ -7,6 +7,7 @@ $authLoginArea = new PP\WebPortal\Middleware\Login\AuthLoginedAreaMiddleware($co
 $authCheckLogined = new PP\WebPortal\Middleware\Login\AuthCheckLoginedMiddleware($container);
 
 $userPolicyCheck = new PP\WebPortal\Middleware\CheckUserPolicy($container);
+$claimCheck = new PP\WebPortal\Middleware\CheckClaim($container);
 
 $app->add(new PP\WebPortal\Middleware\HttpCache($container));
 

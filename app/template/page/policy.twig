@@ -49,7 +49,7 @@
             {% include 'include/components/advisor.twig' %}
         </advisor>
         {#% for police in polices %#}
-            
+
         {#% endfor %#}
     </div>
     <div class="min-text">{{ langText.policy_contact_footnote }}</div>
@@ -58,8 +58,8 @@
 {% endblock %}
 
 {% block rightHTML %}
-    
-    
+
+
     <div class="col s12 m10 l10 offset-m2 offset-l2">
         <div data-jshook="pushpin">
             <h2><i class="material-icons icon_color_4 icon_color_24">file_download</i> {{ langText.policy_info_download }}</h2>
@@ -70,7 +70,7 @@
             {{ components.a_link_style2(langText.policy_info_invoice,'#v') }}
         </div>
     </div>
-    
+
 
 
 {% endblock %}
@@ -81,12 +81,9 @@
     <script src="{{ base_url() }}/assets/js/page/policy.js?{{ appVersion }}"></script>
     <script>
         activeNav('policy');
-        $(document).ready(function () {
-            $('select').material_select();
-            
-            {% if not is_mobile() %}
+        $('select').material_select();
+        {% if not is_mobile() %}
             pinTop.init();
-            {% endif %}
-        });
+        {% endif %}
     </script>
 {% endblock %}

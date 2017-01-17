@@ -3,7 +3,7 @@
 return [
 
     //general
-    'footer_copyright' => 'Copyright ©2006-2016 Pacific Prime, All rights reserved',
+    'footer_copyright' => 'Copyright @2006-2016 Pacific Prime, All rights reserved',
     'footer_address'   => 'Pacific Prime | Units 5-11, 35th Floor, One Hung To Road, Kwun Tong, Hong Kong',
     'footer_licensed'  => 'Licensed by PIBA',
 
@@ -51,6 +51,18 @@ return [
     'claim_submit_new_claim' => 'Submit New Claim',
     'claim_saved_claim'      => 'Saved Claims',
     'claim_submitted_claims' => 'Submitted Claims',
+    //Claim Step1
+    'claim_step1_who_q'                 => 'Who is the claim for?',
+    'claim_step1_who_holder'            => 'Main Policy Holder',
+    'claim_step1_who_dependents'        => 'Dependents',
+    'claim_step1_when_q'                => 'What was your treatment data?',
+    'claim_step1_diagnosis_q'           => 'What was your diagnosis?',
+    'claim_step1_currency_q'            => 'Which currency is your invoicein?',
+    'claim_step1_invoice_q'             => 'How much was your invoice?',
+    'claim_step1_reimbursed_currency'   => 'Which currency do you wish to be reimbursed in?',
+    'claim_step1_reimbursed'            => 'How would you like to reimbursed?',
+    //Claim Step2 bank
+    'bank_title' => 'Please provide bank details for bank transfer',
 
     //form label
     'username'          => 'Username',
@@ -73,14 +85,34 @@ return [
     'currency_paid'     => 'Currency Paid',
     'payment_frequency' => 'Payment Frequency',
     'payment_method'    => 'Payment Method',
+    'cheque'            => 'Cheque',
+    'bank'              => 'Bank Transfer',
+    'bank_custom_name'      => 'Customize Bank Name',
+    'bank_acc_user'         => 'Account User Name',
+    'bank_acc_no'           => 'Account Number',
+    'bank_name'             => 'Bank Name',
+    'bank_swift_code'       => 'Bank Swift Code',
+    'bank_branch_code'      => 'Branch Code',
+    'bank_currency'         => 'Currency',
+    'bank_iban'             => 'IBAN',
+    'bank_intermediary_code'             => 'Intermediary Bank Swift Code',
+    'bank_add_info' => 'Additional Information',
 
     //form gerenal error
     'email_erorr'              => 'invalid email',
+    'required_erorr'           => 'Required',
+    'amount_error'             => 'Required and Number Only',
 
     //form btn
     'loginBtn'  => 'Login',
     'submitBtn' => 'Submit',
     'closeBtn'  => 'Close',
+    'saveBtn'  => 'Save',
+    'cancelBtn'  => 'Cancel',
+    'nextBtn'  => 'Next',
+    'saveBankBtn' => 'Save Bank Account',
+    'editBtn' => 'Edit',
+    'newBankBtn' => 'New Bank Account',
 
     //components
     //forgotpassword
@@ -101,8 +133,16 @@ return [
     'policy_contact_advisor'    => 'Your advisor is',
     'policy_contact_footnote'   => 'If you need any help or clarification contact your advisor who will be happy to help.',
 
+    //SaveClaim
+    'save_claim_title' => 'Claim Saved',
+    'save_claim_Success' => 'You can contine or find this saved claim in saved list',
+
+    //Tips
+    'tips_title' => 'Tips',
+
     //system
     'csrfError'               => 'Please try again',
+    'loginExpired'            => 'Login Expired ....',
     'passwordSameError'       => 'password need same',
     'passwordNotStrongError'  => 'password not strong : password At least one Case Diff letter , At least one number , Be at least 8 characters',
     'forgotSetPasswordExpire' => 'Expire please try again',

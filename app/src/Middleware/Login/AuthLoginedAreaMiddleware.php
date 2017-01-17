@@ -15,10 +15,8 @@ final class AuthLoginedAreaMiddleware extends AbstractContainer
 {
     public function __invoke(Request $request, Response $response, $next)
     {
-        $this->logger->info('check login');
-
         if (!$this->loginModule->isLogined()) {
-            $this->c['flash']->addMessage('loginError', 'Login expired');
+            //$this->c['flash']->addMessage('loginError', 'Login expired');
 
             if ($request->isXhr()) {
                 return $response;

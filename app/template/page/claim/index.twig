@@ -37,10 +37,10 @@
 
 {% block rightHTML %}
     <div class="col s12">
-        <div data-jshook="pushpin">
             <div class="contact_box2">
                 {% set contact = contacts.0 %}
-                <div class="contact_box2_title">{{ contact.region_full }}</div>
+                <!--<div class="contact_box2_title">{{ contact.region_full }}</div>-->
+                <h3>{{ contact.region_full }}</h3>
                 <div class="contact_box2_detailbox">
                     <div class="left contact_box2_iconbox"><i class="material-icons icon_color_2 icon_size_18">email</i></div>
                     <div class="contact_box2_infobox"><a href="mailto:" class="contact_box2_a">email@address</a></div>
@@ -49,7 +49,6 @@
                 </div>
             </div>
             <div><img src="/assets/images/banner_needhelp.jpg" class="responsive-img"></div>
-        </div>
     </div>
 {% endblock %}
 

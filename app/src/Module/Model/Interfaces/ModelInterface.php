@@ -7,4 +7,6 @@ interface ModelInterface
     public function toArray();
 
     public function toJson();
+
+    public function getKey();
 }

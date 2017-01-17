@@ -5,7 +5,7 @@ namespace PP\WebPortal\Module\Model;
 use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
 use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
 
-class ListModel extends ModelAbstract implements \Iterator
+class ListModel extends ModelAbstract implements \IteratorAggregate
 {
     private $position = 0;
 
@@ -14,16 +14,21 @@ class ListModel extends ModelAbstract implements \Iterator
      *
      * @var array
      */
-    protected $data;
+    public $data = [];
 
     public function __construct()
     {
         $this->position = 0;
     }
 
-    public function push(ModelInterface $obj)
+    public function push(ModelInterface $obj, $key = null)
     {
-        $this->data[] = $obj;
+        if ($key === null) {
+            $this->data[] = $obj;
+        } else {
+            error_log($obj->getKey());
+            $this->data[$obj->getKey()] = $obj;
+        }
     }
 
     public function toArray()
@@ -42,28 +47,14 @@ class ListModel extends ModelAbstract implements \Iterator
         return json_encode($this->toArray());
     }
 
-    public function rewind()
-    {
-        $this->position = 0;
-    }
 
-    public function current()
+    /**
+     * Get collection iterator
+     *
+     * @return \ArrayIterator
+     */
+    public function getIterator()
     {
-        return $this->data[$this->position];
-    }
-
-    public function key()
-    {
-        return $this->position;
-    }
-
-    public function next()
-    {
-        ++$this->position;
-    }
-
-    public function valid()
-    {
-        return isset($this->data[$this->position]);
+        return new \ArrayIterator($this->data);
     }
 }

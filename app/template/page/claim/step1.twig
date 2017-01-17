@@ -1,0 +1,148 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+    <h1>{{ langText.title_claims }}</h1>
+
+    {% include 'include/components/claim-breadcrumb.twig' %}
+
+    <div class="form-style-3">
+
+        <div class="row">
+            <div class="col s12 semibold">{{ langText.claim_step1_who_q }}</div>
+            <div class="col s12">
+                <input name="whom" type="radio" id="holder" value="{{ holder.ppmid }}" v-model="whom"  />
+                <label for="holder">{{ langText.claim_step1_who_holder }}</label>
+            </div>
+            {% if dependents is not empty %}
+                <div class="col s12">
+                    <input name="whom" type="radio" id="dependent" value="dependent" v-model="whom" />
+                    <label for="dependent">{{ langText.claim_step1_who_dependents }}</label>
+                </div>
+                <div class="col s12" data-jshook="dependentbox" style="margin-top:0.5rem;" v-show="dependentbox">
+                    <div class="row" style="padding-left:1rem">
+                        {% for dependent in dependents %}
+                            <div class="col s12 m5 l5">
+                                <input name="whom_dependent" type="radio" id="ppmid_{{ dependent.ppmid }}" value="{{ dependent.ppmid }}" v-model="whom_dependent" />
+                                <label for="ppmid_{{ dependent.ppmid }}">{{ dependent.fullName() }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="row" data-jshook="claim_step1_when_q">
+            <div class="col s12 semibold">{{ langText.claim_step1_when_q }}</div>
+            <div class="col s4 m3 l3 ">
+                {{ forms.MD_select_year_treatment(langText.year,'year' , 'claim.treatment_yyyy') }}
+            </div>
+            <div class="col s5 m3 l3">
+                {{ forms.MD_select_month(langText.month,'month' ,  'claim.treatment_mm') }}
+            </div>
+            <div class="col s3 m3 l3">
+                {{ forms.MD_select_day(langText.date,'day' , 'claim.treatment_dd') }}
+            </div>
+            <div class="col s12 m3 l3">
+            </div>
+            <div class="col s12 m9 l9">
+                <div data-jshook="treatment_error" class="field_error">cannot build in the furture</div>
+            </div>
+        </div>
+
+        <div class="row" data-jshook="claim_step1_diagnosis_q">
+            <div class="col s12 semibold">{{ langText.claim_step1_diagnosis_q }}</div>
+            <div class="input-field col s12 m9 l9">
+                <i class="material-icons prefix">mode_edit</i>
+                <textarea data-jshook="diagnosis" class="materialize-textarea" v-model="claim.diagnosis"></textarea>
+                <div data-jshook="diagnosis_error" class="textarea_error">{{ langText.required_erorr }}</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 semibold">{{ langText.claim_step1_currency_q }}</div>
+            <div class="col s12 m5 l5">
+                {{ forms.MD_select_currency('','currency', 'claim.currency') }}
+            </div>
+        </div>
+
+        <div class="row" data-jshook="claim_step1_invoice_q">
+            <div class="col s12 semibold">{{ langText.claim_step1_invoice_q }}</div>
+            <div class="col s12 m5 l5 input-field-nolabel">
+                {{ forms.MD_input_number('', '0.00','amount','' , langText.amount_error , false , 'claim.amount' ) }}
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col s12 semibold">{{ langText.claim_step1_reimbursed_currency }}</div>
+            <div class="col s12 m5 l5">
+                {{ forms.MD_select_currency('','currency_receive' , 'claim.currency_receive') }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 semibold">{{ langText.claim_step1_reimbursed }}</div>
+            <div class="col s12 m9 l9">
+                <input name="payment_method" type="radio" id="bank" value="Cheque" v-model="claim.payment_method"  />
+                <label for="bank">{{ langText.cheque }}</label>
+            </div>
+            <div class="col s12 m9 l9">
+                <input name="payment_method" type="radio" id="Cheque" value="Bank transfer" v-model="claim.payment_method" />
+                <label for="Cheque">{{ langText.bank }}</label>
+            </div>
+        </div>
+
+        <div class="gen_divider"></div>
+
+        <div class="row">
+            <div class="col s12 right-align">
+                {{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}}
+                <div class="btn_h_space"></div>
+                {{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block rightHTML %}
+    <div class="col s12">
+        <div data-jshook="pushpin">
+            <div class="tipsBox">
+                <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
+                <div class="tipsbox_info">
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block afterFooterHTML %}
+    {% include 'include/components/save-claim.twig' %}
+{% endblock %}
+
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
+        var claim = {{ claim.toJson() | raw }};
+        var holderID = '{{ holder.ppmid }}';
+    </script>
+    <script src="{{ base_url() }}/assets/js/page/claim1.js?{{ appVersion }}"></script>
+    <script>
+        activeNav('claims');
+        BreadCrumb.addActiveClass('claimBreadCrumbStep1');
+        $.jshook('saveClaimBtnClose').on({
+            'click' : saveClaimBox.close
+        });
+        
+        {% if not is_mobile() %}
+            pinTop.init();
+        {% endif %}
+    </script>
+    {% include 'include/components/csrf.twig' %}
+{% endblock %}

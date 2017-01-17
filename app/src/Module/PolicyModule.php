@@ -56,7 +56,7 @@ final class PolicyModule extends AbstractContainer
     {
         $newList = new ListModel();
         foreach ($list as $data) {
-            $newList->push(new PolicyModel($data, $this->currencyText));
+            $newList->push(new PolicyModel($data, $this->currencyText), true);
         }
 
         return $newList;

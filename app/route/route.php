@@ -47,7 +47,18 @@ $app->get('/claim', 'PP\WebPortal\Controller\Claim\Index')
     ->add($authLoginArea); // redirect to home page if login expired
 $app->get('/user-policy/{id:\d+}/new-claim', 'PP\WebPortal\Controller\Claim\NewClaim')
     ->setName('Claim.NewClaim')
+    ->add($container->get('csrf')) // for login form
     ->add($userPolicyCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
+$app->get('/claim/{id:\d+}/details', 'PP\WebPortal\Controller\Claim\ClaimStep1')
+    ->setName('Claim.ClaimS1')
+    ->add($container->get('csrf')) // for login form
+    ->add($claimCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
+$app->get('/claim/{id:\d+}/reimburse', 'PP\WebPortal\Controller\Claim\ClaimStep2')
+    ->setName('Claim.ClaimS2')
+    ->add($container->get('csrf')) // for login form
+    ->add($claimCheck)
     ->add($authLoginArea); // redirect to home page if login expired
 
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
@@ -80,6 +91,15 @@ $app->post('/ajax/system/forgot-set-password', 'PP\WebPortal\Controller\Ajax\Sys
         ->add($csrfResponse)
         ->add($container->get('csrf'))
         ->setName('Ajax.System.ForgotSetPassword');
+$app->post('/ajax/claim/', 'PP\WebPortal\Controller\Ajax\Claim\NewOrSave')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->setName('Ajax.Claim.NewOrSave');
+$app->post('/ajax/bank/', 'PP\WebPortal\Controller\Ajax\Bank\NewOrSave')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($authLoginArea)
+        ->setName('Ajax.Bank.NewOrSave');
 $app->get('/ajax/preload', 'PP\WebPortal\Controller\Ajax\Preload')
         ->add($authLoginArea)
         ->setName('Ajax.Main.Preload');

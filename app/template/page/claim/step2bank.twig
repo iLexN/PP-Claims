@@ -1,0 +1,143 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+    <h1>{{ langText.title_claims }}</h1>
+
+    {% include 'include/components/claim-breadcrumb.twig' %}
+
+    <div class="form-style-3">
+
+        <div class="row">
+            <div class="col s12 semibold">{{ langText.bank_title }}</div>
+
+            <div v-show="!bigSaveBtn && !edit">
+                <div class="input-field col s8">
+                    <select data-jshook="bankSelectBox">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option v-for="(val, key) in banks" :value="key" >${ val.nick_name }</option>
+                    </select>
+                </div>
+                <div class="input-field col s4">
+                    {{ forms.MD_button_3('editBtn', langText.editBtn, 'button' , 'editBank')}}
+                </div>
+            </div>
+        </div>
+
+
+
+        <div data-jshook="formMode" >
+            <div class="row">
+                <div class="input-field col s12 m5 l5" v-show="edit">
+                    {{ forms.MD_input(langText.bank_custom_name,'text','nick_name','',langText.required_erorr, false ,'v-model="bank.nick_name"' ) }}
+                </div>
+                <div v-show="edit" class="input-field col s12 m5 l5 offset-m1 offset-l1 hide-on-small-only" style="height:69px;"></div>
+
+                <div class="input-field col s12 m5 l5">
+                    {{ forms.MD_input(langText.bank_acc_user,'text','account_user_name','',langText.required_erorr, false ,'v-model="bank.account_user_name"' ) }}
+                </div>
+                <div class="input-field col s12 m5 l5 offset-m1 offset-l1">
+                    {{ forms.MD_input(langText.bank_acc_no,'text','account_number','',langText.required_erorr, false,'v-model="bank.account_number"' ) }}
+                </div>
+
+                <div class="input-field col s12 m5 l5">
+                    {{ forms.MD_input(langText.bank_name,'text','bank_name','',langText.required_erorr, false ,'v-model="bank.bank_name"') }}
+                </div>
+                <div class="input-field col s12 m5 l5 offset-m1 offset-l1">
+                    {{ forms.MD_input(langText.bank_swift_code,'text','bank_swift_code','',langText.required_erorr, false ,'v-model="bank.bank_swift_code"') }}
+                </div>
+
+                <div class="input-field col s12 m5 l5">
+                    {{ forms.MD_input(langText.bank_branch_code,'text','branch_code','',langText.required_erorr, false,'v-model="bank.branch_code"' ) }}
+                </div>
+                <div class="col s12 m5 l5 offset-m1 offset-l1 customlabel-1" v-show="edit">
+                    {{ forms.MD_select_currency(langText.bank_currency,'currency' , 'bank.currency' ) }}
+                </div>
+                <div class="input-field col s12 m5 l5 offset-m1 offset-l1" v-show="!edit">
+                    {{ forms.MD_input(langText.bank_currency,'text','currency','',langText.required_erorr, false,'v-model="bank.currency_display"' ) }}
+                </div>
+
+                <div class="input-field col s12 m5 l5">
+                    {{ forms.MD_input(langText.bank_iban,'text','iban','',langText.required_erorr, false ,'v-model="bank.iban"') }}
+                </div>
+                <div class="input-field col s12 m5 l5 offset-m1 offset-l1">
+                    {{ forms.MD_input(langText.bank_intermediary_code,'text','intermediary_bank_swift_code','',langText.required_erorr, false ,'v-model="bank.intermediary_bank_swift_code"') }}
+                </div>
+
+                <div class="input-field col s12 m11 l11">
+                    <textarea placeholder=""  id="additional_information" class="materialize-textarea" v-model="bank.additional_information"></textarea>
+                    <label for="additional_information">{{ langText.bank_add_info }}</label>
+                </div>
+                <div v-show="edit">
+                    <div class="col s12" v-if="bigSaveBtn">
+                        {{ forms.MD_button_1_1('newBank',langText.saveBankBtn , 'button', 'create_new_folder','saveBank') }}
+                    </div>
+                    <div class="col s12 right-align" v-else>
+                        {{ forms.MD_button_2('cancelBank',langText.cancelBtn , 'button' , false ,'cancelBtn') }}
+                        {{ forms.MD_button_1('saveBankBtn',langText.saveBtn , 'button','saveOrNewBank') }}
+                    </div>
+                </div>
+                    
+                    <div class="col s12" v-if="!bigSaveBtn && !edit">
+                        {{ forms.MD_button_2_1('newBank2',langText.newBankBtn , 'button', 'create_new_folder' , 'createNewBank') }}
+                    </div>
+            </div>
+        </div>
+        <div style="height:1rem;"></div>
+        <div class="gen_divider"></div>
+        <div class="row" v-if="!bigSaveBtn">
+            <div class="col s12 right-align">
+                {{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}}
+                <div class="btn_h_space"></div>
+                {{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}}
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block rightHTML %}
+    <div class="col s12">
+        <div data-jshook="pushpin">
+            <div class="tipsBox">
+                <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
+                <div class="tipsbox_info">
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block afterFooterHTML %}
+    {% include 'include/components/save-claim.twig' %}
+{% endblock %}
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
+        var claim = {{ claim.toJson() | raw }};
+        var banks ={{ banks.toJson | raw }};
+    </script>
+    <script src="{{ base_url() }}/assets/js/page/claim2.js?{{ appVersion }}"></script>
+    <script>
+        activeNav('claims');
+        BreadCrumb.addActiveClass('claimBreadCrumbStep1');
+        BreadCrumb.setUrl('claimBreadCrumbStep1', '{{ path_for('Claim.ClaimS1' ,  { 'id': claim.claim_id }  ) }}')
+        BreadCrumb.addActiveClass('claimBreadCrumbStep2');
+        $.jshook('saveClaimBtnClose').on({
+            'click' : saveClaimBox.close
+        });
+        {% if not is_mobile() %}
+            pinTop.init();
+        {% endif %}
+            
+            $('select').material_select();
+        $('.select-dropdown').val(app.bank.nick_name);
+    </script>
+    {% include 'include/components/csrf.twig' %}
+{% endblock %}

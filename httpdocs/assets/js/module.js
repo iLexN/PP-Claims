@@ -160,6 +160,31 @@ var loadingBox = (function () {
         'close': close
     };
 })();
+//saveClaimBox
+var saveClaimBox = (function () {
+    var $m = $('#saveClaim');
+    function open() {
+        $m.modal('open');
+    }
+    function close() {
+        $m.modal('close');
+    }
+    function init() {
+        $m.modal({
+            dismissible: false,
+            opacity: .4,
+            starting_top: '30%',
+            ending_top: '30%',
+            in_duration: 500,
+            out_duration: 100
+        });
+    }
+    init();
+    return {
+        'open': open,
+        'close': close
+    };
+})();
 
 function activeNav(hookName) {
     $.jshook(hookName).addClass('nav_active');
@@ -214,6 +239,18 @@ pinTop = (function () {
     };
 })();
 
+var BreadCrumb = (function () {
+    function addActiveClass(hook) {
+        $.jshook(hook).addClass('active');
+    }
+    function setUrl(hook, url) {
+        $.jshook(hook).attr('href', url);
+    }
+    return {
+        'addActiveClass': addActiveClass,
+        'setUrl': setUrl
+    };
+})();
 
 $(function () {
     Vue.config.devtools = true;

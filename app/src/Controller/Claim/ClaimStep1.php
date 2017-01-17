@@ -6,7 +6,7 @@ use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class NewClaim extends AbstractContainer
+final class ClaimStep1 extends AbstractContainer
 {
     private $preLoad = ['script'=>['/assets/js/page/claim1.js']];
 
@@ -21,23 +21,14 @@ final class NewClaim extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $polices = $this->policyModule->getPolices();
-        $dependents = $polices[$args['id']]->dependents;
-        $holder = $polices[$args['id']]->holder;
-        $preference = $this->getUserPreference();
+        $claims = $this->claimModule->getClaim($args['id']);
 
-        $claims = $this->claimModule->newClaim([
-            'claimiant_ppmid' => $this->userModule->user['ppmid'],
-            'date_of_treatment' => date('Y-m-d'),
-            'payment_method' => 'Cheque',
-            'currency' => $preference['currency'],
-            'currency_receive' => $preference['currency_receive'],
-            //'currency' => 'USD',
-            //'currency_receive' => 'USD',
-            'diagnosis' => '',
-            'amount' => '',
-            'user_policy_id' => $args['id'],
-        ]);
+        $polices = $this->policyModule->getPolices();
+        $dependents = $polices[$claims['user_policy_id']]->dependents;
+        $holder = $polices[$claims['user_policy_id']]->holder;
+
+        //$claims->checkCheque();
+        //$claims->checkBank();
 
         if (!isset($_SESSION['h2Push']['claimStep1'])) {
             $response = $this->helper->addH2Header($this->preLoad, $response);
@@ -45,19 +36,10 @@ final class NewClaim extends AbstractContainer
         }
 
         return $this->view->render($response, 'page/claim/step1.twig', [
+            'claim' => $claims,
             'holder' => $holder,
             'dependents' => $dependents,
-            'claim' => $claims,
             'token' => $this->csrfHelper->getToken($request),
         ]);
-    }
-
-    private function getUserPreference()
-    {
-        $response = $this->httpClient->request('GET', 'user/'.$this->userModule->user['ppmid'].'/preference');
-
-        $result = $this->httpHelper->verifyResponse($response);
-
-        return $result['data'];
     }
 }

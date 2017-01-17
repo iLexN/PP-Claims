@@ -4,7 +4,7 @@ namespace PP\WebPortal\Middleware;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
 
-final class CheckUserPolicy extends AbstractContainer
+final class CheckClaim extends AbstractContainer
 {
     /**
      * auto redirect when user already login.
@@ -22,7 +22,9 @@ final class CheckUserPolicy extends AbstractContainer
         $route = $request->getAttribute('route');
         $arguments = $route->getArguments();
 
-        if (!$this->isBelowToUser($arguments['id'], $polices)) {
+        $claims = $this->claimModule->getClaim($arguments['id']);
+
+        if (!$this->isBelowToUser($claims['user_policy_id'], $polices)) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 

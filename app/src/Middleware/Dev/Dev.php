@@ -30,6 +30,8 @@ class Dev extends AbstractContainer
         $files[] = $docRoot.'/components/jquery/dist/jquery.min.js';
         $files[] = $docRoot.'/components/materialize/dist/js/materialize.min.js';
         $files[] = $docRoot.'/components/webfontloader/webfontloader.js';
+        $files[] = $docRoot.'/components/moment/min/moment.min.js';
+        $files[] = $docRoot.'/components/lodash/dist/lodash.min.js';
 
         $out = '';
         foreach ($files as $filePath) {

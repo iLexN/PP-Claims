@@ -13,6 +13,7 @@ namespace PP\WebPortal\AbstractClass;
  * @property \PP\WebPortal\Module\LoginModule $loginModule
  * @property \PP\WebPortal\Module\UserModule $userModule
  * @property \PP\WebPortal\Module\PolicyModule $policyModule
+ * @property \PP\WebPortal\Module\ClaimModule $claimModule
  * @property \PP\WebPortal\Module\ContactModule $contactModule
  * @property \PP\WebPortal\Module\PasswordModule $passwordModule
  * @property \PP\WebPortal\Module\Helper\HttpClientHelper $httpHelper
