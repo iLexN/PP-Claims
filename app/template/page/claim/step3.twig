@@ -1,0 +1,154 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+    <h1>{{ langText.claim_nav_doc }}</h1>
+
+    {% include 'include/components/claim-breadcrumb.twig' %}
+
+    <div class="form-style-3">
+
+        <div class="row" >
+            <div class="col s12">
+                <h3>{{ langText.claim_step3_claim_form }}</h3>
+                <div id="claimFormSection">{{ langText.claim_step3_claim_form_desc }}</div>
+            </div>
+        </div>
+        <div class="row"  v-if="haveClaimForm">
+            <div class="col s12 m9 l7">
+                <div class="file_box_title">
+                    <div><b>{{ langText.claim_step3_file_success }}</b></div>
+                    <div v-for="(val, key) in claim.file_attachments.claim_form">${ val.filename } <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteClaimForm(val)" style="cursor: pointer">delete_forever</i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col s12 m8 l7">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>{{ langText.chooseFileBtn }}</span>
+                        <input id="claimFileInput" name="claimFileInput"  type="file" accept="application/pdf, image/jpeg" >
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l5">
+                <div class="upload_btn_c">
+                    {{ forms.MD_button_2_2('claim_form','Upload','butotn', false , 'uploadClaimFile') }}
+                </div>
+            </div>
+            <div class="col s12 min-text" id="claimform_size">1. {{ langText.claim_step3_file_1 }}</div>
+            <div class="col s12 min-text">2. {{ langText.claim_step3_file_2 }}</div>
+
+
+        </div>
+
+
+        <div class="row" >
+            <div class="col s12">
+                <h3>{{ langText.claim_step3_sup_doc }}</h3>
+                <div id="subDocSection">{{ langText.claim_step3_sup_doc_desc }}</div>
+            </div>
+        </div>
+        <div class="row"  v-if="haveSupportDoc">
+            <div class="col s12 m9 l7">
+                <div class="file_box_title">
+                    <div><b>{{ langText.claim_step3_file_success }}</b></div>
+                    <div v-for="(val, key) in claim.file_attachments.support_doc">${ val.filename } <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteSupDoc(val)" style="cursor: pointer">delete_forever</i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col s12 m8 l7">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>{{ langText.chooseFileBtn }}</span>
+                        <input id="supDocInput" name="supDocInput"  type="file" accept="application/pdf, image/jpeg" >
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l5">
+                <div class="upload_btn_c">
+                    {{ forms.MD_button_2_2('claim_form','Upload','butotn', false , 'uploadSupDoc') }}
+                </div>
+            </div>
+            <div class="col s12 min-text" id="supdoc_size">1. {{ langText.claim_step3_file_1 }}</div>
+            <div class="col s12 min-text">2. {{ langText.claim_step3_file_2 }}</div>
+
+
+        </div>
+
+        <div style="height:1rem;"></div>
+        <div class="gen_divider"></div>
+        <div class="row">
+            <div class="col s12 right-align">
+                {{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}}
+                <div class="btn_h_space"></div>
+                {{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}}
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block rightHTML %}
+    <div class="col s12">
+        <div data-jshook="pushpin">
+            <div class="tipsBox">
+                <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
+                <div class="tipsbox_info">
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                </div>
+
+                <div>
+                    <img src="/assets/images/banner_dl_claimform.jpg" class="responsive-img">
+                    <a href="#" class="claim_info_box1_1">
+                        <img src="/assets/images/icon_dl.png" class="left claim_info_box1_1_img">
+                        <span class="claim_info_box1_1_title">{{ langText.claim_dl_claim_title }}</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block afterFooterHTML %}
+    {% include 'include/components/save-claim.twig' %}
+{% endblock %}
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
+        var claim = {{ claim.toJson() | raw }};
+    </script>
+    <script src="{{ base_url() }}/assets/js/page/claim3.js?{{ appVersion }}"></script>
+    <script>
+        activeNav('claims');
+        BreadCrumb.addActiveClass('claimBreadCrumbStep1');
+        BreadCrumb.setUrl('claimBreadCrumbStep1', '{{ path_for('Claim.ClaimS1' ,  { 'id': claim.claim_id }  ) }}')
+        BreadCrumb.addActiveClass('claimBreadCrumbStep2');
+        BreadCrumb.setUrl('claimBreadCrumbStep2', '{{ path_for('Claim.ClaimS2' ,  { 'id': claim.claim_id }  ) }}')
+        BreadCrumb.addActiveClass('claimBreadCrumbStep3');
+        $.jshook('saveClaimBtnClose').on({
+            'click': saveClaimBox.close
+        });
+        {% if not is_mobile() %}
+            pinTop.init();
+        {% endif %}
+    </script>
+    {% include 'include/components/csrf.twig' %}
+{% endblock %}

@@ -164,7 +164,8 @@ var app = new Vue({
             if (this.checkStep1()) {
                 this.claim.status = 'Save';
                 this.goAjax(function(data){
-                    window.location.href = '/claim/'+data.data.id+'/reimburse';
+                    //window.location.href = '/claim/'+data.data.id+'/reimburse';
+                    window.location.replace('/claim/'+data.data.id+'/reimburse');
                 });
             }
         },

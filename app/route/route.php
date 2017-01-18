@@ -60,6 +60,11 @@ $app->get('/claim/{id:\d+}/reimburse', 'PP\WebPortal\Controller\Claim\ClaimStep2
     ->add($container->get('csrf')) // for login form
     ->add($claimCheck)
     ->add($authLoginArea); // redirect to home page if login expired
+$app->get('/claim/{id:\d+}/documents', 'PP\WebPortal\Controller\Claim\ClaimStep3')
+    ->setName('Claim.ClaimS3')
+    ->add($container->get('csrf')) // for login form
+    ->add($claimCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
 
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
@@ -95,6 +100,18 @@ $app->post('/ajax/claim/', 'PP\WebPortal\Controller\Ajax\Claim\NewOrSave')
         ->add($csrfResponse)
         ->add($container->get('csrf'))
         ->setName('Ajax.Claim.NewOrSave');
+$app->post('/ajax/claim/{id:\d+}/{name:support_doc|claim_form}', 'PP\WebPortal\Controller\Ajax\Claim\Upload')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($claimCheck)
+        ->add($authLoginArea)
+        ->setName('Ajax.Claim.Upload');
+$app->post('/ajax/claim/{id:\d+}/file/{fid:\d+}', 'PP\WebPortal\Controller\Ajax\Claim\Delete')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($claimCheck)
+        ->add($authLoginArea)
+        ->setName('Ajax.Claim.Delete');
 $app->post('/ajax/bank/', 'PP\WebPortal\Controller\Ajax\Bank\NewOrSave')
         ->add($csrfResponse)
         ->add($container->get('csrf'))

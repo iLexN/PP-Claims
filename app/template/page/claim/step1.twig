@@ -2,7 +2,7 @@
 {% import "macro/forms.twig" as forms %}
 
 {% block leftHTML %}
-    <h1>{{ langText.title_claims }}</h1>
+    <h1>{{ langText.claim_nav_details }}</h1>
 
     {% include 'include/components/claim-breadcrumb.twig' %}
 
@@ -136,10 +136,6 @@
     <script>
         activeNav('claims');
         BreadCrumb.addActiveClass('claimBreadCrumbStep1');
-        $.jshook('saveClaimBtnClose').on({
-            'click' : saveClaimBox.close
-        });
-        
         {% if not is_mobile() %}
             pinTop.init();
         {% endif %}

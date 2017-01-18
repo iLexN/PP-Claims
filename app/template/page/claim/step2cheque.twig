@@ -1,0 +1,70 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+    <h1>{{ langText.claim_nav_reimburse }}</h1>
+
+    {% include 'include/components/claim-breadcrumb.twig' %}
+
+    <div class="form-style-3">
+
+        <div class="row">
+            <div class="col s12 semibold">Cheque - not done yet</div>
+
+        </div>
+
+
+        <div style="height:1rem;"></div>
+        <div class="gen_divider"></div>
+        <div class="row">
+            <div class="col s12 right-align">
+                {{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}}
+                <div class="btn_h_space"></div>
+                {{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}}
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block rightHTML %}
+    <div class="col s12">
+        <div data-jshook="pushpin">
+            <div class="tipsBox">
+                <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
+                <div class="tipsbox_info">
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block afterFooterHTML %}
+    {% include 'include/components/save-claim.twig' %}
+{% endblock %}
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
+        var claim = {{ claim.toJson() | raw }};
+    </script>
+    <script src="{{ base_url() }}/assets/js/page/claim2.js?{{ appVersion }}"></script>
+    <script>
+        activeNav('claims');
+        BreadCrumb.addActiveClass('claimBreadCrumbStep1');
+        BreadCrumb.setUrl('claimBreadCrumbStep1', '{{ path_for('Claim.ClaimS1' ,  { 'id': claim.claim_id }  ) }}')
+        BreadCrumb.addActiveClass('claimBreadCrumbStep2');
+        {% if not is_mobile() %}
+            pinTop.init();
+        {% endif %}
+            
+        $('select').material_select();
+        $('.select-dropdown').val(app.bank.nick_name);
+    </script>
+    {% include 'include/components/csrf.twig' %}
+{% endblock %}

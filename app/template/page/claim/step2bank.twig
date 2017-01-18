@@ -2,14 +2,14 @@
 {% import "macro/forms.twig" as forms %}
 
 {% block leftHTML %}
-    <h1>{{ langText.title_claims }}</h1>
+    <h1>{{ langText.claim_nav_reimburse }}</h1>
 
     {% include 'include/components/claim-breadcrumb.twig' %}
 
     <div class="form-style-3">
 
         <div class="row">
-            <div class="col s12 semibold">{{ langText.bank_title }}</div>
+            <div class="col s12 semibold">{{ langText.claim_step2_bank_title }}</div>
 
             <div v-show="!bigSaveBtn && !edit">
                 <div class="input-field col s8">
@@ -129,9 +129,6 @@
         BreadCrumb.addActiveClass('claimBreadCrumbStep1');
         BreadCrumb.setUrl('claimBreadCrumbStep1', '{{ path_for('Claim.ClaimS1' ,  { 'id': claim.claim_id }  ) }}')
         BreadCrumb.addActiveClass('claimBreadCrumbStep2');
-        $.jshook('saveClaimBtnClose').on({
-            'click' : saveClaimBox.close
-        });
         {% if not is_mobile() %}
             pinTop.init();
         {% endif %}

@@ -24,12 +24,13 @@ final class NewClaim extends AbstractContainer
         $polices = $this->policyModule->getPolices();
         $dependents = $polices[$args['id']]->dependents;
         $holder = $polices[$args['id']]->holder;
+        //todo : use module
         $preference = $this->getUserPreference();
 
         $claims = $this->claimModule->newClaim([
             'claimiant_ppmid' => $this->userModule->user['ppmid'],
             'date_of_treatment' => date('Y-m-d'),
-            'payment_method' => 'Cheque',
+            'payment_method' => 'Bank transfer',
             'currency' => $preference['currency'],
             'currency_receive' => $preference['currency_receive'],
             //'currency' => 'USD',

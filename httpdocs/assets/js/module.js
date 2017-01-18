@@ -125,7 +125,9 @@ var csrf = (function () {
         'setNameKey': setNameKey,
         'setValueKey': setValueKey,
         'getFormObj': getFormObj,
-        'setObj': setObj
+        'setObj': setObj,
+        'getNameKey' : getNameKey,
+        'getValueKey' : getValueKey 
     };
 })();
 //
@@ -177,6 +179,9 @@ var saveClaimBox = (function () {
             ending_top: '30%',
             in_duration: 500,
             out_duration: 100
+        });
+        $.jshook('saveClaimBtnClose').on({
+            'click' : close
         });
     }
     init();

@@ -84,3 +84,7 @@ page style
 .claim_info_box1_title,.claim_info_box1_desc{
     padding-left: 4.9375rem;
 }
+
+.upload_btn_c{
+    padding-bottom:0.75rem;
+}

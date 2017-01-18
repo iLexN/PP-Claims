@@ -31,4 +31,11 @@
 
 {% block jsBottom %}
     {{ parent() }}
+    <script>
+        // this will increase the api server loading
+        $.get({
+            url : "/ajax/preload",
+            global : false
+        });
+        </script>
 {% endblock %}

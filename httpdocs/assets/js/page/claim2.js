@@ -19,12 +19,14 @@ var app = new Vue({
             this.edit = false;
             this.bigSaveBtn = false;
         }
-        
+
         if (!_.isEmpty(this.claim.bank_info)) {
             self = this;
-            this.key = _.findIndex(this.banks, function(o) { return o.account_number == self.claim.bank_info.account_number; });
+            this.key = _.findIndex(this.banks, function (o) {
+                return o.account_number == self.claim.bank_info.account_number;
+            });
         }
-        
+
         this.bank = this.banks[this.key];
     },
     components: {
@@ -145,13 +147,16 @@ var app = new Vue({
         },
         saveBtn1: function () {
             self = this;
-                this.goAjaxClaim(function(data){
-                    loadingBox.close();
-                    saveClaimBox.open();
-                });
+            this.goAjaxClaim(function (data) {
+                loadingBox.close();
+                saveClaimBox.open();
+            });
         },
         nextBtn1: function () {
-            
+            self = this;
+            this.goAjaxClaim(function (data) {
+                window.location.href = '/claim/'+data.data.id+'/documents';
+            });
         },
         getFormData: function () {
             var data = [];
@@ -180,11 +185,11 @@ var app = new Vue({
                 data.push({name: key, value: value})
             });
             _.forEach(this.bank, function (value, key) {
-                data.push({name: 'bank['+key+']', value: value})
+                data.push({name: 'bank[' + key + ']', value: value})
             });
             return data;
         },
-        goAjaxClaim : function (callback) {
+        goAjaxClaim: function (callback) {
             var data = (csrf.getFormObj(this.getFormDataClaim()));
             $.ajax({
                 url: '/ajax/claim/',

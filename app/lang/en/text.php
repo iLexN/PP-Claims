@@ -62,7 +62,15 @@ return [
     'claim_step1_reimbursed_currency'   => 'Which currency do you wish to be reimbursed in?',
     'claim_step1_reimbursed'            => 'How would you like to reimbursed?',
     //Claim Step2 bank
-    'bank_title' => 'Please provide bank details for bank transfer',
+    'claim_step2_bank_title' => 'Please provide bank details for bank transfer',
+    //Claim Step3
+    'claim_step3_claim_form' => 'Claim Form',
+    'claim_step3_claim_form_desc'=>'At least one claim form must be submitted.',
+    'claim_step3_sup_doc' => 'Supporting Documents',
+    'claim_step3_sup_doc_desc'=>'At least one support document must be submitted.',
+    'claim_step3_file_1' => 'File size up to 2MB',
+    'claim_step3_file_2' => 'Please upload file in .jpg/.pdf format',
+    'claim_step3_file_success' => 'File(s) uploaded successfully:',
 
     //form label
     'username'          => 'Username',
@@ -113,6 +121,7 @@ return [
     'saveBankBtn' => 'Save Bank Account',
     'editBtn' => 'Edit',
     'newBankBtn' => 'New Bank Account',
+    'chooseFileBtn' => 'File',
 
     //components
     //forgotpassword

@@ -25,6 +25,7 @@ final class ClaimStep2 extends AbstractContainer
         $claims = $this->claimModule->getClaim($args['id']);
         /* @var $banks \PP\WebPortal\Module\Model\ListModel */
         $banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
+        //todo : use module
         $preference = $this->getUserPreference();
 
         if (empty($banks->data)) {
@@ -48,6 +49,7 @@ final class ClaimStep2 extends AbstractContainer
     private function getTemplate($claim)
     {
         if ($claim['payment_method'] === 'Cheque') {
+            return 'page/claim/step2cheque.twig';
         } else {
             // Bank transfer
             return 'page/claim/step2bank.twig';

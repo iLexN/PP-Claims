@@ -1780,6 +1780,26 @@ include components
     color:#84dcf2;
     display: block;
 }
+.claim_info_box1_1{
+    background-color: #0292e4;
+    padding:16px;
+    padding: 1rem;
+    display:block;
+    overflow: hidden;
+}
+.claim_info_box1_1_img{
+    margin-right:8px;
+    margin-right: 0.5rem;
+    margin-top:8px;
+    margin-top: 0.5rem;
+}
+.claim_info_box1_1_title{
+    font-size:18px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color:#fff;
+    display: block;
+}
 .claim_info_box2{
     background-color: #84dcf2;
     padding:20px;
@@ -1820,11 +1840,23 @@ include components
     margin-bottom:16px;
     margin-bottom: 1rem;
 }
+/** file upload btn **/
+.file_box_title{
+    background-color: #ececec;
+    padding:20px 10px;
+    padding: 1.25rem 0.625rem;
+}
 .form_edit{
-    background-color: #FFEFF0;
+    background-color: #ffeff0;
+    margin-left:-16px;
+    margin-left: -1rem;
+    margin-right:-16px;
+    margin-right: -1rem;
+    padding:16px;
+    padding: 1rem;
 }
 /* form style*/
-.btn{ text-transform: none; font-weight: 600 }
+.btn , .btn-large{ text-transform: none; font-weight: 600 }
 /** style1 **/
 .form-style-1 .input-field input[type="text"].valid,
 .form-style-1 .input-field input[type="password"].valid,
@@ -2286,6 +2318,14 @@ include components
     margin-top: 0;
     display:none;
 }
+.customlabel-1{
+    height:85px;
+    height:5.3125rem;
+}
+.customlabel-1 label{
+    position: relative;
+    top : -4px;
+}
 .alink_1{
     color:#096190;
     font-size:12px;
@@ -2293,9 +2333,12 @@ include components
     text-decoration: underline;
 }
 .errors_msg{
-    color:red;
+    color:#f44336;
     font-size:12px;
     font-size:0.75rem;
+}
+.errors_msg2{
+    color:#f44336;
 }
 .valid_msg{
     color :#4CAF50;
@@ -2330,3 +2373,4 @@ page style
 .home_model{width: 90%;max-height: 80%}
 .general .right_side{margin-top:16px;margin-top: 1rem}
 .claim_info_box1_title,.claim_info_box1_desc{padding-left:79px;padding-left: 4.9375rem}
+.upload_btn_c{padding-bottom:12px;padding-bottom: 0.75rem}
