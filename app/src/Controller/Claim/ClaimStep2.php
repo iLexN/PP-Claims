@@ -28,7 +28,7 @@ final class ClaimStep2 extends AbstractContainer
 
         $this->needPush($claims);
         $this->checkBankInfo();
-        $this->checkH2();
+        $response = $this->checkH2($response);
 
         return $this->view->render($response, $this->getTemplate($claims), [
             'claim' => $claims,
@@ -37,11 +37,12 @@ final class ClaimStep2 extends AbstractContainer
         ]);
     }
 
-    private function checkH2(){
+    private function checkH2($response){
         if (!isset($_SESSION['h2Push']['claimStep2'])) {
             $response = $this->helper->addH2Header($this->preLoad, $response);
             $_SESSION['h2Push']['claimStep2'] = true;
         }
+        return $response;
     }
 
     private function needPush($claims){

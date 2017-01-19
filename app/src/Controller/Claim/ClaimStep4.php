@@ -25,7 +25,7 @@ final class ClaimStep4 extends AbstractContainer
         $policy = $this->policyModule->getPolices()[$claims['user_policy_id']];
         $claimiant = $this->getClaimiant($claims['claimiant_ppmid'], $policy);
 
-        $this->checkH2();
+        $response = $this->checkH2($response);
 
         return $this->view->render($response, 'page/claim/step4.twig', [
             'claim' => $claims,
@@ -44,11 +44,12 @@ final class ClaimStep4 extends AbstractContainer
         }
     }
 
-    private function checkH2()
+    private function checkH2($response)
     {
         if (!isset($_SESSION['h2Push']['claimStep1'])) {
             $response = $this->helper->addH2Header($this->preLoad, $response);
             $_SESSION['h2Push']['claimStep1'] = true;
         }
+        return $response;
     }
 }

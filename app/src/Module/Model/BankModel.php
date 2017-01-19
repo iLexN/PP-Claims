@@ -20,6 +20,8 @@ class BankModel extends ModelAbstract
         'nick_name'     =>'',
     ];
 
+    private $currency;
+
     public function __construct($data, $currency)
     {
         $this->data = array_replace_recursive($this->default, $data);

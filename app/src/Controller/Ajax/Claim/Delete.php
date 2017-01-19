@@ -8,15 +8,6 @@ use Slim\Http\Response;
 
 final class Delete extends AbstractContainer
 {
-    /**
-     *
-     * @var \PP\WebPortal\Module\Model\ClaimModel
-     */
-    private $claim;
-
-    private $apiUrl;
-    private $type;
-
     public function __invoke(Request $request, Response $response, array $args)
     {
         $fileInfo = (array)$request->getParsedBody();

@@ -24,7 +24,7 @@ final class Index extends AbstractContainer
         $polices = $this->policyModule->getPolices();
         $contact = $this->contactModule->getContact();
 
-        $this->checkH2();
+        $response = $this->checkH2($response);
 
         return $this->view->render($response, 'page/claim/index.twig', [
             'polices' => $polices,
@@ -32,11 +32,12 @@ final class Index extends AbstractContainer
         ]);
     }
 
-    private function checkH2()
+    private function checkH2($response)
     {
         if (!isset($_SESSION['h2Push']['policy'])) {
             $response = $this->helper->addH2Header($this->preLoad, $response);
             $_SESSION['h2Push']['policy'] = true;
         }
+        return $response;
     }
 }

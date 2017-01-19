@@ -71,14 +71,4 @@ final class ClaimModule extends AbstractContainer
 
         return  $this->httpHelper->verifyResponse($response);
     }
-
-    private function factory($list)
-    {
-        $newList = new ListModel();
-        foreach ($list as $data) {
-            $newList->push(new ContactModel($data));
-        }
-
-        return $newList;
-    }
 }

@@ -16,18 +16,9 @@ final class NewOrSave extends AbstractContainer
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-
         $this->claim = $this->claimModule->newClaim((array) $request->getParsedBody());
-
-        //$this->claim->checkCheque();
-        //$this->claim->checkBank();
         $this->claim->checkAmount();
-
-        $this->logger->info($this->getApiUrl());
-
         $result = $this->claimModule->postClaimByAPI($this->claim->toArray(), $this->getApiUrl());
-
-        $this->logger->info('p',(array)$request->getParsedBody());
 
         //todo check user pref , compary currency if need update api
 

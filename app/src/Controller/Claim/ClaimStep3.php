@@ -23,7 +23,7 @@ final class ClaimStep3 extends AbstractContainer
     {
         $claims = $this->claimModule->getClaim($args['id']);
 
-        $polices = $this->policyModule->getPolices();
+        $response = $this->checkH2($response);
 
         return $this->view->render($response, 'page/claim/step3.twig', [
             'claim' => $claims,
@@ -31,11 +31,12 @@ final class ClaimStep3 extends AbstractContainer
         ]);
     }
 
-    private function checkH2()
+    private function checkH2($response)
     {
         if (!isset($_SESSION['h2Push']['claimStep3'])) {
             $response = $this->helper->addH2Header($this->preLoad, $response);
             $_SESSION['h2Push']['claimStep3'] = true;
         }
+        return $response;
     }
 }

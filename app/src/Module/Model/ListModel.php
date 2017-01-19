@@ -7,7 +7,6 @@ use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
 
 class ListModel extends ModelAbstract implements \IteratorAggregate
 {
-    private $position = 0;
 
     /**
      * data info.
@@ -26,7 +25,6 @@ class ListModel extends ModelAbstract implements \IteratorAggregate
         if ($key === null) {
             $this->data[] = $obj;
         } else {
-            error_log($obj->getKey());
             $this->data[$obj->getKey()] = $obj;
         }
     }

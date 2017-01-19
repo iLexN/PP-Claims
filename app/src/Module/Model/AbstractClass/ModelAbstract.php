@@ -15,7 +15,7 @@ abstract class ModelAbstract implements \ArrayAccess, ModelInterface
 
     public function getKey()
     {
-        return $this->key;
+        //return $this->key;
     }
 
     public function toArray()

@@ -10,11 +10,6 @@ use League\Flysystem\Adapter\Local;
 
 final class Upload extends AbstractContainer
 {
-    /**
-     *
-     * @var \PP\WebPortal\Module\Model\ClaimModel
-     */
-    private $claim;
 
     private $apiUrl;
     private $type;
