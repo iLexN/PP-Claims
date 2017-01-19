@@ -107,10 +107,10 @@
         <div class="row">
             <div class="col s12">
             {% for file in claim.file_attachments.claim_form %}
-                {{ file.filename }}<br/>
+                <a href="{{ path_for('Claim.ClaimDownloadFile', { 'id' : claim.claim_id , 'name' : 'claim_form' , 'f' : file.id }) }}" download>{{ file.filename }}</a><br/>
             {% endfor %}
             {% for file in claim.file_attachments.support_doc %}
-                {{ file.filename }}
+                <a href="{{ path_for('Claim.ClaimDownloadFile', { 'id' : claim.claim_id , 'name' : 'support_doc' , 'f' : file.id }) }}" download>{{ file.filename }}</a><br/>
             {% endfor %}
             </div>
         </div>

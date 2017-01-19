@@ -70,6 +70,10 @@ $app->get('/claim/{id:\d+}/summary', 'PP\WebPortal\Controller\Claim\ClaimStep4')
     ->add($container->get('csrf')) // for login form
     ->add($claimCheck)
     ->add($authLoginArea); // redirect to home page if login expired
+$app->get('/claim/{id:\d+}/{name:support_doc|claim_form}/{f:\d+}', 'PP\WebPortal\Controller\Claim\ClaimDownloadFile')
+    ->setName('Claim.ClaimDownloadFile')
+    ->add($claimCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
 
 $app->get('/js/{filename}.js', 'PP\WebPortal\Controller\Test\Js')
         ->setName('jsFile');
@@ -131,13 +135,6 @@ $app->post('/ajax/bank/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Bank\Delete')
 $app->get('/ajax/preload', 'PP\WebPortal\Controller\Ajax\Preload')
         ->add($authLoginArea)
         ->setName('Ajax.Main.Preload');
-
-//test
-$app->get('/test/upload', 'PP\WebPortal\Controller\Test\UploadIndex')
-        ->setName('upload');
-$app->post('/test/upload', 'PP\WebPortal\Controller\Test\UploadAction');
-$app->get('/test/download/{filename}', 'PP\WebPortal\Controller\Test\DownloadIndex')
-        ->setName('downlaodFile');
 
 //helper for development
 $app->get('/helper/router', 'PP\WebPortal\Controller\Helper\Router')
