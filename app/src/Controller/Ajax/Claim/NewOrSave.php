@@ -20,13 +20,14 @@ final class NewOrSave extends AbstractContainer
         $this->claim->checkAmount();
         $result = $this->claimModule->postClaimByAPI($this->claim->toArray(), $this->getApiUrl());
 
-        //todo check user pref , compary currency if need update api
-
         if (!$result) {
             $this->logger->info('e', $this->httpHelper->getErrorMessages());
         }
 
         $this->claimModule->clearClamID($result['data']['id']);
+        //todo check user pref , compary currency if need update api
+
+        $this->userModule->checkUserPreference($this->claim);
 
         return $response->withJson($result);
     }

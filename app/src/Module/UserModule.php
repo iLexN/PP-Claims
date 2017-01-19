@@ -142,6 +142,25 @@ final class UserModule extends AbstractContainer
         return $data;
     }
 
+    public function checkUserPreference($inArray)
+    {
+        if ( empty($inArray['currency']) || empty($inArray['currency_receive']) ) {
+            return;
+        }
+        $serverArray = $this->getUserPreference($this->user['ppmid']);
+
+        if ( $inArray['currency'] !== $serverArray['currency'] || $inArray['currency_receive'] !== $serverArray['currency_receive'] ) {
+            $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'].'/preference', [
+                'form_params' => [
+                    'currency' => $inArray['currency'],
+                    'currency_receive' => $inArray['currency_receive'],
+                ],
+            ]);
+            $result = $this->httpHelper->verifyResponse($response);
+            $this->pool->deleteItem('User/'.$this->user['ppmid'].'/preference');
+        }
+    }
+
     /**
      * getUserInfo From API.
      *

@@ -104,6 +104,7 @@ $app->post('/ajax/system/forgot-set-password', 'PP\WebPortal\Controller\Ajax\Sys
 $app->post('/ajax/claim/', 'PP\WebPortal\Controller\Ajax\Claim\NewOrSave')
         ->add($csrfResponse)
         ->add($container->get('csrf'))
+        ->add($authLoginArea)
         ->setName('Ajax.Claim.NewOrSave');
 $app->post('/ajax/claim/{id:\d+}/{name:support_doc|claim_form}', 'PP\WebPortal\Controller\Ajax\Claim\Upload')
         ->add($csrfResponse)
