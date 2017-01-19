@@ -8,9 +8,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class ClaimStep1 extends AbstractContainer
 {
-    private $preLoad = ['script'=>['/assets/js/page/claim1.js']];
+    public $preLoad = ['script'=>['/assets/js/page/claim1.js']];
 
-    private $preLoadKey = 'claimStep1';
+    public $preLoadKey = 'claimStep1';
 
     /**
      * Login-ed Page.

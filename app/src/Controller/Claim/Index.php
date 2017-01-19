@@ -8,8 +8,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class Index extends AbstractContainer
 {
-    private $preLoad = ['script'=>['/assets/js/page/policy.js']];
-    private $preLoadKey = 'policy';
+    public $preLoad = ['script'=>['/assets/js/page/policy.js']];
+    public $preLoadKey = 'policy';
 
     /**
      * Login-ed Page.

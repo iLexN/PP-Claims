@@ -9,9 +9,9 @@ use PP\WebPortal\Module\Model\BankModel;
 
 final class ClaimStep2 extends AbstractContainer
 {
-    private $preLoad = ['script'=>['/assets/js/page/claim2.js']];
+    public $preLoad = ['script'=>['/assets/js/page/claim2.js']];
 
-    private $preLoadKey = 'claimStep2';
+    public $preLoadKey = 'claimStep2';
 
     private $banks;
     /**

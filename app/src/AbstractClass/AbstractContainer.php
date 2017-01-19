@@ -30,8 +30,8 @@ abstract class AbstractContainer
      */
     protected $c;
 
-    private $preLoad;
-    private $preLoadKey;
+    public $preLoad;
+    public $preLoadKey;
 
     public function __construct(\Slim\Container $container)
     {

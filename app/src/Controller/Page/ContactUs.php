@@ -8,9 +8,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class ContactUs extends AbstractContainer
 {
-    private $preLoad = ['script'=>['/assets/js/page/policy.js']];
+    public $preLoad = ['script'=>['/assets/js/page/policy.js']];
 
-    private $preLoadKey = 'policy';
+    public $preLoadKey = 'policy';
 
     /**
      * Login-ed Page.
