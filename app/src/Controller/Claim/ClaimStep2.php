@@ -11,6 +11,7 @@ final class ClaimStep2 extends AbstractContainer
 {
     private $preLoad = ['script'=>['/assets/js/page/claim2.js']];
 
+    private $banks;
     /**
      * Login-ed Page.
      *
@@ -23,27 +24,59 @@ final class ClaimStep2 extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $claims = $this->claimModule->getClaim($args['id']);
-        /* @var $banks \PP\WebPortal\Module\Model\ListModel */
-        $banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
-        //todo : use module
-        $preference = $this->getUserPreference();
+        $this->banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
 
-        if (empty($banks->data)) {
-            $banks->push(new BankModel([
-                'currency' =>$preference['currency'],
-            ], $this->currencyText));
-        }
+        $this->needPush($claims);
+        $this->checkBankInfo();
+        $this->checkH2();
 
+        return $this->view->render($response, $this->getTemplate($claims), [
+            'claim' => $claims,
+            'banks' => $this->banks,
+            'token' => $this->csrfHelper->getToken($request),
+        ]);
+    }
+
+    private function checkH2(){
         if (!isset($_SESSION['h2Push']['claimStep2'])) {
             $response = $this->helper->addH2Header($this->preLoad, $response);
             $_SESSION['h2Push']['claimStep2'] = true;
         }
+    }
 
-        return $this->view->render($response, $this->getTemplate($claims), [
-            'claim' => $claims,
-            'banks' => $banks,
-            'token' => $this->csrfHelper->getToken($request),
-        ]);
+    private function needPush($claims){
+
+        if ( $claims['bank_info'] === null) {
+            return ;
+        }
+
+        $this->logger->info('bank',$claims['bank_info']);
+
+        if ( !$this->checkBankExist($claims, $this->banks) ){
+            $b = $claims['bank_info'];
+            $b['banker_transfer_id'] = null;
+            $b['nick_name'] = $b['account_number'];
+            $this->banks->push(new BankModel($b, $this->currencyText));
+        }
+    }
+
+    private function checkBankExist($claims,$banks){
+        foreach ( $banks as $b ) {
+            if ( $b['account_number'] === $claims['bank_info']['account_number']) {
+                return true;
+            }
+        }
+        $this->logger->info('false');
+        return false;
+    }
+
+    private function checkBankInfo(){
+        if (empty($this->banks->data)) {
+            $preference = $this->userModule->getUserPreference($this->userModule->user['ppmid']);
+            $this->banks->push(new BankModel([
+                'currency' =>$preference['currency'],
+            ], $this->currencyText));
+        }
     }
 
     private function getTemplate($claim)
@@ -54,14 +87,5 @@ final class ClaimStep2 extends AbstractContainer
             // Bank transfer
             return 'page/claim/step2bank.twig';
         }
-    }
-
-    private function getUserPreference()
-    {
-        $response = $this->httpClient->request('GET', 'user/'.$this->userModule->user['ppmid'].'/preference');
-
-        $result = $this->httpHelper->verifyResponse($response);
-
-        return $result['data'];
     }
 }

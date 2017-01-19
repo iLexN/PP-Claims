@@ -14,9 +14,15 @@ class TwigHelper extends \Twig_Extension
      */
     private $detect;
 
-    public function __construct($detect)
+    /**
+     * @var array
+     */
+    private $currency;
+
+    public function __construct($detect , $currency)
     {
         $this->detect = $detect;
+        $this->currency = $currency;
     }
 
     public function getFunctions()
@@ -25,6 +31,7 @@ class TwigHelper extends \Twig_Extension
             new \Twig_SimpleFunction('is_mobile', [$this, 'isMobile']),
             new \Twig_SimpleFunction('is_tablet', [$this, 'isTablet']),
             new \Twig_SimpleFunction('is_pc', [$this, 'isPC']),
+            new \Twig_SimpleFunction('currency_display', [$this, 'currencyDisplay']),
         ];
     }
 
@@ -46,5 +53,10 @@ class TwigHelper extends \Twig_Extension
     public function isPC()
     {
         return !$this->detect->isMobile() && !$this->detect->isTablet();
+    }
+
+    public function currencyDisplay($c)
+    {
+        return $c . ' ' .$this->currency[$c];
     }
 }

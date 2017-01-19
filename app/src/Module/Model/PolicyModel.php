@@ -38,8 +38,12 @@ class PolicyModel extends ModelAbstract
         if ($user['relationship'] ===  'PolicyHolder') {
             $this->holder = new UserModel($user);
         } else {
-            $this->dependents[] = new UserModel($user);
+            $this->dependents[$user['ppmid']] = new UserModel($user);
         }
+    }
+
+    public function isHolder($id){
+        return $id === $this->holder['ppmid'];
     }
 
     /**
@@ -66,9 +70,7 @@ class PolicyModel extends ModelAbstract
         return $this->data['advisor'];
     }
 
-    /**
-     * @return array
-     */
+/*
     public function getDependents()
     {
         return array_filter($this->data['policyuser'], function ($ar) {
@@ -82,4 +84,5 @@ class PolicyModel extends ModelAbstract
             return $ar['relationship'] ===  'PolicyHolder';
         });
     }
+ */
 }

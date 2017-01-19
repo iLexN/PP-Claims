@@ -9,10 +9,11 @@ var app = new Vue({
         'bank': [],
         'edit': null,
         'bigSaveBtn': null,
-        'key': 0
+        'key': 0,
+        'from_edit' : false
     },
     created: function () {
-        if (_.isEmpty(this.banks[0].nick_name)) {
+        if (_.isEmpty(this.banks[0].account_number)) {
             this.edit = true;
             this.bigSaveBtn = true;
         } else {
@@ -26,8 +27,9 @@ var app = new Vue({
                 return o.account_number == self.claim.bank_info.account_number;
             });
         }
-
-        this.bank = this.banks[this.key];
+        if (this.key !== -1) {
+            this.bank = this.banks[this.key];
+        }
     },
     components: {
 
@@ -42,7 +44,11 @@ var app = new Vue({
         }
     },
     computed: {
-
+        canDel : function () {
+            //console.log(this.bank.banker_transfer_id);
+            //return this.bank.banker_transfer_id !== 'undefined' && this.bank.banker_transfer_id !== '' && this.bank.banker_transfer_id !== null ;
+            return !_.isUndefined(this.bank.banker_transfer_id) && this.bank.banker_transfer_id !== null;
+        }
     },
     methods: {
         changeBank: function (k) {
@@ -51,6 +57,7 @@ var app = new Vue({
         },
         editBank: function () {
             this.edit = true;
+            this.from_edit = true;
             this.bank = {
                 'banker_transfer_id': this.banks[this.key].banker_transfer_id,
                 'nick_name': this.banks[this.key].nick_name,
@@ -74,8 +81,15 @@ var app = new Vue({
                     self.bigSaveBtn = false;
                     self.bank.banker_transfer_id = data.data.banker_transfer_id;
                     self.bank.currency_display = $.jshook('currency').find('option:selected').text();
-                    $('select').material_select();
-                    $('.select-dropdown').val(self.bank.nick_name);
+                    
+                    if ( self.banks.length === 0 ){
+                        self.banks.push(self.bank);
+                    }
+                    
+                    _.delay(function () {
+                        $('select').material_select();
+                        $('.select-dropdown').val(self.bank.nick_name);
+                    }, 100);
                 });
             }
         },
@@ -87,10 +101,18 @@ var app = new Vue({
                     self.bank.currency_display = $.jshook('currency').find('option:selected').text();
 
                     if (data.status_code == '3610') {
-                        self.bank.banker_transfer_id = data.data.banker_transfer_id;
-                        self.banks.push(self.bank);
-                        self.key = self.key + 1;
+                        // create / new
+                        if ( self.from_edit ) {
+                            self.bank.banker_transfer_id = data.data.banker_transfer_id;
+                            self.banks[self.key] = self.bank;
+                            self.form_edit = false;
+                        } else {
+                            self.bank.banker_transfer_id = data.data.banker_transfer_id;
+                            self.banks.push(self.bank);
+                            self.key = self.banks.length - 1;
+                        }
                     } else {
+                        //update
                         self.banks[self.key] = self.bank;
                     }
 
@@ -103,6 +125,7 @@ var app = new Vue({
             }
         },
         createNewBank: function () {
+            this.from_edit = false;
             console.log('createNewBank');
             this.bank = {
                 'nick_name': '',
@@ -145,6 +168,41 @@ var app = new Vue({
             $('select').material_select();
             $('.select-dropdown').val(this.bank.nick_name);
         },
+        delBtn: function () {
+            var self = this;
+            var data = (csrf.getFormObj(this.getFormData()));
+            $.ajax({
+                url: '/ajax/bank/'+this.bank.banker_transfer_id,
+                type: 'POST',
+                data: data,
+                dataType: "json"
+            }).done(function (data, textStatus, jqXHR) {
+                console.log(data);
+                if ( data.status_code === 3612 ) {
+                    self.banks.splice(self.key,1);
+                    self.key = 0;
+                    console.log('length');
+                    console.log(self.banks.length);
+                    if ( self.banks.length === 0) {
+                        console.log(self.banks.length);
+                        self.edit = true;
+                        self.bigSaveBtn = true;
+                        self.bank.banker_transfer_id = null;
+                    } else {
+                        self.edit = false;
+                        self.bank = self.banks[0];
+                        _.delay(function () {
+                            $('select').material_select();
+                            $('.select-dropdown').val(self.bank.nick_name);
+                        }, 100);
+                    }
+                        
+                }
+                loadingBox.close();
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                loadingBox.close();
+            });
+        },
         saveBtn1: function () {
             self = this;
             this.goAjaxClaim(function (data) {
@@ -155,7 +213,7 @@ var app = new Vue({
         nextBtn1: function () {
             self = this;
             this.goAjaxClaim(function (data) {
-                window.location.href = '/claim/'+data.data.id+'/documents';
+                window.location.href = '/claim/' + data.data.id + '/documents';
             });
         },
         getFormData: function () {
@@ -168,7 +226,7 @@ var app = new Vue({
         goAjax: function (callback) {
             var data = (csrf.getFormObj(this.getFormData()));
             $.ajax({
-                url: '/ajax/bank/',
+                url: '/ajax/bank',
                 type: 'POST',
                 data: data,
                 dataType: "json"

@@ -126,6 +126,22 @@ final class UserModule extends AbstractContainer
         return $data;
     }
 
+    public function getUserPreference($id)
+    {
+        /* @var $item Stash\Interfaces\ItemInterface */
+        $item = $this->pool->getItem('User/'.$id.'/preference');
+        $data = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $data = $this->getUserPreferenceByAPI($id);
+            $this->pool->save($item->set($data));
+        }
+
+        return $data;
+    }
+
     /**
      * getUserInfo From API.
      *
@@ -144,6 +160,14 @@ final class UserModule extends AbstractContainer
     private function getUserBankByAPI($id)
     {
         $response = $this->httpClient->request('GET', 'user/'.$id.'/bank-account');
+        $result = $this->httpHelper->verifyResponse($response);
+
+        return $result['data'];
+    }
+
+    private function getUserPreferenceByAPI($id){
+        $response = $this->httpClient->request('GET', 'user/'.$id.'/preference');
+
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
@@ -193,6 +217,18 @@ final class UserModule extends AbstractContainer
         $this->pool->deleteItem('User/'.$this->user['ppmid'].'/bank');
 
         return  $this->httpHelper->verifyResponse($response);
+    }
+
+    public function delUserBankByAPI($id){
+
+        $url = 'user/'.$this->user['ppmid'].'/bank-account/'.$id;
+$this->logger->info('url',[$url]);
+        $response = $this->httpClient->request('DELETE', $url);
+
+        $this->pool->deleteItem('User/'.$this->user['ppmid'].'/bank');
+
+        return  $this->httpHelper->verifyResponse($response);
+
     }
 
 

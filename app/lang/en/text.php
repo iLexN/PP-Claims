@@ -57,7 +57,7 @@ return [
     'claim_step1_who_dependents'        => 'Dependents',
     'claim_step1_when_q'                => 'What was your treatment data?',
     'claim_step1_diagnosis_q'           => 'What was your diagnosis?',
-    'claim_step1_currency_q'            => 'Which currency is your invoicein?',
+    'claim_step1_currency_q'            => 'Which currency is your invoice in?',
     'claim_step1_invoice_q'             => 'How much was your invoice?',
     'claim_step1_reimbursed_currency'   => 'Which currency do you wish to be reimbursed in?',
     'claim_step1_reimbursed'            => 'How would you like to reimbursed?',
@@ -71,6 +71,9 @@ return [
     'claim_step3_file_1' => 'File size up to 2MB',
     'claim_step3_file_2' => 'Please upload file in .jpg/.pdf format',
     'claim_step3_file_success' => 'File(s) uploaded successfully:',
+    //Claim Step4 (summary)
+    'claim_step4_submited_title' => 'Claim Submited',
+    'claim_step4_submited_desc' => 'Our staff .... and .... long text',
 
     //form label
     'username'          => 'Username',
@@ -120,6 +123,7 @@ return [
     'nextBtn'  => 'Next',
     'saveBankBtn' => 'Save Bank Account',
     'editBtn' => 'Edit',
+    'delBtn' => 'Delete',
     'newBankBtn' => 'New Bank Account',
     'chooseFileBtn' => 'File',
 

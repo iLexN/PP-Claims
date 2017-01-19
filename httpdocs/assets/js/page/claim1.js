@@ -112,6 +112,13 @@ var app = new Vue({
                 this.whom_dependent = val;
             }
         },
+        getDependent: function () {
+            if (this.whom == this.holderID) {
+                this.claim.claimiant_ppmid = this.holderID;
+            } else {
+                this.claim.claimiant_ppmid = this.whom_dependent;
+            }
+        },
         dependentBoxStatus: function (val) {
             if (val == this.holderID) {
                 this.dependentbox = false;
@@ -151,7 +158,6 @@ var app = new Vue({
             }
         },
         saveBtn1: function () {
-                this.claim.status = 'Save';
                 self = this;
                 this.goAjax(function(data){
                     self.claim.claim_id = data.data.id;
@@ -162,7 +168,6 @@ var app = new Vue({
         },
         nextBtn1: function () {
             if (this.checkStep1()) {
-                this.claim.status = 'Save';
                 this.goAjax(function(data){
                     //window.location.href = '/claim/'+data.data.id+'/reimburse';
                     window.location.replace('/claim/'+data.data.id+'/reimburse');
@@ -171,6 +176,8 @@ var app = new Vue({
         },
         getFormData: function () {
             var data = [];
+            this.claim.status = 'Save';
+            this.getDependent();
             _.forEach(this.claim, function (value, key) {
                 data.push({name: key, value: value})
             });

@@ -1,0 +1,164 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+    <h1>{{ langText.claim_nav_details }}</h1>
+    <div class="row" style="margin-bottom:0">
+        <div class="col s12"><p>{{ policy.plan.plan_name }}</p></div>
+        <div class="col s12">
+            <div class="right" style="margin-top:0.5rem">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS1',{'id':claim.claim_id}))}}</div>
+            <h3>{{ langText.claim_nav_details }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">{{ langText.claim_step1_who_q }}</div>
+        <div class="col s12">
+            <b>{{ claimiant.fullName() }}</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">{{ langText.claim_step1_diagnosis_q }}</div>
+        <div class="col s12">
+            <b>{{ claim.diagnosis }}</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">{{ langText.claim_step1_currency_q }}</div>
+        <div class="col s12">
+            <b>{{ currency_display(claim.currency) }}</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">{{ langText.claim_step1_invoice_q }}</div>
+        <div class="col s12">
+            <b>{{ claim.amount }}</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">{{ langText.claim_step1_reimbursed_currency }}</div>
+        <div class="col s12">
+            <b>{{ currency_display(claim.currency_receive) }}</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">{{ langText.claim_step1_reimbursed }}</div>
+        <div class="col s12">
+            <b>{{ claim.payment_method }}</b>
+        </div>
+    </div>
+    <div class="gen_divider"></div>
+
+    {% if claim.payment_method == 'Bank transfer' %}
+        <div class="row" style="margin-bottom:0">
+            <div class="col s12">
+                <div class="right" style="margin-top:0.5rem">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS2',{'id':claim.claim_id}))}}</div>
+                <h3>{{ langText.claim_nav_reimburse }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6">
+                {{ langText.bank_acc_user }}<br/>
+                <b>{{ claim.bank_info.account_user_name }}</b>
+            </div>
+            <div class="col s12 m6 l6">
+                {{ langText.bank_acc_no }}<br/>
+                <b>{{ claim.bank_info.account_number }}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6">
+                {{ langText.bank_name }}<br/>
+                <b>{{ claim.bank_info.bank_name }}</b>
+            </div>
+            <div class="col s12 m6 l6">
+                {{ langText.bank_swift_code }}<br/>
+                <b>{{ claim.bank_info.bank_swift_code }}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6">
+                {{ langText.bank_branch_code }}<br/>
+                <b>{{ claim.bank_info.branch_code }}</b>
+            </div>
+            <div class="col s12 m6 l6">
+                {{ langText.bank_currency }}<br/>
+                <b>{{ currency_display(claim.bank_info.currency) }}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6">
+                {{ langText.bank_iban }}<br/>
+                <b>{{ claim.bank_info.iban }}</b>
+            </div>
+            <div class="col s12 m6 l6">
+                {{ langText.bank_intermediary_code }}<br/>
+                <b>{{ claim.bank_info.intermediary_bank_swift_code }}</b>
+            </div>
+        </div>
+        <div class="gen_divider"></div>
+    {% endif %}
+
+    <div class="row" style="margin-bottom:0">
+        <div class="col s12">
+            <div class="right" style="margin-top:0.5rem">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS3',{'id':claim.claim_id}))}}</div>
+            <h3>{{ langText.claim_nav_doc }}</h3>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col s12">
+            {% for file in claim.file_attachments.claim_form %}
+                {{ file.filename }}<br/>
+            {% endfor %}
+            {% for file in claim.file_attachments.support_doc %}
+                {{ file.filename }}
+            {% endfor %}
+            </div>
+        </div>
+    <div class="gen_divider"></div>
+    
+    
+    <div class="row">
+        <div class="col s12 right-align">
+            {{ forms.MD_button_3('nextBtn', langText.submitBtn, 'button' , 'nextBtn1' )}}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block rightHTML %}
+    <div class="col s12">
+        <div data-jshook="pushpin">
+            <div class="tipsBox">
+                <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
+                <div class="tipsbox_info">
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block afterFooterHTML %}
+    {% include 'include/components/save-claim.twig' %}
+    {% include 'include/components/submited-claim.twig' %}
+{% endblock %}
+
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
+        var claim = {{ claim.toJson() | raw }};
+    </script>
+    <script src="{{ base_url() }}/assets/js/page/claim4.js?{{ appVersion }}"></script>
+    <script>
+        activeNav('claims');
+        {% if not is_mobile() %}
+            pinTop.init();
+        {% endif %}
+    </script>
+    {% include 'include/components/csrf.twig' %}
+{% endblock %}

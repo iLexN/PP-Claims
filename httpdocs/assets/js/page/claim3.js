@@ -34,6 +34,11 @@ var app = new Vue({
                 return;
             }
             var f = $("#claimFileInput")[0].files[0];
+            
+            if ( _.isUndefined(f) ) {
+                return ;
+            }
+            
             if (f.size > 2000000) {
                 $('#claimform_size').addClass('errors_msg2');
                 return;
@@ -60,6 +65,9 @@ var app = new Vue({
                 return;
             }
             var f = $("#supDocInput")[0].files[0];
+            if ( _.isUndefined(f) ) {
+                return ;
+            }
             if (f.size > 2000000) {
                 $('#supdoc_size').addClass('errors_msg2');
                 return;
@@ -142,8 +150,10 @@ var app = new Vue({
         nextBtn1: function () {
             $("#claimFormSection").removeClass('errors_msg2');
             $("#claimFormSection").removeClass('errors_msg2');
+            
             if ( this.goNext) {
-                //window.location.href = '/claim/'+data.data.id+'/documents';
+                loadingBox.open();
+                window.location.href = '/claim/'+this.claim.claim_id+'/summary';
             } else {
                 if ( !this.haveSupportDoc ) {
                     this.scrollTop('subDocSection');

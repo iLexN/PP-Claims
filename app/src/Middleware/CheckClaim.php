@@ -23,8 +23,14 @@ final class CheckClaim extends AbstractContainer
         $arguments = $route->getArguments();
 
         $claims = $this->claimModule->getClaim($arguments['id']);
+        $this->logger->info($claims['status']);
 
-        if (!$this->isBelowToUser($claims['user_policy_id'], $polices)) {
+        if ( $claims['status'] !== 'Save' ){
+            return $response->withStatus(301)
+                ->withHeader('Location', $this->c['router']->pathFor('Main'));
+        }
+
+        if (!$this->isBelowToUser($claims['user_policy_id'], $polices) ) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 

@@ -24,26 +24,9 @@ final class NewClaim extends AbstractContainer
         $polices = $this->policyModule->getPolices();
         $dependents = $polices[$args['id']]->dependents;
         $holder = $polices[$args['id']]->holder;
-        //todo : use module
-        $preference = $this->getUserPreference();
+        $claims = $this->getDefaultClaim($args);
 
-        $claims = $this->claimModule->newClaim([
-            'claimiant_ppmid' => $this->userModule->user['ppmid'],
-            'date_of_treatment' => date('Y-m-d'),
-            'payment_method' => 'Bank transfer',
-            'currency' => $preference['currency'],
-            'currency_receive' => $preference['currency_receive'],
-            //'currency' => 'USD',
-            //'currency_receive' => 'USD',
-            'diagnosis' => '',
-            'amount' => '',
-            'user_policy_id' => $args['id'],
-        ]);
-
-        if (!isset($_SESSION['h2Push']['claimStep1'])) {
-            $response = $this->helper->addH2Header($this->preLoad, $response);
-            $_SESSION['h2Push']['claimStep1'] = true;
-        }
+        $this->checkH2();
 
         return $this->view->render($response, 'page/claim/step1.twig', [
             'holder' => $holder,
@@ -53,12 +36,25 @@ final class NewClaim extends AbstractContainer
         ]);
     }
 
-    private function getUserPreference()
+    private function checkH2()
     {
-        $response = $this->httpClient->request('GET', 'user/'.$this->userModule->user['ppmid'].'/preference');
+        if (!isset($_SESSION['h2Push']['claimStep1'])) {
+            $response = $this->helper->addH2Header($this->preLoad, $response);
+            $_SESSION['h2Push']['claimStep1'] = true;
+        }
+    }
 
-        $result = $this->httpHelper->verifyResponse($response);
-
-        return $result['data'];
+    private function getDefaultClaim($args){
+        $preference = $this->userModule->getUserPreference($this->userModule->user['ppmid']);
+        return $this->claimModule->newClaim([
+            'claimiant_ppmid' => $this->userModule->user['ppmid'],
+            'date_of_treatment' => date('Y-m-d'),
+            'payment_method' => 'Bank transfer',
+            'currency' => $preference['currency'],
+            'currency_receive' => $preference['currency_receive'],
+            'diagnosis' => '',
+            'amount' => '',
+            'user_policy_id' => $args['id'],
+        ]);
     }
 }

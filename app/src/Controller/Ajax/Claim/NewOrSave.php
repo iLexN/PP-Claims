@@ -23,9 +23,13 @@ final class NewOrSave extends AbstractContainer
         //$this->claim->checkBank();
         $this->claim->checkAmount();
 
+        $this->logger->info($this->getApiUrl());
+
         $result = $this->claimModule->postClaimByAPI($this->claim->toArray(), $this->getApiUrl());
 
         $this->logger->info('p',(array)$request->getParsedBody());
+
+        //todo check user pref , compary currency if need update api
 
         if (!$result) {
             $this->logger->info('e', $this->httpHelper->getErrorMessages());
@@ -38,7 +42,7 @@ final class NewOrSave extends AbstractContainer
 
     private function getApiUrl()
     {
-        if ($this->claim['claim_id'] === null) {
+        if ($this->claim['claim_id'] === null || $this->claim['claim_id'] === '') {
             return 'user-policy/'.$this->claim['user_policy_id'].'/claim';
         } else {
             return 'claim/'. $this->claim['claim_id'];

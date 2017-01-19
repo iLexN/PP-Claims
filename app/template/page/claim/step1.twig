@@ -130,7 +130,7 @@
     {{ parent() }}
     <script>
         var claim = {{ claim.toJson() | raw }};
-        var holderID = '{{ holder.ppmid }}';
+        var holderID = {{ holder.ppmid }};
     </script>
     <script src="{{ base_url() }}/assets/js/page/claim1.js?{{ appVersion }}"></script>
     <script>
