@@ -156,7 +156,7 @@ final class UserModule extends AbstractContainer
                     'currency_receive' => $inArray['currency_receive'],
                 ],
             ]);
-            $result = $this->httpHelper->verifyResponse($response);
+            $this->httpHelper->verifyResponse($response);
             $this->pool->deleteItem('User/'.$this->user['ppmid'].'/preference');
         }
     }
