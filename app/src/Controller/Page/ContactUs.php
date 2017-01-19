@@ -10,6 +10,8 @@ final class ContactUs extends AbstractContainer
 {
     private $preLoad = ['script'=>['/assets/js/page/policy.js']];
 
+    private $preLoadKey = 'policy';
+
     /**
      * Login-ed Page.
      *
@@ -24,10 +26,7 @@ final class ContactUs extends AbstractContainer
         $polices = $this->policyModule->getPolices();
         $contact = $this->contactModule->getContact();
 
-        if (!isset($_SESSION['h2Push']['policy'])) {
-            $response = $this->helper->addH2Header($this->preLoad, $response);
-            $_SESSION['h2Push']['policy'] = true;
-        }
+        $response = $this->checkH2($response);
 
         return $this->view->render($response, 'page/contact-us.twig', [
             'polices' => $polices,

@@ -30,6 +30,9 @@ abstract class AbstractContainer
      */
     protected $c;
 
+    private $preLoad;
+    private $preLoadKey;
+
     public function __construct(\Slim\Container $container)
     {
         $this->c = $container;
@@ -38,5 +41,14 @@ abstract class AbstractContainer
     public function __get($name)
     {
         return $this->c[$name];
+    }
+
+    public function checkH2($response)
+    {
+        if (!isset($_SESSION['h2Push'][$this->preLoadKey])) {
+            $response = $this->helper->addH2Header($this->preLoad, $response);
+            $_SESSION['h2Push'][$this->preLoadKey] = true;
+        }
+        return $response;
     }
 }

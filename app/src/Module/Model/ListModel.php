@@ -17,7 +17,6 @@ class ListModel extends ModelAbstract implements \IteratorAggregate
 
     public function __construct()
     {
-        $this->position = 0;
     }
 
     public function push(ModelInterface $obj, $key = null)

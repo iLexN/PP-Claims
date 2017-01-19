@@ -9,6 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 final class ClaimStep4 extends AbstractContainer
 {
     private $preLoad = ['script'=>['/assets/js/page/claim4.js']];
+    private $preLoadKey = 'claimStep4';
 
     /**
      * Login-ed Page.
@@ -42,14 +43,5 @@ final class ClaimStep4 extends AbstractContainer
         } else {
             return $policy->dependents[$id];
         }
-    }
-
-    private function checkH2($response)
-    {
-        if (!isset($_SESSION['h2Push']['claimStep1'])) {
-            $response = $this->helper->addH2Header($this->preLoad, $response);
-            $_SESSION['h2Push']['claimStep1'] = true;
-        }
-        return $response;
     }
 }

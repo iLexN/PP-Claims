@@ -11,6 +11,8 @@ final class ClaimStep2 extends AbstractContainer
 {
     private $preLoad = ['script'=>['/assets/js/page/claim2.js']];
 
+    private $preLoadKey = 'claimStep2';
+
     private $banks;
     /**
      * Login-ed Page.
@@ -35,14 +37,6 @@ final class ClaimStep2 extends AbstractContainer
             'banks' => $this->banks,
             'token' => $this->csrfHelper->getToken($request),
         ]);
-    }
-
-    private function checkH2($response){
-        if (!isset($_SESSION['h2Push']['claimStep2'])) {
-            $response = $this->helper->addH2Header($this->preLoad, $response);
-            $_SESSION['h2Push']['claimStep2'] = true;
-        }
-        return $response;
     }
 
     private function needPush($claims){
