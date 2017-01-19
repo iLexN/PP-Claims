@@ -39,15 +39,15 @@ final class ClaimStep2 extends AbstractContainer
         ]);
     }
 
-    private function needPush($claims){
-
-        if ( $claims['bank_info'] === null) {
+    private function needPush($claims)
+    {
+        if ($claims['bank_info'] === null) {
             return ;
         }
 
-        $this->logger->info('bank',$claims['bank_info']);
+        $this->logger->info('bank', $claims['bank_info']);
 
-        if ( !$this->checkBankExist($claims, $this->banks) ){
+        if (!$this->checkBankExist($claims, $this->banks)) {
             $b = $claims['bank_info'];
             $b['banker_transfer_id'] = null;
             $b['nick_name'] = $b['account_number'];
@@ -55,9 +55,10 @@ final class ClaimStep2 extends AbstractContainer
         }
     }
 
-    private function checkBankExist($claims,$banks){
-        foreach ( $banks as $b ) {
-            if ( $b['account_number'] === $claims['bank_info']['account_number']) {
+    private function checkBankExist($claims, $banks)
+    {
+        foreach ($banks as $b) {
+            if ($b['account_number'] === $claims['bank_info']['account_number']) {
                 return true;
             }
         }
@@ -65,7 +66,8 @@ final class ClaimStep2 extends AbstractContainer
         return false;
     }
 
-    private function checkBankInfo(){
+    private function checkBankInfo()
+    {
         if (empty($this->banks->data)) {
             $preference = $this->userModule->getUserPreference($this->userModule->user['ppmid']);
             $this->banks->push(new BankModel([

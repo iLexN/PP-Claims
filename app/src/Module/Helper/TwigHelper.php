@@ -19,7 +19,7 @@ class TwigHelper extends \Twig_Extension
      */
     private $currency;
 
-    public function __construct($detect , $currency)
+    public function __construct($detect, $currency)
     {
         $this->detect = $detect;
         $this->currency = $currency;

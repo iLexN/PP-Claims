@@ -10,14 +10,12 @@ use League\Flysystem\Adapter\Local;
 
 final class Upload extends AbstractContainer
 {
-
     private $apiUrl;
     private $type;
     private $claim_id;
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-
         $this->apiUrl = 'claim/'.$args['id'].'/attachment';
         $this->type = $args['name'];
         $this->claim_id = $args['id'];
@@ -54,7 +52,7 @@ final class Upload extends AbstractContainer
             $adapter = new Local($this->c->get('uploadConfig')['path']);
             $filesystem = new Filesystem($adapter);
 
-            $filesystem->rename('temp/'.$newfile->getClientFilename(), $this->claim_id . '/' . $result['data']['id'] . '/' . $newfile->getClientFilename() );
+            $filesystem->rename('temp/'.$newfile->getClientFilename(), $this->claim_id . '/' . $result['data']['id'] . '/' . $newfile->getClientFilename());
         }
 
         return $newfile;

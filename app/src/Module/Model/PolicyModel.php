@@ -42,7 +42,8 @@ class PolicyModel extends ModelAbstract
         }
     }
 
-    public function isHolder($id){
+    public function isHolder($id)
+    {
         return $id === $this->holder['ppmid'];
     }
 

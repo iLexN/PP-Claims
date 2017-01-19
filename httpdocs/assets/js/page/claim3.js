@@ -55,6 +55,7 @@ var app = new Vue({
                 if (data.status_code === 1840) {
                     self.claim.file_attachments.claim_form.push(data.data);
                     $("#claimFileInput").parent().next().find('input').val('')
+                    $("#claimFileInput").val('');
                 }
             });
         },
@@ -83,6 +84,7 @@ var app = new Vue({
                 if (data.status_code === 1840) {
                     self.claim.file_attachments.support_doc.push(data.data);
                     $("#supDocInput").parent().next().find('input').val('')
+                    $("#supDocInput").val('');
                 }
             });
         },

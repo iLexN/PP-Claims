@@ -19,27 +19,31 @@ class ClaimModel extends ModelAbstract
         $this->checkCheque();
     }
 
-    private function breakTreatmentDate(){
+    private function breakTreatmentDate()
+    {
         $ar = explode('-', $this->data['date_of_treatment']);
         $this->data['treatment_yyyy'] = $ar[0];
         $this->data['treatment_mm'] = $ar[1];
         $this->data['treatment_dd'] = $ar[2];
     }
 
-    public function checkCheque(){
-        if ( isset($this->data['cheque']) && empty($this->data['cheque']) ) {
+    public function checkCheque()
+    {
+        if (isset($this->data['cheque']) && empty($this->data['cheque'])) {
             unset($this->data['cheque']);
         }
     }
 
-    public function checkBank(){
-        if ( isset($this->data['bank']) && empty($this->data['bank']) ) {
+    public function checkBank()
+    {
+        if (isset($this->data['bank']) && empty($this->data['bank'])) {
             unset($this->data['bank']);
         }
     }
 
-    public function checkAmount(){
-        if ( isset($this->data['amount']) && empty($this->data['amount']) ) {
+    public function checkAmount()
+    {
+        if (isset($this->data['amount']) && empty($this->data['amount'])) {
             $this->data['amount'] = 0;
         }
     }

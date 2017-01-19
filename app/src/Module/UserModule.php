@@ -165,7 +165,8 @@ final class UserModule extends AbstractContainer
         return $result['data'];
     }
 
-    private function getUserPreferenceByAPI($id){
+    private function getUserPreferenceByAPI($id)
+    {
         $response = $this->httpClient->request('GET', 'user/'.$id.'/preference');
 
         $result = $this->httpHelper->verifyResponse($response);
@@ -219,16 +220,15 @@ final class UserModule extends AbstractContainer
         return  $this->httpHelper->verifyResponse($response);
     }
 
-    public function delUserBankByAPI($id){
-
+    public function delUserBankByAPI($id)
+    {
         $url = 'user/'.$this->user['ppmid'].'/bank-account/'.$id;
-$this->logger->info('url',[$url]);
+        $this->logger->info('url', [$url]);
         $response = $this->httpClient->request('DELETE', $url);
 
         $this->pool->deleteItem('User/'.$this->user['ppmid'].'/bank');
 
         return  $this->httpHelper->verifyResponse($response);
-
     }
 
 
@@ -236,7 +236,7 @@ $this->logger->info('url',[$url]);
     {
         $newList = new ListModel();
 
-        if ( $list === null ) {
+        if ($list === null) {
             return $newList;
         }
 

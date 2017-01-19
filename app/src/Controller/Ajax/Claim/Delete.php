@@ -13,7 +13,6 @@ final class Delete extends AbstractContainer
         $fileInfo = (array)$request->getParsedBody();
 
         if ($fileInfo['id'] === $args['fid'] && $fileInfo['status'] === 'Upload') {
-
             $url = 'attachment/'. $fileInfo['id'] ;
 
             $response1 = $this->httpClient->request('POST', $url, [
@@ -27,6 +26,6 @@ final class Delete extends AbstractContainer
             return $response->withJson($this->httpHelper->result);
         }
 
-       return $response->withJson([]);
+        return $response->withJson([]);
     }
 }

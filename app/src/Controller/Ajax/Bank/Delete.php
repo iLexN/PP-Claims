@@ -18,15 +18,14 @@ final class Delete extends AbstractContainer
     {
         $this->data = (array) $request->getParsedBody();
 
-        $this->logger->info('data' , $this->data);
-        $this->logger->info('args' , $args);
+        $this->logger->info('data', $this->data);
+        $this->logger->info('args', $args);
 
-        if ( $this->data['banker_transfer_id'] === $args['id']) {
+        if ($this->data['banker_transfer_id'] === $args['id']) {
             $result = $this->userModule->delUserBankByAPI($args['id']);
             return $response->withJson($result);
         }
 
         return $response->withJson([]);
-
     }
 }
