@@ -2,15 +2,16 @@
 
 namespace PP\WebPortal\Controller\Claim;
 
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use League\Flysystem\Filesystem;
-use League\Flysystem\Adapter\Local;
 
 final class ClaimDownloadFile extends AbstractContainer
 {
     private $file_info;
+
     /**
      * Login-ed Page.
      *
@@ -28,10 +29,10 @@ final class ClaimDownloadFile extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $filename = $this->c->get('uploadConfig')['path'].'/'.$claims['claim_id'] .'/'.$args['f'] .'/' . $this->file_info['filename'] ;
+        $filename = $this->c->get('uploadConfig')['path'].'/'.$claims['claim_id'].'/'.$args['f'].'/'.$this->file_info['filename'];
 
         if (file_exists($filename)) {
-            return $this->sendFile($response, $filename,  $this->file_info['filename']);
+            return $this->sendFile($response, $filename, $this->file_info['filename']);
         }
 
         if ($this->downloadFromAPI($args['f'], $claims, $args)) {
@@ -46,9 +47,11 @@ final class ClaimDownloadFile extends AbstractContainer
         foreach ($claims['file_attachments'][$args['name']] as $file) {
             if ($file['id'] == $args['f']) {
                 $this->file_info = $file;
+
                 return true;
             }
         }
+
         return false;
     }
 
@@ -73,7 +76,7 @@ final class ClaimDownloadFile extends AbstractContainer
         $adapter = new Local($this->c->get('uploadConfig')['path']);
         $filesystem = new Filesystem($adapter);
 
-        $filesystem->write($claims['claim_id'] .'/'.$args['f'] .'/' . $this->file_info['filename'], $response->getBody());
+        $filesystem->write($claims['claim_id'].'/'.$args['f'].'/'.$this->file_info['filename'], $response->getBody());
 
         return true;
     }

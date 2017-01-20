@@ -9,7 +9,6 @@ use Slim\Http\Response;
 final class Delete extends AbstractContainer
 {
     /**
-     *
      * @var array
      */
     private $data;
@@ -23,6 +22,7 @@ final class Delete extends AbstractContainer
 
         if ($this->data['banker_transfer_id'] === $args['id']) {
             $result = $this->userModule->delUserBankByAPI($args['id']);
+
             return $response->withJson($result);
         }
 

@@ -57,6 +57,6 @@ class TwigHelper extends \Twig_Extension
 
     public function currencyDisplay($c)
     {
-        return $c . ' ' .$this->currency[$c];
+        return $c.' '.$this->currency[$c];
     }
 }

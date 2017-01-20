@@ -52,7 +52,8 @@ final class PolicyModule extends AbstractContainer
         return $result['data'];
     }
 
-    public function getClaimList($id){
+    public function getClaimList($id)
+    {
 
         /* @var $item Stash\Interfaces\ItemInterface */
         $item = $this->pool->getItem('UserPolicy/'.$id.'/claimlist');
@@ -83,11 +84,11 @@ final class PolicyModule extends AbstractContainer
 
         return $result['data'];
     }
+
     public function clearClamList($id)
     {
         $this->pool->deleteItem('UserPolicy/'.$id.'/claimlist');
     }
-
 
     private function factory($list)
     {

@@ -48,15 +48,18 @@ class ClaimModel extends ModelAbstract
         }
     }
 
-    public function getDate(){
+    public function getDate()
+    {
         return explode(' ', $this->data['created_at'])[0];
     }
 
-    public function getTime(){
+    public function getTime()
+    {
         return explode(' ', $this->data['created_at'])[1];
     }
 
-    public function isSubmit(){
+    public function isSubmit()
+    {
         return $this->data[status] === 'Submit' ? true : false;
     }
 }

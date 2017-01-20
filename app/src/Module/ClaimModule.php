@@ -13,7 +13,6 @@ use PP\WebPortal\Module\Model\ClaimModel;
 final class ClaimModule extends AbstractContainer
 {
     /**
-     *
      * @param array $data
      *
      * @return ClaimModel
@@ -56,7 +55,7 @@ final class ClaimModule extends AbstractContainer
      */
     private function getOneByAPI($id)
     {
-        $response = $this->httpClient->request('GET', 'claim/' . $id);
+        $response = $this->httpClient->request('GET', 'claim/'.$id);
 
         $result = $this->httpHelper->verifyResponse($response);
 
