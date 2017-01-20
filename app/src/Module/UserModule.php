@@ -3,9 +3,9 @@
 namespace PP\WebPortal\Module;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
-use PP\WebPortal\Module\Model\UserModel;
 use PP\WebPortal\Module\Model\BankModel;
 use PP\WebPortal\Module\Model\ListModel;
+use PP\WebPortal\Module\Model\UserModel;
 
 final class UserModule extends AbstractContainer
 {
@@ -144,29 +144,31 @@ final class UserModule extends AbstractContainer
 
     public function checkUserPreference($inArray)
     {
-        if ( empty($inArray['currency']) || empty($inArray['currency_receive']) ) {
+        if (empty($inArray['currency']) || empty($inArray['currency_receive'])) {
             return;
         }
         $serverArray = $this->getUserPreference($this->user['ppmid']);
 
-        if ( $this->checkUserPreferenceUpdate($inArray, $serverArray) ) {
-           $this->updateUserPreference($inArray);
+        if ($this->checkUserPreferenceUpdate($inArray, $serverArray)) {
+            $this->updateUserPreference($inArray);
         }
     }
 
-    private function checkUserPreferenceUpdate($inArray,$serverArray){
+    private function checkUserPreferenceUpdate($inArray, $serverArray)
+    {
         return $inArray['currency'] !== $serverArray['currency'] || $inArray['currency_receive'] !== $serverArray['currency_receive'];
     }
 
-    private function updateUserPreference($inArray){
+    private function updateUserPreference($inArray)
+    {
         $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'].'/preference', [
                 'form_params' => [
-                    'currency' => $inArray['currency'],
+                    'currency'         => $inArray['currency'],
                     'currency_receive' => $inArray['currency_receive'],
                 ],
             ]);
-            $this->httpHelper->verifyResponse($response);
-            $this->pool->deleteItem('User/'.$this->user['ppmid'].'/preference');
+        $this->httpHelper->verifyResponse($response);
+        $this->pool->deleteItem('User/'.$this->user['ppmid'].'/preference');
     }
 
     /**
@@ -257,7 +259,6 @@ final class UserModule extends AbstractContainer
 
         return  $this->httpHelper->verifyResponse($response);
     }
-
 
     private function factoryBank($list)
     {

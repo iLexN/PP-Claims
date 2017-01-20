@@ -9,7 +9,6 @@ use Slim\Http\Response;
 final class NewOrSave extends AbstractContainer
 {
     /**
-     *
      * @var array
      */
     private $data;

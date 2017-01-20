@@ -49,6 +49,7 @@ abstract class AbstractContainer
             $response = $this->helper->addH2Header($this->preLoad, $response);
             $_SESSION['h2Push'][$this->preLoadKey] = true;
         }
+
         return $response;
     }
 }

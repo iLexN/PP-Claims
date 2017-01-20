@@ -2,11 +2,11 @@
 
 namespace PP\WebPortal\Controller\Page;
 
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use League\Flysystem\Filesystem;
-use League\Flysystem\Adapter\Local;
 
 final class FileDownload extends AbstractContainer
 {
@@ -21,7 +21,7 @@ final class FileDownload extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        list ( $k , $fileArray) = $this->checkFile($args);
+        list($k, $fileArray) = $this->checkFile($args);
 
         if ($k === false) {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -33,25 +33,29 @@ final class FileDownload extends AbstractContainer
         $filesystem = $this->getFileSystem();
 
         if ($filesystem->has($file_path)) {
-            return $this->sendFile($response, $this->c->get('policyFileConfig')['path'] .'/'.$file_path, $fileArray[$k]['file_name']);
+            return $this->sendFile($response, $this->c->get('policyFileConfig')['path'].'/'.$file_path, $fileArray[$k]['file_name']);
         }
 
         $fileResponse = $this->downloadFromAPI($f['url'], $fileArray[$k]['id']);
         $filesystem->write($file_path, $fileResponse->getBody());
 
-        return $this->sendFile($response, $this->c->get('policyFileConfig')['path'] .'/'.$file_path, $fileArray[$k]['file_name']);
+        return $this->sendFile($response, $this->c->get('policyFileConfig')['path'].'/'.$file_path, $fileArray[$k]['file_name']);
     }
 
-    private function checkFile($args){
+    private function checkFile($args)
+    {
         $polices = $this->policyModule->getPolices();
         $fileArray = $polices[$args['id']][$args['name']];
 
         $k = array_search($args['f'], array_column($fileArray, 'id'));
-        return [$k , $fileArray];
+
+        return [$k, $fileArray];
     }
 
-    private function getFileSystem(){
+    private function getFileSystem()
+    {
         $adapter = new Local($this->c->get('policyFileConfig')['path']);
+
         return new Filesystem($adapter);
     }
 
@@ -59,7 +63,7 @@ final class FileDownload extends AbstractContainer
     {
         if ($name === 'planfile') {
             return [
-                'url' => 'plan-file'
+                'url' => 'plan-file',
             ];
         }
 

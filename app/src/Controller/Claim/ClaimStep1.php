@@ -36,12 +36,11 @@ final class ClaimStep1 extends AbstractContainer
 
         $response = $this->checkH2($response);
 
-
         return $this->view->render($response, 'page/claim/step1.twig', [
-            'claim' => $claims,
-            'holder' => $holder,
+            'claim'      => $claims,
+            'holder'     => $holder,
             'dependents' => $dependents,
-            'token' => $this->csrfHelper->getToken($request),
+            'token'      => $this->csrfHelper->getToken($request),
         ]);
     }
 }

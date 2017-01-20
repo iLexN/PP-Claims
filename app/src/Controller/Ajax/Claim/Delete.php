@@ -10,10 +10,10 @@ final class Delete extends AbstractContainer
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $fileInfo = (array)$request->getParsedBody();
+        $fileInfo = (array) $request->getParsedBody();
 
         if ($fileInfo['id'] === $args['fid'] && $fileInfo['status'] === 'Upload') {
-            $url = 'attachment/'. $fileInfo['id'] ;
+            $url = 'attachment/'.$fileInfo['id'];
 
             $response1 = $this->httpClient->request('POST', $url, [
                 'form_params' => $fileInfo,

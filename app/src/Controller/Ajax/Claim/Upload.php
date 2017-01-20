@@ -2,11 +2,11 @@
 
 namespace PP\WebPortal\Controller\Ajax\Claim;
 
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 use PP\WebPortal\AbstractClass\AbstractContainer;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use League\Flysystem\Filesystem;
-use League\Flysystem\Adapter\Local;
 
 final class Upload extends AbstractContainer
 {
@@ -52,7 +52,7 @@ final class Upload extends AbstractContainer
             $adapter = new Local($this->c->get('uploadConfig')['path']);
             $filesystem = new Filesystem($adapter);
 
-            $filesystem->rename('temp/'.$newfile->getClientFilename(), $this->claim_id . '/' . $result['data']['id'] . '/' . $newfile->getClientFilename());
+            $filesystem->rename('temp/'.$newfile->getClientFilename(), $this->claim_id.'/'.$result['data']['id'].'/'.$newfile->getClientFilename());
         }
 
         return $newfile;

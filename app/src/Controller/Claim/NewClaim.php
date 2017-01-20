@@ -30,25 +30,26 @@ final class NewClaim extends AbstractContainer
         $response = $this->checkH2($response);
 
         return $this->view->render($response, 'page/claim/step1.twig', [
-            'holder' => $holder,
+            'holder'     => $holder,
             'dependents' => $dependents,
-            'claim' => $claims,
-            'token' => $this->csrfHelper->getToken($request),
+            'claim'      => $claims,
+            'token'      => $this->csrfHelper->getToken($request),
         ]);
     }
 
     private function getDefaultClaim($args)
     {
         $preference = $this->userModule->getUserPreference($this->userModule->user['ppmid']);
+
         return $this->claimModule->newClaim([
-            'claimiant_ppmid' => $this->userModule->user['ppmid'],
+            'claimiant_ppmid'   => $this->userModule->user['ppmid'],
             'date_of_treatment' => date('Y-m-d'),
-            'payment_method' => 'Bank transfer',
-            'currency' => $preference['currency'],
-            'currency_receive' => $preference['currency_receive'],
-            'diagnosis' => '',
-            'amount' => '',
-            'user_policy_id' => $args['id'],
+            'payment_method'    => 'Bank transfer',
+            'currency'          => $preference['currency'],
+            'currency_receive'  => $preference['currency_receive'],
+            'diagnosis'         => '',
+            'amount'            => '',
+            'user_policy_id'    => $args['id'],
         ]);
     }
 }

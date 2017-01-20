@@ -9,7 +9,6 @@ use Slim\Http\Response;
 final class NewOrSave extends AbstractContainer
 {
     /**
-     *
      * @var \PP\WebPortal\Module\Model\ClaimModel
      */
     private $claim;
@@ -36,7 +35,7 @@ final class NewOrSave extends AbstractContainer
         if ($this->claim['claim_id'] === null || $this->claim['claim_id'] === '') {
             return 'user-policy/'.$this->claim['user_policy_id'].'/claim';
         } else {
-            return 'claim/'. $this->claim['claim_id'];
+            return 'claim/'.$this->claim['claim_id'];
         }
     }
 }

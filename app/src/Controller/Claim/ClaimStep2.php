@@ -3,9 +3,9 @@
 namespace PP\WebPortal\Controller\Claim;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
+use PP\WebPortal\Module\Model\BankModel;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use PP\WebPortal\Module\Model\BankModel;
 
 final class ClaimStep2 extends AbstractContainer
 {
@@ -14,6 +14,7 @@ final class ClaimStep2 extends AbstractContainer
     public $preLoadKey = 'claimStep2';
 
     private $banks;
+
     /**
      * Login-ed Page.
      *
@@ -48,7 +49,7 @@ final class ClaimStep2 extends AbstractContainer
     private function needPush($claims)
     {
         if ($claims['bank_info'] === null) {
-            return ;
+            return;
         }
 
         $this->logger->info('bank', $claims['bank_info']);
@@ -69,6 +70,7 @@ final class ClaimStep2 extends AbstractContainer
             }
         }
         $this->logger->info('false');
+
         return false;
     }
 
@@ -77,7 +79,7 @@ final class ClaimStep2 extends AbstractContainer
         if (empty($this->banks->data)) {
             $preference = $this->userModule->getUserPreference($this->userModule->user['ppmid']);
             $this->banks->push(new BankModel([
-                'currency' =>$preference['currency'],
+                'currency' => $preference['currency'],
             ], $this->currencyText));
         }
     }

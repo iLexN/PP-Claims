@@ -2,8 +2,6 @@
 
 namespace PP\WebPortal\Module\Model;
 
-use PP\WebPortal\Module\Model\UserModel;
-use PP\WebPortal\Module\Model\ClaimModel;
 use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
 
 class PolicyModel extends ModelAbstract
@@ -15,7 +13,7 @@ class PolicyModel extends ModelAbstract
     public $dependents;
 
     public $claimList = [
-        'Save' => [],
+        'Save'   => [],
         'Submit' => [],
     ];
 
@@ -41,7 +39,7 @@ class PolicyModel extends ModelAbstract
 
     private function setUser($user)
     {
-        if ($user['relationship'] ===  'PolicyHolder') {
+        if ($user['relationship'] === 'PolicyHolder') {
             $this->holder = new UserModel($user);
         } else {
             $this->dependents[$user['ppmid']] = new UserModel($user);
@@ -77,9 +75,10 @@ class PolicyModel extends ModelAbstract
         return $this->data['advisor'];
     }
 
-    public function setClaimList($ar){
-        foreach ( $ar as $status => $claims){
-            foreach ( $claims as $claim) {
+    public function setClaimList($ar)
+    {
+        foreach ($ar as $status => $claims) {
+            foreach ($claims as $claim) {
                 $this->claimList[$status][] = new ClaimModel($claim);
             }
         }

@@ -7,7 +7,6 @@ use PP\WebPortal\Module\Model\Interfaces\ModelInterface;
 
 class ListModel extends ModelAbstract implements \IteratorAggregate
 {
-
     /**
      * data info.
      *
@@ -44,9 +43,8 @@ class ListModel extends ModelAbstract implements \IteratorAggregate
         return json_encode($this->toArray());
     }
 
-
     /**
-     * Get collection iterator
+     * Get collection iterator.
      *
      * @return \ArrayIterator
      */

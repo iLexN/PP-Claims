@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class ListClaim extends AbstractContainer
 {
-
     /**
      * Login-ed Page.
      *
@@ -22,17 +21,18 @@ final class ListClaim extends AbstractContainer
     {
         $polices = $this->policyModule->getPolices();
 
-        foreach ( $polices as $policy ) {
+        foreach ($polices as $policy) {
             $policy->setClaimList($this->policyModule->getClaimList($policy->getKey()));
         }
 
         return $this->view->render($response, 'page/claim/listClaim.twig', [
             'polices' => $polices,
-            'status' => $this->getStatus($args['name']),
+            'status'  => $this->getStatus($args['name']),
         ]);
     }
 
-    private function getStatus($name){
+    private function getStatus($name)
+    {
         return $name === 'saved-claim' ? 'Save' : 'Submit';
     }
 }
