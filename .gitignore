@@ -5,6 +5,7 @@
 /cache/*
 /config/
 /upload/*
+/user_policy_file/*
 /httpdocs/f/
 /httpdocs/components/
 /my-deploy/*

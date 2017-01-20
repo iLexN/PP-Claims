@@ -3,6 +3,7 @@
 namespace PP\WebPortal\Module\Model;
 
 use PP\WebPortal\Module\Model\UserModel;
+use PP\WebPortal\Module\Model\ClaimModel;
 use PP\WebPortal\Module\Model\AbstractClass\ModelAbstract;
 
 class PolicyModel extends ModelAbstract
@@ -12,6 +13,11 @@ class PolicyModel extends ModelAbstract
     public $holder;
 
     public $dependents;
+
+    public $claimList = [
+        'Save' => [],
+        'Submit' => [],
+    ];
 
     public function __construct($data, $currency)
     {
@@ -71,7 +77,15 @@ class PolicyModel extends ModelAbstract
         return $this->data['advisor'];
     }
 
-/*
+    public function setClaimList($ar){
+        foreach ( $ar as $status => $claims){
+            foreach ( $claims as $claim) {
+                $this->claimList[$status][] = new ClaimModel($claim);
+            }
+        }
+    }
+
+    /*
     public function getDependents()
     {
         return array_filter($this->data['policyuser'], function ($ar) {

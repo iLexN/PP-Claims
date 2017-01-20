@@ -6,7 +6,7 @@
     <div class="row" style="margin-bottom:0">
         <div class="col s12"><p>{{ policy.plan.plan_name }}</p></div>
         <div class="col s12">
-            <div class="right" style="margin-top:0.5rem">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS1',{'id':claim.claim_id}))}}</div>
+            <div class="right" style="margin-top:0.5rem" v-if="isSave">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS1',{'id':claim.claim_id}))}}</div>
             <h3>{{ langText.claim_nav_details }}</h3>
         </div>
     </div>
@@ -51,7 +51,7 @@
     {% if claim.payment_method == 'Bank transfer' %}
         <div class="row" style="margin-bottom:0">
             <div class="col s12">
-                <div class="right" style="margin-top:0.5rem">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS2',{'id':claim.claim_id}))}}</div>
+                <div class="right" style="margin-top:0.5rem" v-if="isSave">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS2',{'id':claim.claim_id}))}}</div>
                 <h3>{{ langText.claim_nav_reimburse }}</h3>
             </div>
         </div>
@@ -100,7 +100,7 @@
 
     <div class="row" style="margin-bottom:0">
         <div class="col s12">
-            <div class="right" style="margin-top:0.5rem">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS3',{'id':claim.claim_id}))}}</div>
+            <div class="right" style="margin-top:0.5rem" v-if="isSave">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS3',{'id':claim.claim_id}))}}</div>
             <h3>{{ langText.claim_nav_doc }}</h3>
         </div>
     </div>
@@ -117,7 +117,7 @@
     <div class="gen_divider"></div>
     
     
-    <div class="row">
+    <div class="row" v-if="isSave">
         <div class="col s12 right-align">
             {{ forms.MD_button_3('nextBtn', langText.submitBtn, 'button' , 'nextBtn1' )}}
         </div>

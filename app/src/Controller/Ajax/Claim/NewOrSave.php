@@ -25,8 +25,7 @@ final class NewOrSave extends AbstractContainer
         }
 
         $this->claimModule->clearClamID($result['data']['id']);
-        //todo check user pref , compary currency if need update api
-
+        $this->policyModule->clearClamList($this->claim['user_policy_id']);
         $this->userModule->checkUserPreference($this->claim);
 
         return $response->withJson($result);

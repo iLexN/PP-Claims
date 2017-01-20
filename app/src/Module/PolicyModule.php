@@ -52,6 +52,43 @@ final class PolicyModule extends AbstractContainer
         return $result['data'];
     }
 
+    public function getClaimList($id){
+
+        /* @var $item Stash\Interfaces\ItemInterface */
+        $item = $this->pool->getItem('UserPolicy/'.$id.'/claimlist');
+        $policies = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $policies = $this->getClaimListByAPI($id);
+            $this->pool->save($item->set($policies));
+        }
+
+        return $policies;
+    }
+
+    /**
+     * get policies list from API.
+     *
+     * @param int $id
+     *
+     * @return array
+     */
+    private function getClaimListByAPI($id)
+    {
+        $response = $this->httpClient->request('GET', 'user-policy/'.$id.'/claim');
+
+        $result = $this->httpHelper->verifyResponse($response);
+
+        return $result['data'];
+    }
+    public function clearClamList($id)
+    {
+        $this->pool->deleteItem('UserPolicy/'.$id.'/claimlist');
+    }
+
+
     private function factory($list)
     {
         $newList = new ListModel();

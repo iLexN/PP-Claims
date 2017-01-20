@@ -44,7 +44,12 @@ var app = new Vue({
 
     },
     computed: {
-
+        isSave : function(){
+            if ( this.claim.status === 'Save') {
+                return true;
+            }
+            return false;
+        }
     },
     methods: {
         nextBtn1: function () {

@@ -40,7 +40,11 @@ $app->get('/contact-us', 'PP\WebPortal\Controller\Page\ContactUs')
 $app->get('/policy', 'PP\WebPortal\Controller\Page\Policy')
     ->setName('Policy')
     ->add($authLoginArea); // redirect to home page if login expired
-
+$app->get('/user-policy/{id:\d+}/{name:planfile|policyfile}/{f:\d+}', 'PP\WebPortal\Controller\Page\FileDownload')
+    ->setName('Policy.FileDownload')
+    ->add($userPolicyCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
+    //
 //claim
 $app->get('/claim', 'PP\WebPortal\Controller\Claim\Index')
     ->setName('Claim.Index')
@@ -49,6 +53,10 @@ $app->get('/user-policy/{id:\d+}/new-claim', 'PP\WebPortal\Controller\Claim\NewC
     ->setName('Claim.NewClaim')
     ->add($container->get('csrf')) // for login form
     ->add($userPolicyCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
+$app->get('/{name:saved-claim|submited-claim}', 'PP\WebPortal\Controller\Claim\ListClaim')
+    ->setName('Claim.ListClaim')
+    ->add($container->get('csrf')) // for login form
     ->add($authLoginArea); // redirect to home page if login expired
 $app->get('/claim/{id:\d+}/details', 'PP\WebPortal\Controller\Claim\ClaimStep1')
     ->setName('Claim.ClaimS1')

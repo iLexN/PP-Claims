@@ -25,6 +25,11 @@ final class ClaimStep1 extends AbstractContainer
     {
         $claims = $this->claimModule->getClaim($args['id']);
 
+        if ($claims['status'] !== 'Save') {
+            return $response->withStatus(301)
+                ->withHeader('Location', $this->c['router']->pathFor('Main'));
+        }
+
         $polices = $this->policyModule->getPolices();
         $dependents = $polices[$claims['user_policy_id']]->dependents;
         $holder = $polices[$claims['user_policy_id']]->holder;

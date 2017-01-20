@@ -1,0 +1,63 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+    {% if status == 'Save' %}
+        <h1>{{ langText.claim_saved_list_title }}</h1>
+    {% else %}
+        <h1>{{ langText.claim_submit_list_title }}</h1>
+    {% endif %}
+    <div class="row">
+
+        {% for policy in polices %}
+            <div class="col s12">
+                <h2>{{ policy.plan.plan_name }}</h2>
+            </div>
+
+            {% if policy.claimList[status] is empty  %}
+                <div class="col s12">
+                    <!--<img src="/assets/images/zero_claim.svg" class="responsive-img">-->
+                    {{ langText.claim_saved_list_no }}
+                </div>
+            {% else %}
+                {% for claim in policy.claimList[status] %}
+                    <div class="col s6 m4 l4">
+                        {% if claim.isSubmit() %}
+                            <a href="{{ path_for('Claim.ClaimS4' , { 'id': claim.claim_id }) }}" class="list_claim">
+                        {% else %}
+                                <a href="{{ path_for('Claim.ClaimS1' , { 'id': claim.claim_id }) }}" class="list_claim">
+                        {% endif %}
+                                <i class="material-icons icon_color_4 icon_color_24">description</i>
+                                <h3>{{ claim.getDate() }}</h3>
+                                <div class="list_claim_time">{{ claim.getTime() }}</div>
+                                <span class="btn waves-effect waves-light btn-style-1">Edit</span>
+                            </a>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
+{% block rightHTML %}
+    <div class="col s12">
+
+    </div>
+{% endblock %}
+
+{% block jsBottom %}
+    {{ parent() }}
+
+
+    <script>
+        activeNav('claims');
+    </script>
+{% endblock %}

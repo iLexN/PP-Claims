@@ -20,6 +20,19 @@ var policyuser = {
     }
 };
 
+var filelist = {
+    props: {
+        f: Object,
+        t : String,
+        up : Number
+    },
+    computed : {
+        downloadUrl : function (){
+            return 'user-policy/' + this.up + '/' + this.t + '/'+ this.f.id;
+        }
+    }
+};
+
 var advisor = {
     props: {
         p: Object
@@ -35,7 +48,8 @@ var app = new Vue({
     },
     components: {
         'policy-user': policyuser,
-        'advisor' : advisor
+        'advisor' : advisor,
+        'filelist' : filelist
     },
     computed : {
       newClaimUrl : function(){

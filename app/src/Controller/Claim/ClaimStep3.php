@@ -25,6 +25,11 @@ final class ClaimStep3 extends AbstractContainer
     {
         $claims = $this->claimModule->getClaim($args['id']);
 
+        if ($claims['status'] !== 'Save') {
+            return $response->withStatus(301)
+                ->withHeader('Location', $this->c['router']->pathFor('Main'));
+        }
+
         $response = $this->checkH2($response);
 
         return $this->view->render($response, 'page/claim/step3.twig', [

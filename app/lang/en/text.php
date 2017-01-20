@@ -49,7 +49,7 @@ return [
     'claim_dl_claim_title'   => 'Download Claim Form',
     'claim_dl_claim_desc'    => 'Need to upload filled-in, signed form during online claims process?',
     'claim_submit_new_claim' => 'Submit New Claim',
-    'claim_saved_claim'      => 'Saved Claims',
+    'claim_saved_claim'      => 'Saved and Claims',
     'claim_submitted_claims' => 'Submitted Claims',
     //Claim Step1
     'claim_step1_who_q'                 => 'Who is the claim for?',
@@ -74,6 +74,10 @@ return [
     //Claim Step4 (summary)
     'claim_step4_submited_title' => 'Claim Submited',
     'claim_step4_submited_desc' => 'Our staff .... and .... long text',
+    //saved claim list
+    'claim_saved_list_title' => 'Saved and Unsubmitted Claims',
+    'claim_saved_list_no' => 'You don\'t have any claims',
+    'claim_submit_list_title' => 'Submited Claim',
 
     //form label
     'username'          => 'Username',

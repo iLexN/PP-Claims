@@ -47,4 +47,16 @@ class ClaimModel extends ModelAbstract
             $this->data['amount'] = 0;
         }
     }
+
+    public function getDate(){
+        return explode(' ', $this->data['created_at'])[0];
+    }
+
+    public function getTime(){
+        return explode(' ', $this->data['created_at'])[1];
+    }
+
+    public function isSubmit(){
+        return $this->data[status] === 'Submit' ? true : false;
+    }
 }

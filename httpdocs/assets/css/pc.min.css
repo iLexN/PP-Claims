@@ -1520,6 +1520,15 @@ button.btn-style-1{
     padding:8px 32px;
     padding: 0.5rem 2rem;
 }
+span.btn-style-1{
+    background-color: #84dcf2;
+    color: #000;
+    font-weight: 300;
+    height: auto;
+    line-height: 1.5;
+    padding:8px 32px;
+    padding: 0.5rem 2rem;
+}
 .btn_h_space{
     display:inline-block;
     width:16px;
@@ -1845,6 +1854,24 @@ include components
     background-color: #ececec;
     padding:20px 10px;
     padding: 1.25rem 0.625rem;
+}
+/*** list claim ***/
+.list_claim{
+    display: block;
+    text-align: center;
+    background-color: #ECECEC;
+    padding:16px;
+    padding: 1rem;
+    margin-bottom:16px;
+    margin-bottom: 1rem;
+}
+.list_claim h3{
+    margin:8px 0 0;
+    margin: 0.5rem 0 0;
+}
+.list_claim_time{
+    margin-bottom:8px;
+    margin-bottom: 0.5rem;
 }
 .form_edit{
     background-color: #ffeff0;

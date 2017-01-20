@@ -26,6 +26,12 @@ final class ClaimStep2 extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $claims = $this->claimModule->getClaim($args['id']);
+
+        if ($claims['status'] !== 'Save') {
+            return $response->withStatus(301)
+                ->withHeader('Location', $this->c['router']->pathFor('Main'));
+        }
+
         $this->banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
 
         $this->needPush($claims);
