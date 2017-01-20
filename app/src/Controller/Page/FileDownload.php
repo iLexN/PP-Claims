@@ -21,10 +21,8 @@ final class FileDownload extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $polices = $this->policyModule->getPolices();
-        $fileArray = $polices[$args['id']][$args['name']];
+        list ( $k , $fileArray) = $this->checkFile($args);
 
-        $k = array_search($args['f'], array_column($fileArray, 'id'));
         if ($k === false) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
@@ -44,9 +42,17 @@ final class FileDownload extends AbstractContainer
         return $this->sendFile($response, $this->c->get('policyFileConfig')['path'] .'/'.$file_path, $fileArray[$k]['file_name']);
     }
 
+    private function checkFile($args){
+        $polices = $this->policyModule->getPolices();
+        $fileArray = $polices[$args['id']][$args['name']];
+
+        $k = array_search($args['f'], array_column($fileArray, 'id'));
+        return [$k , $fileArray];
+    }
+
     private function getFileSystem(){
         $adapter = new Local($this->c->get('policyFileConfig')['path']);
-        return $filesystem = new Filesystem($adapter);
+        return new Filesystem($adapter);
     }
 
     private function getPathInfo($name)
