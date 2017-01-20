@@ -25,29 +25,28 @@ final class FileDownload extends AbstractContainer
         $fileArray = $polices[$args['id']][$args['name']];
 
         $k = array_search($args['f'], array_column($fileArray, 'id'));
-
         if ($k === false) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        //$file = $fileArray[$k];
         $f = $this->getPathInfo($args['name']);
         $file_path = $f['url'].'/'.$fileArray[$k]['id'].'/'.$fileArray[$k]['file_name'];
-        print_r($file_path);
 
-        $adapter = new Local($this->c->get('policyFileConfig')['path']);
-        $filesystem = new Filesystem($adapter);
+        $filesystem = $this->getFileSystem();
 
         if ($filesystem->has($file_path)) {
             return $this->sendFile($response, $this->c->get('policyFileConfig')['path'] .'/'.$file_path, $fileArray[$k]['file_name']);
         }
 
-        //donwload file
         $fileResponse = $this->downloadFromAPI($f['url'], $fileArray[$k]['id']);
-
         $filesystem->write($file_path, $fileResponse->getBody());
 
         return $this->sendFile($response, $this->c->get('policyFileConfig')['path'] .'/'.$file_path, $fileArray[$k]['file_name']);
+    }
+
+    private function getFileSystem(){
+        $adapter = new Local($this->c->get('policyFileConfig')['path']);
+        return $filesystem = new Filesystem($adapter);
     }
 
     private function getPathInfo($name)

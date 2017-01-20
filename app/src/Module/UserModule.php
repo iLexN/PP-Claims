@@ -149,8 +149,17 @@ final class UserModule extends AbstractContainer
         }
         $serverArray = $this->getUserPreference($this->user['ppmid']);
 
-        if ( $inArray['currency'] !== $serverArray['currency'] || $inArray['currency_receive'] !== $serverArray['currency_receive'] ) {
-            $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'].'/preference', [
+        if ( $this->checkUserPreferenceUpdate($inArray, $serverArray) ) {
+           $this->updateUserPreference($inArray);
+        }
+    }
+
+    private function checkUserPreferenceUpdate($inArray,$serverArray){
+        return $inArray['currency'] !== $serverArray['currency'] || $inArray['currency_receive'] !== $serverArray['currency_receive'];
+    }
+
+    private function updateUserPreference($inArray){
+        $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'].'/preference', [
                 'form_params' => [
                     'currency' => $inArray['currency'],
                     'currency_receive' => $inArray['currency_receive'],
@@ -158,7 +167,6 @@ final class UserModule extends AbstractContainer
             ]);
             $this->httpHelper->verifyResponse($response);
             $this->pool->deleteItem('User/'.$this->user['ppmid'].'/preference');
-        }
     }
 
     /**
