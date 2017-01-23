@@ -132,7 +132,7 @@ i.icon_color_24{
 a.btn-style-1{
     background-color: #84dcf2;
     color: #000;
-    font-weight: 300;
+    font-weight: 400;
     height: auto;
     line-height: 1.5;
     margin-bottom: 1.25rem;
@@ -143,7 +143,7 @@ a.btn-style-1{
 button.btn-style-1{
     background-color: #84dcf2;
     color: #000;
-    font-weight: 300;
+    font-weight: 400;
     height: auto;
     line-height: 1.5;
     margin-bottom: 1.25rem;
@@ -152,10 +152,19 @@ button.btn-style-1{
 span.btn-style-1{
     background-color: #84dcf2;
     color: #000;
-    font-weight: 300;
+    font-weight: 400;
     height: auto;
     line-height: 1.5;
     padding: 0.5rem 2rem;
+}
+a.btn-style-1:hover, 
+a.btn-style-1:focus, 
+span.btn-style-1:hover,
+span.btn-style-1:focus,
+button.btn-style-1:hover,
+button.btn-style-1:focus
+{
+    background-color: #b9f1ff;
 }
 .btn_h_space{
     display:inline-block;
