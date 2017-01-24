@@ -39,7 +39,7 @@
             <div class="col s12 m4 l5">
                 <div class="upload_btn_c">
                     {#{ forms.MD_button_2_2('claim_form','Upload','butotn', false , 'uploadClaimFile') }#}
-                    <button data-jshook="claim_form" class="{{ css.btn_3_large }}" type="butotn" v-on:click="uploadClaimFile">{{ langText.uploadBtn }}</button>
+                    <button data-jshook="claim_form formBtn" class="{{ css.btn_3_large }}" type="butotn" v-on:click="uploadClaimFile">{{ langText.uploadBtn }}</button>
                 </div>
             </div>
             <div class="col s12 min-text" id="claimform_size">1. {{ langText.claim_step3_file_1 }}</div>
@@ -80,7 +80,7 @@
             <div class="col s12 m4 l5">
                 <div class="upload_btn_c">
                     {#{ forms.MD_button_2_2('claim_form','Upload','butotn', false , 'uploadSupDoc') }#}
-                    <button data-jshook="sup_doc" class="{{ css.btn_3_large }}" type="butotn" v-on:click="uploadSupDoc">{{ langText.uploadBtn }}</button>
+                    <button data-jshook="sup_doc formBtn" class="{{ css.btn_3_large }}" type="butotn" v-on:click="uploadSupDoc">{{ langText.uploadBtn }}</button>
                 </div>
             </div>
             <div class="col s12 min-text" id="supdoc_size">1. {{ langText.claim_step3_file_1 }}</div>
@@ -94,10 +94,10 @@
         <div class="row">
             <div class="col s12 right-align">
                 {#{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}#}
-                <button id="saveBtn" data-jshook="saveBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
+                <button id="saveBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
                 <div class="btn_h_space"></div>
                 {#{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}#}
-                <button id="nextBtn" data-jshook="nextBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
+                <button id="nextBtn" data-jshook="nextBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
             </div>
         </div>
 

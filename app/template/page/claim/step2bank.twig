@@ -72,20 +72,20 @@
                 <div v-show="edit">
                     <div class="col s12" v-if="bigSaveBtn">
                         {#{ forms.MD_button_1_1('newBank',langText.saveBankBtn , 'button', 'create_new_folder','saveBank') }#}
-                        <button data-jshook="newBank" class="{{ css.btn_1 }}" type="button" v-on:click="saveBank"><i class="material-icons left">create_new_folder</i>{{ langText.saveBankBtn }}</button>
+                        <button data-jshook="newBank formBtn" class="{{ css.btn_1 }}" type="button" v-on:click="saveBank"><i class="material-icons left">create_new_folder</i>{{ langText.saveBankBtn }}</button>
                     </div>
                     <div class="col s12 right-align" v-else>
-                        <button data-jshook="delBank" type="button" class="{{ css.btn_3 }}" v-on:click="delBtn" v-if="canDel">{{ langText.delBtn }}</button>
+                        <button data-jshook="delBank formBtn" type="button" class="{{ css.btn_3 }}" v-on:click="delBtn" v-if="canDel">{{ langText.delBtn }}</button>
                         {#{ forms.MD_button_2('cancelBank',langText.cancelBtn , 'button' , false ,'cancelBtn') }#}
                         <button data-jshook="cancelBank" class="{{ css.btn_3 }}" type="button" v-on:click="cancelBtn">{{ langText.cancelBtn }}</button>
-                        <button data-jshook="saveBankBtn" class="{{ css.btn_1 }}" type="button" v-on:click="saveOrNewBank">{{ langText.saveBtn }}</button>
+                        <button data-jshook="saveBankBtn formBtn" class="{{ css.btn_1 }}" type="button" v-on:click="saveOrNewBank">{{ langText.saveBtn }}</button>
                         {#{ forms.MD_button_1('saveBankBtn',langText.saveBtn , 'button','saveOrNewBank') }#}
                     </div>
                 </div>
                     
                     <div class="col s12" v-if="!bigSaveBtn && !edit">
                         {#{ forms.MD_button_2_1('newBank2',langText.newBankBtn , 'button', 'create_new_folder' , 'createNewBank') }#}
-                        <button data-jshook="newBank2" class="{{ css.btn_3 }}" type="button" v-on:click="createNewBank">{{ langText.newBankBtn }}<i class="material-icons left">create_new_folder</i></button>
+                        <button data-jshook="newBank2 formBtn" class="{{ css.btn_3 }}" type="button" v-on:click="createNewBank">{{ langText.newBankBtn }}<i class="material-icons left">create_new_folder</i></button>
                     </div>
             </div>
         </div>
@@ -94,10 +94,10 @@
         <div class="row" v-if="!bigSaveBtn">
             <div class="col s12 right-align">
                 {#{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}#}
-                <button id="saveBtn" data-jshook="saveBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
+                <button id="saveBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
                 <div class="btn_h_space"></div>
                 {#{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}#}
-                <button id="nextBtn" data-jshook="nextBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
+                <button id="nextBtn" data-jshook="nextBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
             </div>
         </div>
 

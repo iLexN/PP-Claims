@@ -6,9 +6,6 @@
     var $success = $.jshook('setforgotPasswordSuccess');
 
     function submit() {
-        if (!isOnLine.check()) {
-            return false;
-        }
         var data = (csrf.getFormObj($form.serializeArray()));
         $.ajax({
             beforeSend: function () {

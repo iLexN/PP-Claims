@@ -75,10 +75,10 @@ isOnLine = (function () {
     function ui() {
         if (check()) {
             $msgDiv.addClass('hide');
-            $formBtn.removeClass('disabled');
+            $.jshook('formBtn').removeClass('disabled');
         } else {
             $msgDiv.removeClass('hide');
-            $formBtn.addClass('disabled');
+            $.jshook('formBtn').addClass('disabled');
         }
     }
     function init() {

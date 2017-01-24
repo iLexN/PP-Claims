@@ -10,7 +10,7 @@ return [
     'logout' => 'Logout',
 
     //section title
-    'title_profile' => 'Profile',
+    'title_profile' => 'Member',
     'title_claims'  => 'Claims',
     'title_policy'  => 'Policy',
     'title_contact' => 'Contact Us',

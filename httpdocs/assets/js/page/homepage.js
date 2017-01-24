@@ -5,9 +5,6 @@
     var $loginMsg = $.jshook('loginMsg');
 
     function submit() {
-        if (!isOnLine.check()) {
-            return false;
-        }
         var data = (csrf.getFormObj($form.serializeArray()));
         $.ajax({
             beforeSend: function () {
@@ -58,9 +55,6 @@
     var $closeBtn = $.jshook('forgotpasswordBtnClose');
 
     function submit() {
-        if (!isOnLine.check()) {
-            return false;
-        }
         var data = (csrf.getFormObj($form.serializeArray()));
         $.ajax({
             beforeSend: function () {
@@ -127,9 +121,6 @@
     var $closeBtn = $.jshook('forgotUsernameBtnClose');
 
     function submit() {
-        if (!isOnLine.check()) {
-            return false;
-        }
         var data = (csrf.getFormObj($form.serializeArray()));
         $.ajax({
             beforeSend: function () {
@@ -199,9 +190,6 @@
     var $msgSignup = $.jshook('userSignUpMsg');
 
     function submit() {
-        if (!isOnLine.check()) {
-            return false;
-        }
         var data = (csrf.getFormObj($form.serializeArray()));
         $.ajax({
             beforeSend: function () {
@@ -231,9 +219,6 @@
         });
     }
     function submitSignUp() {
-        if (!isOnLine.check()) {
-            return false;
-        }
         var data = (csrf.getFormObj($formSignup.serializeArray()));
         $.ajax({
             beforeSend: function () {
