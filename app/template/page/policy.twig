@@ -64,18 +64,11 @@
         <div data-jshook="pushpin">
             <h2><i class="material-icons icon_color_4 icon_color_24">file_download</i> {{ langText.policy_info_download }}</h2>
             <filelist  v-for="(val, key) in p.planfile" :f="val" :up="p.pivot.id" t="planfile" inline-template>
-                <a class="btn waves-effect waves-light btn-style-1" :href="downloadUrl" download>${ f.file_type }</a>
+                <a class="btn waves-effect waves-light btn-style-1" :href="downloadUrl" download>${ f.display_name }</a>
             </filelist>
             <filelist  v-for="(val, key) in p.policyfile" :f="val" :up="p.pivot.id" t="policyfile" inline-template>
-                <a class="btn waves-effect waves-light btn-style-1" :href="downloadUrl" download>${ f.file_type }</a>
+                <a class="btn waves-effect waves-light btn-style-1" :href="downloadUrl" download>${ f.display_name }</a>
             </filelist>
-            <!--
-            {{ components.a_link_style2(langText.policy_info_tob,'#v') }}
-            {{ components.a_link_style2(langText.policy_info_wording,'#v') }}
-            {{ components.a_link_style2(langText.policy_info_cert,'#v') }}
-            {{ components.a_link_style2(langText.policy_info_hospital_network,'#v') }}
-            {{ components.a_link_style2(langText.policy_info_invoice,'#v') }}
-            -->
         </div>
     </div>
 

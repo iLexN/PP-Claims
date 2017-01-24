@@ -213,7 +213,11 @@ var app = new Vue({
         nextBtn1: function () {
             self = this;
             this.goAjaxClaim(function (data) {
-                window.location.href = '/claim/' + data.data.id + '/documents';
+                if ( self.claim.isComplete ) {
+                    window.location.href = '/claim/' + data.data.id + '/summary';
+                } else {
+                    window.location.href = '/claim/' + data.data.id + '/documents';
+                }
             });
         },
         getFormData: function () {

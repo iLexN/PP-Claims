@@ -89,7 +89,7 @@ final class ClaimStep2 extends AbstractContainer
         if ($claim['payment_method'] === 'Cheque') {
             return 'page/claim/step2cheque.twig';
         } else {
-            // Bank transfer
+            // Bank Transfer
             return 'page/claim/step2bank.twig';
         }
     }

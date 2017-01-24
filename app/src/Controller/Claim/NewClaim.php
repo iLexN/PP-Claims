@@ -44,7 +44,7 @@ final class NewClaim extends AbstractContainer
         return $this->claimModule->newClaim([
             'claimiant_ppmid'   => $this->userModule->user['ppmid'],
             'date_of_treatment' => date('Y-m-d'),
-            'payment_method'    => 'Bank transfer',
+            'payment_method'    => 'Bank Transfer',
             'currency'          => $preference['currency'],
             'currency_receive'  => $preference['currency_receive'],
             'diagnosis'         => '',

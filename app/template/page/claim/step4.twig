@@ -48,7 +48,7 @@
     </div>
     <div class="gen_divider"></div>
 
-    {% if claim.payment_method == 'Bank transfer' %}
+    {% if claim.payment_method == 'Bank Transfer' %}
         <div class="row" style="margin-bottom:0">
             <div class="col s12">
                 <div class="right" style="margin-top:0.5rem" v-if="isSave">{{ components.a_link_style3(langText.editBtn, path_for('Claim.ClaimS2',{'id':claim.claim_id}))}}</div>

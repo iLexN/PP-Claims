@@ -17,6 +17,7 @@ class ClaimModel extends ModelAbstract
         $this->breakTreatmentDate();
         $this->checkBank();
         $this->checkCheque();
+        $this->isComplete();
     }
 
     private function breakTreatmentDate()
@@ -61,5 +62,43 @@ class ClaimModel extends ModelAbstract
     public function isSubmit()
     {
         return $this->data[status] === 'Submit' ? true : false;
+    }
+
+    public function haveFileUpload()
+    {
+        return !empty($this->data['file_attachments']['support_doc']) && !empty($this->data['file_attachments']['claim_form']);
+    }
+
+    public function haveReimburse()
+    {
+        if ($this->data['payment_method'] === 'Bank Transfer' && !empty($this->data['bank_info'])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isComplete()
+    {
+        if ($this->haveFileUpload() && $this->haveReimburse()) {
+            $this->data['isComplete'] = true;
+        } else {
+            $this->data['isComplete'] = false;
+        }
+    }
+
+    public function getStep(){
+        if ( $this->data['isComplete'] ) {
+            return 'Claim.ClaimS4';
+        }
+
+        if ( !$this->haveFileUpload() && $this->haveReimburse() ) {
+            return 'Claim.ClaimS3';
+        }
+        //todo : check step1 than go s2?
+
+        if ( !$this->haveReimburse() ){
+            return 'Claim.ClaimS1';
+        }
     }
 }

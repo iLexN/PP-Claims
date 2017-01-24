@@ -5,6 +5,7 @@ var app = new Vue({
     delimiters: ['${', '}'],
     data: {
         'claim': claim,
+        'size_limit' : 2 * 1024 *1024
     },
     created: function () {
 
@@ -38,8 +39,8 @@ var app = new Vue({
             if ( _.isUndefined(f) ) {
                 return ;
             }
-            
-            if (f.size > 2000000) {
+
+            if (f.size > this.size_limit) {
                 $('#claimform_size').addClass('errors_msg2');
                 return;
             } else {
@@ -56,6 +57,7 @@ var app = new Vue({
                     self.claim.file_attachments.claim_form.push(data.data);
                     $("#claimFileInput").parent().next().find('input').val('')
                     $("#claimFileInput").val('');
+                    $("#claimFormSection").removeClass('errors_msg2');
                 }
             });
         },
@@ -69,7 +71,7 @@ var app = new Vue({
             if ( _.isUndefined(f) ) {
                 return ;
             }
-            if (f.size > 2000000) {
+            if (f.size > this.size_limit) {
                 $('#supdoc_size').addClass('errors_msg2');
                 return;
             } else {
@@ -85,6 +87,7 @@ var app = new Vue({
                     self.claim.file_attachments.support_doc.push(data.data);
                     $("#supDocInput").parent().next().find('input').val('')
                     $("#supDocInput").val('');
+                    $("#subDocSection").removeClass('errors_msg2');
                 }
             });
         },
@@ -151,7 +154,7 @@ var app = new Vue({
         },
         nextBtn1: function () {
             $("#claimFormSection").removeClass('errors_msg2');
-            $("#claimFormSection").removeClass('errors_msg2');
+            $("#subDocSection").removeClass('errors_msg2');
             
             if ( this.goNext) {
                 loadingBox.open();

@@ -28,6 +28,8 @@ final class ClaimStep4 extends AbstractContainer
 
         $response = $this->checkH2($response);
 
+        //todo : redirct to other step?
+
         return $this->view->render($response, 'page/claim/step4.twig', [
             'claim'    => $claims,
             'policy'   => $policy,

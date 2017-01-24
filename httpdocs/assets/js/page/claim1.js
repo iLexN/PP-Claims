@@ -82,7 +82,8 @@ var app = new Vue({
         'holderID': holderID,
         'whom': '',
         'whom_dependent': '',
-        'dependentbox': false
+        'dependentbox': false,
+        'oldPM' : claim.payment_method
     },
     created: function () {
         this.isDependent(this.claim.claimiant_ppmid);
@@ -167,10 +168,14 @@ var app = new Vue({
             
         },
         nextBtn1: function () {
+            var self = this;
             if (this.checkStep1()) {
                 this.goAjax(function(data){
-                    //window.location.href = '/claim/'+data.data.id+'/reimburse';
-                    window.location.replace('/claim/'+data.data.id+'/reimburse');
+                    if ( self.checkComplete() ) {
+                        window.location.href = '/claim/'+data.data.id+'/summary';
+                    } else {
+                        window.location.replace('/claim/'+data.data.id+'/reimburse');
+                    }
                 });
             }
         },
@@ -203,6 +208,13 @@ var app = new Vue({
                 duration: 500,
                 easing: "linear"
             });
+        },
+        checkComplete : function (){
+            if ( this.oldPM === this.claim.payment_method && this.claim.isComplete ) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 });
