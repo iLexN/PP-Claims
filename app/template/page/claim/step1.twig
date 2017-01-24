@@ -96,9 +96,11 @@
 
         <div class="row">
             <div class="col s12 right-align">
-                {{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}}
+                {#{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}#}
+                <button id="saveBtn" data-jshook="saveBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
                 <div class="btn_h_space"></div>
-                {{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}}
+                {#{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}#}
+                <button id="nextBtn" data-jshook="nextBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
             </div>
         </div>
 

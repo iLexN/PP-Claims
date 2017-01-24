@@ -71,41 +71,16 @@
         <pre>{{ forms.MD_input('username', 'text', 'user_name')}}</pre>
     {% endverbatim %}
 
-    <h4>Button</h4>
-    <code>forms.MD_button_1('jshooks-name','BtnText','BtnType')</code>
-    {{ forms.MD_button_1('loginBtn',langText.loginBtn,'button') }}
-    {% verbatim %}
-        <pre>{{ forms.MD_button_1('loginBtn', langText.loginBtn, 'button')}}</pre>
-    {% endverbatim %}
+    <h4>Button or link</h4>
 
-    <code>forms.MD_button_2('jshooks-name','BtnText','BtnType','iconText')</code>
-    {{ forms.MD_button_2('forgotpasswordBtn',langText.forgotpasswordBtn,'button' , 'send') }}
-    {% verbatim %}
-        <pre>{{ forms.MD_button_2('forgotpasswordBtn', langText.forgotpasswordBtn, 'button', 'send')}}</pre>
-    {% endverbatim %}
+    <p>    <button class="{{ css.btn_1 }}">btn_1</button></p>
+    <p>    <button class="{{ css.btn_2 }}">btn_2</button> ( with margin-bottom)</p>
+    <p>    <button class="{{ css.btn_3 }}">btn_3</button></p>
+    <p><button class="{{ css.btn_3_large }}">btn_3_large</button> ( upload btn )</p>
 
-
-    <h2>Other</h2>
-
-    <h4>a link</h4>
-    <code>components.a_link_style1('titleText','URL', 'target')</code>
-    {{ components.a_link_style1(langText.home_verify_btn,'#v') }}
-    {% verbatim %}
-        <pre>{{ components.a_link_style1(langText.home_verify_btn, '#v')}}</pre>
-    {% endverbatim %}
-
-
-
-
-    <code>components.a_link_style2('titleText','URL', 'target')</code>
-    <div style="width:25%">
-        {{ components.a_link_style2('long long long long long btn','#v') }}
-    </div>
-    {% verbatim %}
-        <pre>{{ components.a_link_style2(langText.home_verify_btn, '#v')}}</pre>
-    {% endverbatim %}
-
-
+    <br/>
+    <br/>
+    <br/>
 
     <code>class="alink_1"</code>
     <a href="#" class="alink_1">Forgot Username?</a>
@@ -159,7 +134,11 @@
         </div>
     </div>
 
-
+        <h4>Premium box</h4>
+        <div class="general" style="width:60%;padding: 1rem;background-color:#fff">
+        {% include 'include/components/premium-box.twig' %}
+        {% include 'include/components/premium-box.twig' %}
+        </div>
 
     <h4>breadcrumb</h4>
     <div class="general" style="width:50%">
@@ -186,6 +165,47 @@
         {{ components.claim_info_box2(langText.claim_submitted_claims, '/assets/images/icon_claims_submit.png', ':href="submitedClaimUrl"')}}
     {% endverbatim %}
     <div style="height:50px;"></div>
+
+    
+    <h4>claim list</h4>
+    <div style="width:50%;background-color:#fff;padding-top:1rem" class="general">
+        <div class="row">
+    <div class="col s6 m4 l4">
+
+        <a href="#" class="list_claim">
+            <i class="material-icons icon_color_4 icon_color_24">description</i>
+            <h3>YYYY-MM-DD</h3>
+            <div class="list_claim_time">HH:MM:SS</div>
+            <span class="{{ css.btn_2 }}}">Edit</span>
+        </a>
+    </div>
+        <div class="col s6 m4 l4">
+
+        <a href="#" class="list_claim">
+            <i class="material-icons icon_color_4 icon_color_24">description</i>
+            <h3>YYYY-MM-DD</h3>
+            <div class="list_claim_time">HH:MM:SS</div>
+            <span class="{{ css.btn_2 }}}">Edit</span>
+        </a>
+    </div>
+        </div></div>
+        <div style="height:50px;"></div>
+        
+        <h4>Tip box</h4>
+        <div class="general" style="width:50%;background-color:#fff;padding:2rem">
+            
+        <div class="tipsBox">
+                <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
+                <div class="tipsbox_info">
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                </div>
+            </div>
+                </div>
+        
+<div style="height:50px;"></div>
 {% endblock %}
 
 

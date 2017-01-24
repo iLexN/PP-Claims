@@ -8,7 +8,8 @@
     <div data-jshook="loginMsg" class="col s12 m12 l12 hide errors_msg" >
     </div>
     <div class="col s12" >
-        {{ forms.MD_button_1('loginBtn formBtn',langText.loginBtn,'button') }}
+        {#{ forms.MD_button_1('loginBtn formBtn',langText.loginBtn,'button') }#}
+        <button data-jshook="loginBtn formBtn" class="{{ css.btn_1 }}" type="button" >Login</button>
     </div>
 </form>
 <div class="input-field col s12">

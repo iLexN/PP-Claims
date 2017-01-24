@@ -8,28 +8,6 @@
     <label for="{{ name }}" {% if errorMsg %}data-error="{{ errorMsg }}"{% endif %} >{{ label }}</label>
 {% endmacro %}
 
-{% macro MD_button_1(jshookname,label,type , vue = false) %}
-    <button data-jshook="{{ jshookname }}" class="btn waves-effect waves-light orange lighten-1" type="{{ type | default('button')}}" {% if vue %}v-on:click="{{ vue }}"{% endif %}>{{ label |default('missing label')}}</button>
-{% endmacro %}
-
-{% macro MD_button_1_1(jshookname,label,type,iconText , vue = false) %}
-    <button data-jshook="{{ jshookname }}" class="btn waves-effect waves-light orange lighten-1" type="{{ type | default('button')}}" {% if vue %}v-on:click="{{ vue }}"{% endif %}><i class="material-icons left">{{ iconText }}</i>{{ label |default('missing label')}}</button>
-{% endmacro %}
-
-{% macro MD_button_2(jshookname,label,type , iconText = false , vue = false) %}
-    <button data-jshook="{{ jshookname }}" class="btn waves-effect waves-light blue lighten-1" type="{{ type | default('button')}}" {% if vue %}v-on:click="{{ vue }}"{% endif %}>{{ label |default('missing label')}}{% if iconText %}<i class="material-icons right">{{ iconText }}{% endif %}</i></button>
-{% endmacro %}
-{% macro MD_button_2_1(jshookname,label,type , iconText = false , vue = false) %}
-    <button data-jshook="{{ jshookname }}" class="btn waves-effect waves-light blue lighten-1" type="{{ type | default('button')}}" {% if vue %}v-on:click="{{ vue }}"{% endif %}>{{ label |default('missing label')}}{% if iconText %}<i class="material-icons left">{{ iconText }}{% endif %}</i></button>
-{% endmacro %}
-{% macro MD_button_2_2(jshookname,label,type , iconText = false , vue = false) %}
-    <button data-jshook="{{ jshookname }}" class="btn-large waves-effect waves-light blue lighten-1" type="{{ type | default('button')}}" {% if vue %}v-on:click="{{ vue }}"{% endif %}>{{ label |default('missing label')}}{% if iconText %}<i class="material-icons right">{{ iconText }}{% endif %}</i></button>
-{% endmacro %}
-
-{% macro MD_button_3(jshookname,label,type , vue = false) %}
-    <button id="{{ jshookname }}" data-jshook="{{ jshookname }}" class="btn waves-effect waves-light btn-style-1" type="{{ type | default('button')}}" {% if vue %}v-on:click="{{ vue }}"{% endif %}>{{ label |default('missing label')}}</button>
-{% endmacro %}
-
 {% macro MD_select_year(label, name ) %}
     {% set y = "now"|date("Y") %}
     <label for="{{ name }}">{{ label }}</label>

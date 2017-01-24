@@ -130,6 +130,7 @@ return [
     'delBtn'        => 'Delete',
     'newBankBtn'    => 'New Bank Account',
     'chooseFileBtn' => 'File',
+    'uploadBtn'     => 'Upload',
 
     //components
     //forgotpassword

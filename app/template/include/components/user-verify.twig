@@ -27,7 +27,7 @@
                     {{ forms.MD_select_day(langText.date,'day') }}
                 </div>
                 <div class="col s12 m12 l8 offset-l2 center-align" style="margin-top:1.2rem">
-                    {{ forms.MD_button_2('userVerifyBtn formBtn',langText.submitBtn,'button' , 'send') }}
+                    <button data-jshook="userVerifyBtn formBtn" class="{{ css.btn_3 }}" type="button" >{{ langText.submitBtn }}<i class="material-icons right">send</i></button>
                 </div>
             </form>
 
@@ -49,7 +49,8 @@
                 </div>
 
                 <div class="col s12 m12 l8 offset-l2 center-align" style="margin-top:1.2rem">
-                    {{ forms.MD_button_2('userSignupBtn formBtn',langText.submitBtn,'button' , 'send') }}
+                    {#{ forms.MD_button_2('userSignupBtn formBtn',langText.submitBtn,'button' , 'send') }#}
+                    <button data-jshook="userSignupBtn formBtn" class="{{ css.btn_3 }}" type="button" >{{ langText.submitBtn }}<i class="material-icons right">send</i></button>
                 </div>
             </form>
         </div>

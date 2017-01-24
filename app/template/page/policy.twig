@@ -33,13 +33,7 @@
 
     <h2>{{ langText.policy_info_premium }}</h2>
     <policy-user  v-for="(val, key) in p.policyuser" :p="val" inline-template>
-        <div class="row premium_box">
-            <div class="col s6 m6 l5">
-                <div class="left premium_box_iconbox"><i class="material-icons icon_color_3 icon_size_22">account_circle</i></div>
-                <div class="premium_box_namebox">${ fullname }</div>
-            </div>
-            <div class="col s6 m5 l5 offset-m1 offset-l2">{{ langText.policy_info_premium }}: <span class="premium_box_premium">${ p.premium_paid }</span></div>
-        </div>
+        {% include 'include/components/premium-box.twig' %}
     </policy-user>
 
     <div style="height:2rem"></div>
@@ -64,10 +58,10 @@
         <div data-jshook="pushpin">
             <h2><i class="material-icons icon_color_4 icon_color_24">file_download</i> {{ langText.policy_info_download }}</h2>
             <filelist  v-for="(val, key) in p.planfile" :f="val" :up="p.pivot.id" t="planfile" inline-template>
-                <a class="btn waves-effect waves-light btn-style-1" :href="downloadUrl" download>${ f.display_name }</a>
+                <a class="{{ css.btn_2 }}" :href="downloadUrl" download>${ f.display_name }</a>
             </filelist>
             <filelist  v-for="(val, key) in p.policyfile" :f="val" :up="p.pivot.id" t="policyfile" inline-template>
-                <a class="btn waves-effect waves-light btn-style-1" :href="downloadUrl" download>${ f.display_name }</a>
+                <a class="{{ css.btn_2 }}" :href="downloadUrl" download>${ f.display_name }</a>
             </filelist>
         </div>
     </div>
