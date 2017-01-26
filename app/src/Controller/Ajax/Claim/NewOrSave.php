@@ -17,7 +17,7 @@ final class NewOrSave extends AbstractContainer
     {
         $polices = $this->policyModule->getPolices();
 
-        if (!$polices[$request->getParsedBodyParam('user_policy_id')] ) {
+        if (!$polices[$request->getParsedBodyParam('user_policy_id')]) {
             return $response->withJson([]);
         }
 

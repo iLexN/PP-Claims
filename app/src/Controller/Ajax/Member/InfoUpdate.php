@@ -12,11 +12,11 @@ final class InfoUpdate extends AbstractContainer
     {
         $people = $this->userModule->getPeopleList($this->userModule->user['ppmid']);
 
-        if ( !$people[$args['id']] ) {
+        if (!$people[$args['id']]) {
             return $response->withJson([]);
         }
 
-        $result = $this->userModule->postUserInfo((array) $request->getParsedBody(),$args['id']);
+        $result = $this->userModule->postUserInfo((array) $request->getParsedBody(), $args['id']);
 
         return $response->withJson($result);
     }

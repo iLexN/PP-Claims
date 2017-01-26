@@ -43,6 +43,6 @@ class UserModel extends ModelAbstract
 
     public function setReNew($ar)
     {
-        $this->data['renew'] = false;
+        $this->data['renew'] = $ar;
     }
 }

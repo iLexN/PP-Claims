@@ -55,6 +55,7 @@ final class Index extends AbstractContainer
             $out = $holderInfo;
             $out['renew'] = false;
         }
+
         return $out;
     }
 }

@@ -10,6 +10,7 @@ final class GetUserDetails extends AbstractContainer
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $a = [];
         $a['address'] = $this->userModule->getUserAddress($args['id']);
         $a['renew'] = $this->userModule->getUserReNewInfo($args['id']);
 

@@ -131,7 +131,7 @@ final class UserModule extends AbstractContainer
      *
      * @param int $id
      *
-     * @return UserModel
+     * @return ListModel
      */
     public function getPeopleList($id)
     {
@@ -303,22 +303,6 @@ final class UserModule extends AbstractContainer
 
         return $result['data'];
     }
-
-    /**
-     * @param array $data
-     *
-     * @return \Psr\Http\Message\ServerRequestInterface|bool
-     */
-//    public function postUserInfoByAPI($data)
-//    {
-//        $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'], [
-//                'form_params' => $data,
-//            ]);
-//
-//        $this->pool->deleteItem('User/'.$this->user['ppmid'].'/info');
-//
-//        return  $this->httpHelper->verifyResponse($response);
-//    }
 
     /**
      * set new password from forgotPassword.

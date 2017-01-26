@@ -87,17 +87,18 @@ class ClaimModel extends ModelAbstract
         }
     }
 
-    public function getStep(){
-        if ( $this->data['isComplete'] ) {
+    public function getStep()
+    {
+        if ($this->data['isComplete']) {
             return 'Claim.ClaimS4';
         }
 
-        if ( !$this->haveFileUpload() && $this->haveReimburse() ) {
+        if (!$this->haveFileUpload() && $this->haveReimburse()) {
             return 'Claim.ClaimS3';
         }
         //todo : check step1 than go s2?
 
-        if ( !$this->haveReimburse() ){
+        if (!$this->haveReimburse()) {
             return 'Claim.ClaimS1';
         }
     }
