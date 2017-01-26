@@ -20,6 +20,8 @@ final class Delete extends AbstractContainer
         $this->logger->info('data', $this->data);
         $this->logger->info('args', $args);
 
+        // todo : check bank is user
+
         if ($this->data['banker_transfer_id'] === $args['id']) {
             $result = $this->userModule->delUserBankByAPI($args['id']);
 

@@ -110,6 +110,45 @@ final class UserModule extends AbstractContainer
         return $user;
     }
 
+    public function getUserReNewInfo($id)
+    {
+        /* @var $item Stash\Interfaces\ItemInterface */
+        $item = $this->pool->getItem('User/'.$id.'/renew');
+        $user = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $user = $this->getUserReNewByAPI($id);
+            $this->pool->save($item->set($user));
+        }
+
+        return $user;
+    }
+
+    /**
+     * get User info from session.
+     *
+     * @param int $id
+     *
+     * @return UserModel
+     */
+    public function getPeopleList($id)
+    {
+        /* @var $item Stash\Interfaces\ItemInterface */
+        $item = $this->pool->getItem('User/'.$id.'/people');
+        $user = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $user = $this->factoryUser($this->getPeopleListByAPI($id));
+            $this->pool->save($item->set($user));
+        }
+
+        return $user;
+    }
+
     public function getUserBank($id)
     {
         /* @var $item Stash\Interfaces\ItemInterface */
@@ -120,6 +159,38 @@ final class UserModule extends AbstractContainer
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             $data = $this->factoryBank($this->getUserBankByAPI($id));
+            $this->pool->save($item->set($data));
+        }
+
+        return $data;
+    }
+
+    public function getUserAddress($id)
+    {
+        /* @var $item Stash\Interfaces\ItemInterface */
+        $item = $this->pool->getItem('User/'.$id.'/address');
+        $data = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $data = $this->getUserAddressByAPI($id);
+            $this->pool->save($item->set($data));
+        }
+
+        return $data;
+    }
+
+    public function getHoderInfo($id)
+    {
+        /* @var $item Stash\Interfaces\ItemInterface */
+        $item = $this->pool->getItem('Hodler/'.$id);
+        $data = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $data = $this->getHolderByAPI($id);
             $this->pool->save($item->set($data));
         }
 
@@ -186,9 +257,39 @@ final class UserModule extends AbstractContainer
         return $result['data'];
     }
 
+    private function getUserReNewByAPI($id)
+    {
+        $response = $this->httpClient->request('GET', 'user/'.$id .'/renew');
+        $result = $this->httpHelper->verifyResponse($response);
+
+        return $result['data'];
+    }
+
+    private function getPeopleListByAPI($id)
+    {
+        $response = $this->httpClient->request('GET', 'user/'.$id .'/people');
+        $result = $this->httpHelper->verifyResponse($response);
+
+        return $result['data'];
+    }
+
     private function getUserBankByAPI($id)
     {
         $response = $this->httpClient->request('GET', 'user/'.$id.'/bank-account');
+        $result = $this->httpHelper->verifyResponse($response);
+
+        return $result['data'];
+    }
+
+    private function getUserAddressByAPI($id){
+        $response = $this->httpClient->request('GET', 'user/'.$id.'/address');
+        $result = $this->httpHelper->verifyResponse($response);
+
+        return $result['data'];
+    }
+
+    private function getHolderByAPI($id){
+        $response = $this->httpClient->request('GET', 'holder/'.$id);
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
@@ -208,16 +309,16 @@ final class UserModule extends AbstractContainer
      *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */
-    public function postUserInfoByAPI($data)
-    {
-        $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'], [
-                'form_params' => $data,
-            ]);
-
-        $this->pool->deleteItem('User/'.$this->user['ppmid'].'/info');
-
-        return  $this->httpHelper->verifyResponse($response);
-    }
+//    public function postUserInfoByAPI($data)
+//    {
+//        $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'], [
+//                'form_params' => $data,
+//            ]);
+//
+//        $this->pool->deleteItem('User/'.$this->user['ppmid'].'/info');
+//
+//        return  $this->httpHelper->verifyResponse($response);
+//    }
 
     /**
      * set new password from forgotPassword.
@@ -238,6 +339,28 @@ final class UserModule extends AbstractContainer
         return  $this->httpHelper->verifyResponse($response);
     }
 
+    public function postUserInfo($data , $id)
+    {
+        $response = $this->httpClient->request('POST', 'user/'.$id, [
+                'form_params' => $data,
+            ]);
+
+        $this->pool->deleteItem('User/'.$id.'/renew');
+
+        return  $this->httpHelper->verifyResponse($response);
+    }
+
+    public function postHolderInfo($data , $id)
+    {
+        $response = $this->httpClient->request('POST', 'holder/'.$id, [
+                'form_params' => $data,
+            ]);
+
+        $this->pool->deleteItem('Hodler/'.$id);
+
+        return  $this->httpHelper->verifyResponse($response);
+    }
+
     public function postUserBankByAPI($data, $url)
     {
         $response = $this->httpClient->request('POST', $url, [
@@ -252,7 +375,6 @@ final class UserModule extends AbstractContainer
     public function delUserBankByAPI($id)
     {
         $url = 'user/'.$this->user['ppmid'].'/bank-account/'.$id;
-        $this->logger->info('url', [$url]);
         $response = $this->httpClient->request('DELETE', $url);
 
         $this->pool->deleteItem('User/'.$this->user['ppmid'].'/bank');
@@ -270,6 +392,19 @@ final class UserModule extends AbstractContainer
 
         foreach ($list as $data) {
             $newList->push(new BankModel($data, $this->currencyText));
+        }
+
+        return $newList;
+    }
+
+    private function factoryUser($list)
+    {
+        $newList = new ListModel();
+        if ($list === null) {
+            return $newList;
+        }
+        foreach ($list as $data) {
+            $newList->push(new UserModel($data), true);
         }
 
         return $newList;

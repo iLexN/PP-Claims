@@ -10,7 +10,7 @@
 <!-- side nav -->
 {% if isLoggin  %}
 <nav id="slide-out" class="side-nav">
-    <a href="#" data-jshook="profile">{{ langText.title_profile }}</a>
+    <a href="{{ path_for('Member.index') }}" data-jshook="profile">{{ langText.title_profile }}</a>
     <a href="{{ path_for('Claim.Index') }}" data-jshook="claims">{{ langText.title_claims }}</a>
     <a href="{{ path_for('Policy') }}" data-jshook="policy">{{ langText.title_policy }}</a>
     <a href="{{ path_for('ContactUs') }}" data-jshook="contact">{{ langText.title_contact }}</a>

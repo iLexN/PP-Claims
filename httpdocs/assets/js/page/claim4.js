@@ -74,7 +74,7 @@ var app = new Vue({
             return data;
         },
         goAjaxClaim: function (callback) {
-            var data = (csrf.getFormObj(this.getFormDataClaim()));
+            var data = csrf.getFormObj(this.getFormDataClaim());
             $.ajax({
                 url: '/ajax/claim/',
                 type: 'POST',

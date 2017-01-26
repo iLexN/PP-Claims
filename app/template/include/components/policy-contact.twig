@@ -4,8 +4,10 @@
         <h3>{{ police.plan.plan_name }}</h3>
     </div>
     <div class="col s12 m9 l9">
+        {% if police.advisor != null %}
         <advisor :p="plist[{{ loop.index0 }}]" inline-template>
             {% include 'include/components/advisor.twig' %}
         </advisor>
+        {% endif %}
     </div>
 </section>

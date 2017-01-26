@@ -28,6 +28,20 @@ return [
     'desc_policy'  => 'Policy desc desc desc desc desc  desc desc',
     'desc_contact' => 'Contact Us desc desc',
 
+    //member page
+    'member_btn_update_password' => 'Update Password',
+    'member_btn_bank_transfer'   => 'Bank Transfer',
+    'member_select_title'        => 'Select Member',
+    'member_select_choose'       => 'Choose Member',
+    'member_info_title'          => 'Title',
+    'member_info_name'           => 'Name',
+    'member_info_dob'            => 'Date of Birth',
+    'member_info_nationality'    => 'Nationality',
+    'member_contact_title'       => 'Contacts',
+    'member_PolicyAddr_title'    => 'Policy Address',
+    'member_pending_box_title'   => 'Pending Period',
+    'member_pending_box_desc'    => 'Editable items will consume few working days for approval, user cannot edit during pending period.',
+
     //contact page
     'contact_office_title' => 'Our Office',
 
@@ -87,6 +101,8 @@ return [
     'name'                               => 'Name',
     'email'                              => 'Email',
     'phone'                              => 'Phone',
+    'phone1'                              => 'Phone 1',
+    'phone2'                              => 'Phone 2',
     'ppmid_code'                         => 'Provided Code',
     'dob'                                => 'Date of Birth',
     'year'                               => 'Year',
@@ -112,6 +128,8 @@ return [
     'bank_iban'                          => 'IBAN',
     'bank_intermediary_code'             => 'Intermediary Bank Swift Code',
     'bank_add_info'                      => 'Additional Information',
+    'policy_address'                     => 'Policy Address',
+    'mail_address'                       => 'Mail Address',
 
     //form gerenal error
     'email_erorr'              => 'invalid email',

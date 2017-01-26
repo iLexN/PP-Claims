@@ -8,7 +8,7 @@
 
 {% macro claim_info_box2( title , img , extraAttr = '' , href = false ) %}
     <a class="claim_info_box2" {{ extraAttr | raw }} {% if href %}href="{{ href }}"{% endif %}>
-        <img src="{{ img }}">
+        <img src="{{ img }}" class="responsive-img">
         <span class="claim_info_box2_title">{{ title }}</span>
     </a>
 {% endmacro %}

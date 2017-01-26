@@ -5,7 +5,7 @@
     var $loginMsg = $.jshook('loginMsg');
 
     function submit() {
-        var data = (csrf.getFormObj($form.serializeArray()));
+        var data = csrf.getFormObj($form.serializeArray());
         $.ajax({
             beforeSend: function () {
                 ajaxStart();
@@ -55,7 +55,7 @@
     var $closeBtn = $.jshook('forgotpasswordBtnClose');
 
     function submit() {
-        var data = (csrf.getFormObj($form.serializeArray()));
+        var data = csrf.getFormObj($form.serializeArray());
         $.ajax({
             beforeSend: function () {
                 ajaxStart();
@@ -121,7 +121,7 @@
     var $closeBtn = $.jshook('forgotUsernameBtnClose');
 
     function submit() {
-        var data = (csrf.getFormObj($form.serializeArray()));
+        var data = csrf.getFormObj($form.serializeArray());
         $.ajax({
             beforeSend: function () {
                 ajaxStart();
@@ -190,7 +190,7 @@
     var $msgSignup = $.jshook('userSignUpMsg');
 
     function submit() {
-        var data = (csrf.getFormObj($form.serializeArray()));
+        var data = csrf.getFormObj($form.serializeArray());
         $.ajax({
             beforeSend: function () {
                 ajaxStart();
@@ -219,7 +219,7 @@
         });
     }
     function submitSignUp() {
-        var data = (csrf.getFormObj($formSignup.serializeArray()));
+        var data = csrf.getFormObj($formSignup.serializeArray());
         $.ajax({
             beforeSend: function () {
                 ajaxStart();

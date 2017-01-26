@@ -15,6 +15,12 @@ final class NewOrSave extends AbstractContainer
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $polices = $this->policyModule->getPolices();
+
+        if (!$polices[$request->getParsedBodyParam('user_policy_id')] ) {
+            return $response->withJson([]);
+        }
+
         $this->claim = $this->claimModule->newClaim((array) $request->getParsedBody());
         $this->claim->checkAmount();
         $result = $this->claimModule->postClaimByAPI($this->claim->toArray(), $this->getApiUrl());

@@ -170,7 +170,7 @@ var app = new Vue({
         },
         delBtn: function () {
             var self = this;
-            var data = (csrf.getFormObj(this.getFormData()));
+            var data = csrf.getFormObj(this.getFormData());
             $.ajax({
                 url: '/ajax/bank/'+this.bank.banker_transfer_id,
                 type: 'POST',
@@ -228,7 +228,7 @@ var app = new Vue({
             return data;
         },
         goAjax: function (callback) {
-            var data = (csrf.getFormObj(this.getFormData()));
+            var data = csrf.getFormObj(this.getFormData());
             $.ajax({
                 url: '/ajax/bank',
                 type: 'POST',
@@ -252,7 +252,7 @@ var app = new Vue({
             return data;
         },
         goAjaxClaim: function (callback) {
-            var data = (csrf.getFormObj(this.getFormDataClaim()));
+            var data = csrf.getFormObj(this.getFormDataClaim());
             $.ajax({
                 url: '/ajax/claim/',
                 type: 'POST',

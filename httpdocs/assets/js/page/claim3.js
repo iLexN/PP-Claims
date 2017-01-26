@@ -134,7 +134,7 @@ var app = new Vue({
             _.forEach(fileObj, function (value, key) {
                 data.push({name: key, value: value});
             });
-            data = (csrf.getFormObj(data));
+            data = csrf.getFormObj(data);
             $.ajax({
                 url: url,
                 type: 'POST',

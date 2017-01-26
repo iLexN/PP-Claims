@@ -1,0 +1,126 @@
+{% extends "template/general_left_right_col.twig" %}
+{% import "macro/forms.twig" as forms %}
+
+{% block leftHTML %}
+
+    <h1>{{ langText.title_profile }}</h1>
+
+    <div class="form-style-3">
+        <div class="row">
+            <div class="col s12 m3 l3" style="padding-top:1rem">{{ langText.member_select_title }}</div>
+            <div class="col s12 m6 l6">
+                <select data-jshook="peopleSelectBox" name="plist" id="plist">
+                    <option value="" disabled selected>{{ langText.member_select_choose }}</option>
+                    <option v-for="(val, key) in peopleList" :value="key" :selected="key === 0 ? 'selected': ''">${ val.fullName }</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row member_info">
+            <div class="col m2 l2 valign-wrapper member_info_icon_wapper">
+                <div class="valign member_icon"><i class="material-icons icon_color_3 icon_size_80">account_circle</i></div>
+            </div>
+            <div class="col m10 l10">
+                <div>{{ langText.member_info_title }} : <b>${ p.title }</b></div>
+                <div>{{ langText.member_info_name }} : <b>${ p.fullName }</b></div>
+                <div>{{ langText.member_info_dob }} : <b>${ p.date_of_birth }</b></div>
+                <div>{{ langText.member_info_nationality }} : <b>${ p.nationality }</b></div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 0">
+            <div class="col s12">
+                <h3>{{ langText.member_contact_title }} <i class="material-icons icon_color_7 icon_size_24" v-if="!_.isEmpty(p.renew)">timer</i></h3>
+            </div>
+        </div>
+        <div data-jshook="contactMode" style="padding-bottom:0" >
+            <div class="row" >
+                <div class="input-field col s12 m5 l5">
+                    {{ forms.MD_input(langText.phone1,'text','phone_1','',langText.required_erorr, false ,'v-model="p.phone_1"' ) }}
+                </div>
+                <div class="input-field col s12 m5 l5 offset-m2 offset-l2">
+                    {{ forms.MD_input(langText.phone2,'text','phone_2','',langText.required_erorr, false ,'v-model="p.phone_2"' ) }}
+                </div>
+                <div class="input-field col s12 m5 l5">
+                    {{ forms.MD_input(langText.email,'text','email','',langText.required_erorr, false ,'v-model="p.email"' ) }}
+                </div>
+                <div class="input-field col s12 m5 l5 offset-m2 offset-l2 right-align">
+                    <button data-jshook="editPersonBtn" class="{{ css.btn_2 }}" :disabled="!_.isEmpty(p.renew)" type="button" v-on:click="editContact" v-if="!contact_mode" >{{ langText.editBtn }}</button>
+                    <button data-jshook="cancelPersonBtn" class="{{ css.btn_2 }}" type="button" v-on:click="cancelContact" v-if="contact_mode" >{{ langText.cancelBtn }}</button>
+                    <button data-jshook="savePersonBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveContact" v-if="contact_mode" >{{ langText.saveBtn }}</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-bottom: 0">
+            <div class="col s12">
+                <h3>{{ langText.member_PolicyAddr_title }} <i class="material-icons icon_color_7 icon_size_24" v-if="holder.renew">timer</i></h3>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col s12 m5 l5">
+                <div data-jshook="holderMode" style="padding-bottom:0" >
+                    <input placeholder=""  value="" class="validate" type="text" style="margin-bottom:0" v-model="holder.policy_address_line_2">
+                    <input placeholder=""  value="" class="validate" type="text" style="margin-bottom:0" v-model="holder.policy_address_line_3">
+                    <input placeholder=""  value="" class="validate" type="text" style="margin-bottom:0" v-model="holder.policy_address_line_4">
+                    <input placeholder=""  value="" class="validate" type="text" style="margin-bottom:0" v-model="holder.policy_address_line_5">
+                    {% if isHolder  %}
+                        <div class="right-align" style="padding-top:1rem">
+                            <button data-jshook="editHolderBtn" class="{{ css.btn_2 }}" :disabled="holder.renew"  type="button" v-on:click="editHolder" v-if="!holder_mode" >{{ langText.editBtn }}</button>
+                            <button data-jshook="cancelHolderBtn" class="{{ css.btn_2 }}" type="button" v-on:click="cancelHolder" v-if="holder_mode" >{{ langText.cancelBtn }}</button>
+                            <button data-jshook="saveHolderBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveHolder" v-if="holder_mode" >{{ langText.saveBtn }}</button>
+                        </div>
+
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col s12 m5 l5 offset-m2 offset-l2">
+                <div class="pending_box">
+                    <div class="pending_box_icon"><i class="material-icons icon_color_7 icon_size_24">timer</i></div>
+                    <div class="padding_box_title">{{ langText.member_pending_box_title }}</div>
+                    <div class="padding_box_desc">{{ langText.member_pending_box_desc}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block rightHTML %}
+
+
+    <div class="col s12 ">
+        <div data-jshook="pushpin">
+            {{ components.claim_info_box2(langText.member_btn_update_password,'/assets/images/icon_password.svg', '' ,'/submited-claim' ) }}
+            {{ components.claim_info_box2(langText.member_btn_bank_transfer,'/assets/images/icon_creditcard2.svg', '' ,'/submited-claim' ) }}
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block jsBottom %}
+    {{ parent() }}
+    <script>
+        var data
+        = {{ people.toJson() | raw }};
+                var holder ={{ hodlerInfo | json_encode() | raw }}
+    </script>
+    <script src="{{ base_url() }}/assets/js/page/member.js?{{ appVersion }}"></script>
+    <script>
+        activeNav('profile');
+        $('select').material_select();
+        {% if not is_mobile() %}
+            pinTop.init();
+        {% endif %}
+    </script>
+    {% include 'include/components/csrf.twig' %}
+{% endblock %}

@@ -14,6 +14,8 @@ class ListModel extends ModelAbstract implements \IteratorAggregate
      */
     public $data = [];
 
+    private $first = 0;
+
     public function __construct()
     {
     }
@@ -23,8 +25,32 @@ class ListModel extends ModelAbstract implements \IteratorAggregate
         if ($key === null) {
             $this->data[] = $obj;
         } else {
+            $this->setFirstKey($obj->getKey());
             $this->data[$obj->getKey()] = $obj;
         }
+    }
+
+    private function setFirstKey($k)
+    {
+        if ($this->first === 0) {
+            $this->first = $k;
+        }
+    }
+
+    public function getFirstData()
+    {
+        return $this->data[$this->first];
+    }
+
+    public function sortByIdFirst($id){
+        uksort($this->data, function($a) use ($id){
+            if ( $a === $id) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
+        $this->first = $id;
     }
 
     public function toArray()

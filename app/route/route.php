@@ -24,11 +24,8 @@ $app->get('/main', 'PP\WebPortal\Controller\Main')
 $app->get('/logout', 'PP\WebPortal\Controller\Logout')
     ->setName('Logout');
 
-$app->get('/user', 'PP\WebPortal\Controller\User\Info')
-    ->setName('UserInfo')
-    ->add($container->get('csrf'))
-    ->add($authLoginArea);
-$app->post('/user', 'PP\WebPortal\Controller\User\InfoUpdate')
+$app->get('/member', 'PP\WebPortal\Controller\Member\index')
+    ->setName('Member.index')
     ->add($container->get('csrf'))
     ->add($authLoginArea);
 
@@ -140,9 +137,22 @@ $app->post('/ajax/bank/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Bank\Delete')
         ->add($container->get('csrf'))
         ->add($authLoginArea)
         ->setName('Ajax.Bank.Delete');
+$app->post('/ajax/member/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Member\InfoUpdate')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($authLoginArea)
+        ->setName('Ajax.Member.InfoUpdate');
+$app->post('/ajax/holder/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Member\HolderUpdate')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($authLoginArea)
+        ->setName('Ajax.Member.HolderUpdate');
 $app->get('/ajax/preload', 'PP\WebPortal\Controller\Ajax\Preload')
         ->add($authLoginArea)
         ->setName('Ajax.Main.Preload');
+$app->get('/ajax/member/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Member\GetUserDetails')
+        ->add($authLoginArea)
+        ->setName('Ajax.Member.GetDetails');
 
 //helper for development
 $app->get('/helper/router', 'PP\WebPortal\Controller\Helper\Router')

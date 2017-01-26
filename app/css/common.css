@@ -100,6 +100,9 @@ i.icon_color_5{
 i.icon_color_6{
     color : #f1843b;
 }
+i.icon_color_7{
+    color : #f7941d;
+}
 i.icon_size_16{
     font-size: 1rem;
     vertical-align: sub;
@@ -112,8 +115,12 @@ i.icon_size_22{
     font-size: 1.375rem;
     vertical-align: sub;
 }
-i.icon_color_24{
+i.icon_size_24{
     font-size: 1.5rem;
+    vertical-align: sub;
+}
+i.icon_size_80{
+    font-size: 5rem;
     vertical-align: sub;
 }
 
@@ -446,6 +453,29 @@ include components
 .list_claim_time{
     margin-bottom: 0.5rem;
 }
+/***** member info ******/
+.member_info{
+    background-color:#ececec;
+    padding: 0.5rem;
+}
+.member_info_icon_wapper{
+    height:6rem;
+}
+.member_icon{
+    width:100%;
+    text-align: center;
+}
+/******* pending_box *****/
+.pending_box{background-color: #fff3e6;
+padding: 1rem 0;}
+.pending_box_icon{float: left;
+padding: 0.5rem 1rem;}
+.padding_box_title{padding-left: 56px;
+font-size: 1rem;
+font-weight: bold;
+color: #f7941d;}
+.padding_box_desc{padding-left: 56px;}
+
 
 .form_edit{
     background-color: #ffeff0;

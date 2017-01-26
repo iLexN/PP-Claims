@@ -38,15 +38,12 @@
 
     <div style="height:2rem"></div>
 
-    <div class="premium_box_advisor">
+    <div class="premium_box_advisor" v-if="p.advisor !== null">
         <advisor :p="p" inline-template>
             {% include 'include/components/advisor.twig' %}
         </advisor>
-        {#% for police in polices %#}
-
-        {#% endfor %#}
     </div>
-    <div class="min-text">{{ langText.policy_contact_footnote }}</div>
+    <div class="min-text" v-if="p.advisor !== null">{{ langText.policy_contact_footnote }}</div>
 
 
 {% endblock %}
@@ -56,7 +53,7 @@
 
     <div class="col s12 m10 l10 offset-m2 offset-l2">
         <div data-jshook="pushpin">
-            <h2><i class="material-icons icon_color_4 icon_color_24">file_download</i> {{ langText.policy_info_download }}</h2>
+            <h2><i class="material-icons icon_color_4 icon_size_24">file_download</i> {{ langText.policy_info_download }}</h2>
             <filelist  v-for="(val, key) in p.planfile" :f="val" :up="p.pivot.id" t="planfile" inline-template>
                 <a class="{{ css.btn_2 }}" :href="downloadUrl" download>${ f.display_name }</a>
             </filelist>
