@@ -103,6 +103,9 @@ i.icon_color_6{
 i.icon_color_7{
     color : #f7941d;
 }
+i.icon_color_8{
+    color : #000;
+}
 i.icon_size_16{
     font-size: 1rem;
     vertical-align: sub;
@@ -117,6 +120,10 @@ i.icon_size_22{
 }
 i.icon_size_24{
     font-size: 1.5rem;
+    vertical-align: sub;
+}
+i.icon_size_36{
+    font-size: 2.25rem;
     vertical-align: sub;
 }
 i.icon_size_80{
@@ -475,7 +482,10 @@ font-size: 1rem;
 font-weight: bold;
 color: #f7941d;}
 .padding_box_desc{padding-left: 56px;}
-
+/***** address box *****/
+.member_address_newbox_textbox{
+    width:100%; text-align:center
+}
 
 .form_edit{
     background-color: #ffeff0;

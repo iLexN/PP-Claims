@@ -13,7 +13,7 @@ final class InfoUpdate extends AbstractContainer
         $people = $this->userModule->getPeopleList($this->userModule->user['ppmid']);
 
         if (!$people[$args['id']]) {
-            return $response->withJson([]);
+            throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
         $result = $this->userModule->postUserInfo((array) $request->getParsedBody(), $args['id']);

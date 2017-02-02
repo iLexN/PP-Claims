@@ -10,6 +10,8 @@ class UserModel extends ModelAbstract
     {
         $this->data = $data;
         $this->setFullName();
+        $this->data['ajax'] = false;
+        $this->setAddress([]);
     }
 
     public function fullName()
@@ -24,7 +26,7 @@ class UserModel extends ModelAbstract
 
     public function isHolder()
     {
-        return $this->data['relationship'] === 'PolicyHolder';
+        return $this->data['relationship'] === 'Policy Holder';
     }
 
     public function getKey()
@@ -34,11 +36,7 @@ class UserModel extends ModelAbstract
 
     public function setAddress($ar)
     {
-        if ($ar === null) {
-            $this->data['address'] = [];
-        } else {
-            $this->data['address'] = $ar;
-        }
+        $this->data['address'] = $ar;
     }
 
     public function setReNew($ar)

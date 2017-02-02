@@ -1,4 +1,10 @@
 #### [Current]
+ * [389a8c4](../../commit/389a8c4) - __(2017-01-26 17:41:14 +0800)__ ci fix
+ * [130ed15](../../commit/130ed15) - __(2017-01-26 17:29:19 +0800)__ member page , user info + holder info
+ * [e07eff7](../../commit/e07eff7) - __(2017-01-24 15:28:21 +0800)__ add offline support
+ * [15b0923](../../commit/15b0923) - __(2017-01-24 12:21:34 +0800)__ css btn update
+ * [2766174](../../commit/2766174) - __(2017-01-24 09:35:17 +0800)__ 'Bank transfer' => 'Bank Transfer' + claim next to step4
+ * [5497eac](../../commit/5497eac) - __(2017-01-23 10:22:15 +0800)__ css btn update
  * [aa9aea9](../../commit/aa9aea9) - __(2017-01-20 15:25:19 +0800)__ Merge pull request  [#1](../../issues/1)9 from iLexN/analysis-XpOKg2
  * [6e517c2](../../commit/6e517c2) - __(2017-01-20 07:24:36 +0000)__ Apply fixes from StyleCI
  * [c1bf924](../../commit/c1bf924) - __(2017-01-20 15:18:43 +0800)__ ci fix2

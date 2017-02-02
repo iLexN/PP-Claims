@@ -13,12 +13,11 @@ final class HolderUpdate extends AbstractContainer
         $user = $this->userModule->user;
 
         if ($user['holder_id'] != $args['id']) {
-            return $response->withJson([]);
+            throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
         $result = $this->userModule->postHolderInfo((array) $request->getParsedBody(), $args['id']);
 
         return $response->withJson($result);
-
     }
 }

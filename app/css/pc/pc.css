@@ -36,7 +36,7 @@ header {
 }
 .header_nav_bar{
     padding:0 1rem;
-    
+
 }
 .header_nav_bar a{
     font-size: 1.125rem;
@@ -55,8 +55,8 @@ header {
     background-color: #555;
 }
 .header_nav_bar .dropdown-content li > a, .header_nav_bar .dropdown-content li > span {
-color: #fff;
-text-align: center;
+    color: #fff;
+    text-align: center;
 }
 .footer_space{
     height:6.0625rem;
@@ -110,4 +110,15 @@ text-align: center;
 
 .upload_btn_c{
     padding-top:0.75rem;
+}
+
+.member_address {
+    height:21rem; 
+    margin-bottom: 1rem;
+}
+
+.member_address_newbox{
+    border :1px solid #84dcf2;
+    height:16rem;
+    margin-top:1rem;
 }

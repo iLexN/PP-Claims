@@ -259,7 +259,7 @@ final class UserModule extends AbstractContainer
 
     private function getUserReNewByAPI($id)
     {
-        $response = $this->httpClient->request('GET', 'user/'.$id .'/renew');
+        $response = $this->httpClient->request('GET', 'user/'.$id.'/renew');
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
@@ -267,7 +267,7 @@ final class UserModule extends AbstractContainer
 
     private function getPeopleListByAPI($id)
     {
-        $response = $this->httpClient->request('GET', 'user/'.$id .'/people');
+        $response = $this->httpClient->request('GET', 'user/'.$id.'/people');
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
@@ -281,14 +281,16 @@ final class UserModule extends AbstractContainer
         return $result['data'];
     }
 
-    private function getUserAddressByAPI($id){
+    private function getUserAddressByAPI($id)
+    {
         $response = $this->httpClient->request('GET', 'user/'.$id.'/address');
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];
     }
 
-    private function getHolderByAPI($id){
+    private function getHolderByAPI($id)
+    {
         $response = $this->httpClient->request('GET', 'holder/'.$id);
         $result = $this->httpHelper->verifyResponse($response);
 
@@ -323,7 +325,7 @@ final class UserModule extends AbstractContainer
         return  $this->httpHelper->verifyResponse($response);
     }
 
-    public function postUserInfo($data , $id)
+    public function postUserInfo($data, $id)
     {
         $response = $this->httpClient->request('POST', 'user/'.$id, [
                 'form_params' => $data,
@@ -334,13 +336,33 @@ final class UserModule extends AbstractContainer
         return  $this->httpHelper->verifyResponse($response);
     }
 
-    public function postHolderInfo($data , $id)
+    public function postHolderInfo($data, $id)
     {
         $response = $this->httpClient->request('POST', 'holder/'.$id, [
                 'form_params' => $data,
             ]);
 
         $this->pool->deleteItem('Hodler/'.$id);
+
+        return  $this->httpHelper->verifyResponse($response);
+    }
+
+    public function postUserAddressByAPI($data, $url)
+    {
+        $response = $this->httpClient->request('POST', $url, [
+                'form_params' => $data,
+            ]);
+
+        $this->pool->deleteItem('User/'.$data['ppmid'].'/address');
+
+        return  $this->httpHelper->verifyResponse($response);
+    }
+
+    public function delUserAddressByAPI($data, $url)
+    {
+        $response = $this->httpClient->request('DELETE', $url);
+
+        $this->pool->deleteItem('User/'.$data['ppmid'].'/address');
 
         return  $this->httpHelper->verifyResponse($response);
     }

@@ -137,6 +137,16 @@ $app->post('/ajax/bank/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Bank\Delete')
         ->add($container->get('csrf'))
         ->add($authLoginArea)
         ->setName('Ajax.Bank.Delete');
+$app->post('/ajax/address/', 'PP\WebPortal\Controller\Ajax\Address\NewOrSave')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($authLoginArea)
+        ->setName('Ajax.Address.NewOrSave');
+$app->post('/ajax/address/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Address\Delete')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($authLoginArea)
+        ->setName('Ajax.Address.Delete');
 $app->post('/ajax/member/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Member\InfoUpdate')
         ->add($csrfResponse)
         ->add($container->get('csrf'))

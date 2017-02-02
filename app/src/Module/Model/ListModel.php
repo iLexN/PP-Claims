@@ -42,9 +42,10 @@ class ListModel extends ModelAbstract implements \IteratorAggregate
         return $this->data[$this->first];
     }
 
-    public function sortByIdFirst($id){
-        uksort($this->data, function($a) use ($id){
-            if ( $a === $id) {
+    public function sortByIdFirst($id)
+    {
+        uksort($this->data, function ($a) use ($id) {
+            if ($a === $id) {
                 return -1;
             } else {
                 return 1;

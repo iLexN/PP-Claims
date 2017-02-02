@@ -17,9 +17,6 @@ final class Delete extends AbstractContainer
     {
         $this->data = (array) $request->getParsedBody();
 
-        $this->logger->info('data', $this->data);
-        $this->logger->info('args', $args);
-
         // todo : check bank is user
 
         if ($this->data['banker_transfer_id'] === $args['id']) {
@@ -28,6 +25,6 @@ final class Delete extends AbstractContainer
             return $response->withJson($result);
         }
 
-        return $response->withJson([]);
+        throw new \Slim\Exception\NotFoundException($request, $response);
     }
 }

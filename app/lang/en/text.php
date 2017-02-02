@@ -41,6 +41,12 @@ return [
     'member_PolicyAddr_title'    => 'Policy Address',
     'member_pending_box_title'   => 'Pending Period',
     'member_pending_box_desc'    => 'Editable items will consume few working days for approval, user cannot edit during pending period.',
+    'member_customiseAddr_title' => 'Customise Address',
+    'member_addr_ph_nick'        => 'Nick Name',
+    'member_addr_ph_addr1'       => 'Address line 1',
+    'member_addr_ph_addr2'       => 'Address line 2',
+    'member_addr_ph_addr3'       => 'Address line 3',
+    'member_addr_ph_addr4'       => 'Address line 4',
 
     //contact page
     'contact_office_title' => 'Our Office',
@@ -149,6 +155,7 @@ return [
     'newBankBtn'    => 'New Bank Account',
     'chooseFileBtn' => 'File',
     'uploadBtn'     => 'Upload',
+    'newAddrBtn'    => 'New Address',
 
     //components
     //forgotpassword

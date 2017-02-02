@@ -17,10 +17,10 @@
         </div>
 
         <div class="row member_info">
-            <div class="col m2 l2 valign-wrapper member_info_icon_wapper">
+            <div class="col s12 m2 l2 hide-on-small-only valign-wrapper member_info_icon_wapper">
                 <div class="valign member_icon"><i class="material-icons icon_color_3 icon_size_80">account_circle</i></div>
             </div>
-            <div class="col m10 l10">
+            <div class="col s12 m10 l10">
                 <div>{{ langText.member_info_title }} : <b>${ p.title }</b></div>
                 <div>{{ langText.member_info_name }} : <b>${ p.fullName }</b></div>
                 <div>{{ langText.member_info_dob }} : <b>${ p.date_of_birth }</b></div>
@@ -86,33 +86,73 @@
                 </div>
             </div>
         </div>
+
+        <div class="row" style="margin-bottom: 0">
+            <div class="col s12">
+                <h3>{{ langText.member_customiseAddr_title }}</h3>
+            </div>
+        </div>
+
+        <div class="row" >
+            <useraddress v-for="(value, key) in p.address" :address='value' :k='key' ref="addraddr" v-on:addressupdate="addressUpdates" v-on:addressdelete="addressDel" v-on:addressactive="addressActives(key)" :key="value.id" inline-template>
+                <div :class="k%2===0 ? 'input-field col s12 m5 l5' : 'input-field col s12 m5 l5 offset-m2 offset-l2'"  >
+                    <div :data-jshook="'member_address addr_'+address.id" >
+                        <label data-error="Required" class="active" v-if='!mode'>${ a.nick_name }</label>
+                        <input placeholder="{{ langText.member_addr_ph_nick }}"  value=""  class="validate" type="text" style="margin-bottom:0" v-model="a.nick_name" v-if='mode'>
+                        <input placeholder="{{ langText.member_addr_ph_addr1 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_2">
+                        <input placeholder="{{ langText.member_addr_ph_addr2 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_3">
+                        <input placeholder="{{ langText.member_addr_ph_addr3 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_4">
+                        <input placeholder="{{ langText.member_addr_ph_addr4 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_5">
+
+                        <div class="right-align" style="padding-top:1rem">
+                            <i class="material-icons icon_color_3 icon_size_36" v-if="!mode" v-on:click='del' style="cursor:pointer">delete_forever</i>
+                            <button class="{{ css.btn_2 }}" type="button" v-on:click="edit" v-if="!mode"  >{{ langText.editBtn }}</button>
+                            <button class="{{ css.btn_2 }}" type="button" v-on:click="cancel" v-if="mode" >{{ langText.cancelBtn }}</button>
+                            <button class="{{ css.btn_2 }}" type="button" v-on:click="save" v-if="mode" >{{ langText.saveBtn }}</button>
+                        </div>
+                    </div>
+                </div>
+            </useraddress>
+
+            <div :class="address_lenght%2===0 ? 'col s12 m5 l5' : 'col s12 m5 l5 offset-m2 offset-l2'"  >
+                <div class='valign-wrapper member_address_newbox' v-if="!new_addr_mode">
+                    <div class="valign member_address_newbox_textbox">
+                        <button class="{{ css.btn_2 }}" type="button" style="margin-bottom:0" v-on:click="new_addr_mode = !new_addr_mode"><i class="material-icons icon_color_8 icon_size_22">create_new_folder</i> {{ langText.newAddrBtn }}</button>
+                    </div>
+                </div>
+                <div data-jshook="newAddressMode" v-show="new_addr_mode" class="input-field member_address">
+                    <input placeholder="{{ langText.member_addr_ph_nick }}" data-jshook="newAddressNick"  value="" class="validate" v-model="new_addr.nick_name" type="text" style="margin-bottom:0" >
+                    <input placeholder="{{ langText.member_addr_ph_addr1 }}" data-jshook="newAddressl1"  value="" class="validate" v-model="new_addr.address_line_2" type="text" style="margin-bottom:0">
+                    <input placeholder="{{ langText.member_addr_ph_addr2 }}" data-jshook="newAddressl2"  value="" class="validate" v-model="new_addr.address_line_3" type="text" style="margin-bottom:0">
+                    <input placeholder="{{ langText.member_addr_ph_addr3 }}" data-jshook="newAddressl3"  value="" class="validate" v-model="new_addr.address_line_4" type="text" style="margin-bottom:0">
+                    <input placeholder="{{ langText.member_addr_ph_addr4 }}" data-jshook="newAddressl4"  value="" class="validate" v-model="new_addr.address_line_5" type="text" style="margin-bottom:0">
+                    <div class="right-align" style="padding-top:1rem">
+                        <button class="{{ css.btn_2 }}" type="button" v-on:click="new_addr_mode = !new_addr_mode" >{{ langText.cancelBtn }}</button>
+                        <button class="{{ css.btn_2 }}" type="button" v-on:click="saveNewAddress">{{ langText.saveBtn }}</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
     </div>
-
-
-
-
 {% endblock %}
 
 {% block rightHTML %}
-
-
     <div class="col s12 ">
         <div data-jshook="pushpin">
             {{ components.claim_info_box2(langText.member_btn_update_password,'/assets/images/icon_password.svg', '' ,'/submited-claim' ) }}
             {{ components.claim_info_box2(langText.member_btn_bank_transfer,'/assets/images/icon_creditcard2.svg', '' ,'/submited-claim' ) }}
         </div>
     </div>
-
-
-
 {% endblock %}
 
 {% block jsBottom %}
     {{ parent() }}
     <script>
-        var data
-        = {{ people.toJson() | raw }};
-                var holder ={{ hodlerInfo | json_encode() | raw }}
+        var data = {{ people.toJson() | raw }};
+        var holder ={{ hodlerInfo | json_encode() | raw }}
     </script>
     <script src="{{ base_url() }}/assets/js/page/member.js?{{ appVersion }}"></script>
     <script>

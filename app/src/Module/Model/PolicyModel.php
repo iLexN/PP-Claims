@@ -39,7 +39,7 @@ class PolicyModel extends ModelAbstract
 
     private function setUser($user)
     {
-        if ($user['relationship'] === 'PolicyHolder') {
+        if ($user['relationship'] === 'Policy Holder') {
             $this->holder = new UserModel($user);
         } else {
             $this->dependents[$user['ppmid']] = new UserModel($user);
