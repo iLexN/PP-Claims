@@ -151,6 +151,7 @@ return [
     'nextBtn'       => 'Next',
     'saveBankBtn'   => 'Save Bank Account',
     'editBtn'       => 'Edit',
+    'viewBtn'       => 'View',
     'delBtn'        => 'Delete',
     'newBankBtn'    => 'New Bank Account',
     'chooseFileBtn' => 'File',

@@ -23,14 +23,16 @@
                 {% for claim in policy.claimList[status] %}
                     <div class="col s6 m4 l4">
                         {% if claim.isSubmit() %}
+                            {% set btnText = langText.viewBtn %}
                             <a href="{{ path_for('Claim.ClaimS4' , { 'id': claim.claim_id }) }}" class="list_claim">
                         {% else %}
-                                <a href="{{ path_for('Claim.ClaimS1' , { 'id': claim.claim_id }) }}" class="list_claim">
+                            {% set btnText = langText.editBtn %}
+                            <a href="{{ path_for('Claim.ClaimS1' , { 'id': claim.claim_id }) }}" class="list_claim">
                         {% endif %}
                                 <i class="material-icons icon_color_4 icon_size_24">description</i>
                                 <h3>{{ claim.getDate() }}</h3>
                                 <div class="list_claim_time">{{ claim.getTime() }}</div>
-                                <span class="{{ css.btn_3 }}}">Edit</span>
+                                <span class="{{ css.btn_3 }}">{{ btnText }}</span>
                             </a>
                     </div>
 
