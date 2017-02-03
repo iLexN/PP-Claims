@@ -288,15 +288,6 @@ final class UserModule extends AbstractContainer
         return  $this->httpHelper->verifyResponse($response);
     }
 
-    public function delUserAddressByAPI($data, $url)
-    {
-        $response = $this->httpClient->request('DELETE', $url);
-
-        $this->pool->deleteItem('User/'.$data['ppmid'].'/address');
-
-        return  $this->httpHelper->verifyResponse($response);
-    }
-
     public function postUserBankByAPI($data, $url)
     {
         $response = $this->httpClient->request('POST', $url, [

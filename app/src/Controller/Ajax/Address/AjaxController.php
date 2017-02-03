@@ -21,8 +21,6 @@ final class AjaxController extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $this->logger->info('url', [$this->getApiUrl()]);
-
         $result = $this->addressModule->postUserAddressByAPI($this->data, $this->getApiUrl());
 
         return $response->withJson($result);
@@ -36,7 +34,7 @@ final class AjaxController extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $result = $this->userModule->delUserAddressByAPI($this->data, $this->getApiUrl());
+        $result = $this->addressModule->delUserAddressByAPI($this->data, $this->getApiUrl());
 
         return $response->withJson($result);
     }
