@@ -2,8 +2,6 @@
 
 namespace PP\WebPortal\Controller\Claim;
 
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
 use PP\WebPortal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

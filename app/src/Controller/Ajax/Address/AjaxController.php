@@ -13,7 +13,7 @@ final class AjaxController extends AbstractContainer
      */
     private $data;
 
-    public function NewOrSave(Request $request, Response $response, array $args)
+    public function newOrSave(Request $request, Response $response, array $args)
     {
         $this->data = (array) $request->getParsedBody();
 
