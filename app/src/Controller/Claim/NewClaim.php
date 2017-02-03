@@ -39,7 +39,7 @@ final class NewClaim extends AbstractContainer
 
     private function getDefaultClaim($args)
     {
-        $preference = $this->userModule->getUserPreference($this->userModule->user['ppmid']);
+        $preference = $this->preferenceModule->getUserPreference($this->userModule->user['ppmid']);
 
         return $this->claimModule->newClaim([
             'claimiant_ppmid'   => $this->userModule->user['ppmid'],

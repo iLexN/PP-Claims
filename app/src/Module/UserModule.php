@@ -165,51 +165,6 @@ final class UserModule extends AbstractContainer
         return $data;
     }
 
-    public function getUserPreference($id)
-    {
-        /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->pool->getItem('User/'.$id.'/preference');
-        $data = $item->get();
-
-        if ($item->isMiss()) {
-            $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $data = $this->getUserPreferenceByAPI($id);
-            $this->pool->save($item->set($data));
-        }
-
-        return $data;
-    }
-
-    public function checkUserPreference($inArray)
-    {
-        if (empty($inArray['currency']) || empty($inArray['currency_receive'])) {
-            return;
-        }
-        $serverArray = $this->getUserPreference($this->user['ppmid']);
-
-        if ($this->checkUserPreferenceUpdate($inArray, $serverArray)) {
-            $this->updateUserPreference($inArray);
-        }
-    }
-
-    private function checkUserPreferenceUpdate($inArray, $serverArray)
-    {
-        return $inArray['currency'] !== $serverArray['currency'] || $inArray['currency_receive'] !== $serverArray['currency_receive'];
-    }
-
-    private function updateUserPreference($inArray)
-    {
-        $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'].'/preference', [
-                'form_params' => [
-                    'currency'         => $inArray['currency'],
-                    'currency_receive' => $inArray['currency_receive'],
-                ],
-            ]);
-        $this->httpHelper->verifyResponse($response);
-        $this->pool->deleteItem('User/'.$this->user['ppmid'].'/preference');
-    }
-
     /**
      * getUserInfo From API.
      *
@@ -244,15 +199,6 @@ final class UserModule extends AbstractContainer
     private function getUserBankByAPI($id)
     {
         $response = $this->httpClient->request('GET', 'user/'.$id.'/bank-account');
-        $result = $this->httpHelper->verifyResponse($response);
-
-        return $result['data'];
-    }
-
-    private function getUserPreferenceByAPI($id)
-    {
-        $response = $this->httpClient->request('GET', 'user/'.$id.'/preference');
-
         $result = $this->httpHelper->verifyResponse($response);
 
         return $result['data'];

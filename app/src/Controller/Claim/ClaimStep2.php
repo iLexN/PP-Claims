@@ -77,7 +77,7 @@ final class ClaimStep2 extends AbstractContainer
     private function checkBankInfo()
     {
         if (empty($this->banks->data)) {
-            $preference = $this->userModule->getUserPreference($this->userModule->user['ppmid']);
+            $preference = $this->preferenceModule->getUserPreference($this->userModule->user['ppmid']);
             $this->banks->push(new BankModel([
                 'currency' => $preference['currency'],
             ], $this->currencyText));

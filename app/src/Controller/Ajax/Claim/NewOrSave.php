@@ -31,7 +31,7 @@ final class NewOrSave extends AbstractContainer
 
         $this->claimModule->clearClamID($result['data']['id']);
         $this->policyModule->clearClamList($this->claim['user_policy_id']);
-        $this->userModule->checkUserPreference($this->claim);
+        $this->preferenceModule->checkUserPreference($this->claim,$this->userModule->user['ppmid']);
 
         return $response->withJson($result);
     }
