@@ -2,6 +2,8 @@
 
 namespace PP\WebPortal\Module\Helper;
 
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 use PP\WebPortal\AbstractClass\AbstractContainer;
 
 /**
@@ -47,5 +49,22 @@ final class Helper extends AbstractContainer
         }
 
         return $response;
+    }
+
+    public function getFileSystem($path)
+    {
+        $adapter = new Local($path);
+
+        return new Filesystem($adapter);
+    }
+
+    public function sendFile($response, $filename, $outFileName)
+    {
+        $stream = fopen($filename, 'r');
+
+        return $response
+                ->withBody(new \Slim\Http\Stream($stream))
+                ->withHeader('Content-Type', mime_content_type($filename))
+                ->withHeader('Content-Disposition', 'attachment; filename="'.$outFileName.'"');
     }
 }

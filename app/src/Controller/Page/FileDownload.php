@@ -30,16 +30,16 @@ final class FileDownload extends AbstractContainer
         $f = $this->getPathInfo($args['name']);
         $file_path = $f['url'].'/'.$fileArray[$k]['id'].'/'.$fileArray[$k]['file_name'];
 
-        $filesystem = $this->getFileSystem();
+        $filesystem = $this->helper->getFileSystem($this->c->get('policyFileConfig')['path']);
 
         if ($filesystem->has($file_path)) {
-            return $this->sendFile($response, $this->c->get('policyFileConfig')['path'].'/'.$file_path, $fileArray[$k]['file_name']);
+            return $this->helper->sendFile($response, $this->c->get('policyFileConfig')['path'].'/'.$file_path, $fileArray[$k]['file_name']);
         }
 
         $fileResponse = $this->downloadFromAPI($f['url'], $fileArray[$k]['id']);
         $filesystem->write($file_path, $fileResponse->getBody());
 
-        return $this->sendFile($response, $this->c->get('policyFileConfig')['path'].'/'.$file_path, $fileArray[$k]['file_name']);
+        return $this->helper->sendFile($response, $this->c->get('policyFileConfig')['path'].'/'.$file_path, $fileArray[$k]['file_name']);
     }
 
     private function checkFile($args)
@@ -50,13 +50,6 @@ final class FileDownload extends AbstractContainer
         $k = array_search($args['f'], array_column($fileArray, 'id'));
 
         return [$k, $fileArray];
-    }
-
-    private function getFileSystem()
-    {
-        $adapter = new Local($this->c->get('policyFileConfig')['path']);
-
-        return new Filesystem($adapter);
     }
 
     private function getPathInfo($name)
@@ -75,15 +68,5 @@ final class FileDownload extends AbstractContainer
         $response = $this->c['httpClient']->request('GET', 'policy/'.$url.'/'.$id);
 
         return $response;
-    }
-
-    private function sendFile($response, $filename, $outFileName)
-    {
-        $stream = fopen($filename, 'r');
-
-        return $response
-                ->withBody(new \Slim\Http\Stream($stream))
-                ->withHeader('Content-Type', mime_content_type($filename))
-                ->withHeader('Content-Disposition', 'attachment; filename="'.$outFileName.'"');
     }
 }

@@ -29,17 +29,18 @@ final class ClaimDownloadFile extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $filename = $this->c->get('uploadConfig')['path'].'/'.$claims['claim_id'].'/'.$args['f'].'/'.$this->file_info['filename'];
+        $filename = $claims['claim_id'].'/'.$args['f'].'/'.$this->file_info['filename'];
 
-        if (file_exists($filename)) {
-            return $this->sendFile($response, $filename, $this->file_info['filename']);
+        $filesystem = $this->helper->getFileSystem($this->c->get('uploadConfig')['path']);
+
+        if ($filesystem->has($filename)) {
+            return $this->helper->sendFile($response, $this->c->get('uploadConfig')['path'].'/'.$filename, $this->file_info['filename']);
         }
 
-        if ($this->downloadFromAPI($args['f'], $claims, $args)) {
-            return $this->sendFile($response, $filename, $this->file_info['filename']);
-        }
+        $fileResponse = $this->downloadFromAPI($args['f']);
+        $filesystem->write($claims['claim_id'].'/'.$args['f'].'/'.$this->file_info['filename'], $fileResponse->getBody());
 
-        return $response;
+        return $this->helper->sendFile($response, $this->c->get('uploadConfig')['path'].'/'.$filename, $this->file_info['filename']);
     }
 
     private function checkFileID($claims, $args)
@@ -55,29 +56,10 @@ final class ClaimDownloadFile extends AbstractContainer
         return false;
     }
 
-    private function sendFile($response, $filename, $outFileName)
-    {
-        $stream = fopen($filename, 'r');
-
-        return $response
-                ->withBody(new \Slim\Http\Stream($stream))
-                ->withHeader('Content-Type', mime_content_type($filename))
-                ->withHeader('Content-Disposition', 'attachment; filename="'.$outFileName.'"');
-    }
-
-    private function downloadFromAPI($id, $claims, $args)
+    private function downloadFromAPI($id)
     {
         $response = $this->c['httpClient']->request('GET', 'attachment/'.$id);
 
-        if ($response->getStatusCode() !== 200) {
-            return false;
-        }
-
-        $adapter = new Local($this->c->get('uploadConfig')['path']);
-        $filesystem = new Filesystem($adapter);
-
-        $filesystem->write($claims['claim_id'].'/'.$args['f'].'/'.$this->file_info['filename'], $response->getBody());
-
-        return true;
+        return $response;
     }
 }
