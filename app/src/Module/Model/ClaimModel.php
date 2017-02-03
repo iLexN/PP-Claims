@@ -15,8 +15,8 @@ class ClaimModel extends ModelAbstract
     public function init()
     {
         $this->breakTreatmentDate();
-        $this->checkBank();
-        $this->checkCheque();
+        //$this->checkBank();
+        //$this->checkCheque();
         $this->isComplete();
     }
 
@@ -28,19 +28,19 @@ class ClaimModel extends ModelAbstract
         $this->data['treatment_dd'] = $ar[2];
     }
 
-    public function checkCheque()
-    {
-        if (isset($this->data['cheque']) && empty($this->data['cheque'])) {
-            unset($this->data['cheque']);
-        }
-    }
-
-    public function checkBank()
-    {
-        if (isset($this->data['bank']) && empty($this->data['bank'])) {
-            unset($this->data['bank']);
-        }
-    }
+//    public function checkCheque()
+//    {
+//        if (isset($this->data['cheque']) && empty($this->data['cheque'])) {
+//            unset($this->data['cheque']);
+//        }
+//    }
+//
+//    public function checkBank()
+//    {
+//        if (isset($this->data['bank']) && empty($this->data['bank'])) {
+//            unset($this->data['bank']);
+//        }
+//    }
 
     public function checkAmount()
     {
