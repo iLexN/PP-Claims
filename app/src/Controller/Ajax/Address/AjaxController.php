@@ -23,7 +23,7 @@ final class AjaxController extends AbstractContainer
 
         $this->logger->info('url', [$this->getApiUrl()]);
 
-        $result = $this->userModule->postUserAddressByAPI($this->data, $this->getApiUrl());
+        $result = $this->addressModule->postUserAddressByAPI($this->data, $this->getApiUrl());
 
         return $response->withJson($result);
     }

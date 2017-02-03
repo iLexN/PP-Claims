@@ -165,22 +165,6 @@ final class UserModule extends AbstractContainer
         return $data;
     }
 
-    public function getUserAddress($id)
-    {
-        /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->pool->getItem('User/'.$id.'/address');
-        $data = $item->get();
-
-        if ($item->isMiss()) {
-            $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $data = $this->getUserAddressByAPI($id);
-            $this->pool->save($item->set($data));
-        }
-
-        return $data;
-    }
-
     public function getUserPreference($id)
     {
         /* @var $item Stash\Interfaces\ItemInterface */
@@ -265,14 +249,6 @@ final class UserModule extends AbstractContainer
         return $result['data'];
     }
 
-    private function getUserAddressByAPI($id)
-    {
-        $response = $this->httpClient->request('GET', 'user/'.$id.'/address');
-        $result = $this->httpHelper->verifyResponse($response);
-
-        return $result['data'];
-    }
-
     private function getUserPreferenceByAPI($id)
     {
         $response = $this->httpClient->request('GET', 'user/'.$id.'/preference');
@@ -308,17 +284,6 @@ final class UserModule extends AbstractContainer
             ]);
 
         $this->pool->deleteItem('User/'.$id.'/renew');
-
-        return  $this->httpHelper->verifyResponse($response);
-    }
-
-    public function postUserAddressByAPI($data, $url)
-    {
-        $response = $this->httpClient->request('POST', $url, [
-                'form_params' => $data,
-            ]);
-
-        $this->pool->deleteItem('User/'.$data['ppmid'].'/address');
 
         return  $this->httpHelper->verifyResponse($response);
     }
