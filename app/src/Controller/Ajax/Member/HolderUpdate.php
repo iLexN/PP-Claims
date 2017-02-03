@@ -16,7 +16,7 @@ final class HolderUpdate extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $result = $this->userModule->postHolderInfo((array) $request->getParsedBody(), $args['id']);
+        $result = $this->holderModule->postHolderInfo((array) $request->getParsedBody(), $args['id']);
 
         return $response->withJson($result);
     }

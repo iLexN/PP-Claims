@@ -46,7 +46,7 @@ final class Index extends AbstractContainer
 
     private function getHolder()
     {
-        $holderInfo = $this->userModule->getHoderInfo($this->userModule->user['holder_id']);
+        $holderInfo = $this->holderModule->getHolderInfo($this->userModule->user['holder_id']);
 
         if ($holderInfo['renew'] !== null) {
             $out = $holderInfo['renew'];

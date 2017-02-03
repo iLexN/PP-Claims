@@ -181,22 +181,6 @@ final class UserModule extends AbstractContainer
         return $data;
     }
 
-    public function getHoderInfo($id)
-    {
-        /* @var $item Stash\Interfaces\ItemInterface */
-        $item = $this->pool->getItem('Hodler/'.$id);
-        $data = $item->get();
-
-        if ($item->isMiss()) {
-            $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $data = $this->getHolderByAPI($id);
-            $this->pool->save($item->set($data));
-        }
-
-        return $data;
-    }
-
     public function getUserPreference($id)
     {
         /* @var $item Stash\Interfaces\ItemInterface */
@@ -289,14 +273,6 @@ final class UserModule extends AbstractContainer
         return $result['data'];
     }
 
-    private function getHolderByAPI($id)
-    {
-        $response = $this->httpClient->request('GET', 'holder/'.$id);
-        $result = $this->httpHelper->verifyResponse($response);
-
-        return $result['data'];
-    }
-
     private function getUserPreferenceByAPI($id)
     {
         $response = $this->httpClient->request('GET', 'user/'.$id.'/preference');
@@ -332,17 +308,6 @@ final class UserModule extends AbstractContainer
             ]);
 
         $this->pool->deleteItem('User/'.$id.'/renew');
-
-        return  $this->httpHelper->verifyResponse($response);
-    }
-
-    public function postHolderInfo($data, $id)
-    {
-        $response = $this->httpClient->request('POST', 'holder/'.$id, [
-                'form_params' => $data,
-            ]);
-
-        $this->pool->deleteItem('Hodler/'.$id);
 
         return  $this->httpHelper->verifyResponse($response);
     }

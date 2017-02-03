@@ -109,6 +109,9 @@ $container['loginModule'] = function (\Slim\Container $c) {
 $container['userModule'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\UserModule($c);
 };
+$container['holderModule'] = function (\Slim\Container $c) {
+    return new \PP\WebPortal\Module\UserSubModule\HolderModule($c);
+};
 $container['policyModule'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\PolicyModule($c);
 };
@@ -137,6 +140,7 @@ $container['mobileDetect'] = function () {
     return new \Mobile_Detect();
 };
 
+// lang text
 $container['langText'] = function (\Slim\Container $c) {
     return require $c['settings']['systemMessage'].'en/text.php';
 };

@@ -12,6 +12,7 @@ namespace PP\WebPortal\AbstractClass;
  * @property \GuzzleHttp\Client $httpClient
  * @property \PP\WebPortal\Module\LoginModule $loginModule
  * @property \PP\WebPortal\Module\UserModule $userModule
+ * @property \PP\WebPortal\Module\UserSubModule\HolderModule $holderModule
  * @property \PP\WebPortal\Module\PolicyModule $policyModule
  * @property \PP\WebPortal\Module\ClaimModule $claimModule
  * @property \PP\WebPortal\Module\ContactModule $contactModule
