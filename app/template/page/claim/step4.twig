@@ -49,13 +49,14 @@
     </div>
     <div class="gen_divider"></div>
 
-    {% if claim.payment_method == 'Bank Transfer' %}
-        <div class="row" style="margin-bottom:0">
+    <div class="row" style="margin-bottom:0">
             <div class="col s12">
                 <div class="right" style="margin-top:0.5rem" v-if="isSave"><a class="{{ css.btn_3 }}" href="{{ path_for('Claim.ClaimS2',{'id':claim.claim_id}) }}" target="_self" style="color:#fff">{{ langText.editBtn }}</a></div>
                 <h3>{{ langText.claim_nav_reimburse }}</h3>
             </div>
         </div>
+    {% if claim.payment_method == 'Bank Transfer' %}
+        
         <div class="row">
             <div class="col s12 m6 l6">
                 {{ langText.bank_acc_user }}<br/>
@@ -96,8 +97,24 @@
                 <b>{{ claim.bank_info.intermediary_bank_swift_code }}</b>
             </div>
         </div>
-        <div class="gen_divider"></div>
+    {% elseif claim.payment_method == 'Cheque' %}    
+        <div class="row">
+            <div class="col s12">
+                {{ langText.claim_step2_cheque_payable_q }}<br/>
+                <b>{{ claim.cheque.name }}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                {{ langText.claim_step2_cheque_address_q }}<br/>
+                <b>{{ claim.cheque.address_line_2 }}</b><br/>
+                <b>{{ claim.cheque.address_line_3 }}</b><br/>
+                <b>{{ claim.cheque.address_line_4 }}</b><br/>
+                <b>{{ claim.cheque.address_line_5 }}</b>
+            </div>
+        </div>
     {% endif %}
+    <div class="gen_divider"></div>
 
     <div class="row" style="margin-bottom:0">
         <div class="col s12">

@@ -9,8 +9,65 @@
     <div class="form-style-3">
 
         <div class="row">
-            <div class="col s12 semibold">Cheque - not done yet</div>
+            <div class="col s12">
+                <h3>{{ langText.claim_step2_cheque_title }}</h3>
+            </div>
+            <div class="col s12">
+                {{ langText.claim_step2_cheque_payable_q }}
+            </div>
+            <div class="col s12 m6 l6">
+                <input placeholder="" class="validate" type="text" data-jshook="payto" id="payto" v-model="payto">
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col s12">
+                {{ langText.claim_step2_cheque_address_q }}
+            </div>
+
+            <div :class="key%2===0 ? 'input-field col s12 m5 l5' : 'input-field col s12 m5 l5 offset-m2 offset-l2'"   v-for="(value, key) in address" style="margin-bottom:1rem" :key="value.id">
+                <input name="group1" type="radio" :value="key" :id="key" v-model="address_key" />
+                <label :for="key">
+
+                    <useraddress  :address='value' :k='key' ref="addraddr" v-on:addressupdate="addressUpdates" v-on:addressdelete="addressDel" v-on:addressactive="addressActives(key)" :key="value.id" inline-template>
+                        <div>
+                            <div :data-jshook="'member_address addr_'+address.id" >
+                                <label data-error="Required" class="active" v-if='!mode' style="padding-left:22px">${ a.nick_name }</label>
+                                <input placeholder="{{ langText.member_addr_ph_nick }}"  value=""  class="validate" type="text" style="margin-bottom:0" v-model="a.nick_name" v-if='mode'>
+                                <input placeholder="{{ langText.member_addr_ph_addr1 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_2">
+                                <input placeholder="{{ langText.member_addr_ph_addr2 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_3">
+                                <input placeholder="{{ langText.member_addr_ph_addr3 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_4">
+                                <input placeholder="{{ langText.member_addr_ph_addr4 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_5">
+
+                                <div class="right-align" style="padding-top:1rem" v-if="address.id != 'holder'">
+                                    <i class="material-icons icon_color_3 icon_size_36" v-if="!mode && address.id != 'claim_cheque'" v-on:click='del' style="cursor:pointer">delete_forever</i>
+                                    <button class="{{ css.btn_2 }}" type="button" v-on:click="edit" v-if="!mode"  >{{ langText.editBtn }}</button>
+                                    <button class="{{ css.btn_2 }}" type="button" v-on:click="cancel" v-if="mode" >{{ langText.cancelBtn }}</button>
+                                    <button class="{{ css.btn_2 }}" type="button" v-on:click="save" v-if="mode" >{{ langText.saveBtn }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </useraddress></label>
+            </div>
+            <div :class="address_lenght%2===0 ? 'col s12 m5 l5' : 'col s12 m5 l5 offset-m2 offset-l2'"  >
+                <div class='valign-wrapper member_address_newbox' v-if="!new_addr_mode">
+                    <div class="valign member_address_newbox_textbox">
+                        <button class="{{ css.btn_2 }}" type="button" style="margin-bottom:0" v-on:click="new_addr_mode = !new_addr_mode"><i class="material-icons icon_color_8 icon_size_22">create_new_folder</i> {{ langText.newAddrBtn }}</button>
+                    </div>
+                </div>
+                <div data-jshook="newAddressMode" v-show="new_addr_mode" class="input-field member_address">
+                    <input placeholder="{{ langText.member_addr_ph_nick }}" data-jshook="newAddressNick"  value="" class="validate" v-model="new_addr.nick_name" type="text" style="margin-bottom:0" >
+                    <input placeholder="{{ langText.member_addr_ph_addr1 }}" data-jshook="newAddressl1"  value="" class="validate" v-model="new_addr.address_line_2" type="text" style="margin-bottom:0">
+                    <input placeholder="{{ langText.member_addr_ph_addr2 }}" data-jshook="newAddressl2"  value="" class="validate" v-model="new_addr.address_line_3" type="text" style="margin-bottom:0">
+                    <input placeholder="{{ langText.member_addr_ph_addr3 }}" data-jshook="newAddressl3"  value="" class="validate" v-model="new_addr.address_line_4" type="text" style="margin-bottom:0">
+                    <input placeholder="{{ langText.member_addr_ph_addr4 }}" data-jshook="newAddressl4"  value="" class="validate" v-model="new_addr.address_line_5" type="text" style="margin-bottom:0">
+                    <div class="right-align" style="padding-top:1rem">
+                        <button class="{{ css.btn_2 }}" type="button" v-on:click="new_addr_mode = !new_addr_mode" >{{ langText.cancelBtn }}</button>
+                        <button class="{{ css.btn_2 }}" type="button" v-on:click="saveNewAddress">{{ langText.saveBtn }}</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
 
@@ -18,7 +75,9 @@
         <div class="gen_divider"></div>
         <div class="row">
             <div class="col s12 right-align">
-                [[ btn ]]
+                <button id="saveBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
+                <div class="btn_h_space"></div>
+                <button id="nextBtn" data-jshook="nextBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
             </div>
         </div>
 
@@ -50,8 +109,11 @@
     {{ parent() }}
     <script>
         var claim = {{ claim.toJson() | raw }};
+        var address = {{ address | json_encode() | raw }};
+        var payto = '{{ payto }}';
+        var ppmid = {{ User.ppmid }};
     </script>
-    <script src="{{ base_url() }}/assets/js/page/claim2.js?{{ appVersion }}"></script>
+    <script src="{{ base_url() }}/assets/js/page/claim2cheque.js?{{ appVersion }}"></script>
     <script>
         activeNav('claims');
         BreadCrumb.addActiveClass('claimBreadCrumbStep1');
@@ -60,9 +122,6 @@
         {% if not is_mobile() %}
             pinTop.init();
         {% endif %}
-            
-        $('select').material_select();
-        $('.select-dropdown').val(app.bank.nick_name);
     </script>
     {% include 'include/components/csrf.twig' %}
 {% endblock %}

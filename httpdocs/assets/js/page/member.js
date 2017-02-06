@@ -324,6 +324,7 @@ var app = new Vue({
             this.p.address[key].address_line_3 = data.address_line_3;
             this.p.address[key].address_line_4 = data.address_line_4;
             this.p.address[key].address_line_5 = data.address_line_5;
+            $.jshook('member_address').removeClass('member_address');
         },
         addressDel : function (k){
             this.p.address.splice(k,1);

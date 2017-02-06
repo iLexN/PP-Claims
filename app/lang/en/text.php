@@ -83,6 +83,10 @@ return [
     'claim_step1_reimbursed'            => 'How would you like to reimbursed?',
     //Claim Step2 bank
     'claim_step2_bank_title' => 'Please provide bank details for Bank Transfer',
+    //Claim Step2 Cheque
+    'claim_step2_cheque_title' => 'Cheque Payable Reimbursement',
+    'claim_step2_cheque_payable_q' => 'This cheque be payable to:',
+    'claim_step2_cheque_address_q' => 'Select an address to reimbursement:',
     //Claim Step3
     'claim_step3_claim_form'     => 'Claim Form',
     'claim_step3_claim_form_desc'=> 'At least one claim form must be submitted.',

@@ -75,6 +75,10 @@ class ClaimModel extends ModelAbstract
             return true;
         }
 
+        if ($this->data['payment_method'] === 'Cheque' && !empty($this->data['cheque'])) {
+            return true;
+        }
+
         return false;
     }
 

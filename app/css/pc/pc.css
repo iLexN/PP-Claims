@@ -115,6 +115,7 @@ header {
 .member_address {
     height:21rem; 
     margin-bottom: 1rem;
+    overflow: hidden;
 }
 
 .member_address_newbox{
