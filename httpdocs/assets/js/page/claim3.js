@@ -29,7 +29,7 @@ var app = new Vue({
     },
     methods: {
         uploadClaimFile: function () {
-            console.log('upload claim file');
+            
             if (window.FormData === undefined) {
                 console.log('not support');
                 return;
@@ -62,7 +62,7 @@ var app = new Vue({
             });
         },
         uploadSupDoc: function () {
-            console.log('upload claim file');
+            
             if (window.FormData === undefined) {
                 console.log('not support');
                 return;

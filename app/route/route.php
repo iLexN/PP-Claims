@@ -24,8 +24,12 @@ $app->get('/main', 'PP\WebPortal\Controller\Main')
 $app->get('/logout', 'PP\WebPortal\Controller\Logout')
     ->setName('Logout');
 
-$app->get('/member', 'PP\WebPortal\Controller\Member\index')
+$app->get('/member', 'PP\WebPortal\Controller\Member\Index')
     ->setName('Member.index')
+    ->add($container->get('csrf'))
+    ->add($authLoginArea);
+$app->get('/member/bank', 'PP\WebPortal\Controller\Member\Bank')
+    ->setName('Member.Bank')
     ->add($container->get('csrf'))
     ->add($authLoginArea);
 
@@ -41,7 +45,7 @@ $app->get('/user-policy/{id:\d+}/{name:planfile|policyfile}/{f:\d+}', 'PP\WebPor
     ->setName('Policy.FileDownload')
     ->add($userPolicyCheck)
     ->add($authLoginArea); // redirect to home page if login expired
-    //
+
 //claim
 $app->get('/claim', 'PP\WebPortal\Controller\Claim\Index')
     ->setName('Claim.Index')

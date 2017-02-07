@@ -2,16 +2,17 @@
 {% import "macro/forms.twig" as forms %}
 
 {% block leftHTML %}
-    <h1>{{ langText.claim_nav_reimburse }}</h1>
+    <h1>{{ langText.member_bank_title }}</h1>
 
-    {% include 'include/components/claim-breadcrumb.twig' %}
+    <div class="pending_box" style="padding:0.5rem;margin-bottom:1rem">
+        <div class="pending_box_icon" style="padding:0 0.5rem"><img src="/assets/images/icon_creditcard2.svg"></div>
+        <div class="padding_box_desc">{{ langText.member_bank_desc }}</div>            
+    </div>
 
     <div class="form-style-3">
 
-        <div class="row">
-            <div class="col s12 semibold">{{ langText.claim_step2_bank_title }}</div>
-
-            <div v-show="!bigSaveBtn && !edit">
+        <div class="row" v-show="!bigSaveBtn && !edit">
+            
                 <div class="input-field col s8">
                     <select data-jshook="bankSelectBox">
                         <option value="" disabled selected>Choose your option</option>
@@ -22,24 +23,9 @@
                     {#{ forms.MD_button_3('editBtn', langText.editBtn, 'button' , 'editBank')}#}
                     <button id="editBtn" data-jshook="editBtn" class="{{ css.btn_2 }}" type="button" v-on:click="editBank">{{ langText.editBtn }}</button>
                 </div>
-            </div>
+            
         </div>
-
         {% include 'include/components/bank-form.twig' %}
-
-        <div style="height:1rem;"></div>
-        <div class="gen_divider"></div>
-        <div class="row" v-if="!bigSaveBtn">
-            <div class="col s12 right-align">
-                {#{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}#}
-                <button id="saveBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
-                <div class="btn_h_space"></div>
-                {#{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}#}
-                <button id="nextBtn" data-jshook="nextBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
-            </div>
-        </div>
-
-
     </div>
 {% endblock %}
 
@@ -66,19 +52,16 @@
 {% block jsBottom %}
     {{ parent() }}
     <script>
-        var claim = {{ claim.toJson() | raw }};
         var banks ={{ banks.toJson | raw }} ;
     </script>
-    <script src="{{ base_url() }}/assets/js/page/claim2bank.js?{{ appVersion }}"></script>
+    <script src="{{ base_url() }}/assets/js/page/bank.js?{{ appVersion }}"></script>
     <script>
-        activeNav('claims');
-        BreadCrumb.addActiveClass('claimBreadCrumbStep1');
-        BreadCrumb.setUrl('claimBreadCrumbStep1', '{{ path_for('Claim.ClaimS1' ,  { 'id': claim.claim_id }  ) }}')
-        BreadCrumb.addActiveClass('claimBreadCrumbStep2');
+        activeNav('profile');
+        $('select').material_select();
         {% if not is_mobile() %}
             pinTop.init();
         {% endif %}
-        $('select').material_select();
+
         $('.select-dropdown').val(app.bank.nick_name);
     </script>
     {% include 'include/components/csrf.twig' %}

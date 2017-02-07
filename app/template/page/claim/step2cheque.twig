@@ -21,35 +21,39 @@
         </div>
 
         <div class="row">
-            <div class="col s12">
+            <div class="col s12" style="margin-bottom:0.5rem">
                 {{ langText.claim_step2_cheque_address_q }}
             </div>
 
-            <div :class="key%2===0 ? 'input-field col s12 m5 l5' : 'input-field col s12 m5 l5 offset-m2 offset-l2'"   v-for="(value, key) in address" style="margin-bottom:1rem" :key="value.id">
-                <input name="group1" type="radio" :value="key" :id="key" v-model="address_key" />
-                <label :for="key">
+            <div class="col s12 m6 l6"   v-for="(value, key) in address" :key="value.id">
+                <div class="row claim_address_row">
+                    <div class="col s2 m1 l1" style="padding-top:1.875rem">
+                        <input name="group1" type="radio" :value="key" :id="key" v-model="address_key" />
+                        <label :for="key"></label>
+                    </div>
+                    <div class="input-field col s10 m11 l11">
+                        <useraddress  :address='value' :k='key' ref="addraddr" v-on:addressupdate="addressUpdates" v-on:addressdelete="addressDel" v-on:addressactive="addressActives(key)" :key="value.id" inline-template>
+                            <div>
+                                <div :data-jshook="'member_address addr_'+address.id" >
+                                    <label data-error="Required" class="active" v-if='!mode'>${ a.nick_name }</label>
+                                    <input placeholder="{{ langText.member_addr_ph_nick }}"  value=""  class="validate" type="text" style="margin-bottom:0" v-model="a.nick_name" v-if='mode'>
+                                    <input placeholder="{{ langText.member_addr_ph_addr1 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_2">
+                                    <input placeholder="{{ langText.member_addr_ph_addr2 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_3">
+                                    <input placeholder="{{ langText.member_addr_ph_addr3 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_4">
+                                    <input placeholder="{{ langText.member_addr_ph_addr4 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_5">
 
-                    <useraddress  :address='value' :k='key' ref="addraddr" v-on:addressupdate="addressUpdates" v-on:addressdelete="addressDel" v-on:addressactive="addressActives(key)" :key="value.id" inline-template>
-                        <div>
-                            <div :data-jshook="'member_address addr_'+address.id" >
-                                <label data-error="Required" class="active" v-if='!mode' style="padding-left:22px">${ a.nick_name }</label>
-                                <input placeholder="{{ langText.member_addr_ph_nick }}"  value=""  class="validate" type="text" style="margin-bottom:0" v-model="a.nick_name" v-if='mode'>
-                                <input placeholder="{{ langText.member_addr_ph_addr1 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_2">
-                                <input placeholder="{{ langText.member_addr_ph_addr2 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_3">
-                                <input placeholder="{{ langText.member_addr_ph_addr3 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_4">
-                                <input placeholder="{{ langText.member_addr_ph_addr4 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_5">
-
-                                <div class="right-align" style="padding-top:1rem" v-if="address.id != 'holder'">
-                                    <i class="material-icons icon_color_3 icon_size_36" v-if="!mode && address.id != 'claim_cheque'" v-on:click='del' style="cursor:pointer">delete_forever</i>
-                                    <button class="{{ css.btn_2 }}" type="button" v-on:click="edit" v-if="!mode"  >{{ langText.editBtn }}</button>
-                                    <button class="{{ css.btn_2 }}" type="button" v-on:click="cancel" v-if="mode" >{{ langText.cancelBtn }}</button>
-                                    <button class="{{ css.btn_2 }}" type="button" v-on:click="save" v-if="mode" >{{ langText.saveBtn }}</button>
+                                    <div class="right-align" style="padding-top:1rem" v-if="address.id != 'holder'">
+                                        <i class="material-icons icon_color_3 icon_size_36" v-if="!mode && address.id != 'claim_cheque'" v-on:click='del' style="cursor:pointer;vertical-align: text-top;">delete_forever</i>
+                                        <button class="{{ css.btn_2 }}" type="button" v-on:click="edit" v-if="!mode" style="margin-bottom:0"  >{{ langText.editBtn }}</button>
+                                        <button class="{{ css.btn_2 }}" type="button" v-on:click="cancel" v-if="mode" style="margin-bottom:0" >{{ langText.cancelBtn }}</button>
+                                        <button class="{{ css.btn_2 }}" type="button" v-on:click="save" v-if="mode" style="margin-bottom:0" >{{ langText.saveBtn }}</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </useraddress></label>
+                        </useraddress>
+                    </div></div>
             </div>
-            <div :class="address_lenght%2===0 ? 'col s12 m5 l5' : 'col s12 m5 l5 offset-m2 offset-l2'"  >
+            <div class="input-field col s12 m6 l6"  >
                 <div class='valign-wrapper member_address_newbox' v-if="!new_addr_mode">
                     <div class="valign member_address_newbox_textbox">
                         <button class="{{ css.btn_2 }}" type="button" style="margin-bottom:0" v-on:click="new_addr_mode = !new_addr_mode"><i class="material-icons icon_color_8 icon_size_22">create_new_folder</i> {{ langText.newAddrBtn }}</button>
@@ -66,7 +70,6 @@
                         <button class="{{ css.btn_2 }}" type="button" v-on:click="saveNewAddress">{{ langText.saveBtn }}</button>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -109,9 +112,9 @@
     {{ parent() }}
     <script>
         var claim = {{ claim.toJson() | raw }};
-        var address = {{ address | json_encode() | raw }};
+                var address = {{ address | json_encode() | raw }};
         var payto = '{{ payto }}';
-        var ppmid = {{ User.ppmid }};
+                var ppmid = {{ User.ppmid }};
     </script>
     <script src="{{ base_url() }}/assets/js/page/claim2cheque.js?{{ appVersion }}"></script>
     <script>

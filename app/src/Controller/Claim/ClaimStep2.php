@@ -36,19 +36,8 @@ final class ClaimStep2 extends AbstractContainer
         $response = $this->checkH2($response);
 
         if ($claims['payment_method'] === 'Cheque') {
-            $holderInfo = $this->holderModule->getHolderInfo($this->userModule->user['holder_id']);
-            $address = $this->addressModule->getUserAddress($this->userModule->user['ppmid']);
             $payto = $this->getPayTo($claims);
-
-            $address = $this->needPushAddress($claims, $address);
-            $address = $this->prepend($address, [
-                'id' => 'holder',
-                'nick_name' => $this->langText['member_PolicyAddr_title'],
-                'address_line_2' => $holderInfo['policy_address_line_2'],
-                'address_line_3' => $holderInfo['policy_address_line_3'],
-                'address_line_4' => $holderInfo['policy_address_line_4'],
-                'address_line_5' => $holderInfo['policy_address_line_5'],
-            ]);
+            $address = $this->getAddress();
 
             return $this->view->render($response, 'page/claim/step2cheque.twig', [
                 'claim' => $claims,
@@ -68,6 +57,23 @@ final class ClaimStep2 extends AbstractContainer
                 'token' => $this->csrfHelper->getToken($request),
             ]);
         }
+    }
+
+    private function getAddress()
+    {
+        $holderInfo = $this->holderModule->getHolderInfo($this->userModule->user['holder_id']);
+        $address = $this->addressModule->getUserAddress($this->userModule->user['ppmid']);
+
+        $address = $this->prepend($address, [
+                'id' => 'holder',
+                'nick_name' => $this->langText['member_PolicyAddr_title'],
+                'address_line_2' => $holderInfo['policy_address_line_2'],
+                'address_line_3' => $holderInfo['policy_address_line_3'],
+                'address_line_4' => $holderInfo['policy_address_line_4'],
+                'address_line_5' => $holderInfo['policy_address_line_5'],
+            ]);
+        $address = $this->needPushAddress($claims, $address);
+        return $address;
     }
 
     private function needPushAddress($claims, $address)

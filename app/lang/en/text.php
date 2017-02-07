@@ -47,6 +47,9 @@ return [
     'member_addr_ph_addr2'       => 'Address line 2',
     'member_addr_ph_addr3'       => 'Address line 3',
     'member_addr_ph_addr4'       => 'Address line 4',
+    // member/bank
+    'member_bank_title' => 'Bank Transfer',
+    'member_bank_desc'  => 'Provide bank account details will save your time during claim process',
 
     //contact page
     'contact_office_title' => 'Our Office',

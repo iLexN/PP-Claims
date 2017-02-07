@@ -474,14 +474,14 @@ include components
 }
 /******* pending_box *****/
 .pending_box{background-color: #fff3e6;
-padding: 1rem 0;}
+padding: 1rem 0;overflow: hidden}
 .pending_box_icon{float: left;
 padding: 0.5rem 1rem;}
-.padding_box_title{padding-left: 56px;
+.padding_box_title{padding-left: 3.5rem;
 font-size: 1rem;
 font-weight: bold;
 color: #f7941d;}
-.padding_box_desc{padding-left: 56px;}
+.padding_box_desc{padding-left: 3.5rem;padding-right: 0.5rem}
 /***** address box *****/
 .member_address_newbox_textbox{
     width:100%; text-align:center
