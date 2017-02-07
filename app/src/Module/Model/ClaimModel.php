@@ -105,6 +105,7 @@ class ClaimModel extends ModelAbstract
         }
     }
 
+    /*
     public function getStep()
     {
         if ($this->data['isComplete']) {
@@ -119,5 +120,5 @@ class ClaimModel extends ModelAbstract
         if (!$this->haveReimburse()) {
             return 'Claim.ClaimS1';
         }
-    }
+    }*/
 }

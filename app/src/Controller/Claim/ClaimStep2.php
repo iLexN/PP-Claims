@@ -36,20 +36,15 @@ final class ClaimStep2 extends AbstractContainer
         $response = $this->checkH2($response);
 
         if ($claims['payment_method'] === 'Cheque') {
-            $payto = $this->getPayTo($claims);
-            $address = $this->getAddress($claims);
-
             return $this->view->render($response, 'page/claim/step2cheque.twig', [
                 'claim'   => $claims,
-                'address' => $address,
-                'payto'   => $payto,
+                'address' => $this->getAddress($claims),
+                'payto'   => $this->getPayTo($claims),
                 'token'   => $this->csrfHelper->getToken($request),
             ]);
         } else {
             //Bank Transfer
-            $this->banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
-            $this->needPush($claims);
-            $this->checkBankInfo();
+            $this->getBank();
 
             return $this->view->render($response, 'page/claim/step2bank.twig', [
                 'claim' => $claims,
@@ -114,6 +109,13 @@ final class ClaimStep2 extends AbstractContainer
         array_unshift($address, $ar);
 
         return $address;
+    }
+
+    private function getBank()
+    {
+        $this->banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
+        $this->needPush($claims);
+        $this->checkBankInfo();
     }
 
     private function needPush($claims)
