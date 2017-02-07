@@ -71,10 +71,24 @@ class ClaimModel extends ModelAbstract
 
     public function haveReimburse()
     {
+        if ($this->haveBank() || $this->haveCheque()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function haveBank()
+    {
         if ($this->data['payment_method'] === 'Bank Transfer' && !empty($this->data['bank_info'])) {
             return true;
         }
 
+        return false;
+    }
+
+    private function haveCheque()
+    {
         if ($this->data['payment_method'] === 'Cheque' && !empty($this->data['cheque'])) {
             return true;
         }
