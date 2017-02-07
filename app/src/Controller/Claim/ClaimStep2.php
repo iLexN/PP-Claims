@@ -44,7 +44,7 @@ final class ClaimStep2 extends AbstractContainer
             ]);
         } else {
             //Bank Transfer
-            $this->getBank();
+            $this->getBank($claims);
 
             return $this->view->render($response, 'page/claim/step2bank.twig', [
                 'claim' => $claims,
@@ -111,7 +111,7 @@ final class ClaimStep2 extends AbstractContainer
         return $address;
     }
 
-    private function getBank()
+    private function getBank($claims)
     {
         $this->banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
         $this->needPush($claims);
