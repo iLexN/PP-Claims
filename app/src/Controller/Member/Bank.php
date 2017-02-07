@@ -13,6 +13,8 @@ final class Bank extends AbstractContainer
 
     public $preLoadKey = 'bank';
 
+    public $banks;
+
     /**
      * Login-ed Page.
      *
@@ -32,7 +34,7 @@ final class Bank extends AbstractContainer
 
         return $this->view->render($response, 'page/member/bank.twig', [
             'banks' => $this->banks,
-            'token'      => $this->csrfHelper->getToken($request),
+            'token' => $this->csrfHelper->getToken($request),
         ]);
     }
 
