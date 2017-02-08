@@ -115,6 +115,9 @@ $container['holderModule'] = function (\Slim\Container $c) {
 $container['addressModule'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\UserSubModule\AddressModule($c);
 };
+$container['bankModule'] = function (\Slim\Container $c) {
+    return new \PP\WebPortal\Module\UserSubModule\BankModule($c);
+};
 $container['preferenceModule'] = function (\Slim\Container $c) {
     return new \PP\WebPortal\Module\UserSubModule\PreferenceModule($c);
 };

@@ -20,7 +20,7 @@ final class NewOrSave extends AbstractContainer
         $this->data = (array) $request->getParsedBody();
         $url = $this->getApiUrl();
 
-        $result = $this->userModule->postUserBankByAPI($this->data, $url);
+        $result = $this->bankModule->postUserBankByAPI($this->data, $url);
 
         return $response->withJson($result);
     }

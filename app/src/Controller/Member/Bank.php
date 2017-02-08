@@ -26,25 +26,14 @@ final class Bank extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $this->banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
-
         $response = $this->checkH2($response);
 
-        $this->checkBankInfo();
+        $banks = $this->bankModule->checkBankInfo($this->bankModule->getUserBank($this->userModule->user['ppmid']));
 
         return $this->view->render($response, 'page/member/bank.twig', [
-            'banks' => $this->banks,
+            'banks' => $banks,
             'token' => $this->csrfHelper->getToken($request),
         ]);
     }
 
-    private function checkBankInfo()
-    {
-        if (empty($this->banks->data)) {
-            $preference = $this->preferenceModule->getUserPreference($this->userModule->user['ppmid']);
-            $this->banks->push(new BankModel([
-                'currency' => $preference['currency'],
-            ], $this->currencyText));
-        }
-    }
 }

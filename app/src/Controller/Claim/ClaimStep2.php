@@ -113,9 +113,9 @@ final class ClaimStep2 extends AbstractContainer
 
     private function getBank($claims)
     {
-        $this->banks = $this->userModule->getUserBank($this->userModule->user['ppmid']);
+        $this->banks = $this->bankModule->getUserBank($this->userModule->user['ppmid']);
         $this->needPush($claims);
-        $this->checkBankInfo();
+        $this->banks = $this->bankModule->checkBankInfo($this->banks);
     }
 
     private function needPush($claims)
@@ -141,15 +141,5 @@ final class ClaimStep2 extends AbstractContainer
         }
 
         return false;
-    }
-
-    private function checkBankInfo()
-    {
-        if (empty($this->banks->data)) {
-            $preference = $this->preferenceModule->getUserPreference($this->userModule->user['ppmid']);
-            $this->banks->push(new BankModel([
-                'currency' => $preference['currency'],
-            ], $this->currencyText));
-        }
     }
 }

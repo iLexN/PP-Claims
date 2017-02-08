@@ -14,6 +14,7 @@ namespace PP\WebPortal\AbstractClass;
  * @property \PP\WebPortal\Module\UserModule $userModule
  * @property \PP\WebPortal\Module\UserSubModule\HolderModule $holderModule
  * @property \PP\WebPortal\Module\UserSubModule\AddressModule $addressModule
+ * @property \PP\WebPortal\Module\UserSubModule\BankModule $bankModule
  * @property \PP\WebPortal\Module\UserSubModule\PreferenceModule $preferenceModule
  * @property \PP\WebPortal\Module\PolicyModule $policyModule
  * @property \PP\WebPortal\Module\ClaimModule $claimModule
