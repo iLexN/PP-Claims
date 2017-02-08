@@ -3,7 +3,6 @@
 namespace PP\WebPortal\Controller\Member;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
-use PP\WebPortal\Module\Model\BankModel;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

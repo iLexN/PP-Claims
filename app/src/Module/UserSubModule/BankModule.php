@@ -76,6 +76,7 @@ final class BankModule extends AbstractContainer
                 'currency' => $preference['currency'],
             ], $this->currencyText));
         }
+
         return $banks;
     }
 }

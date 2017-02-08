@@ -1,4 +1,22 @@
 #### [Current]
+ * [4235828](../../commit/4235828) - __(2017-02-08 11:56:48 +0800)__ ci fix
+ * [4991c7e](../../commit/4991c7e) - __(2017-02-08 11:53:54 +0800)__ UserModule break sub module bank
+ * [171c8ee](../../commit/171c8ee) - __(2017-02-07 14:52:50 +0800)__ ci fix
+ * [2cdff91](../../commit/2cdff91) - __(2017-02-07 14:38:45 +0800)__ code improve 2
+ * [9fb1cc7](../../commit/9fb1cc7) - __(2017-02-07 14:33:04 +0800)__ code improve
+ * [9c705c6](../../commit/9c705c6) - __(2017-02-07 14:24:16 +0800)__ ci fix
+ * [c35a06a](../../commit/c35a06a) - __(2017-02-07 14:16:30 +0800)__ member bank done
+ * [e4868f0](../../commit/e4868f0) - __(2017-02-06 16:06:01 +0800)__ claim cheque done
+ * [21b9c52](../../commit/21b9c52) - __(2017-02-03 16:54:32 +0800)__ fix submited claim btn text
+ * [503aefc](../../commit/503aefc) - __(2017-02-03 16:36:46 +0800)__ cehckCheque / checkBank - method seem no use
+ * [43e2c45](../../commit/43e2c45) - __(2017-02-03 16:20:13 +0800)__ user module -> break down preference to sub module
+ * [fd8f97c](../../commit/fd8f97c) - __(2017-02-03 16:04:45 +0800)__ user module -> break down address to sub module 2
+ * [0a14a4c](../../commit/0a14a4c) - __(2017-02-03 15:54:12 +0800)__ user module -> break down address to sub module
+ * [8672f08](../../commit/8672f08) - __(2017-02-03 15:37:34 +0800)__ user module -> break down holder to sub module
+ * [f874bec](../../commit/f874bec) - __(2017-02-03 14:53:29 +0800)__ ci fix
+ * [c27451e](../../commit/c27451e) - __(2017-02-03 14:38:12 +0800)__ code imporve - download file
+ * [8e6f549](../../commit/8e6f549) - __(2017-02-03 14:10:29 +0800)__ code imporve - address ajax
+ * [8ce87d4](../../commit/8ce87d4) - __(2017-02-02 17:17:30 +0800)__ user address - add , update , delete
  * [389a8c4](../../commit/389a8c4) - __(2017-01-26 17:41:14 +0800)__ ci fix
  * [130ed15](../../commit/130ed15) - __(2017-01-26 17:29:19 +0800)__ member page , user info + holder info
  * [e07eff7](../../commit/e07eff7) - __(2017-01-24 15:28:21 +0800)__ add offline support
