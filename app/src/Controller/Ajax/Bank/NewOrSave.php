@@ -15,8 +15,6 @@ final class NewOrSave extends AbstractContainer
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        // todo : check bank is user
-
         $this->data = (array) $request->getParsedBody();
         $url = $this->getApiUrl();
 

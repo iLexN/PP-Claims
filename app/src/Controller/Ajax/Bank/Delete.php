@@ -17,8 +17,6 @@ final class Delete extends AbstractContainer
     {
         $this->data = (array) $request->getParsedBody();
 
-        // todo : check bank is user
-
         if ($this->data['banker_transfer_id'] === $args['id']) {
             $result = $this->bankModule->delUserBankByAPI($args['id']);
 

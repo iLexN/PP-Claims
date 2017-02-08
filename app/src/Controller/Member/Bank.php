@@ -34,5 +34,4 @@ final class Bank extends AbstractContainer
             'token' => $this->csrfHelper->getToken($request),
         ]);
     }
-
 }
