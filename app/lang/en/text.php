@@ -195,7 +195,7 @@ return [
 
     //passwordUpdatedBox
     'password_updated_title' => 'Your Password updated.',
-    'password_updated_desc' => 'Your Password updated. ... long text',
+    'password_updated_desc'  => 'Your Password updated. ... long text',
 
     //Tips
     'tips_title' => 'Tips',

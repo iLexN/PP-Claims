@@ -100,7 +100,7 @@ class ClaimModel extends ModelAbstract
 
     public function isComplete()
     {
-        if ( $this->haveStep1() && $this->haveFileUpload() && $this->haveReimburse()) {
+        if ($this->haveStep1() && $this->haveFileUpload() && $this->haveReimburse()) {
             $this->data['isComplete'] = true;
         } else {
             $this->data['isComplete'] = false;
@@ -112,7 +112,7 @@ class ClaimModel extends ModelAbstract
         if ($this->data['amount'] === 0) {
             return false;
         }
-        $check = ['currency','date_of_treatment','diagnosis','payment_method','currency_receive'];
+        $check = ['currency', 'date_of_treatment', 'diagnosis', 'payment_method', 'currency_receive'];
 
         foreach ($check as $field) {
             if (empty($this->data[$field])) {

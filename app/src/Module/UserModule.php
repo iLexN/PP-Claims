@@ -199,10 +199,9 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * set new password from forgotPassword.
+     * set new password
      *
-     * @param string $pass
-     * @param string $token
+     * @param array $data
      *
      * @return \Psr\Http\Message\ServerRequestInterface|bool
      */

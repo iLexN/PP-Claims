@@ -24,7 +24,7 @@ final class ClaimStep4 extends AbstractContainer
     {
         $claims = $this->claimModule->getClaim($args['id']);
 
-        if ( $claims['isComplete'] ) {
+        if ($claims['isComplete']) {
             $response = $this->checkH2($response);
             $policy = $this->policyModule->getPolices()[$claims['user_policy_id']];
 
@@ -35,7 +35,7 @@ final class ClaimStep4 extends AbstractContainer
                 'token'    => $this->csrfHelper->getToken($request),
             ]);
         } else {
-            return $response->withStatus(301)->withHeader('Location', $this->c['router']->pathFor($claims->getStep(),['id'=>$claims['claim_id']]));
+            return $response->withStatus(301)->withHeader('Location', $this->c['router']->pathFor($claims->getStep(), ['id'=>$claims['claim_id']]));
         }
     }
 

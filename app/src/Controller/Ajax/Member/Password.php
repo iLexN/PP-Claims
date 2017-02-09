@@ -23,7 +23,7 @@ final class Password extends AbstractContainer
             return $response->withJson(['errors' => ['title' => $msg]]);
         }
 
-        $result = $this->userModule->postUpdatePassword($data);
+        $this->userModule->postUpdatePassword($data);
 
         return $response->withJson($this->httpHelper->result);
     }
