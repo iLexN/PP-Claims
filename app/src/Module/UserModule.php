@@ -198,6 +198,23 @@ final class UserModule extends AbstractContainer
         return  $this->httpHelper->verifyResponse($response);
     }
 
+    /**
+     * set new password from forgotPassword.
+     *
+     * @param string $pass
+     * @param string $token
+     *
+     * @return \Psr\Http\Message\ServerRequestInterface|bool
+     */
+    public function postUpdatePassword($data)
+    {
+        $response = $this->httpClient->request('POST', 'user/'.$this->user['ppmid'].'/change-passowrd', [
+                'form_params' => $data,
+            ]);
+
+        return  $this->httpHelper->verifyResponse($response);
+    }
+
     public function postUserInfo($data, $id)
     {
         $response = $this->httpClient->request('POST', 'user/'.$id, [

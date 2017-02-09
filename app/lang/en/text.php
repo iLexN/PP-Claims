@@ -50,6 +50,10 @@ return [
     // member/bank
     'member_bank_title' => 'Bank Transfer',
     'member_bank_desc'  => 'Provide bank account details will save your time during claim process',
+    // member/password
+    'member_password_title' => 'Update Password',
+    'member_password_dess'  => 'Change Password Text need?',
+
 
     //contact page
     'contact_office_title' => 'Our Office',
@@ -109,6 +113,7 @@ return [
     //form label
     'username'                           => 'Username',
     'passowrd'                           => 'Password',
+    'old_password'                       => 'Old Password',
     'new_password'                       => 'New Password',
     'confirm_password'                   => 'Confirm Password',
     'name'                               => 'Name',
@@ -187,6 +192,10 @@ return [
     //SaveClaim
     'save_claim_title'   => 'Claim Saved',
     'save_claim_Success' => 'You can contine or find this saved claim in saved list',
+
+    //passwordUpdatedBox
+    'password_updated_title' => 'Your Password updated.',
+    'password_updated_desc' => 'Your Password updated. ... long text',
 
     //Tips
     'tips_title' => 'Tips',

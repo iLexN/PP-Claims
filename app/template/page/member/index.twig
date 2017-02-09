@@ -142,7 +142,7 @@
 {% block rightHTML %}
     <div class="col s12 ">
         <div data-jshook="pushpin">
-            {{ components.claim_info_box2(langText.member_btn_update_password,'/assets/images/icon_password.svg', '' ,'/submited-claim' ) }}
+            {{ components.claim_info_box2(langText.member_btn_update_password,'/assets/images/icon_password.svg', '' ,path_for('Member.Password') ) }}
             {{ components.claim_info_box2(langText.member_btn_bank_transfer,'/assets/images/icon_creditcard2.svg', '' , path_for('Member.Bank') ) }}
         </div>
     </div>

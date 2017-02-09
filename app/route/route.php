@@ -32,6 +32,10 @@ $app->get('/member/bank', 'PP\WebPortal\Controller\Member\Bank')
     ->setName('Member.Bank')
     ->add($container->get('csrf'))
     ->add($authLoginArea);
+$app->get('/member/change-password', 'PP\WebPortal\Controller\Member\Password')
+    ->setName('Member.Password')
+    ->add($container->get('csrf'))
+    ->add($authLoginArea);
 
 //contact us
 $app->get('/contact-us', 'PP\WebPortal\Controller\Page\ContactUs')
@@ -161,6 +165,11 @@ $app->post('/ajax/holder/{id:\d+}', 'PP\WebPortal\Controller\Ajax\Member\HolderU
         ->add($container->get('csrf'))
         ->add($authLoginArea)
         ->setName('Ajax.Member.HolderUpdate');
+$app->post('/ajax/password/', 'PP\WebPortal\Controller\Ajax\Member\Password')
+        ->add($csrfResponse)
+        ->add($container->get('csrf'))
+        ->add($authLoginArea)
+        ->setName('Ajax.Member.Password');
 $app->get('/ajax/preload', 'PP\WebPortal\Controller\Ajax\Preload')
         ->add($authLoginArea)
         ->setName('Ajax.Main.Preload');
