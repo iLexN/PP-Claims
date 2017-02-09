@@ -199,7 +199,7 @@ final class UserModule extends AbstractContainer
     }
 
     /**
-     * set new password
+     * set new password.
      *
      * @param array $data
      *

@@ -119,6 +119,7 @@ class ClaimModel extends ModelAbstract
                 return false;
             }
         }
+
         return true;
     }
 

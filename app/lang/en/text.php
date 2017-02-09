@@ -54,7 +54,6 @@ return [
     'member_password_title' => 'Update Password',
     'member_password_dess'  => 'Change Password Text need?',
 
-
     //contact page
     'contact_office_title' => 'Our Office',
 

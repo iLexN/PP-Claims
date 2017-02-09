@@ -17,7 +17,7 @@ final class Password extends AbstractContainer
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $data = $request->getParsedBody();
+        $data = (array)$request->getParsedBody();
 
         if ($msg = $this->helper->isPasswordInValid($data['new_password'], $data['confirm_password'])) {
             return $response->withJson(['errors' => ['title' => $msg]]);
