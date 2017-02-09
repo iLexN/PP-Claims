@@ -1,5 +1,12 @@
 #### [Current]
- * [4235828](../../commit/4235828) - __(2017-02-08 11:56:48 +0800)__ ci fix
+ * [387e2c1](../../commit/387e2c1) - __(2017-02-09 17:38:13 +0800)__ ci fix 2
+ * [e9fb368](../../commit/e9fb368) - __(2017-02-09 17:23:01 +0800)__ ci fix
+ * [882a151](../../commit/882a151) - __(2017-02-09 17:08:30 +0800)__ add step check , than redirect
+ * [f8b6c65](../../commit/f8b6c65) - __(2017-02-09 15:13:24 +0800)__ chcange password & update forgot password
+ * [61ef410](../../commit/61ef410) - __(2017-02-08 17:09:02 +0800)__ lighthouse fix
+ * [deb2b42](../../commit/deb2b42) - __(2017-02-08 15:19:01 +0800)__ redirect to submit list page
+ * [af14df5](../../commit/af14df5) - __(2017-02-08 12:24:56 +0800)__ ci fix 2
+ * [cd2454a](../../commit/cd2454a) - __(2017-02-08 11:57:20 +0800)__ ci fix
  * [4991c7e](../../commit/4991c7e) - __(2017-02-08 11:53:54 +0800)__ UserModule break sub module bank
  * [171c8ee](../../commit/171c8ee) - __(2017-02-07 14:52:50 +0800)__ ci fix
  * [2cdff91](../../commit/2cdff91) - __(2017-02-07 14:38:45 +0800)__ code improve 2

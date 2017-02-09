@@ -1,13 +1,12 @@
 <?php
 
-$appVersion = '0.1.6.3.c';
+$appVersion = '0.1.6.4';
 
 session_cache_limiter('');
 session_name('PP-Claims');
 session_start();
 
 $autoloader = require '../vendor/autoload.php';
-//$autoloader->addPsr4('PP\WebPortal\\', __DIR__.'/../app/src');
 
 date_default_timezone_set('Asia/Hong_Kong');
 

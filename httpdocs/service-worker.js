@@ -5,12 +5,12 @@
     importScripts('components/sw-toolbox/sw-toolbox.js');
 
     // Turn on debug logging, visible in the Developer Tools' console.
-    global.toolbox.options.debug = true;
+    global.toolbox.options.debug = false;
 
     // The route for the images
     global.toolbox.router.get('/assets/(.*)', global.toolbox.cacheFirst, {
         cache: {
-            name: 'assets2017-1b',
+            name: 'assets2017-2a',
             //maxAgeSeconds: 60 * 60 * 24 * 7 // cache for a week
             maxAgeSeconds: 60 * 60  // cache for 1 hr
         }
