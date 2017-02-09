@@ -215,13 +215,11 @@ var app = new Vue({
             return data;
         },
         saveBtn1: function () {
-            if (this.checkForm()) {
                 self = this;
                 this.goAjax(function (data) {
                     loadingBox.close();
                     saveClaimBox.open();
                 });
-            }
         },
         nextBtn1: function () {
             if (this.checkForm()) {

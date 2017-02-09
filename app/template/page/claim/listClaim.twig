@@ -27,7 +27,7 @@
                             <a href="{{ path_for('Claim.ClaimS4' , { 'id': claim.claim_id }) }}" class="list_claim">
                         {% else %}
                             {% set btnText = langText.editBtn %}
-                            <a href="{{ path_for('Claim.ClaimS1' , { 'id': claim.claim_id }) }}" class="list_claim">
+                            <a href="{{ path_for('Claim.ClaimS4' , { 'id': claim.claim_id }) }}" class="list_claim">
                         {% endif %}
                                 <i class="material-icons icon_color_4 icon_size_24">description</i>
                                 <h3>{{ claim.getDate() }}</h3>

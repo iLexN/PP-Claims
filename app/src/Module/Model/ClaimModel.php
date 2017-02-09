@@ -89,7 +89,9 @@ class ClaimModel extends ModelAbstract
 
     private function haveCheque()
     {
-        if ($this->data['payment_method'] === 'Cheque' && !empty($this->data['cheque'])) {
+        if ($this->data['payment_method'] === 'Cheque' && !empty($this->data['cheque'])
+                //&& !empty($this->data['cheque']['name']) && !empty($this->data['cheque']['address_line_2'])
+                ) {
             return true;
         }
 
@@ -98,27 +100,42 @@ class ClaimModel extends ModelAbstract
 
     public function isComplete()
     {
-        if ($this->haveFileUpload() && $this->haveReimburse()) {
+        if ( $this->haveStep1() && $this->haveFileUpload() && $this->haveReimburse()) {
             $this->data['isComplete'] = true;
         } else {
             $this->data['isComplete'] = false;
         }
     }
 
-    /*
+    private function haveStep1()
+    {
+        if ($this->data['amount'] === 0) {
+            return false;
+        }
+        $check = ['currency','date_of_treatment','diagnosis','payment_method','currency_receive'];
+
+        foreach ($check as $field) {
+            if (empty($this->data[$field])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function getStep()
     {
         if ($this->data['isComplete']) {
             return 'Claim.ClaimS4';
         }
 
+        if (!$this->haveStep1()) {
+            return 'Claim.ClaimS1';
+        }
+
         if (!$this->haveFileUpload() && $this->haveReimburse()) {
             return 'Claim.ClaimS3';
         }
-        //todo : check step1 than go s2?
 
-        if (!$this->haveReimburse()) {
-            return 'Claim.ClaimS1';
-        }
-    }*/
+        return 'Claim.ClaimS2';
+    }
 }

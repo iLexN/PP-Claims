@@ -23,19 +23,20 @@ final class ClaimStep4 extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $claims = $this->claimModule->getClaim($args['id']);
-        $policy = $this->policyModule->getPolices()[$claims['user_policy_id']];
-        $claimiant = $this->getClaimiant($claims['claimiant_ppmid'], $policy);
 
-        $response = $this->checkH2($response);
+        if ( $claims['isComplete'] ) {
+            $response = $this->checkH2($response);
+            $policy = $this->policyModule->getPolices()[$claims['user_policy_id']];
 
-        //todo : redirct to other step?
-
-        return $this->view->render($response, 'page/claim/step4.twig', [
-            'claim'    => $claims,
-            'policy'   => $policy,
-            'claimiant'=> $claimiant,
-            'token'    => $this->csrfHelper->getToken($request),
-        ]);
+            return $this->view->render($response, 'page/claim/step4.twig', [
+                'claim'    => $claims,
+                'policy'   => $policy,
+                'claimiant'=> $this->getClaimiant($claims['claimiant_ppmid'], $policy),
+                'token'    => $this->csrfHelper->getToken($request),
+            ]);
+        } else {
+            return $response->withStatus(301)->withHeader('Location', $this->c['router']->pathFor($claims->getStep(),['id'=>$claims['claim_id']]));
+        }
     }
 
     private function getClaimiant($id, $policy)
