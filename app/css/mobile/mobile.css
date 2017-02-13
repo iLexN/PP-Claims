@@ -101,3 +101,10 @@ page style
 .pending_box{
     margin-top:1rem;
 }
+
+.form_edit2 {
+    background-color: #ffeff0;
+    margin-left: -4.4rem;
+    margin-right: -2rem;
+    padding: 0 1rem 1rem;
+}

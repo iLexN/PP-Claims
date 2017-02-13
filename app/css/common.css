@@ -493,12 +493,6 @@ color: #f7941d;}
     margin-right: -1rem;
     padding: 1rem;
 }
-.form_edit2{
-    background-color: #ffeff0;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-    padding: 0.5rem;
-}
 
 /* form style*/
 .btn , .btn-large{ text-transform: none; font-weight: 600 }

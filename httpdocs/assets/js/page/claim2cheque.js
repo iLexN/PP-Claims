@@ -141,7 +141,13 @@ var app = new Vue({
         'useraddress': useraddress
     },
     watch: {
-
+        'new_addr_mode': function (val, oldVal) {
+            if (val) {
+                $.jshook('newAddressMode').addClass('form_edit').find("input , textarea").prop('disabled', false);
+            } else {
+                $.jshook('newAddressMode').removeClass('form_edit').find("input , textarea").prop('disabled', true);
+            }
+        }
     },
     computed: {
         address_lenght: function () {

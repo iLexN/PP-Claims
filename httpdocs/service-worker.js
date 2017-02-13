@@ -10,7 +10,7 @@
     // The route for the images
     global.toolbox.router.get('/assets/(.*)', global.toolbox.cacheFirst, {
         cache: {
-            name: 'assets2017-2a',
+            name: 'assets2017-2b',
             //maxAgeSeconds: 60 * 60 * 24 * 7 // cache for a week
             maxAgeSeconds: 60 * 60  // cache for 1 hr
         }

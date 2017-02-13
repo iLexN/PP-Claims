@@ -108,6 +108,7 @@
                             <i class="material-icons icon_color_3 icon_size_36" v-if="!mode" v-on:click='del' style="cursor:pointer">delete_forever</i>
                             <button class="{{ css.btn_2 }}" type="button" v-on:click="edit" v-if="!mode"  >{{ langText.editBtn }}</button>
                             <button class="{{ css.btn_2 }}" type="button" v-on:click="cancel" v-if="mode" >{{ langText.cancelBtn }}</button>
+                            <span>&nbsp;</span>
                             <button class="{{ css.btn_2 }}" type="button" v-on:click="save" v-if="mode" >{{ langText.saveBtn }}</button>
                         </div>
                     </div>
@@ -128,6 +129,7 @@
                     <input placeholder="{{ langText.member_addr_ph_addr4 }}" data-jshook="newAddressl4"  value="" class="validate" v-model="new_addr.address_line_5" type="text" style="margin-bottom:0">
                     <div class="right-align" style="padding-top:1rem">
                         <button class="{{ css.btn_2 }}" type="button" v-on:click="new_addr_mode = !new_addr_mode" >{{ langText.cancelBtn }}</button>
+                        <span>&nbsp;</span>
                         <button class="{{ css.btn_2 }}" type="button" v-on:click="saveNewAddress">{{ langText.saveBtn }}</button>
                     </div>
                 </div>

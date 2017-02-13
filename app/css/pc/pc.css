@@ -127,3 +127,10 @@ header {
 .claim_address_row{
     margin-bottom:0rem;
 }
+
+.form_edit2{
+    background-color: #ffeff0;
+    margin-left: -3.3125rem;
+    margin-right: -1.6875rem;
+    padding: 0 2rem;
+}
