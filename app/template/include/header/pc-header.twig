@@ -6,6 +6,7 @@
         <div class="right header_nav_bar"><a href="{{ path_for('Policy') }}" data-jshook="policy">{{ langText.title_policy }}</a></div>
         <div class="right header_nav_bar"><a href="{{ path_for('Claim.Index') }}" data-jshook="claims">{{ langText.title_claims }}</a></div>
         <div class="right header_nav_bar"><a href="{{ path_for('Member.index') }}" data-jshook="profile">{{ langText.title_profile }}</a></div>
+        <div class="right header_nav_bar"><a href="{{ path_for('Main') }}" data-jshook="main">{{ langText.title_home }}</a></div>
         <div class="right header_nav_bar"><a class='dropdown-button nav_active' data-beloworigin="true" href='#' data-activates='dropdown1'><img src="/assets/images/icon_user.png" style="margin-right:0.5rem;"><span class="hearder_nav_bar_username hide-on-med-only">{{ User.fullName() }}</span></a></div>
     </div>
     {% endif %}
