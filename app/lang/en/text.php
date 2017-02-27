@@ -14,7 +14,7 @@ return [
     'title_claims'  => 'Claims',
     'title_policy'  => 'Policy',
     'title_contact' => 'Contact Us',
-    'title_home' => 'Home',
+    'title_home'    => 'Home',
 
     // home page
     'home_headling'              => "Welcome to \n Pacific Prime Claims Portal",
