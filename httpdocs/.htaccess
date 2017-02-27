@@ -13,3 +13,11 @@
     RewriteRule ^(.*) - [E=BASE:%1]
     RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
 </IfModule>
+
+<IfModule mod_headers.c>
+    Header set Strict-Transport-Security "max-age=16070400;"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin"
+ </IfModule>

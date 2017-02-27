@@ -110,6 +110,9 @@ return [
     'claim_saved_list_no'     => 'You don\'t have any claims',
     'claim_submit_list_title' => 'Submited Claim',
 
+    //set new password
+    'set_new_password_title' => 'Set new Password',
+
     //form label
     'username'                           => 'Username',
     'passowrd'                           => 'Password',
@@ -206,5 +209,5 @@ return [
     'passwordSameError'       => 'password need same',
     'passwordNotStrongError'  => 'password not strong : password At least one Case Diff letter , At least one number , Be at least 8 characters',
     'forgotSetPasswordExpire' => 'Expire please try again',
-
+    'offline_mode'            => 'You are now offline',
 ];
