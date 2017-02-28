@@ -953,6 +953,10 @@ color: #f7941d;}
     margin-top: 0;
     display:none;
 }
+.form-style-3 [type="radio"] + label::before,
+.form-style-3 [type="radio"] + label::after{
+    margin:0;
+}
 
 .customlabel-1{
     height:5.3125rem;
