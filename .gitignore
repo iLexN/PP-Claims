@@ -3,7 +3,7 @@
 /php_error_log.txt
 /vendor/
 /cache/*
-/config/
+/config/*
 /upload/*
 /user_policy_file/*
 /httpdocs/f/
