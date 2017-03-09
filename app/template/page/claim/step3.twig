@@ -18,7 +18,7 @@
             <div class="col s12 m9 l7">
                 <div class="file_box_title">
                     <div><b>{{ langText.claim_step3_file_success }}</b></div>
-                    <div v-for="(val, key) in claim.file_attachments.claim_form">${ val.filename } <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteClaimForm(val)" style="cursor: pointer">delete_forever</i></div>
+                    <div v-for="(val, key) in claim.file_attachments.claim_form"><a :href="'/claim/'+claim.claim_id+/claim_form/+val.id">${ val.filename }</a> <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteClaimForm(val)" style="cursor: pointer">delete_forever</i></div>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
             <div class="col s12 m9 l7">
                 <div class="file_box_title">
                     <div><b>{{ langText.claim_step3_file_success }}</b></div>
-                    <div v-for="(val, key) in claim.file_attachments.support_doc">${ val.filename } <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteSupDoc(val)" style="cursor: pointer">delete_forever</i></div>
+                    <div v-for="(val, key) in claim.file_attachments.support_doc"><a :href="'/claim/'+claim.claim_id+/claim_form/+val.id">${ val.filename }</a> <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteSupDoc(val)" style="cursor: pointer">delete_forever</i></div>
                 </div>
             </div>
         </div>
