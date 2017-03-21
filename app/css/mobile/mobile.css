@@ -54,10 +54,10 @@ page style
 }
 /** main page block effect **/
 .view{
-    height: 8rem;
+    height: 9rem;
 }
 .view span{
-    transform: translateY(-1rem);
+    transform: translateY(-1.5rem);
 }
 .view1 img{
     margin-right:0.5rem;
@@ -67,7 +67,7 @@ page style
     padding-left:1rem;
     padding-right:1rem;
     transform: scale(1.1);
-    transform: translateY(-3.2rem);
+    transform: translateY(-3.5rem);
     color:#fff;
 }
 .view3 hr{

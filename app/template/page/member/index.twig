@@ -5,6 +5,11 @@
 
     <h1>{{ langText.title_profile }}</h1>
 
+    <div class="row">
+        <div class="s12">{{ langText.profile_page_desc }}</div>
+    </div>
+    
+    
     <div class="form-style-3">
         <div class="row">
             <div class="col s12 m3 l3" style="padding-top:1rem">{{ langText.member_select_title }}</div>
@@ -25,6 +30,9 @@
                 <div>{{ langText.member_info_name }} : <b>${ p.fullName }</b></div>
                 <div>{{ langText.member_info_dob }} : <b>${ p.date_of_birth }</b></div>
                 <div>{{ langText.member_info_nationality }} : <b>${ p.nationality }</b></div>
+                <div>
+                    {{ langText.profile_info_desc | raw }}
+                </div>
             </div>
         </div>
 
@@ -148,6 +156,10 @@
             {{ components.claim_info_box2(langText.member_btn_bank_transfer,'/assets/images/icon_creditcard2.svg', '' , path_for('Member.Bank') ) }}
         </div>
     </div>
+{% endblock %}
+
+{% block afterFooterHTML %}
+    {% include 'include/components/general-model.twig' %}
 {% endblock %}
 
 {% block jsBottom %}

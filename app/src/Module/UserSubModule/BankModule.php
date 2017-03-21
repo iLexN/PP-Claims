@@ -39,8 +39,9 @@ final class BankModule extends AbstractContainer
             ]);
 
         $this->pool->deleteItem('User/'.$this->userModule->user['ppmid'].'/bank');
+        $this->httpHelper->verifyResponse($response);
 
-        return  $this->httpHelper->verifyResponse($response);
+        return  $this->httpHelper->result;
     }
 
     public function delUserBankByAPI($id)

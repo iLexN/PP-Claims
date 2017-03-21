@@ -37,8 +37,9 @@ final class AddressModule extends AbstractContainer
             ]);
 
         $this->pool->deleteItem('User/'.$data['ppmid'].'/address');
+        $this->httpHelper->verifyResponse($response);
 
-        return  $this->httpHelper->verifyResponse($response);
+        return  $this->httpHelper->result;
     }
 
     public function delUserAddressByAPI($data, $url)

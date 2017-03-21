@@ -74,9 +74,14 @@ var useraddress = {
                     data: data,
                     dataType: "json"
                 }).done(function (data) {
-                    self.mode = false;
-                    self.$emit('addressupdate',self.k,data.data);
-                    loadingBox.close();
+                    if ( data.status_code === 2620) {
+                        self.mode = false;
+                        self.$emit('addressupdate',self.k,data.data);
+                        loadingBox.close();
+                    } else if ( data.status_code === 2626 ) {
+                        loadingBox.close();
+                        generalModel.open('Nickname used','The address nickname you have used already exists. Please use a different nickname and click save');
+                    }
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });
@@ -310,9 +315,18 @@ var app = new Vue({
                     data: data,
                     dataType: "json"
                 }).done(function (data) {
-                    self.resetNewAddress();
-                    self.p.address.push(data.data);
-                    loadingBox.close();
+                    if ( data.status_code === 2610) {
+                        self.resetNewAddress();
+                        self.p.address.push(data.data);
+                        loadingBox.close();
+                        generalModel.open('Address added','Thank you! Your new address has been added and can now be selected from any address selection menu in the portal.');
+                        return;
+                    } else if ( data.status_code === 2626) {
+                        console.log(data.errors.title);
+                        loadingBox.close();
+                        generalModel.open('Nickname used','The address nickname you have used already exists. Please use a different nickname and click save');
+                        return;
+                    }
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });

@@ -10,38 +10,42 @@ return [
     'logout' => 'Logout',
 
     //section title
-    'title_profile' => 'Member',
+    'title_profile' => 'Profiles',
     'title_claims'  => 'Claims',
     'title_policy'  => 'Policy',
     'title_contact' => 'Contact Us',
     'title_home'    => 'Home',
 
     // home page
-    'home_headling'              => "Welcome to \n Pacific Prime Claims Portal",
-    'home_verify_msg'            => 'Please verify at your first login.',
-    'home_verify_btn'            => 'Verify',
+    'home_headling'              => "Welcome to \n Pacific Prime's Member Portal",
+    'home_sub_title'             => 'Your online health insurance platform',
+    'home_verify_msg'            => 'First time logging in? Click here to register your Member Portal account.',
+    'home_verify_btn'            => 'Register',
     'home_forgot_password_link'  => 'Forgot Password?',
     'home_forgot_username_link'  => 'Forgot Username?',
 
     //main page
-    'desc_profile' => 'Profile desc desc',
-    'desc_claims'  => 'Claims desc desc',
-    'desc_policy'  => 'Policy desc desc desc desc desc  desc desc',
-    'desc_contact' => 'Contact Us desc desc',
+    'main_desc'    => 'For more information, hover over the boxes:',
+    'desc_profile' => 'View and manage the information for all member profiles here',
+    'desc_claims'  => 'View and manage all new, pending, and completed claims here',
+    'desc_policy'  => 'View your policy and premium details here',
+    'desc_contact' => 'View your Pacific Prime advisor’s contact information here',
 
     //member page
-    'member_btn_update_password' => 'Update Password',
-    'member_btn_bank_transfer'   => 'Bank Transfer',
+    'profile_page_desc'          => 'You can select and view the different profiles available under your insurance policies. If you would like to change any of the information, please press the edit button next to the item.',
+    'profile_info_desc'          => 'If any of these details are incorrect, please contact your Pacific Prime advisor from the <a href="/contact-us">page</a> or <a href="mailto:support@pacificprime.com">email</a>.',
+    'member_btn_update_password' => 'Change password',
+    'member_btn_bank_transfer'   => 'Change bank details',
     'member_select_title'        => 'Select Member',
     'member_select_choose'       => 'Choose Member',
     'member_info_title'          => 'Title',
     'member_info_name'           => 'Name',
     'member_info_dob'            => 'Date of Birth',
     'member_info_nationality'    => 'Nationality',
-    'member_contact_title'       => 'Contacts',
-    'member_PolicyAddr_title'    => 'Policy Address',
-    'member_pending_box_title'   => 'Pending Period',
-    'member_pending_box_desc'    => 'Editable items will consume few working days for approval, user cannot edit during pending period.',
+    'member_contact_title'       => 'Contact details',
+    'member_PolicyAddr_title'    => 'Policy address details',
+    'member_pending_box_title'   => 'Changes Pending',
+    'member_pending_box_desc'    => 'The pending symbol means that a previous change is being processed. New changes cannot be submitted until the pending ones are approved.',
     'member_customiseAddr_title' => 'Customise Address',
     'member_addr_ph_nick'        => 'Nick Name',
     'member_addr_ph_addr1'       => 'Address line 1',
@@ -49,11 +53,21 @@ return [
     'member_addr_ph_addr3'       => 'Address line 3',
     'member_addr_ph_addr4'       => 'Address line 4',
     // member/bank
-    'member_bank_title' => 'Bank Transfer',
-    'member_bank_desc'  => 'Provide bank account details will save your time during claim process',
+    'member_bank_title'             => 'Bank transfer details',
+    'member_bank_desc'              => "Providing your bank details can save you time during the claims process. Please ensure all details are correct and if you are unsure about your bank information, please contact your bank directly.\n\nTo remove a bank account, click edit on your chosen record and then click the delete button.",
+    'member_bank_option'            => 'Choose a bank record',
+    'member_bank_tip_p1'            => 'Remember to specify which currency you wish to be reimbursed in',
+    'member_bank_tip_p2'            => 'Please ensure all details are correct',
+    'member_bank_confirm_del_title' => 'Are you sure?',
+    'member_bank_confirm_del_desc'  => 'This bank record will not be recoverable if you delete it. If you wish to use the same details again, you will have to add it as a new record again.',
+
     // member/password
-    'member_password_title' => 'Update Password',
-    'member_password_dess'  => 'Change Password Text need?',
+    'member_password_title'     => 'Change Password',
+    'member_password_dess'      => 'Please enter your old password followed by your new password.',
+    'member_password_tip_title' => 'Password tips',
+    'member_password_tip_p1'    => 'Contain between 8-20 characters',
+    'member_password_tip_p2'    => 'Include at least one upper and lowercase letter',
+    'member_password_tip_p3'    => 'Include at least one number',
 
     //contact page
     'contact_office_title' => 'Our Office',
@@ -111,7 +125,10 @@ return [
     'claim_submit_list_title' => 'Submited Claim',
 
     //set new password
-    'set_new_password_title' => 'Set new Password',
+    'set_new_password_title' => 'Reset your password',
+    'set_new_password_desc'  => 'Please enter your new password below, and click submit to reset your password. ',
+    'set_new_password_tip'   => 'Password instructions: For security purposes, your password must contain between 8-20 characters, both an upper and lowercase letter, and at least one number.',
+    'set_new_password_done'  => 'Thank you! You have successfully reset your password. Please click <a href="/main" style="color:#0292e4">here</a> to log in.',
 
     //form label
     'username'                           => 'Username',
@@ -124,7 +141,7 @@ return [
     'phone'                              => 'Phone',
     'phone1'                             => 'Phone 1',
     'phone2'                             => 'Phone 2',
-    'ppmid_code'                         => 'Provided Code',
+    'ppmid_code'                         => 'Registration code',
     'dob'                                => 'Date of Birth',
     'year'                               => 'Year',
     'month'                              => 'Month',
@@ -139,8 +156,8 @@ return [
     'payment_method'                     => 'Payment Method',
     'cheque'                             => 'Cheque',
     'bank'                               => 'Bank Transfer',
-    'bank_custom_name'                   => 'Customize Bank Name',
-    'bank_acc_user'                      => 'Account User Name',
+    'bank_custom_name'                   => 'Bank Record Name',
+    'bank_acc_user'                      => 'Account Name',
     'bank_acc_no'                        => 'Account Number',
     'bank_name'                          => 'Bank Name',
     'bank_swift_code'                    => 'Bank Swift Code',
@@ -171,21 +188,23 @@ return [
     'newBankBtn'    => 'New Bank Account',
     'chooseFileBtn' => 'File',
     'uploadBtn'     => 'Upload',
-    'newAddrBtn'    => 'New Address',
+    'newAddrBtn'    => 'Add new address',
 
     //components
     //forgotpassword
-    'forgotpassword_title'   => 'Forgot Password',
-    'forgotpassword_desc'    => 'Please provide long text Please provide long text Please provide long text',
-    'forgotpassword_success' => 'Please check your email and reset your password',
+    'forgotpassword_title'   => 'Forgot Password?',
+    'forgotpassword_desc'    => "Please enter your username and we'll help you reset your password.",
+    'forgotpassword_success' => "Thank you! We have sent you an email with a link to reset your password. \n\n If you haven't received your password reset email within the next few minutes, try searching for it in your spam or junk folder. If you still can't find locate the email, please contact us.",
+    'forgotpassword_help'    => "Forgot Username?\nIf you require any further assistance, please contact us.",
     //forgotusername
-    'forgotusername_title'   => 'Forgot Username',
-    'forgotusername_desc'    => 'Please provide long text Please provide long text Please provide long text',
-    'forgotusername_success' => 'Please check your email',
+    'forgotusername_title'   => 'Forgot Username?',
+    'forgotusername_desc'    => 'Please enter your full name, email address, and phone number to retrieve your username. ',
+    'forgotusername_success' => "Thank you! We have sent you an email with your username. Please try to log in again with your username and password. \n\n If you haven't received the username email within the next few minutes, try searching for it in your spam or junk folder. If you still can't locate the email, please contact us. ",
+    'forgotusername_help'    => 'If you require any further assistance, please contact us.',
     //user verify
-    'userVerify_title' => 'Verify',
-    'userVerify_desc'  => 'Please provide long text Please provide long text Please provide',
-    'userSignup_desc'  => 'password At least one Case Diff letter , At least one number , Be at least 8 characters',
+    'userVerify_title' => 'Register your account',
+    'userVerify_desc'  => 'Please enter the registration code provided to you by Pacific Prime to register and verify your account. You will also need to enter your date of birth. If you do not have a code, please contact us. ',
+    'userSignup_desc'  => 'Password instructions: For security purposes, your password must contain between 8-20 characters, both an upper and lowercase letter, and at least one number. ',
 
     //policy contact
     'policy_contact_title'      => 'Policy:',
@@ -197,8 +216,12 @@ return [
     'save_claim_Success' => 'You can contine or find this saved claim in saved list',
 
     //passwordUpdatedBox
-    'password_updated_title' => 'Your Password updated.',
-    'password_updated_desc'  => 'Your Password updated. ... long text',
+    'password_updated_title' => 'Password changed!',
+    'password_updated_desc'  => 'Your password has been successfully changed. Please use the new password to log in. ',
+
+    //new address
+    'new_address_success_title' =>'Address added',
+    'new_address_success_desc'  => 'Thank you! Your new address has been added and can now be selected from any address selection menu in the portal',
 
     //Tips
     'tips_title' => 'Tips',
@@ -206,8 +229,8 @@ return [
     //system
     'csrfError'               => 'Please try again',
     'loginExpired'            => 'Login Expired ....',
-    'passwordSameError'       => 'password need same',
-    'passwordNotStrongError'  => 'password not strong : password At least one Case Diff letter , At least one number , Be at least 8 characters',
+    'passwordSameError'       => 'It appears that the passwords you have entered do not match. Please try again.',
+    'passwordNotStrongError'  => 'It appears that the password you have entered does not meet our password requirements. Please try again.',
     'forgotSetPasswordExpire' => 'Expire please try again',
     'offline_mode'            => 'You are now offline',
 ];

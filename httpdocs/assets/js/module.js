@@ -191,6 +191,38 @@ var saveClaimBox = (function () {
     };
 })();
 
+var generalModel = (function () {
+    var $m = $('#generalModel');
+    var $title = $('#generalModelTitle');
+    var $desc = $("#generalModelDesc");
+    function open(title,desc) {
+        $title.html(title);
+        $desc.html(desc);
+        $m.modal('open');
+    }
+    function close() {
+        $m.modal('close');
+    }
+    function init() {
+        $m.modal({
+            dismissible: false,
+            opacity: .4,
+            starting_top: '30%',
+            ending_top: '30%',
+            in_duration: 500,
+            out_duration: 100
+        });
+        $.jshook('generalModelBtnClose').on({
+            'click' : close
+        });
+    }
+    init();
+    return {
+        'open': open,
+        'close': close
+    };
+})();
+
 function activeNav(hookName) {
     $.jshook(hookName).addClass('nav_active');
 }

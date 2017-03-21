@@ -20,6 +20,18 @@
                 //success
                 window.location.replace("/main");
                 return;
+                loadingBox.open();
+                $("#forgotSetPassword").modal({
+            dismissible: true,
+            opacity: .4,
+            starting_top: '10%',
+            ending_top: '10%',
+            in_duration: 500,
+            out_duration: 100
+            });
+               $('#forgotSetPassword').modal('open');
+                
+                return;
             }
             //fail
             ajaxEnd(data.errors.title);

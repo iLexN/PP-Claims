@@ -73,7 +73,14 @@
                 return;
             }
             //fail
-            ajaxEnd(data.errors.title);
+            var e_msg = '';
+            if ( data.status_code === 1010) {
+                e_msg = "Sorry! It looks like the field below is blank. Please fill it in to proceed.";
+            } else if ( data.status_code === 2010 ){
+                e_msg = 'Sorry, the username you have just entered doesn’t seem to exist. Please double check what you have entered or try re-entering your username again.';
+            }
+            
+            ajaxEnd(e_msg);
         }).fail(function (jqXHR, textStatus, errorThrown) {
             ajaxEnd(textStatus);
         });
@@ -139,7 +146,14 @@
                 return;
             }
             //fail
-            ajaxEnd(data.errors.title);
+            var e_msg = '';
+            if ( data.status_code === 1020 ) {
+                e_msg = 'Sorry! It seems that there is a missing field. Please fill in the missing fields below.';
+            } else if ( data.status_code === 2010 ) {
+                e_msg = 'Sorry, the email address that you have provided does not appear to be in our database. Please try re-entering your information again.';
+            }
+            
+            ajaxEnd(  e_msg );
             $m.scrollTop(10);
         }).fail(function (jqXHR, textStatus, errorThrown) {
             ajaxEnd(textStatus);
@@ -212,8 +226,17 @@
                 ajaxEnd();
                 return;
             }
+            var e_msg = '';
+            if ( data.status_code === 1020 ){
+                e_msg = 'Sorry, it looks like the field below is blank. Please try again and enter your registration code in the field below. If you do not have a code, please contact us.';
+            } else if ( data.status_code === 2010 ) {
+                e_msg = 'Sorry, it looks like you have entered the wrong registration code. Please try again, or contact us if you require further assistance.';
+            } else if ( data.status_code === 2051 ){
+                e_msg = 'Sorry, it appears that the birth date you have entered does not meet our requirements. Please double check the date of birth you have entered, or ensure that you have entered the main policyholder’s date of birth. Contact us if you require further assistance.';
+            }
+            
             //fail
-            ajaxEnd(data.errors.title);
+            ajaxEnd(e_msg);
         }).fail(function (jqXHR, textStatus, errorThrown) {
             ajaxEnd(textStatus);
         });
@@ -234,6 +257,18 @@
                 return;
             }
             //fail
+            
+            var e_msg = '';
+            if ( data.status_code === 2070 ){
+                e_msg = 'This username already exists, please enter another username.';
+                ajaxEnd(e_msg);
+                return;
+            } else if ( data.status_code === 1010) {
+                e_msg = 'Sorry, it looks like the field below is blank. Please try again and enter your registration code in the field below. If you do not have a code, please contact us. ';
+                ajaxEnd(e_msg);
+                return;
+            }
+            
             ajaxEnd(data.errors.title);
         }).fail(function (jqXHR, textStatus, errorThrown) {
             ajaxEnd(textStatus);

@@ -6,7 +6,7 @@
 
     <div class="pending_box" style="padding:0.5rem;margin-bottom:1rem">
         <div class="pending_box_icon" style="padding:0 0.5rem"><img src="/assets/images/icon_creditcard2.svg"></div>
-        <div class="padding_box_desc">{{ langText.member_bank_desc }}</div>            
+        <div class="padding_box_desc">{{ langText.member_bank_desc | nl2br }}</div>            
     </div>
 
     <div class="form-style-3">
@@ -15,7 +15,7 @@
             
                 <div class="input-field col s8">
                     <select data-jshook="bankSelectBox">
-                        <option value="" disabled selected>Choose your option</option>
+                        <option value="" disabled selected>{{ langText.member_bank_option }}</option>
                         <option v-for="(val, key) in banks" :value="key" >${ val.nick_name }</option>
                     </select>
                 </div>
@@ -36,13 +36,18 @@
                 <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
                 <div class="tipsbox_info">
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
-                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="tipsbox_textbox min-text">{{ langText.member_bank_tip_p1 }}</div>
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
-                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                    <div class="tipsbox_textbox min-text">{{ langText.member_bank_tip_p2 }}</div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block afterFooterHTML %}
+    {% include 'include/components/general-model.twig' %}
+    {% include 'include/components/confirm-del-bank.twig' %}
 {% endblock %}
 
 {% block jsBottom %}

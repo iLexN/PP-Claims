@@ -45,7 +45,7 @@
                 <button data-jshook="newBank formBtn" class="{{ css.btn_1 }}" type="button" v-on:click="saveBank"><i class="material-icons left">create_new_folder</i>{{ langText.saveBankBtn }}</button>
             </div>
             <div class="col s12 right-align" v-else>
-                <button data-jshook="delBank formBtn" type="button" class="{{ css.btn_3 }}" v-on:click="delBtn" v-if="canDel">{{ langText.delBtn }}</button>
+                <button data-jshook="delBank formBtn" type="button" class="{{ css.btn_3 }}" v-on:click="confirmDelBtn" v-if="canDel">{{ langText.delBtn }}</button>
                 <span>&nbsp;</span>
                 <button data-jshook="cancelBank" class="{{ css.btn_3 }}" type="button" v-on:click="cancelBtn">{{ langText.cancelBtn }}</button>
                 <span>&nbsp;</span>
