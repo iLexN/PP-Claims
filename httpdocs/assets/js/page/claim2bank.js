@@ -77,19 +77,23 @@ var app = new Vue({
             if (this.checkBank()) {
                 var self = this;
                 this.goAjax(function (data) {
-                    self.edit = false;
-                    self.bigSaveBtn = false;
-                    self.bank.banker_transfer_id = data.data.banker_transfer_id;
-                    self.bank.currency_display = $.jshook('currency').find('option:selected').text();
-                    
-                    if ( self.banks.length === 0 ){
-                        self.banks.push(self.bank);
+                    if (data.status_code === 3611 || data.status_code === 3610) {
+                        self.edit = false;
+                        self.bigSaveBtn = false;
+                        self.bank.banker_transfer_id = data.data.banker_transfer_id;
+                        self.bank.currency_display = $.jshook('currency').find('option:selected').text();
+
+                        if (self.banks.length === 0) {
+                            self.banks.push(self.bank);
+                        }
+
+                        _.delay(function () {
+                            $('select').material_select();
+                            $('.select-dropdown').val(self.bank.nick_name);
+                        }, 100);
+                    } else if (data.status_code === 3613) {
+                        generalModel.open('Bank record name already used', 'The name for this bank record is already being used. Please select a new one and try again.');
                     }
-                    
-                    _.delay(function () {
-                        $('select').material_select();
-                        $('.select-dropdown').val(self.bank.nick_name);
-                    }, 100);
                 });
             }
         },
@@ -97,12 +101,11 @@ var app = new Vue({
             if (this.checkBank()) {
                 var self = this;
                 this.goAjax(function (data) {
-                    self.edit = false;
-                    self.bank.currency_display = $.jshook('currency').find('option:selected').text();
-
-                    if (data.status_code == '3610') {
+                    if (data.status_code === 3610 || data.status_code === 3611) {
+                        self.edit = false;
+                        self.bank.currency_display = $.jshook('currency').find('option:selected').text();
                         // create / new
-                        if ( self.from_edit ) {
+                        if (self.from_edit) {
                             self.bank.banker_transfer_id = data.data.banker_transfer_id;
                             self.banks[self.key] = self.bank;
                             self.form_edit = false;
@@ -111,16 +114,19 @@ var app = new Vue({
                             self.banks.push(self.bank);
                             self.key = self.banks.length - 1;
                         }
-                    } else {
-                        //update
-                        self.banks[self.key] = self.bank;
+
+                        if (data.status_code === 3611) {
+                            self.banks[self.key] = self.bank;
+                        }
+
+                        _.delay(function () {
+                            $('select').material_select();
+                            $('.select-dropdown').val(self.bank.nick_name);
+                        }, 100);
+                    } else if (data.status_code === 3613) {
+                        generalModel.open('Bank record name already used', 'The name for this bank record is already being used. Please select a new one and try again.');
+                        $("#nick_name").addClass('invalid');
                     }
-
-                    _.delay(function () {
-                        $('select').material_select();
-                        $('.select-dropdown').val(self.bank.nick_name);
-                    }, 100);
-
                 });
             }
         },
@@ -167,6 +173,10 @@ var app = new Vue({
             this.edit = false;
             $('select').material_select();
             $('.select-dropdown').val(this.bank.nick_name);
+            $("input").removeClass('invalid');
+        },
+        confirmDelBtn: function () {
+            confirmDelBankModel.open();
         },
         delBtn: function () {
             var self = this;
@@ -177,17 +187,25 @@ var app = new Vue({
                 data: data,
                 dataType: "json"
             }).done(function (data, textStatus, jqXHR) {
-                console.log(data);
-                if ( data.status_code === 3612 ) {
-                    self.banks.splice(self.key,1);
+                if (data.status_code === 3612) {
+                    self.banks.splice(self.key, 1);
                     self.key = 0;
-                    console.log('length');
-                    console.log(self.banks.length);
-                    if ( self.banks.length === 0) {
-                        console.log(self.banks.length);
+                    if (self.banks.length === 0) {
                         self.edit = true;
                         self.bigSaveBtn = true;
                         self.bank.banker_transfer_id = null;
+                        self.bank = {
+                            'nick_name': '',
+                            'currency': self.bank.currency,
+                            'account_user_name': '',
+                            'account_number': '',
+                            'iban': '',
+                            'branch_code': '',
+                            'bank_swift_code': '',
+                            'bank_name': '',
+                            'additional_information': '',
+                            'intermediary_bank_swift_code': ''
+                        };
                     } else {
                         self.edit = false;
                         self.bank = self.banks[0];
@@ -196,7 +214,7 @@ var app = new Vue({
                             $('.select-dropdown').val(self.bank.nick_name);
                         }, 100);
                     }
-                        
+                    generalModel.open('Record deleted', 'The bank record selected has been deleted.');
                 }
                 loadingBox.close();
             }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -281,3 +299,38 @@ $.jshook('bankSelectBox').on({
         app.changeBank($(this).val());
     }
 });
+
+var confirmDelBankModel = (function () {
+    var $m = $('#confirmDelBankModel');
+
+    function open(title, desc) {
+        $m.modal('open');
+    }
+    function close() {
+        $m.modal('close');
+    }
+    function init() {
+        $m.modal({
+            dismissible: false,
+            opacity: .4,
+            starting_top: '30%',
+            ending_top: '30%',
+            in_duration: 500,
+            out_duration: 100
+        });
+        $.jshook('confirmDelBankModelBtnClose').on({
+            'click': close
+        });
+        $.jshook('confirmDelBankModelBtnDel').on({
+            'click': function () {
+                close();
+                app.delBtn();
+            }
+        });
+    }
+    init();
+    return {
+        'open': open,
+        'close': close
+    };
+})();

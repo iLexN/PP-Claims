@@ -5,9 +5,10 @@
     <h1>{{ langText.title_claims }}</h1>
 
     {#% include 'include/components/claim-breadcrumb.twig' %#}
-
-    {% include 'include/components/select-policy.twig' %}
-
+    <div class="row form-style-3">
+        <div class="col s12">{{ langText.claim_intro }}</div>
+        {% include 'include/components/select-policy.twig' %}
+    </div>
     <div class="row">
         <div class="col s12 m12 l10">
             <a :href="claimFormUrl" class="claim_info_box1">
@@ -37,10 +38,12 @@
 
 {% block rightHTML %}
     <div class="col s12">
+        <p>{{ langText.claim_contact_box_p }}</p>
             <div class="contact_box2">
                 {% set contact = contacts.0 %}
                 <!--<div class="contact_box2_title">{{ contact.region_full }}</div>-->
-                <h3>{{ contact.region_full }}</h3>
+                <!--<h3>{{ contact.region_full }}</h3>-->
+                <h3>{{ langText.claim_contact_box_st }}</h3>
                 <div class="contact_box2_detailbox">
                     <div class="left contact_box2_iconbox"><i class="material-icons icon_color_2 icon_size_18">email</i></div>
                     <div class="contact_box2_infobox"><a href="mailto:" class="contact_box2_a">email@address</a></div>

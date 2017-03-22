@@ -5,7 +5,7 @@
                 <h4>{{ langText.save_claim_title }}</h4>
             </div>
             <div class="col s12">
-                <p class="home_model-content_p valid_msg">{{ langText.save_claim_Success }}</p>
+                <p class="home_model-content_p valid_msg">{{ langText.save_claim_Success | nl2br }}</p>
                 {#{ forms.MD_button_1('saveClaimBtnClose',langText.closeBtn,'button') }#}
                 <button data-jshook="saveClaimBtnClose" class="{{ css.btn_1 }}" type="button" >{{ langText.closeBtn }}</button>
             </div>

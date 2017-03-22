@@ -50,9 +50,11 @@
                 <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
                 <div class="tipsbox_info">
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
-                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="tipsbox_textbox min-text">{{ langText.claim_step2_bank_tip_p1 }}</div>
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
-                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                    <div class="tipsbox_textbox min-text">{{ langText.claim_step2_bank_tip_p2 }}</div>
+                    <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
+                    <div class="tipsbox_textbox min-text">{{ langText.claim_step2_bank_tip_p3 }}</div>
                 </div>
             </div>
         </div>
@@ -61,6 +63,8 @@
 
 {% block afterFooterHTML %}
     {% include 'include/components/save-claim.twig' %}
+    {% include 'include/components/general-model.twig' %}
+    {% include 'include/components/confirm-del-bank.twig' %}
 {% endblock %}
 
 {% block jsBottom %}

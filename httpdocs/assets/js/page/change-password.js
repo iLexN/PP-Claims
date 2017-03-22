@@ -73,6 +73,7 @@ var app = new Vue({
                         return;
                     } else if ( data.status_code === 2520) {
                         $("#msg").html('Your old password appears to be incorrect. Please enter it again.').parent().removeClass('hide');
+                        loadingBox.close();
                         return;
                     }
                     $("#msg").html(data.errors.title).parent().removeClass('hide');

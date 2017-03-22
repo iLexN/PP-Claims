@@ -5,7 +5,14 @@
 
     <h1>{{ langText.title_policy }}</h1>
 
-    {% include 'include/components/select-policy.twig' %}
+    <div class="row">
+        <div class="col s12 semibold">{{ langText.policy_info_intro }}</div>
+    </div>
+    
+    <div class="row form-style-3">
+        <div class="col s12">{{ langText.policy_info_select }}</div>
+        {% include 'include/components/select-policy.twig' %}
+    </div>
 
     <div class="row form-style-3">
         <div class="input-field col s12 m5 l5">
@@ -54,6 +61,7 @@
     <div class="col s12 m10 l10 offset-m2 offset-l2">
         <div data-jshook="pushpin">
             <h2><i class="material-icons icon_color_4 icon_size_24">file_download</i> {{ langText.policy_info_download }}</h2>
+            <p>{{ langText.policy_info_download_sub }}</p>
             <filelist  v-for="(val, key) in p.planfile" :f="val" :up="p.pivot.id" :key="p.pivot.id" t="planfile" inline-template>
                 <a class="{{ css.btn_2 }}" :href="downloadUrl" download>${ f.display_name }</a>
             </filelist>
