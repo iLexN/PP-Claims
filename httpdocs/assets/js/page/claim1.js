@@ -133,9 +133,11 @@ var app = new Vue({
         },
         checkStep1: function () {
             var error_el = [];
+            var error_msg = '';
             if (!dateModule.isSameOrBefore(this.claim.date_of_treatment)) {
                 $.jshook('treatment_error').show();
                 error_el.push('claim_step1_when_q');
+                error_msg += '<p><b>What was your treatment date?</b><br/>Claims cannot use a future date. Please select again. </p>';
             } else {
                 $.jshook('treatment_error').hide();
             }
@@ -143,6 +145,7 @@ var app = new Vue({
                 $.jshook('diagnosis').addClass('invalid');
                 $.jshook('diagnosis_error').show();
                 error_el.push('claim_step1_diagnosis_q');
+                error_msg += '<p><b>Missing Information</b><br/>You are missing some required information in the claim details\' field. Please check the information you have provided and try again. </p>';
             } else {
                 $.jshook('diagnosis').removeClass('invalid');
                 $.jshook('diagnosis_error').hide();
@@ -150,11 +153,13 @@ var app = new Vue({
             if (this.claim.amount === '') {
                 error_el.push('claim_step1_invoice_q');
                 $.jshook('amount').addClass('invalid');
+                error_msg += '<p><b>How much was your invoice?</b><br/>Number value required. </p>';
             }
             if (error_el.length === 0) {
                 return true;
             } else {
                 this.scrollTop(error_el[0]);
+                generalModel.open('', error_msg);
                 return false;
             }
         },

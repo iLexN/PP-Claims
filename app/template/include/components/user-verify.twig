@@ -4,6 +4,13 @@
             <div class="col s12">
                 <h4>{{ langText.userVerify_title }}</h4>
             </div>
+            
+            <div class="col s12 hide" data-jshook="userVerifySuccess">
+                <p style="text-align:center"><img src="/assets/images/icon_tick.svg"></p>
+                <p class="home_model-content_p valid_msg">{{ langText.userVerify_success_success | nl2br }}</p>
+                <button data-jshook="userVerifyBtnGo" class="{{ css.btn_1 }}" type="button" >{{ langText.closeBtn }}</button>
+            </div>
+            
             <form class="form-style-2" data-jshook="userVerifyForm">
                 <div class="col s12">
                     <p class="home_model-content_p">{{ langText.userVerify_desc }}</p>

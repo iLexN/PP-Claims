@@ -76,12 +76,19 @@ var useraddress = {
                     data: data,
                     dataType: "json"
                 }).done(function (data) {
-                    self.mode = false;
-                    self.$emit('addressupdate', self.k, data.data);
-                    loadingBox.close();
+                    if ( data.status_code === 2620) {
+                        self.mode = false;
+                        self.$emit('addressupdate',self.k,data.data);
+                        loadingBox.close();
+                    } else if ( data.status_code === 2626 ) {
+                        loadingBox.close();
+                        generalModel.open('Nickname used','The address nickname you have used already exists. Please use a different nickname and click save');
+                    }
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });
+            } else {
+                generalModel.open('Missing information','Your address must include a nickname and at least one address line. Please try again, or use one of your existing addresses.');
             }
         },
         del: function () {
@@ -164,7 +171,7 @@ var app = new Vue({
         resetNewAddress: function () {
             this.new_addr_mode = false;
             this.new_addr = {
-                'ppmid': this.ppmid,
+                'ppmid': ppmid,
                 'nick_name': '',
                 'address_line_2': '',
                 'address_line_3': '',
@@ -193,12 +200,22 @@ var app = new Vue({
                     data: data,
                     dataType: "json"
                 }).done(function (data) {
-                    self.resetNewAddress();
-                    self.address.push(data.data);
-                    loadingBox.close();
+                    if ( data.status_code === 2610) {
+                        self.resetNewAddress();
+                        self.address.push(data.data);
+                        loadingBox.close();
+                        generalModel.open('Address added','Thank you! Your new address has been added and can now be selected from any address selection menu in the portal.');
+                        return;
+                    } else if ( data.status_code === 2626) {
+                        loadingBox.close();
+                        generalModel.open('Nickname used','The address nickname you have used already exists. Please use a different nickname and click save');
+                        return;
+                    }
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });
+            } else {
+                generalModel.open('Missing information','Your address must include a nickname and at least one address line. Please try again, or use one of your existing addresses.');
             }
         },
         addressUpdates: function (key, data) {

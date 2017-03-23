@@ -5,7 +5,8 @@
                 <h4>{{ langText.forgotusername_title }}</h4>
             </div>
             <div class="col s12 hide" data-jshook="forgotUsernameSuccess">
-                <p class="home_model-content_p valid_msg"><i class="material-icons icon_color_1 icon_size_24 ">done</i> {{ langText.forgotusername_success | nl2br }}</p>
+                <p style="text-align:center"><img src="/assets/images/icon_tick.svg"></p>
+                <p class="home_model-content_p valid_msg">{{ langText.forgotusername_success | nl2br }}</p>
                 <button data-jshook="forgotUsernameBtnClose" class="{{ css.btn_1 }}" type="button" >{{ langText.closeBtn }}</button>
             </div>
             <form class="form-style-2" data-jshook="forgotUsernameForm">
@@ -27,8 +28,8 @@
                 <div class="col s12 m12 l8 offset-l2 center-align">
                     <button data-jshook="forgotUsernameBtn formBtn" class="{{ css.btn_3 }}" type="button" >{{ langText.submitBtn }}<i class="material-icons right">send</i></button>
                 </div>
-                <div class="col s12 m12 l8 offset-l2 home_model-content_p">
-                    <p>{{ langText.forgotusername_help }}</p>
+                <div class="col s12 m12 l8 offset-l2">
+                    <p class="home_model-content_p">{{ langText.forgotusername_help }}</p>
                 </div>
             </form>
         </div>

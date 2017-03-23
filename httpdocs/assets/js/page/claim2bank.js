@@ -165,6 +165,7 @@ var app = new Vue({
                 return true;
             } else {
                 this.scrollTop(error_el[0]);
+                generalModel.open('Missing information','You are missing some required information in the bank details\' field. Please enter the information and try again.');
                 return false;
             }
         },

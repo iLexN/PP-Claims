@@ -31,15 +31,15 @@
 
             <div class="col s12 m12 l6"   v-for="(value, key) in address" :key="value.id">
                 <div class="row claim_address_row">
-                    <div class="col s2 m1 l1" style="padding-top:1.875rem">
+                    <div class="col s2 m2 l2" style="padding-top:1.875rem">
                         <input name="group1" type="radio" :value="key" :id="key" v-model="address_key" />
                         <label :for="key"></label>
                     </div>
-                    <div class="input-field col s10 m10 l10">
+                    <div class="input-field col s10 m10 l10" style="padding-left:0;padding-right:0">
                         <useraddress  :address='value' :k='key' ref="addraddr" v-on:addressupdate="addressUpdates" v-on:addressdelete="addressDel" v-on:addressactive="addressActives(key)" :key="value.id" inline-template>
                             <div>
                                 <div :data-jshook="'member_address addr_'+address.id" >
-                                    <label data-error="Required" class="active" v-if='!mode'>${ a.nick_name }</label>
+                                    <label data-error="Required" class="active" v-if='!mode' style="left:0">${ a.nick_name }</label>
                                     <input placeholder="{{ langText.member_addr_ph_nick }}"  value=""  class="validate" type="text" style="margin-bottom:0" v-model="a.nick_name" v-if='mode'>
                                     <input placeholder="{{ langText.member_addr_ph_addr1 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_2">
                                     <input placeholder="{{ langText.member_addr_ph_addr2 }}"  value="" class="validate" type="text" style="margin-bottom:0" v-model="a.address_line_3">
@@ -84,6 +84,8 @@
         <div class="gen_divider"></div>
         <div class="row">
             <div class="col s12 right-align">
+                <button id="backBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }} hide-on-small-only" type="button">{{ langText.backBtn }}</button>
+                <div class="btn_h_space"></div>
                 <button id="saveBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
                 <div class="btn_h_space"></div>
                 <button id="nextBtn" data-jshook="nextBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
@@ -101,9 +103,9 @@
                 <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>
                 <div class="tipsbox_info">
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
-                    <div class="tipsbox_textbox min-text">tip1 To create a radio </div>
+                    <div class="tipsbox_textbox min-text">{{ langText.claim_step2_tip_p1 }}</div>
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
-                    <div class="tipsbox_textbox min-text">tip1 To create a radio button with a gap, </div>
+                    <div class="tipsbox_textbox min-text">{{ langText.claim_step2_tip_p2 }}</div>
                 </div>
             </div>
         </div>
@@ -112,6 +114,7 @@
 
 {% block afterFooterHTML %}
     {% include 'include/components/save-claim.twig' %}
+    {% include 'include/components/general-model.twig' %}
 {% endblock %}
 
 {% block jsBottom %}
@@ -131,6 +134,9 @@
         {% if not is_mobile() %}
             pinTop.init();
         {% endif %}
+        $("#backBtn").click(function(){
+            window.location.href = '{{ path_for('Claim.ClaimS1' ,  { 'id': claim.claim_id }  ) }}';
+        });
     </script>
     {% include 'include/components/csrf.twig' %}
 {% endblock %}

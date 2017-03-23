@@ -18,11 +18,12 @@
         }).done(function (data, textStatus, jqXHR) {
             if (data.status_code === 2570) {
                 //success
-                window.location.replace("/main");
-                return;
-                loadingBox.open();
+                //window.location.replace("/main");
+                //return;
+                
+                loadingBox.close();
                 $("#forgotSetPassword").modal({
-            dismissible: true,
+            dismissible: false,
             opacity: .4,
             starting_top: '10%',
             ending_top: '10%',

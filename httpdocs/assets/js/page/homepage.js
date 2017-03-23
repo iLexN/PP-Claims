@@ -202,6 +202,8 @@
     var $formSignup = $.jshook('userSignForm');
     var $btnSignup = $.jshook('userSignupBtn');
     var $msgSignup = $.jshook('userSignUpMsg');
+    var $msgSuccess = $.jshook('userVerifySuccess');
+    var $userVerifyBtnGo = $.jshook('userVerifyBtnGo');
 
     function submit() {
         var data = csrf.getFormObj($form.serializeArray());
@@ -253,7 +255,11 @@
             dataType: "json"
         }).done(function (data, textStatus, jqXHR) {
             if (data.status_code === 2030) {
-                window.location.replace("/main");
+                loadingBox.close();
+                //window.location.replace("/main");
+                $formSignup.addClass('hide');
+                $msgSuccess.removeClass('hide');
+                
                 return;
             }
             //fail
@@ -308,6 +314,11 @@
         });
         $formSignup.on({
             submit : false
+        });
+        $userVerifyBtnGo.on({
+            'click' : function(){
+                window.location.replace("/main");
+            }
         });
     }
     init();

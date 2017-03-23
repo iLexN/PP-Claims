@@ -2,9 +2,10 @@
 {% import "macro/forms.twig" as forms %}
 
 {% block leftHTML %}
-    <h1>{{ langText.claim_step4_title }}</h1>
+    <h1 v-if="isSave">{{ langText.claim_step4_title }}</h1>
+    <h1 v-if="!isSave">{{ langText.claim_step4_title_view }}</h1>
     
-    <div class="row">
+    <div class="row" v-if="isSave">
         <div class="col s12 semibold">{{ langText.claim_step4_intro }}</div>
     </div>
     
@@ -151,7 +152,7 @@
 {% endblock %}
 
 {% block rightHTML %}
-    <div class="col s12">
+    <div class="col s12" v-if="isSave">
         <div data-jshook="pushpin">
             <div class="tipsBox">
                 <div class="tipsbox_title"><i class="material-icons icon_color_5 icon_size_22">stars</i> {{ langText.tips_title }}</div>

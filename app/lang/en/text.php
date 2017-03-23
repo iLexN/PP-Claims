@@ -47,8 +47,8 @@ return [
     'member_pending_box_title'   => 'Changes Pending',
     'member_pending_box_desc'    => 'The pending symbol means that a previous change is being processed. New changes cannot be submitted until the pending ones are approved.',
     'member_customiseAddr_title' => 'Customise Address',
-    'member_addr_ph_nick'        => 'Nick Name',
-    'member_addr_ph_addr1'       => 'Address line 1',
+    'member_addr_ph_nick'        => 'Nick Name *',
+    'member_addr_ph_addr1'       => 'Address line 1 *',
     'member_addr_ph_addr2'       => 'Address line 2',
     'member_addr_ph_addr3'       => 'Address line 3',
     'member_addr_ph_addr4'       => 'Address line 4',
@@ -70,7 +70,8 @@ return [
     'member_password_tip_p3'    => 'Include at least one number',
 
     //contact page
-    'contact_office_title' => 'Our Office',
+    'contact_office_title' => 'Our Offices',
+    'contact_foot_note'   => 'Feel free to contact your advisor should you have any questions regarding your plan, claims, or policy details.',
 
     //Policy page
     'policy_info_intro'               => 'Important policy information can be found here.',
@@ -138,8 +139,11 @@ return [
     'claim_step3_file_success'    => 'File(s) uploaded successfully:',
     'claim_step3_tip_p1'          => 'Remember, your claim cannot be processed unless it is accompanied by a fully completed claim form.',
     'claim_step3_tip_p2'          => 'The more information you can provide us with, the faster we can submit and process your claim. Call us if you have any questions about what you need.',
+    'claim_step3_del_title'       => 'Delete Uploaded File',
+    'claim_step3_del_desc'        => 'Are you sure you want to delete this uploaded file?',
     //Claim Step4 (summary)
     'claim_step4_title'          => 'Claim Detail Confirmation',
+    'claim_step4_title_view'     => 'Claim Detail',
     'claim_step4_intro'          => 'Please check that all details of your claim are correct and required supporting documents are uploaded before clicking submit.',
     'claim_step4_submited_title' => 'Thank you',
     'claim_step4_submited_desc'  => 'Your claim has been sent to your advisor and will be processed with your insurer in due time. The claim details will be available to view in the “Submitted Claims” menu of the portal. Please contact your advisor if you have any questions about the claims process.',
@@ -187,15 +191,15 @@ return [
     'payment_method'                     => 'Payment Method',
     'cheque'                             => 'Cheque',
     'bank'                               => 'Bank Transfer',
-    'bank_custom_name'                   => 'Bank Record Name',
-    'bank_acc_user'                      => 'Account Name',
-    'bank_acc_no'                        => 'Account Number',
-    'bank_name'                          => 'Bank Name',
-    'bank_swift_code'                    => 'Bank Swift Code',
-    'bank_branch_code'                   => 'Branch Code',
-    'bank_currency'                      => 'Currency',
-    'bank_iban'                          => 'IBAN',
-    'bank_intermediary_code'             => 'Intermediary Bank Swift Code',
+    'bank_custom_name'                   => 'Bank Record Name *',
+    'bank_acc_user'                      => 'Account Name *',
+    'bank_acc_no'                        => 'Account Number *',
+    'bank_name'                          => 'Bank Name *',
+    'bank_swift_code'                    => 'Bank Swift Code *',
+    'bank_branch_code'                   => 'Branch Code *',
+    'bank_currency'                      => 'Currency *',
+    'bank_iban'                          => 'IBAN *',
+    'bank_intermediary_code'             => 'Intermediary Bank Swift Code *',
     'bank_add_info'                      => 'Additional Information',
     'policy_address'                     => 'Policy Address',
     'mail_address'                       => 'Mail Address',
@@ -237,11 +241,12 @@ return [
     'userVerify_title' => 'Register your account',
     'userVerify_desc'  => 'Please enter the registration code provided to you by Pacific Prime to register and verify your account. You will also need to enter your date of birth. If you do not have a code, please contact us. ',
     'userSignup_desc'  => 'Password instructions: For security purposes, your password must contain between 8-20 characters, both an upper and lowercase letter, and at least one number. ',
+    'userVerify_success_success' => "Thank you! We have sent you an email with your username. Please try to log in again with your username and password.\n\nIf you haven’t received the username email within the next few minutes, try searching for it in your spam or junk folder. If you still can’t locate the email, please contact us. ",
 
     //policy contact
     'policy_contact_title'      => 'Policy:',
     'policy_contact_advisor'    => 'Your advisor is:',
-    'policy_contact_footnote'   => 'If you need any help or clarification contact your advisor who will be happy to help.',
+    'policy_contact_footnote'   => 'Should you have any questions regarding your premium, cover, plan, or more please contact your advisor.',
 
     //SaveClaim
     'save_claim_title'   => 'Claim Saved',

@@ -22,7 +22,7 @@
             <div class="col s12 m9 l7">
                 <div class="file_box_title">
                     <div><b>{{ langText.claim_step3_file_success }}</b></div>
-                    <div v-for="(val, key) in claim.file_attachments.claim_form"><a :href="'/claim/'+claim.claim_id+/claim_form/+val.id">${ val.filename }</a> <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteClaimForm(val)" style="cursor: pointer">delete_forever</i></div>
+                    <div v-for="(val, key) in claim.file_attachments.claim_form"><a :href="'/claim/'+claim.claim_id+/claim_form/+val.id">${ val.filename }</a> <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteConfirmClaimForm(val)" style="cursor: pointer">delete_forever</i></div>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
             <div class="col s12 m9 l7">
                 <div class="file_box_title">
                     <div><b>{{ langText.claim_step3_file_success }}</b></div>
-                    <div v-for="(val, key) in claim.file_attachments.support_doc"><a :href="'/claim/'+claim.claim_id+/support_doc/+val.id">${ val.filename }</a> <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteSupDoc(val)" style="cursor: pointer">delete_forever</i></div>
+                    <div v-for="(val, key) in claim.file_attachments.support_doc"><a :href="'/claim/'+claim.claim_id+/support_doc/+val.id">${ val.filename }</a> <i class="material-icons icon_color_1 icon_size_18" v-on:click="deleteConfirmSupDoc(val)" style="cursor: pointer">delete_forever</i></div>
                 </div>
             </div>
         </div>
@@ -97,10 +97,10 @@
         <div class="gen_divider"></div>
         <div class="row">
             <div class="col s12 right-align">
-                {#{ forms.MD_button_3('saveBtn', langText.saveBtn, 'button' , 'saveBtn1')}#}
+                <button id="backBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }} hide-on-small-only" type="button">{{ langText.backBtn }}</button>
+                <div class="btn_h_space"></div>
                 <button id="saveBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
                 <div class="btn_h_space"></div>
-                {#{ forms.MD_button_3('nextBtn', langText.nextBtn, 'button' , 'nextBtn1' )}#}
                 <button id="nextBtn" data-jshook="nextBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="nextBtn1">{{ langText.nextBtn }}</button>
             </div>
         </div>
@@ -118,7 +118,7 @@
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
                     <div class="tipsbox_textbox min-text">{{ langText.claim_step3_tip_p1 }}</div>
                     <div class="left tipsbox_iconbox"><i class="material-icons icon_color_6 icon_size_16">stars</i></div>
-                    <div class="tipsbox_textbox min-text">{{ langText.langText.claim_step3_tip_p2 }}</div>
+                    <div class="tipsbox_textbox min-text">{{ langText.claim_step3_tip_p2 }}</div>
                 </div>
 
                 <div>
@@ -136,6 +136,8 @@
 
 {% block afterFooterHTML %}
     {% include 'include/components/save-claim.twig' %}
+    {% include 'include/components/general-model.twig' %}
+    {% include 'include/components/confirm-del-file.twig' %}
 {% endblock %}
 
 {% block jsBottom %}
@@ -157,6 +159,9 @@
         {% if not is_mobile() %}
             pinTop.init();
         {% endif %}
+        $("#backBtn").click(function(){
+            window.location.href = '{{ path_for('Claim.ClaimS2' ,  { 'id': claim.claim_id }  ) }}';
+        });
     </script>
     {% include 'include/components/csrf.twig' %}
 {% endblock %}

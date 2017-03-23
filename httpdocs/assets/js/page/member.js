@@ -85,6 +85,8 @@ var useraddress = {
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });
+            } else {
+                generalModel.open('Missing information','Your address must include a nickname and at least one address line. Please try again, or use one of your existing addresses.');
             }
         },
         del: function () {
@@ -330,6 +332,8 @@ var app = new Vue({
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });
+            } else {
+                generalModel.open('Missing information','Your address must include a nickname and at least one address line. Please try again, or use one of your existing addresses.');
             }
         },
         addressUpdates : function(key,data){

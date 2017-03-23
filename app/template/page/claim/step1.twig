@@ -48,7 +48,7 @@
             <div class="col s12 m3 l3">
             </div>
             <div class="col s12 m9 l9">
-                <div data-jshook="treatment_error" class="field_error">cannot build in the furture</div>
+                <div data-jshook="treatment_error" class="field_error">{{ langText.claim_step1_treatment_error }}</div>
             </div>
         </div>
 
@@ -129,6 +129,7 @@
 
 {% block afterFooterHTML %}
     {% include 'include/components/save-claim.twig' %}
+    {% include 'include/components/general-model.twig' %}
 {% endblock %}
 
 

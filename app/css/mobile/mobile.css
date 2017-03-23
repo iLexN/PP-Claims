@@ -108,3 +108,7 @@ page style
     margin-right: -2rem;
     padding: 0 1rem 1rem;
 }
+
+.btn, .btn-large, .btn-flat{
+    padding:0 1.5rem;
+}

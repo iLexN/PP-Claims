@@ -86,13 +86,9 @@
                 </div>
             </div>
 
-            <div class="col s12 m5 l5 offset-m2 offset-l2">
-                <div class="pending_box">
-                    <div class="pending_box_icon"><i class="material-icons icon_color_7 icon_size_24">timer</i></div>
-                    <div class="padding_box_title">{{ langText.member_pending_box_title }}</div>
-                    <div class="padding_box_desc">{{ langText.member_pending_box_desc}}</div>
-                </div>
-            </div>
+            <!--<div class="col s12 m5 l5 offset-m2 offset-l2">
+                
+            </div>-->
         </div>
 
         <div class="row" style="margin-bottom: 0">
@@ -152,6 +148,11 @@
 {% block rightHTML %}
     <div class="col s12 ">
         <div data-jshook="pushpin">
+            <div class="pending_box">
+                    <div class="pending_box_icon"><i class="material-icons icon_color_7 icon_size_24">timer</i></div>
+                    <div class="padding_box_title">{{ langText.member_pending_box_title }}</div>
+                    <div class="padding_box_desc">{{ langText.member_pending_box_desc}}</div>
+                </div>
             {{ components.claim_info_box2(langText.member_btn_update_password,'/assets/images/icon_password.svg', '' ,path_for('Member.Password') ) }}
             {{ components.claim_info_box2(langText.member_btn_bank_transfer,'/assets/images/icon_creditcard2.svg', '' , path_for('Member.Bank') ) }}
         </div>
