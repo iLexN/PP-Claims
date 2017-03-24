@@ -45,7 +45,8 @@ final class Index extends AbstractContainer
         ]);
     }
 
-    private function getSysMsg(){
+    private function getSysMsg()
+    {
         return [
             'sys_p_2626_t'  => $this->langText['sys_p_2626_t'],
             'sys_p_2626_d'  => $this->langText['sys_p_2626_d'],

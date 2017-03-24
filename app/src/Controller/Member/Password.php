@@ -33,7 +33,8 @@ final class Password extends AbstractContainer
         ]);
     }
 
-    private function getSysMsg(){
+    private function getSysMsg()
+    {
         return [
             'sys_pp_2520'  => $this->langText['sys_pp_2520'],
         ];

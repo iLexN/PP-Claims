@@ -40,17 +40,17 @@ final class ClaimStep2 extends AbstractContainer
                 'address' => $this->getAddress($claims),
                 'payto'   => $this->getPayTo($claims),
                 'token'   => $this->csrfHelper->getToken($request),
-                'sysText'    => $this->getSysMsg(),
+                'sysText' => $this->getSysMsg(),
             ]);
         } else {
             //Bank Transfer
             $this->getBank($claims);
 
             return $this->view->render($response, 'page/claim/step2bank.twig', [
-                'claim' => $claims,
-                'banks' => $this->banks,
-                'token' => $this->csrfHelper->getToken($request),
-                'sysText'    => $this->getSysMsg(),
+                'claim'   => $claims,
+                'banks'   => $this->banks,
+                'token'   => $this->csrfHelper->getToken($request),
+                'sysText' => $this->getSysMsg(),
             ]);
         }
     }
@@ -144,7 +144,8 @@ final class ClaimStep2 extends AbstractContainer
         return false;
     }
 
-    private function getSysMsg(){
+    private function getSysMsg()
+    {
         return [
             'sys_pb_3613_t'  => $this->langText['sys_pb_3613_t'],
             'sys_pb_3613_d'  => $this->langText['sys_pb_3613_d'],

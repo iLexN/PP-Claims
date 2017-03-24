@@ -46,8 +46,6 @@ final class ClaimStep1 extends AbstractContainer
 
     private function getSysMsg()
     {
-        $this->logger->info('safdsf');
-
         return [
             'sys_c1_td' => $this->langText['sys_c1_td'],
             'sys_c1_mi' => $this->langText['sys_c1_mi'],
