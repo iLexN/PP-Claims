@@ -36,7 +36,8 @@ final class Bank extends AbstractContainer
         ]);
     }
 
-    private function getSysMsg(){
+    private function getSysMsg()
+    {
         return [
             'sys_pb_3613_t'  => $this->langText['sys_pb_3613_t'],
             'sys_pb_3613_d'  => $this->langText['sys_pb_3613_d'],

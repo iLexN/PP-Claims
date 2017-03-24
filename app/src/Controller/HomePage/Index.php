@@ -28,7 +28,8 @@ final class Index extends AbstractContainer
         ]);
     }
 
-    private function getSysMsg(){
+    private function getSysMsg()
+    {
         return [
             'sys_fw_1010'   => $this->langText['sys_fw_1010'],
             'sys_fw_2010'   => $this->langText['sys_fw_2010'],
