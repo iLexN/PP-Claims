@@ -54,6 +54,7 @@
     {{ parent() }}
     <script>
         var banks ={{ banks.toJson | raw }} ;
+        var sysText = {{ sysText | json_encode() | raw }};
     </script>
     <script src="{{ base_url() }}/assets/js/page/bank.js?{{ appVersion }}"></script>
     <script>

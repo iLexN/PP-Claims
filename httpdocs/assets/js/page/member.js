@@ -80,13 +80,13 @@ var useraddress = {
                         loadingBox.close();
                     } else if ( data.status_code === 2626 ) {
                         loadingBox.close();
-                        generalModel.open('Nickname used','The address nickname you have used already exists. Please use a different nickname and click save');
+                        generalModel.open(sysText.sys_p_2626_t, sysText.sys_p_2626_d);
                     }
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });
             } else {
-                generalModel.open('Missing information','Your address must include a nickname and at least one address line. Please try again, or use one of your existing addresses.');
+                generalModel.open(sysText.sys_p_mi_t, sysText.sys_p_mi_d);
             }
         },
         del: function () {
@@ -321,19 +321,19 @@ var app = new Vue({
                         self.resetNewAddress();
                         self.p.address.push(data.data);
                         loadingBox.close();
-                        generalModel.open('Address added','Thank you! Your new address has been added and can now be selected from any address selection menu in the portal.');
+                        generalModel.open(sysText.sys_p_ad_t, sysText.sys_p_ad_d);
                         return;
                     } else if ( data.status_code === 2626) {
                         console.log(data.errors.title);
                         loadingBox.close();
-                        generalModel.open('Nickname used','The address nickname you have used already exists. Please use a different nickname and click save');
+                        generalModel.open(sysText.sys_p_an_t, sysText.sys_p_an_d);
                         return;
                     }
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     loadingBox.close();
                 });
             } else {
-                generalModel.open('Missing information','Your address must include a nickname and at least one address line. Please try again, or use one of your existing addresses.');
+                generalModel.open(sysText.sys_p_mi_t, sysText.sys_p_mi_d);
             }
         },
         addressUpdates : function(key,data){

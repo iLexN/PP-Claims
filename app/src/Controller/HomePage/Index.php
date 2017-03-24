@@ -23,8 +23,23 @@ final class Index extends AbstractContainer
         }
 
         return $this->view->render($response, 'page/homepage.twig', [
-            'token' => $this->csrfHelper->getToken($request),
+            'token'   => $this->csrfHelper->getToken($request),
+            'sysText' => $this->getSysMsg(),
         ]);
+    }
+
+    private function getSysMsg(){
+        return [
+            'sys_fw_1010'   => $this->langText['sys_fw_1010'],
+            'sys_fw_2010'   => $this->langText['sys_fw_2010'],
+            'sys_fu_1020'   => $this->langText['sys_fu_1020'],
+            'sys_fu_2010'   => $this->langText['sys_fu_2010'],
+            'sys_uv1_1020'  => $this->langText['sys_uv1_1020'],
+            'sys_uv1_2010'  => $this->langText['sys_uv1_2010'],
+            'sys_uv1_2051'  => $this->langText['sys_uv1_2051'],
+            'sys_uv2_2070'  => $this->langText['sys_uv2_2070'],
+            'sys_uv2_1010'  => $this->langText['sys_uv2_1010'],
+        ];
     }
 
     private function addH2ServerPush($response)

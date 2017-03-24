@@ -40,6 +40,7 @@ final class ClaimStep2 extends AbstractContainer
                 'address' => $this->getAddress($claims),
                 'payto'   => $this->getPayTo($claims),
                 'token'   => $this->csrfHelper->getToken($request),
+                'sysText'    => $this->getSysMsg(),
             ]);
         } else {
             //Bank Transfer
@@ -49,6 +50,7 @@ final class ClaimStep2 extends AbstractContainer
                 'claim' => $claims,
                 'banks' => $this->banks,
                 'token' => $this->csrfHelper->getToken($request),
+                'sysText'    => $this->getSysMsg(),
             ]);
         }
     }
@@ -140,5 +142,24 @@ final class ClaimStep2 extends AbstractContainer
         }
 
         return false;
+    }
+
+    private function getSysMsg(){
+        return [
+            'sys_pb_3613_t'  => $this->langText['sys_pb_3613_t'],
+            'sys_pb_3613_d'  => $this->langText['sys_pb_3613_d'],
+            'sys_pb_mi_t'    => $this->langText['sys_pb_mi_t'],
+            'sys_pb_mi_d'    => $this->langText['sys_pb_mi_d'],
+            'sys_pb_rd_t'    => $this->langText['sys_pb_rd_t'],
+            'sys_pb_rb_d'    => $this->langText['sys_pb_rb_d'],
+            'sys_p_2626_t'   => $this->langText['sys_p_2626_t'],
+            'sys_p_2626_d'   => $this->langText['sys_p_2626_d'],
+            'sys_p_mi_t'     => $this->langText['sys_p_mi_t'],
+            'sys_p_mi_d'     => $this->langText['sys_p_mi_d'],
+            'sys_p_ad_t'     => $this->langText['sys_p_ad_t'],
+            'sys_p_ad_d'     => $this->langText['sys_p_ad_d'],
+            'sys_p_an_t'     => $this->langText['sys_p_an_t'],
+            'sys_p_an_d'     => $this->langText['sys_p_an_d'],
+        ];
     }
 }

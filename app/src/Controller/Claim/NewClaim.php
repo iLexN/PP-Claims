@@ -34,6 +34,7 @@ final class NewClaim extends AbstractContainer
             'dependents' => $dependents,
             'claim'      => $claims,
             'token'      => $this->csrfHelper->getToken($request),
+            'sysText'    => $this->getSysMsg(),
         ]);
     }
 
@@ -51,5 +52,16 @@ final class NewClaim extends AbstractContainer
             'amount'            => '',
             'user_policy_id'    => $args['id'],
         ]);
+    }
+
+    private function getSysMsg()
+    {
+        $this->logger->info('safdsf');
+
+        return [
+            'sys_c1_td' => $this->langText['sys_c1_td'],
+            'sys_c1_mi' => $this->langText['sys_c1_mi'],
+            'sys_c1_in' => $this->langText['sys_c1_in'],
+        ];
     }
 }

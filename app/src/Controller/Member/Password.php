@@ -28,7 +28,14 @@ final class Password extends AbstractContainer
         $response = $this->checkH2($response);
 
         return $this->view->render($response, 'page/member/password.twig', [
-            'token' => $this->csrfHelper->getToken($request),
+            'token'   => $this->csrfHelper->getToken($request),
+            'sysText' => $this->getSysMsg(),
         ]);
+    }
+
+    private function getSysMsg(){
+        return [
+            'sys_pp_2520'  => $this->langText['sys_pp_2520'],
+        ];
     }
 }

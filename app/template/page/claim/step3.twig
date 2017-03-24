@@ -7,7 +7,7 @@
     {% include 'include/components/claim-breadcrumb.twig' %}
 
     <div class="row">
-        <div class="col s12 semibold">{{ langText.claim_step3_into }}</div>
+        <div class="col s12 semibold">{{ langText.claim_step3_intro }}</div>
     </div>
     
     <div class="form-style-3">
@@ -144,6 +144,7 @@
     {{ parent() }}
     <script>
         var claim = {{ claim.toJson() | raw }};
+        var sysText = {{ sysText | json_encode() | raw }};
     </script>
     <script src="{{ base_url() }}/assets/js/page/claim3.js?{{ appVersion }}"></script>
     <script>

@@ -34,6 +34,16 @@ final class ClaimStep3 extends AbstractContainer
         return $this->view->render($response, 'page/claim/step3.twig', [
             'claim' => $claims,
             'token' => $this->csrfHelper->getToken($request),
+            'sysText'    => $this->getSysMsg(),
         ]);
+    }
+
+    private function getSysMsg(){
+        return [
+            'sys_c3_fs_e_t'   => $this->langText['sys_c3_fs_e_t'],
+            'sys_c3_fs_e_d'   => $this->langText['sys_c3_fs_e_d'],
+            'sys_c3_mi_t'     => $this->langText['sys_c3_mi_t'],
+            'sys_c3_mi_d'     => $this->langText['sys_c3_mi_d'],
+        ];
     }
 }

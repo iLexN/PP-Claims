@@ -83,7 +83,7 @@ var app = new Vue({
                             $('.select-dropdown').val(self.bank.nick_name);
                         }, 100);
                     } else if (data.status_code === 3613) {
-                        generalModel.open('Bank record name already used', 'The name for this bank record is already being used. Please select a new one and try again.');
+                        generalModel.open(sysText.sys_pb_3613_t, sysText.sys_pb_3613_d);
                     }
                 });
             }
@@ -115,7 +115,7 @@ var app = new Vue({
                             $('.select-dropdown').val(self.bank.nick_name);
                         }, 100);
                     } else if (data.status_code === 3613) {
-                        generalModel.open('Bank record name already used', 'The name for this bank record is already being used. Please select a new one and try again.');
+                        generalModel.open(sysText.sys_pb_3613_t, sysText.sys_pb_3613_d);
                         $("#nick_name").addClass('invalid');
                     }
                 });
@@ -155,7 +155,7 @@ var app = new Vue({
                 return true;
             } else {
                 this.scrollTop(error_el[0]);
-                generalModel.open('Missing information', 'You are missing some required information in the bank details field. Please enter the information and try again.');
+                generalModel.open(sysText.sys_pb_mi_t, sysText.sys_pb_mi_d);
                 return false;
             }
         },
@@ -205,7 +205,7 @@ var app = new Vue({
                             $('.select-dropdown').val(self.bank.nick_name);
                         }, 100);
                     }
-                    generalModel.open('Record deleted', 'The bank record selected has been deleted.');
+                    generalModel.open(sysText.sys_pb_rd_t, sysText.sys_pb_rb_d);
                 }
                 loadingBox.close();
             }).fail(function (jqXHR, textStatus, errorThrown) {

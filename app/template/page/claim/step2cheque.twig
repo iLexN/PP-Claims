@@ -121,9 +121,10 @@
     {{ parent() }}
     <script>
         var claim = {{ claim.toJson() | raw }};
-                var address = {{ address | json_encode() | raw }};
+        var address = {{ address | json_encode() | raw }};
         var payto = '{{ payto }}';
-                var ppmid = {{ User.ppmid }};
+        var ppmid = {{ User.ppmid }};
+        var sysText = {{ sysText | json_encode() | raw }};
     </script>
     <script src="{{ base_url() }}/assets/js/page/claim2cheque.js?{{ appVersion }}"></script>
     <script>

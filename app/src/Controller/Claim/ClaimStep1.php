@@ -40,6 +40,18 @@ final class ClaimStep1 extends AbstractContainer
             'holder'     => $holder,
             'dependents' => $dependents,
             'token'      => $this->csrfHelper->getToken($request),
+            'sysText'    => $this->getSysMsg(),
         ]);
+    }
+
+    private function getSysMsg()
+    {
+        $this->logger->info('safdsf');
+
+        return [
+            'sys_c1_td' => $this->langText['sys_c1_td'],
+            'sys_c1_mi' => $this->langText['sys_c1_mi'],
+            'sys_c1_in' => $this->langText['sys_c1_in'],
+        ];
     }
 }

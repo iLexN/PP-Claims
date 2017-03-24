@@ -30,8 +30,20 @@ final class Bank extends AbstractContainer
         $banks = $this->bankModule->checkBankInfo($this->bankModule->getUserBank($this->userModule->user['ppmid']));
 
         return $this->view->render($response, 'page/member/bank.twig', [
-            'banks' => $banks,
-            'token' => $this->csrfHelper->getToken($request),
+            'banks'   => $banks,
+            'token'   => $this->csrfHelper->getToken($request),
+            'sysText' => $this->getSysMsg(),
         ]);
+    }
+
+    private function getSysMsg(){
+        return [
+            'sys_pb_3613_t'  => $this->langText['sys_pb_3613_t'],
+            'sys_pb_3613_d'  => $this->langText['sys_pb_3613_d'],
+            'sys_pb_mi_t'    => $this->langText['sys_pb_mi_t'],
+            'sys_pb_mi_d'    => $this->langText['sys_pb_mi_d'],
+            'sys_pb_rd_t'    => $this->langText['sys_pb_rd_t'],
+            'sys_pb_rb_d'    => $this->langText['sys_pb_rb_d'],
+        ];
     }
 }

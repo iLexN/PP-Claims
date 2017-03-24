@@ -74,6 +74,7 @@
     <script>
         var claim = {{ claim.toJson() | raw }};
         var banks ={{ banks.toJson | raw }} ;
+        var sysText = {{ sysText | json_encode() | raw }};
     </script>
     <script src="{{ base_url() }}/assets/js/page/claim2bank.js?{{ appVersion }}"></script>
     <script>

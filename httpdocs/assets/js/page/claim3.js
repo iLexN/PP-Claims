@@ -46,7 +46,7 @@ var app = new Vue({
                 $('#claimform_size').addClass('errors_msg2');
                 $("#claimFileInput").parent().next().find('input').val('')
                 $("#claimFileInput").val('');
-                generalModel.open('File Size Exceeded', 'The file you are trying to upload has exceeded 2MB. Please try again.');
+                generalModel.open(sysText.sys_c3_fs_e_t, sysText.sys_c3_fs_e_d);
                 return;
             } else {
                 $('#claimform_size').removeClass('errors_msg2');
@@ -80,7 +80,7 @@ var app = new Vue({
                 $('#supdoc_size').addClass('errors_msg2');
                 $("#supDocInput").parent().next().find('input').val('')
                 $("#supDocInput").val('');
-                generalModel.open('File Size Exceeded', 'The file you are trying to upload has exceeded 2MB. Please try again.');
+                generalModel.open(sysText.sys_c3_fs_e_t, sysText.sys_c3_fs_e_d);
                 return;
             } else {
                 $('#supdoc_size').removeClass('errors_msg2');
@@ -193,7 +193,7 @@ var app = new Vue({
                     this.scrollTop('claimFormSection');
                     $("#claimFormSection").addClass('errors_msg2');
                 }
-                generalModel.open('Missing Information', 'Your claim appears to be missing a Claim Form. Please upload this to continue.');
+                generalModel.open(sysText.sys_c3_mi_t, sysText.sys_c3_mi_d);
             }
         },
         scrollTop: function (hook) {

@@ -71,7 +71,7 @@ return [
 
     //contact page
     'contact_office_title' => 'Our Offices',
-    'contact_foot_note'   => 'Feel free to contact your advisor should you have any questions regarding your plan, claims, or policy details.',
+    'contact_foot_note'    => 'Feel free to contact your advisor should you have any questions regarding your plan, claims, or policy details.',
 
     //Policy page
     'policy_info_intro'               => 'Important policy information can be found here.',
@@ -238,9 +238,9 @@ return [
     'forgotusername_success' => "Thank you! We have sent you an email with your username. Please try to log in again with your username and password. \n\n If you haven't received the username email within the next few minutes, try searching for it in your spam or junk folder. If you still can't locate the email, please contact us. ",
     'forgotusername_help'    => 'If you require any further assistance, please contact us.',
     //user verify
-    'userVerify_title' => 'Register your account',
-    'userVerify_desc'  => 'Please enter the registration code provided to you by Pacific Prime to register and verify your account. You will also need to enter your date of birth. If you do not have a code, please contact us. ',
-    'userSignup_desc'  => 'Password instructions: For security purposes, your password must contain between 8-20 characters, both an upper and lowercase letter, and at least one number. ',
+    'userVerify_title'           => 'Register your account',
+    'userVerify_desc'            => 'Please enter the registration code provided to you by Pacific Prime to register and verify your account. You will also need to enter your date of birth. If you do not have a code, please contact us. ',
+    'userSignup_desc'            => 'Password instructions: For security purposes, your password must contain between 8-20 characters, both an upper and lowercase letter, and at least one number. ',
     'userVerify_success_success' => "Thank you! We have sent you an email with your username. Please try to log in again with your username and password.\n\nIf you haven’t received the username email within the next few minutes, try searching for it in your spam or junk folder. If you still can’t locate the email, please contact us. ",
 
     //policy contact
@@ -257,7 +257,7 @@ return [
     'password_updated_desc'  => 'Your password has been successfully changed. Please use the new password to log in. ',
 
     //new address
-    'new_address_success_title' =>'Address added',
+    'new_address_success_title' => 'Address added',
     'new_address_success_desc'  => 'Thank you! Your new address has been added and can now be selected from any address selection menu in the portal',
 
     //Tips
@@ -270,4 +270,39 @@ return [
     'passwordNotStrongError'  => 'It appears that the password you have entered does not meet our password requirements. Please try again.',
     'forgotSetPasswordExpire' => 'Expire please try again',
     'offline_mode'            => 'You are now offline',
+
+    //js sys msg
+    'sys_fw_1010'   => 'Sorry! It looks like the field below is blank. Please fill it in to proceed.',
+    'sys_fw_2010'   => "Sorry, the username you have just entered doesn't seem to exist. Please double check what you have entered or try re-entering your username again.",
+    'sys_fu_1020'   => 'Sorry! It seems that there is a missing field. Please fill in the missing fields below.',
+    'sys_fu_2010'   => 'Sorry, the email address that you have provided does not appear to be in our database. Please try re-entering your information again.',
+    'sys_uv1_1020'  => 'Sorry, it looks like the field below is blank. Please try again and enter your registration code in the field below. If you do not have a code, please contact us.',
+    'sys_uv1_2010'  => 'Sorry, it looks like you have entered the wrong registration code. Please try again, or contact us if you require further assistance.',
+    'sys_uv1_2051'  => 'Sorry, it appears that the birth date you have entered does not meet our requirements. Please double check the date of birth you have entered, or ensure that you have entered the main policyholder’s date of birth. Contact us if you require further assistance.',
+    'sys_uv2_2070'  => 'This username already exists, please enter another username.',
+    'sys_uv2_1010'  => 'Sorry, it looks like the field below is blank. Please try again and enter your registration code in the field below. If you do not have a code, please contact us. ',
+    'sys_pb_3613_t' => 'Bank record name already used',
+    'sys_pb_3613_d' => 'The name for this bank record is already being used. Please select a new one and try again.',
+    'sys_pb_mi_t'   => 'Missing information',
+    'sys_pb_mi_d'   => 'You are missing some required information in the bank details field. Please enter the information and try again.',
+    'sys_pb_rd_t'   => 'Record deleted',
+    'sys_pb_rb_d'   => 'The bank record selected has been deleted.',
+    'sys_pp_2520'   => 'Your old password appears to be incorrect. Please enter it again.',
+    'sys_p_2626_t'  => 'Nickname used',
+    'sys_p_2626_d'  => 'The address nickname you have used already exists. Please use a different nickname and click save',
+    'sys_p_mi_t'    => 'Missing information',
+    'sys_p_mi_d'    => 'Your address must include a nickname and at least one address line. Please try again, or use one of your existing addresses.',
+    'sys_p_ad_t'    => 'Address added',
+    'sys_p_ad_d'    => 'Thank you! Your new address has been added and can now be selected from any address selection menu in the portal.',
+    'sys_p_an_t'    => 'Nickname used',
+    'sys_p_an_d'    => 'The address nickname you have used already exists. Please use a different nickname and click save',
+    'sys_c1_td'     => '<p><b>What was your treatment date?</b><br/>Claims cannot use a future date. Please select again. </p>',
+    'sys_c1_mi'     => '<p><b>Missing Information</b><br/>You are missing some required information in the claim details\' field. Please check the information you have provided and try again. </p>',
+    'sys_c1_in'     => '<p><b>How much was your invoice?</b><br/>Number value required. </p>',
+
+    'sys_c3_fs_e_t' => 'File Size Exceeded',
+    'sys_c3_fs_e_d' => 'The file you are trying to upload has exceeded 2MB. Please try again.',
+    'sys_c3_mi_t'   => 'Missing Information',
+    'sys_c3_mi_d'   => 'Your claim appears to be missing a Claim Form. Please upload this to continue.',
+
 ];
