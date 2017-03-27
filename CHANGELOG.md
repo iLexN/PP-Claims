@@ -1,5 +1,19 @@
 #### [Current]
- * [0ae6ae1](../../commit/0ae6ae1) - __(2017-03-01 11:17:25 +0800)__ vue update + css fix
+ * [335498a](../../commit/335498a) - __(2017-03-27 10:25:45 +0800)__ js components update
+ * [70e9a08](../../commit/70e9a08) - __(2017-03-24 16:57:04 +0800)__ ci fix 2
+ * [1fea676](../../commit/1fea676) - __(2017-03-24 16:50:37 +0800)__ ci fix
+ * [da53f61](../../commit/da53f61) - __(2017-03-24 16:44:31 +0800)__ js text to php text
+ * [a743dff](../../commit/a743dff) - __(2017-03-23 15:25:02 +0800)__ over layer box add icon, layout change follow the comments update
+ * [4e1236f](../../commit/4e1236f) - __(2017-03-22 11:04:04 +0800)__ claim , policy , contact us , follow comments update
+ * [57e37cc](../../commit/57e37cc) - __(2017-03-21 15:21:11 +0800)__ homepage , main page , member section follow comments update
+ * [85af054](../../commit/85af054) - __(2017-03-14 09:19:05 +0800)__ fix support doc download link
+ * [b3c3bcd](../../commit/b3c3bcd) - __(2017-03-09 14:56:43 +0800)__ step3 file upload add click link download
+ * [79609f9](../../commit/79609f9) - __(2017-03-07 16:57:20 +0800)__ gitignore update
+ * [96f273a](../../commit/96f273a) - __(2017-03-07 16:54:07 +0800)__ Delete api-config.php
+ * [49c81ed](../../commit/49c81ed) - __(2017-03-07 16:46:00 +0800)__ gitignore update
+ * [faeadd0](../../commit/faeadd0) - __(2017-03-07 16:45:01 +0800)__ fix header , chrome not support
+ * [a6ea855](../../commit/a6ea855) - __(2017-03-07 16:44:05 +0800)__ Update api-config.php
+ * [aa0427c](../../commit/aa0427c) - __(2017-03-01 11:18:21 +0800)__ vue update + css fix
  * [c9bf095](../../commit/c9bf095) - __(2017-02-28 16:26:21 +0800)__ RD fix
  * [81486ec](../../commit/81486ec) - __(2017-02-28 14:53:35 +0800)__ php package update
  * [a053fe8](../../commit/a053fe8) - __(2017-02-27 12:08:06 +0800)__ ci + cs fix

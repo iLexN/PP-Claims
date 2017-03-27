@@ -299,7 +299,6 @@ return [
     'sys_c1_td'     => '<p><b>What was your treatment date?</b><br/>Claims cannot use a future date. Please select again. </p>',
     'sys_c1_mi'     => '<p><b>Missing Information</b><br/>You are missing some required information in the claim details\' field. Please check the information you have provided and try again. </p>',
     'sys_c1_in'     => '<p><b>How much was your invoice?</b><br/>Number value required. </p>',
-
     'sys_c3_fs_e_t' => 'File Size Exceeded',
     'sys_c3_fs_e_d' => 'The file you are trying to upload has exceeded 2MB. Please try again.',
     'sys_c3_mi_t'   => 'Missing Information',
