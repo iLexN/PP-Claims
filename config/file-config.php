@@ -5,6 +5,6 @@ return [
         'path' => __DIR__.'/../upload',
     ],
     'policyFileConfig' => [
-        'path' =>  __DIR__.'/../user_policy_file',
+        'path' => __DIR__.'/../user_policy_file',
     ],
 ];
