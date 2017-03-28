@@ -26,23 +26,15 @@ class MainPageMobileTest extends \BaseTestCase
         $slideNav = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='slide-out']"));
         $this->assertFalse($slideNav->isDisplayed());
         //nav
-        $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/header/div[2]/a/i'))->click();
+        $this->webDriver->findElement(WebDriverBy::cssSelector('.button-collapse.mobile_nav_icon'))->click();
         $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/slide.jpg');
         $this->assertTrue($slideNav->isDisplayed());
 
         $this->webDriver->findElement(WebDriverBy::className('drag-target'))->click();
         $this->assertFalse($slideNav->isDisplayed());
-    }
 
-    public function testLogoutBtn()
-    {
-        $this->login();
-
-        $slideNav = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='slide-out']"));
-        //nav
-        $this->webDriver->findElement(WebDriverBy::xpath('html/body/div[1]/div[1]/header/div[2]/a/i'))->click();
-
-        $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='slide-out']/a[5]"))->click();
+        $this->webDriver->findElement(WebDriverBy::cssSelector('.button-collapse.mobile_nav_icon'))->click();
+        $this->webDriver->findElement(WebDriverBy::linkText('Logout'))->click();
         $this->assertEquals($this->url, $this->webDriver->getCurrentURL());
     }
 }
