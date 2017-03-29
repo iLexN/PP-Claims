@@ -19,8 +19,6 @@ final class ZipFileDownload extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $pid = $args['id'];
-
         $filename = 'download.zip';
 
         $file_path = $args['id'].'/'.$filename;
