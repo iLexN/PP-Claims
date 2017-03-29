@@ -95,7 +95,6 @@ class HomePagePcTest extends \BaseTestCase
         $this->waitJquery();
         $this->assertTrue($failMsg->isDisplayed());
 
-
         $name->sendKeys('alex');
         $email->sendKeys('adfsa@dslfkdsfj.com');
         $phone->sendKeys('dsfds');

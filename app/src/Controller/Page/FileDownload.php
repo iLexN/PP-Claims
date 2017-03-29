@@ -50,8 +50,6 @@ final class FileDownload extends AbstractContainer
         return [$k, $fileArray];
     }
 
-
-
     private function getPathInfo($name, $k, $fileArray)
     {
         if ($name === 'planfile') {
