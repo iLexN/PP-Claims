@@ -25,8 +25,8 @@ final class FileDownload extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $f = $this->getPathInfo($args['name']);
-        $file_path = $f['url'].'/'.$fileArray[$k]['id'].'/'.$fileArray[$k]['file_name'];
+        $f = $this->getPathInfo($args['name'], $k, $fileArray);
+        $file_path = $f['url'].'/'.$fileArray[$k]['id'].$f['r'].'/'.$fileArray[$k]['file_name'];
 
         $filesystem = $this->helper->getFileSystem($this->c->get('policyFileConfig')['path']);
 
@@ -50,15 +50,18 @@ final class FileDownload extends AbstractContainer
         return [$k, $fileArray];
     }
 
-    private function getPathInfo($name)
+
+
+    private function getPathInfo($name, $k, $fileArray)
     {
         if ($name === 'planfile') {
             return [
                 'url' => 'plan-file',
+                'r'   => '/'.$fileArray[$k]['region'],
             ];
         }
 
-        return ['url' => 'policy-file'];
+        return ['url' => 'policy-file', 'r' => ''];
     }
 
     private function downloadFromAPI($url, $id)
