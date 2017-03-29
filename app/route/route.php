@@ -49,6 +49,10 @@ $app->get('/user-policy/{id:\d+}/{name:planfile|policyfile}/{f:\d+}', 'PP\WebPor
     ->setName('Policy.FileDownload')
     ->add($userPolicyCheck)
     ->add($authLoginArea); // redirect to home page if login expired
+$app->get('/user-policy/{id:\d+}/download', 'PP\WebPortal\Controller\Page\ZipFileDownload')
+    ->setName('Policy.ZipFileDownload')
+    ->add($userPolicyCheck)
+    ->add($authLoginArea); // redirect to home page if login expired
 
 //claim
 $app->get('/claim', 'PP\WebPortal\Controller\Claim\Index')
