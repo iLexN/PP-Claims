@@ -23,7 +23,7 @@ final class ZipFileDownload extends AbstractContainer
 
         $filename = 'download.zip';
 
-        $file_path = $args['id'].'/'. $filename;
+        $file_path = $args['id'].'/'.$filename;
 
         $filesystem = $this->helper->getFileSystem($this->c->get('policyFileConfig')['path']);
 
