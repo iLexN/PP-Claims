@@ -55,6 +55,7 @@
                 <div class="input-field col s12 m5 l5 offset-m2 offset-l2 right-align">
                     <button data-jshook="editPersonBtn" class="{{ css.btn_2 }}" :disabled="!_.isEmpty(p.renew)" type="button" v-on:click="editContact" v-if="!contact_mode" >{{ langText.editBtn }}</button>
                     <button data-jshook="cancelPersonBtn" class="{{ css.btn_2 }}" type="button" v-on:click="cancelContact" v-if="contact_mode" >{{ langText.cancelBtn }}</button>
+                    <div class="btn_h_space"></div>
                     <button data-jshook="savePersonBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveContact" v-if="contact_mode" >{{ langText.saveBtn }}</button>
                 </div>
 
@@ -79,6 +80,7 @@
                         <div class="right-align" style="padding-top:1rem">
                             <button data-jshook="editHolderBtn" class="{{ css.btn_2 }}" :disabled="holder.renew"  type="button" v-on:click="editHolder" v-if="!holder_mode" >{{ langText.editBtn }}</button>
                             <button data-jshook="cancelHolderBtn" class="{{ css.btn_2 }}" type="button" v-on:click="cancelHolder" v-if="holder_mode" >{{ langText.cancelBtn }}</button>
+                            <div class="btn_h_space"></div>
                             <button data-jshook="saveHolderBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveHolder" v-if="holder_mode" >{{ langText.saveBtn }}</button>
                         </div>
 

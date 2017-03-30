@@ -19,6 +19,15 @@ class UserModel extends ModelAbstract
         return $this->data['first_name'].' '.$this->data['middle_name'].' '.$this->data['last_name'];
     }
 
+    public function getFullNameArray()
+    {
+        return ['title'       => $this->data['title'],
+                'first_name'  => $this->data['first_name'],
+                'middle_name' => $this->data['middle_name'],
+                'last_name'   => $this->data['last_name'],
+            ];
+    }
+
     private function setFullName()
     {
         $this->data['fullName'] = $this->fullName();

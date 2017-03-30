@@ -3,6 +3,7 @@
 namespace PP\WebPortal\Controller\Ajax\Member;
 
 use PP\WebPortal\AbstractClass\AbstractContainer;
+use PP\WebPortal\Module\Model\UserModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -16,8 +17,13 @@ final class InfoUpdate extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $result = $this->userModule->postUserInfo((array) $request->getParsedBody(), $args['id']);
+        $result = $this->userModule->postUserInfo($this->getPostData($people[$args['id']], (array) $request->getParsedBody()), $args['id']);
 
         return $response->withJson($result);
+    }
+
+    private function getPostData(UserModel $people, $post)
+    {
+        return array_merge($people->getFullNameArray(), $post);
     }
 }
