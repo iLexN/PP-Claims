@@ -143,7 +143,8 @@
     
     <div class="row" v-if="isSave">
         <div class="col s12 right-align">
-            {#{ forms.MD_button_3('nextBtn', langText.submitBtn, 'button' , 'nextBtn1' )}#}
+            <button id="saveBtn" data-jshook="saveBtn formBtn" class="{{ css.btn_2 }}" type="button" v-on:click="saveBtn1">{{ langText.saveBtn }}</button>
+            <div class="btn_h_space"></div>
             <button id="nextBtn" data-jshook="nextBtn formBtn" class="{{ css.btn_2 }}" v-if="claim.isComplete" type="button" v-on:click="nextBtn1">{{ langText.submitBtn }}</button>
         </div>
     </div>

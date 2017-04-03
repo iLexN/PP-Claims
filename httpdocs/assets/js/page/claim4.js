@@ -1,10 +1,20 @@
 var SubmitClaimBox = (function () {
     var $m = $('#submitClaim');
+    var $submitClick = $('.submitClick');
+    var $saveClick = $('.saveClick');
     function open() {
         $m.modal('open');
     }
     function close() {
         $m.modal('close');
+    }
+    function save(){
+        $submitClick.hide();
+        $saveClick.show();
+    }
+    function submit(){
+        $saveClick.hide();
+        $submitClick.show();
     }
     function init() {
         $m.modal({
@@ -17,14 +27,16 @@ var SubmitClaimBox = (function () {
         });
         $.jshook('submitClaimBtnClose').on({
             'click' : function(){
-                window.location.replace("/main");
+                window.location.replace("/claim");
             }
         });
     }
     init();
     return {
         'open': open,
-        'close': close
+        'close': close,
+        'save':save,
+        'submit':submit
     };
 })();
 
@@ -52,9 +64,13 @@ var app = new Vue({
         }
     },
     methods: {
+        saveBtn1: function(){
+            SubmitClaimBox.save();
+            SubmitClaimBox.open();
+        },
         nextBtn1: function () {
-            
             this.goAjaxClaim(function (data) {
+                SubmitClaimBox.submit();
                 loadingBox.close();
                 SubmitClaimBox.open();
             });

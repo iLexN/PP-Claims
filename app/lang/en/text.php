@@ -26,6 +26,7 @@ return [
 
     //main page
     'main_desc'    => 'For more information, hover over the boxes:',
+    'main_desc_m'  => 'For more information:',
     'desc_profile' => 'View and manage the information for all member profiles here',
     'desc_claims'  => 'View and manage all new, pending, and completed claims here',
     'desc_policy'  => 'View your policy and premium details here',

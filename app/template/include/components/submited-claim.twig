@@ -2,10 +2,12 @@
     <div class="home_model-content">
         <div class="row">
             <div class="col s12">
-                <h4>{{ langText.claim_step4_submited_title }}</h4>
+                <h4 class="submitClick">{{ langText.claim_step4_submited_title }}</h4>
+                <h4 class="saveClick">{{ langText.save_claim_title }}</h4>
             </div>
             <div class="col s12">
-                <p class="home_model-content_p valid_msg">{{ langText.claim_step4_submited_desc }}</p>
+                <p class="home_model-content_p valid_msg submitClick">{{ langText.claim_step4_submited_desc }}</p>
+                <p class="home_model-content_p valid_msg saveClick">{{ langText.save_claim_Success | nl2br }}</p>
                 <button data-jshook="submitClaimBtnClose" class="{{ css.btn_1 }}" type="button" >{{ langText.closeBtn }}</button>
             </div>
         </div>
