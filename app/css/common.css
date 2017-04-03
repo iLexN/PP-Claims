@@ -489,7 +489,7 @@ include components
     font-size: 1rem;
     font-weight: bold;
     color: #f7941d;}
-.padding_box_desc{padding-left: 3.5rem;padding-right: 0.5rem}
+.padding_box_desc{padding-left: 3.9375rem;padding-right: 0.5rem}
 /***** address box *****/
 .member_address_newbox_textbox{
     width:100%; text-align:center
