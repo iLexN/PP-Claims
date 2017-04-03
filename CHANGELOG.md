@@ -1,4 +1,11 @@
 #### [Current]
+ * [78e330e](../../commit/78e330e) - __(2017-04-03 15:19:38 +0800)__ fix bug ture -> true
+ * [3da0e23](../../commit/3da0e23) - __(2017-04-03 14:21:53 +0800)__ follow comments update
+ * [53d8845](../../commit/53d8845) - __(2017-03-30 14:31:43 +0800)__ add use info update with title, name for YS
+ * [8322aa1](../../commit/8322aa1) - __(2017-03-30 11:06:23 +0800)__ add zip file download ( [#2](../../issues/2)0)
+ * [6a85578](../../commit/6a85578) - __(2017-03-29 15:48:48 +0800)__ cs fix
+ * [e8f109f](../../commit/e8f109f) - __(2017-03-29 15:46:43 +0800)__ fix for plan file db structure change
+ * [26dd725](../../commit/26dd725) - __(2017-03-28 12:02:00 +0800)__ fix selenium Test
  * [01fda66](../../commit/01fda66) - __(2017-03-27 12:15:11 +0800)__ cs fix
  * [704a699](../../commit/704a699) - __(2017-03-27 12:14:22 +0800)__ cs fix
  * [5e65f91](../../commit/5e65f91) - __(2017-03-27 12:12:54 +0800)__ cs fix

@@ -65,7 +65,7 @@ final class Index extends AbstractContainer
 
         if ($holderInfo['renew'] !== null) {
             $out = $holderInfo['renew'];
-            $out['renew'] = ture;
+            $out['renew'] = true;
         } else {
             $out = $holderInfo;
             $out['renew'] = false;
