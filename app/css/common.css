@@ -1,6 +1,19 @@
 @import url("../../../httpdocs/components/materialize/dist/css/materialize.min.css");
 
-html{box-sizing: border-box;font-size:16px;font-family: 'Open Sans'}
+html{box-sizing: border-box;font-family: 'Open Sans'}
+/* 12px @ 320px increasing to 16px @ 1200px */
+@media (min-width: 320px) {
+  :root {
+    font-size: calc(0.75rem + ((1vw - 3.2px) * 0.4545));
+    /* Where: * 0.4545 = 100 * font_Size_Difference / viewport_Width_Difference */
+  }
+}
+/* Prevent font scaling beyond this breakpoint */
+@media (min-width: 1200px) {
+  :root {
+    font-size: 16px;
+  }
+}
 body{background-color: #ececec;}
 /*--------------------------------------------------------------
 Layout structure
