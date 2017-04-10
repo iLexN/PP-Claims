@@ -37,15 +37,11 @@ $container['logger'] = function (\Slim\Container $c) {
     $slackHandler = new \Monolog\Handler\SlackHandler($slackConfig['token'], $slackConfig['chanel'], $slackConfig['name'], true, null, 400, true, false, true);
     $logger->pushHandler($slackHandler);
 
-    //$logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'],$settings['mailSubject'],$settings['mailFrom']));
-    //$logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
-
     return $logger;
 };
 
 $container['httpClient'] = function (\Slim\Container $c) {
     $settings = $c->get('apiConfig');
-    $caPath = \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath();
 
     return new \GuzzleHttp\Client([
             'base_uri'    => $settings['base_uri'],

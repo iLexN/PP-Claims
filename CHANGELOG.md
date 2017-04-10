@@ -1,11 +1,15 @@
 #### [Current]
+ * [710368f](../../commit/710368f) - __(2017-04-10 11:09:57 +0800)__ code clear
+ * [2a93ca2](../../commit/2a93ca2) - __(2017-04-10 11:02:35 +0800)__ add ssl support + slack log ([#21](../../issues/21))
+ * [1faa371](../../commit/1faa371) - __(2017-04-06 17:17:00 +0800)__ front-size scale
+ * [03bf116](../../commit/03bf116) - __(2017-04-05 12:03:49 +0800)__ change log format change2
  * [c5baebe](../../commit/c5baebe) - __(2017-04-05 11:56:33 +0800)__ change log format change
  * [5f2936b](../../commit/5f2936b) - __(2017-04-05 11:48:56 +0800)__ change log test
  * [29fb5ef](../../commit/29fb5ef) - __(2017-04-03 16:49:29 +0800)__ 0.1.7.2 css update
  * [a432dfa](../../commit/a432dfa) - __(2017-04-03 15:20:21 +0800)__ fix bug ture -> true
  * [3da0e23](../../commit/3da0e23) - __(2017-04-03 14:21:53 +0800)__ follow comments update
  * [53d8845](../../commit/53d8845) - __(2017-03-30 14:31:43 +0800)__ add use info update with title, name for YS
- * [8322aa1](../../commit/8322aa1) - __(2017-03-30 11:06:23 +0800)__ add zip file download ( [#20](../../issues/20))
+ * [8322aa1](../../commit/8322aa1) - __(2017-03-30 11:06:23 +0800)__ add zip file download ([#20](../../issues/20))
  * [6a85578](../../commit/6a85578) - __(2017-03-29 15:48:48 +0800)__ cs fix
  * [e8f109f](../../commit/e8f109f) - __(2017-03-29 15:46:43 +0800)__ fix for plan file db structure change
  * [26dd725](../../commit/26dd725) - __(2017-03-28 12:02:00 +0800)__ fix selenium Test
@@ -72,7 +76,7 @@
  * [15b0923](../../commit/15b0923) - __(2017-01-24 12:21:34 +0800)__ css btn update
  * [2766174](../../commit/2766174) - __(2017-01-24 09:35:17 +0800)__ 'Bank transfer' => 'Bank Transfer' + claim next to step4
  * [5497eac](../../commit/5497eac) - __(2017-01-23 10:22:15 +0800)__ css btn update
- * [aa9aea9](../../commit/aa9aea9) - __(2017-01-20 15:25:19 +0800)__ Merge pull request  [#19](../../issues/19) from iLexN/analysis-XpOKg2
+ * [aa9aea9](../../commit/aa9aea9) - __(2017-01-20 15:25:19 +0800)__ Merge pull request [#19](../../issues/19) from iLexN/analysis-XpOKg2
  * [6e517c2](../../commit/6e517c2) - __(2017-01-20 07:24:36 +0000)__ Apply fixes from StyleCI
  * [c1bf924](../../commit/c1bf924) - __(2017-01-20 15:18:43 +0800)__ ci fix2
  * [f8db61a](../../commit/f8db61a) - __(2017-01-20 15:07:18 +0800)__ ci fix1
@@ -138,7 +142,7 @@
  * [353ff6c](../../commit/353ff6c) - __(2016-12-05 16:17:04 +0800)__ remove old backup file in template
  * [f4a1ef6](../../commit/f4a1ef6) - __(2016-12-05 12:34:46 +0800)__ change log
  * [cc46c63](../../commit/cc46c63) - __(2016-12-05 12:32:44 +0800)__ Merge origin/master
- * [5b56823](../../commit/5b56823) - __(2016-12-05 12:29:49 +0800)__ Merge pull request  [#18](../../issues/18) from iLexN/analysis-qMw7dv
+ * [5b56823](../../commit/5b56823) - __(2016-12-05 12:29:49 +0800)__ Merge pull request [#18](../../issues/18) from iLexN/analysis-qMw7dv
  * [fb48abd](../../commit/fb48abd) - __(2016-12-05 04:29:41 +0000)__ Apply fixes from StyleCI
  * [f1a47b8](../../commit/f1a47b8) - __(2016-12-05 12:28:18 +0800)__ update browser test
  * [44f957d](../../commit/44f957d) - __(2016-12-05 12:13:55 +0800)__ package version update : monolog
@@ -166,7 +170,7 @@
  * [d2a785e](../../commit/d2a785e) - __(2016-11-15 15:48:21 +0800)__ ci fix 2
  * [8f5e9ff](../../commit/8f5e9ff) - __(2016-11-15 15:41:57 +0800)__ ci fix
  * [2728c17](../../commit/2728c17) - __(2016-11-15 15:38:34 +0800)__ update for sw.js , add server push for home page
- * [5f85547](../../commit/5f85547) - __(2016-11-14 15:35:44 +0800)__ Merge pull request  [#17](../../issues/17) from iLexN/analysis-zRAvLM
+ * [5f85547](../../commit/5f85547) - __(2016-11-14 15:35:44 +0800)__ Merge pull request [#17](../../issues/17) from iLexN/analysis-zRAvLM
  * [f60f24a](../../commit/f60f24a) - __(2016-11-14 07:35:35 +0000)__ Applied fixes from StyleCI
  * [e489c95](../../commit/e489c95) - __(2016-11-14 15:31:59 +0800)__ route login-ed -> main , also update js path
  * [9d2267e](../../commit/9d2267e) - __(2016-11-14 15:28:24 +0800)__ forgot set password code improve 1
@@ -186,7 +190,7 @@
  * [bc0e26b](../../commit/bc0e26b) - __(2016-10-24 17:05:39 +0800)__ cs fix
  * [16c5c2f](../../commit/16c5c2f) - __(2016-10-24 16:48:47 +0800)__ ci fix 2
  * [e6faf3c](../../commit/e6faf3c) - __(2016-10-24 16:45:07 +0800)__ ci fix
- * [b20c11c](../../commit/b20c11c) - __(2016-10-24 16:39:14 +0800)__ Merge pull request  [#16](../../issues/16) from iLexN/analysis-zeYlpa
+ * [b20c11c](../../commit/b20c11c) - __(2016-10-24 16:39:14 +0800)__ Merge pull request [#16](../../issues/16) from iLexN/analysis-zeYlpa
  * [74c2f45](../../commit/74c2f45) - __(2016-10-24 08:38:52 +0000)__ Applied fixes from StyleCI
  * [d1ce201](../../commit/d1ce201) - __(2016-10-24 16:36:35 +0800)__ 2 page layout
  * [3aa2e1b](../../commit/3aa2e1b) - __(2016-10-18 16:54:43 +0800)__ improve 2
@@ -210,7 +214,7 @@
  * [17af0e3](../../commit/17af0e3) - __(2016-09-23 10:24:31 +0800)__ package update
  * [5a3a99a](../../commit/5a3a99a) - __(2016-09-22 17:45:52 +0800)__ package update
  * [a80b420](../../commit/a80b420) - __(2016-09-19 12:23:43 +0800)__ package update
- * [b74d8cb](../../commit/b74d8cb) - __(2016-09-06 12:44:03 +0800)__ Merge pull request  [#15](../../issues/15) from iLexN/analysis-qyWmMG
+ * [b74d8cb](../../commit/b74d8cb) - __(2016-09-06 12:44:03 +0800)__ Merge pull request [#15](../../issues/15) from iLexN/analysis-qyWmMG
  * [ac77c27](../../commit/ac77c27) - __(2016-09-06 04:43:53 +0000)__ Applied fixes from StyleCI
  * [2b74739](../../commit/2b74739) - __(2016-09-06 12:30:10 +0800)__ ci fix
  * [72c32a7](../../commit/72c32a7) - __(2016-09-06 12:12:48 +0800)__ abstract improve
@@ -225,7 +229,7 @@
  * [e85733c](../../commit/e85733c) - __(2016-08-08 12:23:56 +0800)__ package update
  * [7484436](../../commit/7484436) - __(2016-08-05 11:59:34 +0800)__ package version update
  * [4a2c965](../../commit/4a2c965) - __(2016-08-02 14:29:55 +0800)__ package version update
- * [05086fc](../../commit/05086fc) - __(2016-07-28 15:22:34 +0800)__ Merge pull request  [#14](../../issues/14) from iLexN/analysis-zO3EGW
+ * [05086fc](../../commit/05086fc) - __(2016-07-28 15:22:34 +0800)__ Merge pull request [#14](../../issues/14) from iLexN/analysis-zO3EGW
  * [56ee01c](../../commit/56ee01c) - __(2016-07-28 03:22:02 -0400)__ Applied fixes from StyleCI
  * [2a8dbfb](../../commit/2a8dbfb) - __(2016-07-28 15:18:42 +0800)__ ci fix
  * [c73829a](../../commit/c73829a) - __(2016-07-28 14:55:31 +0800)__ ci fix
@@ -264,7 +268,7 @@
  * [1ca3b9e](../../commit/1ca3b9e) - __(2016-06-21 17:31:37 +0800)__ add comment
  * [9916a9a](../../commit/9916a9a) - __(2016-06-21 09:37:19 +0800)__ change all test filename to ClassTest format
  * [29f8b1d](../../commit/29f8b1d) - __(2016-06-16 17:36:22 +0800)__ frontend script fix
- * [22bb520](../../commit/22bb520) - __(2016-06-16 17:30:07 +0800)__ Merge pull request  [#13](../../issues/13) from iLexN/analysis-86VDa4
+ * [22bb520](../../commit/22bb520) - __(2016-06-16 17:30:07 +0800)__ Merge pull request [#13](../../issues/13) from iLexN/analysis-86VDa4
  * [880b3ba](../../commit/880b3ba) - __(2016-06-16 05:29:50 -0400)__ Applied fixes from StyleCI
  * [d3858aa](../../commit/d3858aa) - __(2016-06-16 17:16:14 +0800)__ add password js , signup page
  * [b3bdc59](../../commit/b3bdc59) - __(2016-06-16 09:38:06 +0800)__ package update
@@ -278,13 +282,13 @@
  * [09f59a2](../../commit/09f59a2) - __(2016-06-03 17:54:20 +0800)__ comment useless code
  * [a0a40b8](../../commit/a0a40b8) - __(2016-06-03 17:39:07 +0800)__ doc fix
  * [8d8d104](../../commit/8d8d104) - __(2016-06-03 17:28:22 +0800)__ Merge origin/master
- * [42a6fdf](../../commit/42a6fdf) - __(2016-06-03 17:22:37 +0800)__ Merge pull request  [#12](../../issues/12) from iLexN/analysis-z4wybk
+ * [42a6fdf](../../commit/42a6fdf) - __(2016-06-03 17:22:37 +0800)__ Merge pull request [#12](../../issues/12) from iLexN/analysis-z4wybk
  * [0fd8189](../../commit/0fd8189) - __(2016-06-03 05:21:04 -0400)__ Applied fixes from StyleCI
  * [dde877d](../../commit/dde877d) - __(2016-06-03 17:08:13 +0800)__ doc improve
  * [627ad17](../../commit/627ad17) - __(2016-06-03 16:47:20 +0800)__ policemodule
  * [6e3ae22](../../commit/6e3ae22) - __(2016-06-03 16:31:46 +0800)__ add police
  * [7c665c7](../../commit/7c665c7) - __(2016-06-03 13:55:40 +0800)__ fix object to array
- * [2623ea0](../../commit/2623ea0) - __(2016-06-03 12:38:04 +0800)__ Merge pull request  [#11](../../issues/11) from iLexN/analysis-zDyYMb
+ * [2623ea0](../../commit/2623ea0) - __(2016-06-03 12:38:04 +0800)__ Merge pull request [#11](../../issues/11) from iLexN/analysis-zDyYMb
  * [bf9c385](../../commit/bf9c385) - __(2016-06-03 00:37:48 -0400)__ Applied fixes from StyleCI
  * [770eb13](../../commit/770eb13) - __(2016-06-03 12:36:39 +0800)__ cs
  * [9ce01b0](../../commit/9ce01b0) - __(2016-06-03 12:35:13 +0800)__ composer.lock update
@@ -295,7 +299,7 @@
  * [6e67561](../../commit/6e67561) - __(2016-06-01 10:36:24 +0800)__ add device detect
  * [a487ab9](../../commit/a487ab9) - __(2016-06-01 09:42:39 +0800)__ cs
  * [f28e6bc](../../commit/f28e6bc) - __(2016-05-31 17:28:09 +0800)__ try imporve post file to api
- * [bf92fa8](../../commit/bf92fa8) - __(2016-05-31 17:12:58 +0800)__ Merge pull request  [#10](../../issues/10) from iLexN/analysis-qrrEg3
+ * [bf92fa8](../../commit/bf92fa8) - __(2016-05-31 17:12:58 +0800)__ Merge pull request [#10](../../issues/10) from iLexN/analysis-qrrEg3
  * [5cdf8d9](../../commit/5cdf8d9) - __(2016-05-31 05:12:44 -0400)__ Applied fixes from StyleCI
  * [90be37a](../../commit/90be37a) - __(2016-05-31 17:07:50 +0800)__ cs
  * [cda4c58](../../commit/cda4c58) - __(2016-05-31 16:20:56 +0800)__ cs
@@ -326,10 +330,10 @@
  * [aa8ac5e](../../commit/aa8ac5e) - __(2016-05-23 15:13:15 +0800)__ add logger send email + setting
  * [63a2c97](../../commit/63a2c97) - __(2016-05-23 14:48:16 +0800)__ router helper
  * [45ea544](../../commit/45ea544) - __(2016-05-23 09:21:02 +0800)__ add validataion msg
- * [0870f06](../../commit/0870f06) - __(2016-05-20 17:36:41 +0800)__ Merge pull request  [#8](../../issues/8) from iLexN/analysis-Xa6QWW
+ * [0870f06](../../commit/0870f06) - __(2016-05-20 17:36:41 +0800)__ Merge pull request [#8](../../issues/8) from iLexN/analysis-Xa6QWW
  * [f97b70a](../../commit/f97b70a) - __(2016-05-20 05:36:30 -0400)__ Applied fixes from StyleCI
  * [34cd5d7](../../commit/34cd5d7) - __(2016-05-20 17:31:44 +0800)__ upload action.php improve
- * [0dc84cc](../../commit/0dc84cc) - __(2016-05-20 17:13:37 +0800)__ Merge pull request  [#7](../../issues/7) from iLexN/analysis-q220rA
+ * [0dc84cc](../../commit/0dc84cc) - __(2016-05-20 17:13:37 +0800)__ Merge pull request [#7](../../issues/7) from iLexN/analysis-q220rA
  * [0e2b41a](../../commit/0e2b41a) - __(2016-05-20 05:06:18 -0400)__ Applied fixes from StyleCI
  * [61b6468](../../commit/61b6468) - __(2016-05-20 17:01:16 +0800)__ ci fix
  * [ab81986](../../commit/ab81986) - __(2016-05-20 16:53:04 +0800)__ change meaningful name
@@ -344,7 +348,7 @@
  * [9d603fa](../../commit/9d603fa) - __(2016-05-18 09:43:23 +0800)__ add upload file test
  * [c3c69d4](../../commit/c3c69d4) - __(2016-05-18 09:42:46 +0800)__ last step add completed
  * [5456d68](../../commit/5456d68) - __(2016-05-11 11:17:40 +0800)__ package version update
- * [f8d5342](../../commit/f8d5342) - __(2016-04-05 18:11:32 +0800)__ Merge pull request  [#6](../../issues/6) from iLexN/analysis-XpeZMR
+ * [f8d5342](../../commit/f8d5342) - __(2016-04-05 18:11:32 +0800)__ Merge pull request [#6](../../issues/6) from iLexN/analysis-XpeZMR
  * [343546e](../../commit/343546e) - __(2016-04-05 05:48:30 -0400)__ Applied fixes from StyleCI
  * [0235815](../../commit/0235815) - __(2016-04-05 17:42:32 +0800)__ getUserByLoginSession , put into this->user from $user
  * [cbdc0e0](../../commit/cbdc0e0) - __(2016-04-05 17:22:42 +0800)__ cs fix 3
@@ -368,18 +372,18 @@
  * [1368c5d](../../commit/1368c5d) - __(2016-03-16 16:55:06 +0800)__ add typehinted 2
  * [c9cb8c6](../../commit/c9cb8c6) - __(2016-03-16 16:35:22 +0800)__ add typehinted
  * [d61fa3e](../../commit/d61fa3e) - __(2016-03-16 14:38:30 +0800)__ csrf fails 301 with msg
- * [7673a20](../../commit/7673a20) - __(2016-03-15 16:10:35 +0800)__ Merge pull request  [#4](../../issues/4) from iLexN/analysis-XWN93P
+ * [7673a20](../../commit/7673a20) - __(2016-03-15 16:10:35 +0800)__ Merge pull request [#4](../../issues/4) from iLexN/analysis-XWN93P
  * [4a73f9a](../../commit/4a73f9a) - __(2016-03-15 04:10:20 -0400)__ Applied fixes from StyleCI
  * [83472ac](../../commit/83472ac) - __(2016-03-15 16:09:22 +0800)__ line format fix
  * [9d8e41a](../../commit/9d8e41a) - __(2016-03-15 15:13:03 +0800)__ add Dochead
- * [78b525e](../../commit/78b525e) - __(2016-03-15 14:13:02 +0800)__ Merge pull request  [#3](../../issues/3) from iLexN/analysis-87a632
+ * [78b525e](../../commit/78b525e) - __(2016-03-15 14:13:02 +0800)__ Merge pull request [#3](../../issues/3) from iLexN/analysis-87a632
  * [8046946](../../commit/8046946) - __(2016-03-15 02:12:29 -0400)__ Applied fixes from StyleCI
  * [827b758](../../commit/827b758) - __(2016-03-15 14:05:59 +0800)__ scrutinizer fix 1
  * [54b034f](../../commit/54b034f) - __(2016-03-15 12:48:14 +0800)__ sensiolabs fix 2
- * [f4a30ef](../../commit/f4a30ef) - __(2016-03-15 12:41:10 +0800)__ Merge pull request  [#2](../../issues/2) from iLexN/analysis-Xajr0W
+ * [f4a30ef](../../commit/f4a30ef) - __(2016-03-15 12:41:10 +0800)__ Merge pull request [#2](../../issues/2) from iLexN/analysis-Xajr0W
  * [fb881e5](../../commit/fb881e5) - __(2016-03-15 00:40:58 -0400)__ Applied fixes from StyleCI
  * [426550a](../../commit/426550a) - __(2016-03-15 12:38:11 +0800)__ sensiolabs fix 1
- * [ed916a3](../../commit/ed916a3) - __(2016-03-15 12:14:54 +0800)__ Merge pull request  [#1](../../issues/1) from iLexN/analysis-8ADJgB
+ * [ed916a3](../../commit/ed916a3) - __(2016-03-15 12:14:54 +0800)__ Merge pull request [#1](../../issues/1) from iLexN/analysis-8ADJgB
  * [568d7de](../../commit/568d7de) - __(2016-03-15 00:14:41 -0400)__ Applied fixes from StyleCI
  * [b0539b4](../../commit/b0539b4) - __(2016-03-15 12:06:34 +0800)__ first commit
 
