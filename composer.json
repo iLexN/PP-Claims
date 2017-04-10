@@ -19,7 +19,8 @@
         "monolog/monolog": "1.*",
         "tedivm/stash": "0.14.*",
         "mobiledetect/mobiledetectlib":"2.8.24",
-        "league/flysystem":"1.0.*"
+        "league/flysystem":"1.0.*",
+        "composer/ca-bundle" : "1.0.*"
     },
     "require-dev" :{
         "facebook/webdriver": "dev-master",
