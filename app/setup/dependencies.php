@@ -32,6 +32,11 @@ $container['logger'] = function (\Slim\Container $c) {
     $settings = $c->get('logConfig');
     $logger = new \Monolog\Logger($settings['name']);
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
+
+    $slackConfig = $c->get('slackConfig');
+    $slackHandler = new \Monolog\Handler\SlackHandler($slackConfig['token'], $slackConfig['chanel'], $slackConfig['name'],true,null,400,true,false,true);
+    $logger->pushHandler($slackHandler);
+
     //$logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'],$settings['mailSubject'],$settings['mailFrom']));
     //$logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
 
@@ -40,11 +45,13 @@ $container['logger'] = function (\Slim\Container $c) {
 
 $container['httpClient'] = function (\Slim\Container $c) {
     $settings = $c->get('apiConfig');
+    $caPath = \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath();
 
     return new \GuzzleHttp\Client([
             'base_uri'    => $settings['base_uri'],
             'auth'        => [$settings['username'], $settings['password']],
             'http_errors' => false,
+            'verify'      => \Composer\CaBundle\CaBundle::getSystemCaRootBundlePath(),
             'headers'     => [
                 'PP-Portal-Platform' => 'Web',
             ],
