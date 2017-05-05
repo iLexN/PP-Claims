@@ -22,13 +22,13 @@ class MainPagePcTest extends \BaseTestCase
         $this->login();
 
         $this->assertEquals($this->url.'main', $this->webDriver->getCurrentURL());
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/main.jpg');
 
         $div = $this->webDriver->findElement(WebDriverBy::cssSelector('.view.hoverable'));
 
         $this->webDriver->action()->moveToElement($div)->perform();
         sleep(1);
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main-section-over.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/main-section-over.jpg');
 
         //logout
         $dropDown = $this->webDriver->findElement(WebDriverBy::id('dropdown1'));
@@ -39,7 +39,7 @@ class MainPagePcTest extends \BaseTestCase
 
         $this->assertTrue($dropDown->isDisplayed());
 
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main-logout-btn.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/main-logout-btn.jpg');
 
         $dropDown->click();
 

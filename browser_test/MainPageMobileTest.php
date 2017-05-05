@@ -21,13 +21,13 @@ class MainPageMobileTest extends \BaseTestCase
     {
         $this->login();
         $this->assertEquals($this->url.'main', $this->webDriver->getCurrentURL());
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/main.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/main.jpg');
 
         $slideNav = $this->webDriver->findElement(WebDriverBy::xpath(".//*[@id='slide-out']"));
         $this->assertFalse($slideNav->isDisplayed());
         //nav
         $this->webDriver->findElement(WebDriverBy::cssSelector('.button-collapse.mobile_nav_icon'))->click();
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/slide.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/slide.jpg');
         $this->assertTrue($slideNav->isDisplayed());
 
         $this->webDriver->findElement(WebDriverBy::className('drag-target'))->click();

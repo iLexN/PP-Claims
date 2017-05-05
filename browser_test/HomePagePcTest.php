@@ -20,7 +20,7 @@ class HomePagePcTest extends \BaseTestCase
     public function testLoginFail()
     {
         $this->webDriver->get($this->url);
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/home.jpg');
 
         $this->webDriver->findElement(WebDriverBy::id('user_name'))->sendKeys('alex1');
         $this->webDriver->findElement(WebDriverBy::id('password'))->sendKeys('123Psadfs');
@@ -36,7 +36,7 @@ class HomePagePcTest extends \BaseTestCase
         $this->webDriver->get($this->url);
         $this->webDriver->findElement(WebDriverBy::linkText('Forgot Password?'))
                 ->click();
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotPassword.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/home-forgotPassword.jpg');
 
         $box = $this->webDriver->findElement(WebDriverBy::id('forgotPassword'));
 
@@ -63,7 +63,7 @@ class HomePagePcTest extends \BaseTestCase
 
         $successBox = $this->webDriver->findElement(WebDriverBy::cssSelector('div[data-jshook="forgotPasswordSuccess"]'));
         $this->assertTrue($successBox->isDisplayed());
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotPassword-success.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/home-forgotPassword-success.jpg');
 
         $closeBtn = $this->webDriver->findElement(WebDriverBy::cssSelector('button[data-jshook="forgotpasswordBtnClose"]'));
         $closeBtn->click();
@@ -86,7 +86,7 @@ class HomePagePcTest extends \BaseTestCase
 
         $this->webDriver->findElement(WebDriverBy::linkText('Forgot Username?'))
                 ->click();
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotUsername.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/home-forgotUsername.jpg');
 
         $this->assertTrue($box->isDisplayed());
         $this->assertFalse($failMsg->isDisplayed());
@@ -109,7 +109,7 @@ class HomePagePcTest extends \BaseTestCase
         $this->assertFalse($failMsg->isDisplayed());
 
         $success = $this->webDriver->findElement(WebDriverBy::cssSelector('div[data-jshook="forgotUsernameSuccess"]'));
-        $this->webDriver->takeScreenshot(__Dir__.'/screen/'.$this->type.'/home-forgotUsername-success.jpg');
+        $this->webDriver->takeScreenshot(__DIR__.'/screen/'.$this->type.'/home-forgotUsername-success.jpg');
 
         $this->assertTrue($success->isDisplayed());
         $closeBtn = $this->webDriver->findElement(WebDriverBy::cssSelector('button[data-jshook="forgotUsernameBtnClose"]'));
