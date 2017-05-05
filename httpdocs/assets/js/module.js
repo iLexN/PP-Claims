@@ -258,7 +258,7 @@ var debounce = function (func, wait) {
 };
 
 //right_side
-pinTop = (function () {
+var pinTop = (function () {
     function setWidth(){
         $.jshook('pushpin').width($.jshook('pushpin').parent().width());
     }
@@ -293,7 +293,8 @@ var BreadCrumb = (function () {
     //Vue.config.devtools = true;
     WebFont.load({
         google: {
-            families: ['Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i', 'Material Icons']
+            //families: ['Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i', 'Material Icons']
+            families: ['Open Sans:300,300i,400,400i,600,600i,700,700i,800,800i']
         }
     });
 //});

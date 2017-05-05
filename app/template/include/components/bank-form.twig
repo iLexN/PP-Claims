@@ -25,6 +25,7 @@
         <div class="col s12 m5 l5 offset-m1 offset-l1 customlabel-1" v-show="edit">
             {{ forms.MD_select_currency(langText.bank_currency,'currency' , 'bank.currency' ) }}
         </div>
+        <div style="clear:both" v-show="edit"></div>
         <div class="input-field col s12 m5 l5 offset-m1 offset-l1" v-show="!edit">
             {{ forms.MD_input(langText.bank_currency,'text','currency','',langText.required_erorr, false,'v-model="bank.currency_display"' ) }}
         </div>

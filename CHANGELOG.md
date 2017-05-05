@@ -1,5 +1,7 @@
 #### [Current]
- * [710368f](../../commit/710368f) - __(2017-04-10 11:09:57 +0800)__ code clear
+ * [57abd64](../../commit/57abd64) - __(2017-05-05 16:28:44 +0800)__ ui fix - new bank form , policy page pin take out (file list too long)
+ * [a50a2bb](../../commit/a50a2bb) - __(2017-04-24 17:03:16 +0800)__ js + php package update
+ * [a7c83c8](../../commit/a7c83c8) - __(2017-04-10 11:24:07 +0800)__ code clear
  * [2a93ca2](../../commit/2a93ca2) - __(2017-04-10 11:02:35 +0800)__ add ssl support + slack log ([#21](../../issues/21))
  * [1faa371](../../commit/1faa371) - __(2017-04-06 17:17:00 +0800)__ front-size scale
  * [03bf116](../../commit/03bf116) - __(2017-04-05 12:03:49 +0800)__ change log format change2
