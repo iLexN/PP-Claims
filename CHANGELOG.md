@@ -1,5 +1,11 @@
 #### [Current]
- * [57abd64](../../commit/57abd64) - __(2017-05-05 16:28:44 +0800)__ ui fix - new bank form , policy page pin take out (file list too long)
+ * [c9f3e77](../../commit/c9f3e77) - __(2017-05-15 11:30:00 +0800)__ stephen comments update
+ * [b73cc4d](../../commit/b73cc4d) - __(2017-05-05 17:30:34 +0800)__ php package update
+ * [65fae39](../../commit/65fae39) - __(2017-05-05 17:24:33 +0800)__ Apply fixes from StyleCI ([#22](../../issues/22))
+ * [fb7b29b](../../commit/fb7b29b) - __(2017-05-05 16:29:20 +0800)__ ui fix - new bank form , policy page pin take out (file list too long)
+
+#### [0.1.8]
+ * [fb7b29b](../../commit/fb7b29b) - __(2017-05-05 16:29:20 +0800)__ ui fix - new bank form , policy page pin take out (file list too long)
  * [a50a2bb](../../commit/a50a2bb) - __(2017-04-24 17:03:16 +0800)__ js + php package update
  * [a7c83c8](../../commit/a7c83c8) - __(2017-04-10 11:24:07 +0800)__ code clear
  * [2a93ca2](../../commit/2a93ca2) - __(2017-04-10 11:02:35 +0800)__ add ssl support + slack log ([#21](../../issues/21))
@@ -19,7 +25,6 @@
  * [704a699](../../commit/704a699) - __(2017-03-27 12:14:22 +0800)__ cs fix
  * [5e65f91](../../commit/5e65f91) - __(2017-03-27 12:12:54 +0800)__ cs fix
  * [589ccc5](../../commit/589ccc5) - __(2017-03-27 12:02:01 +0800)__ change?
- * [4d6a27f](../../commit/4d6a27f) - __(2017-03-27 10:26:17 +0800)__ js components update
 
 #### [0.1.7]
  * [4d6a27f](../../commit/4d6a27f) - __(2017-03-27 10:26:17 +0800)__ js components update

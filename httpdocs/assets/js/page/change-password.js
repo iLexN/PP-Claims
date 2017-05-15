@@ -17,7 +17,7 @@ var updateSuccess = (function () {
         });
         $.jshook('passwordUpdatedBoxBtnClose').on({
             'click' : function(){
-                window.location.replace("/member");
+                window.location.replace(cancelLink);
             }
         });
     }
@@ -125,6 +125,9 @@ var app = new Vue({
                 duration: 500,
                 easing: "linear"
             });
+        },
+        cancel : function(){
+            window.location.href = cancelLink;
         }
     }
 });

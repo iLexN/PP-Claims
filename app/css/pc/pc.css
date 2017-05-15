@@ -46,7 +46,8 @@ header {
     color : #0292e4;
 }
 .hearder_nav_bar_username{
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    color : #0292e4;
 }
 .header_nav_bar .dropdown-content {
     background-color: #555;

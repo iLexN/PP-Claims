@@ -241,3 +241,10 @@ var confirmDelBankModel = (function () {
         'close': close
     };
 })();
+
+$("#claimFileInput").change(function(){
+    app.uploadClaimFile();
+});
+$("#supDocInput").change(function(){
+    app.uploadSupDoc();
+});

@@ -29,7 +29,7 @@
 
         <div class="row">
 
-            <div class="col s12 m8 l7">
+            <div class="col s12">
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>{{ langText.chooseFileBtn }}</span>
@@ -40,12 +40,14 @@
                     </div>
                 </div>
             </div>
+                        <!--
             <div class="col s12 m4 l5">
                 <div class="upload_btn_c">
                     {#{ forms.MD_button_2_2('claim_form','Upload','butotn', false , 'uploadClaimFile') }#}
                     <button data-jshook="claim_form formBtn" class="{{ css.btn_3_large }}" type="butotn" v-on:click="uploadClaimFile">{{ langText.uploadBtn }}</button>
                 </div>
             </div>
+                        -->
             <div class="col s12 min-text" id="claimform_size">1. {{ langText.claim_step3_file_1 }}</div>
             <div class="col s12 min-text">2. {{ langText.claim_step3_file_2 }}</div>
 
@@ -70,7 +72,7 @@
 
         <div class="row">
 
-            <div class="col s12 m8 l7">
+            <div class="col s12">
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>{{ langText.chooseFileBtn }}</span>
@@ -81,12 +83,14 @@
                     </div>
                 </div>
             </div>
+                        <!--
             <div class="col s12 m4 l5">
                 <div class="upload_btn_c">
                     {#{ forms.MD_button_2_2('claim_form','Upload','butotn', false , 'uploadSupDoc') }#}
                     <button data-jshook="sup_doc formBtn" class="{{ css.btn_3_large }}" type="butotn" v-on:click="uploadSupDoc">{{ langText.uploadBtn }}</button>
                 </div>
             </div>
+                        -->
             <div class="col s12 min-text" id="supdoc_size">1. {{ langText.claim_step3_file_1 }}</div>
             <div class="col s12 min-text">2. {{ langText.claim_step3_file_2 }}</div>
 
@@ -123,7 +127,7 @@
 
                 <div>
                     <img src="/assets/images/banner_dl_claimform.jpg" class="responsive-img">
-                    <a href="#" class="claim_info_box1_1">
+                    <a :href="'/policy#'+claim.user_policy_id" class="claim_info_box1_1" target="_blank" rel="noopener">
                         <img src="/assets/images/icon_dl.png" class="left claim_info_box1_1_img">
                         <span class="claim_info_box1_1_title">{{ langText.claim_dl_claim_title }}</span>
                     </a>

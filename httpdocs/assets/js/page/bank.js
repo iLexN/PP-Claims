@@ -141,7 +141,10 @@ var app = new Vue({
         checkBank: function () {
             var error_el = [];
             _.forEach(this.bank, function (value, key) {
-                if (key === 'additional_information' || key === 'currency_display') {
+                if (key === 'additional_information' || key === 'currency_display' ||
+                        key === 'iban' || key === 'branch_code' ||
+                        key === 'currency_display' || key === 'intermediary_bank_swift_code' ||
+                        key === 'bank_swift_code') {
                     return;
                 }
                 if (value === '') {

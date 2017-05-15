@@ -44,7 +44,24 @@ var app = new Vue({
     delimiters: ['${', '}'],
     data: {
         'plist': data,
-        'p': data[0]
+        'p': data[0],
+        'keyIndex' : 0
+    },
+    created : function(){
+        var hash = window.location.hash.substring(1);
+        if ( hash === '') {
+            this.p = this.plist[0];
+        } else {
+            this.keyIndex = _.findIndex(data, function(o) { return o.pivot.id == hash ; });
+            if ( this.keyIndex == -1  ) {
+                this.keyIndex = 0;
+            }
+            this.p = this.plist[this.keyIndex];
+        }  
+    },
+    mounted : function(){
+        $('select').val(this.keyIndex);
+        $('select').material_select();
     },
     components: {
         'policy-user': policyuser,
@@ -62,7 +79,7 @@ var app = new Vue({
           return 'user-policy/' + this.p.pivot.id + '/submited-claim';
       },
       claimFormUrl : function(){
-          return 'user-policy/' + this.p.pivot.id + '/claim-form';
+          return 'policy#' + this.p.pivot.id;
       }
     },
     methods: {

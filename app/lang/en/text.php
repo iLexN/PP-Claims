@@ -98,7 +98,7 @@ return [
     'claim_submit_new_claim'  => 'Submit New Claim',
     'claim_saved_claim'       => 'Saved/Unfinished Claims',
     'claim_submitted_claims'  => 'Submitted Claims',
-    'claim_contact_box_p'     => 'Should you have any questions regarding your premium, cover, plan, or more please contact your advisor.',
+    'claim_contact_box_p'     => 'Should you have any questions regarding your premium, cover, plan, or more please contact our claims team.',
     'claim_contact_box_st'    => 'Contact Details',
     //Claim Step1
     'claim_step1_into'                  => 'Start a new claim here. If you would like to save your progress when creating a new claim, press the Save button at the bottom of the page you are on. Saved claims can be accessed at any time from the Claims menu.',
@@ -158,7 +158,7 @@ return [
     'claim_submit_list_title' => 'Submitted Claims',
     'claim_submit_list_intro' => 'View your submitted claims here.',
     'claim_plan_name'         => 'Policy: ',
-    'claim_list_foot_note'    => 'Should you have any questions regarding your premium, cover, plan, or more please contact your advisor.',
+    'claim_list_foot_note'    => 'Should you have any questions regarding your premium, cover, plan, or more please contact our claims team.',
 
     //set new password
     'set_new_password_title' => 'Reset your password',
@@ -196,11 +196,11 @@ return [
     'bank_acc_user'                      => 'Account Name *',
     'bank_acc_no'                        => 'Account Number *',
     'bank_name'                          => 'Bank Name *',
-    'bank_swift_code'                    => 'Bank Swift Code *',
-    'bank_branch_code'                   => 'Branch Code *',
+    'bank_swift_code'                    => 'Bank Swift Code',
+    'bank_branch_code'                   => 'Branch Code',
     'bank_currency'                      => 'Currency *',
-    'bank_iban'                          => 'IBAN *',
-    'bank_intermediary_code'             => 'Intermediary Bank Swift Code *',
+    'bank_iban'                          => 'IBAN',
+    'bank_intermediary_code'             => 'Intermediary Bank Swift Code',
     'bank_add_info'                      => 'Additional Information',
     'policy_address'                     => 'Policy Address',
     'mail_address'                       => 'Mail Address',
@@ -247,7 +247,7 @@ return [
     //policy contact
     'policy_contact_title'      => 'Policy:',
     'policy_contact_advisor'    => 'Your advisor is:',
-    'policy_contact_footnote'   => 'Should you have any questions regarding your premium, cover, plan, or more please contact your advisor.',
+    'policy_contact_footnote'   => 'Should you have any questions regarding your premium, cover, plan, or more please contact our claims team.',
 
     //SaveClaim
     'save_claim_title'   => 'Claim Saved',

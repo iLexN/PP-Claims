@@ -1,6 +1,6 @@
 <?php
 
-$appVersion = '0.1.7.7';
+$appVersion = '0.1.8.0';
 
 session_cache_limiter('');
 session_name('PP-Claims');
