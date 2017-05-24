@@ -98,7 +98,7 @@ return [
     'claim_submit_new_claim'  => 'Submit New Claim',
     'claim_saved_claim'       => 'Saved/Unfinished Claims',
     'claim_submitted_claims'  => 'Submitted Claims',
-    'claim_contact_box_p'     => 'Should you have any questions regarding your premium, cover, plan, or more please contact our claims team.',
+    'claim_contact_box_p'     => 'Should you have any questions regarding your premium, cover, plan, or more Please contact your advisor.',
     'claim_contact_box_st'    => 'Contact Details',
     //Claim Step1
     'claim_step1_into'                  => 'Start a new claim here. If you would like to save your progress when creating a new claim, press the Save button at the bottom of the page you are on. Saved claims can be accessed at any time from the Claims menu.',
@@ -147,7 +147,7 @@ return [
     'claim_step4_title_view'     => 'Claim Detail',
     'claim_step4_intro'          => 'Please check that all details of your claim are correct and required supporting documents are uploaded before clicking submit.',
     'claim_step4_submited_title' => 'Thank you',
-    'claim_step4_submited_desc'  => 'Your claim has been sent to your advisor and will be processed with your insurer in due time. The claim details will be available to view in the “Submitted Claims” menu of the portal. Please contact your advisor if you have any questions about the claims process.',
+    'claim_step4_submited_desc'  => 'Your claim has been sent to your advisor and will be processed with your insurer in due time. The claim details will be available to view in the “Submitted Claims” menu of the portal. Please contact our claims team if you have any questions about the claims process.',
     'claim_step4_tip_p1'         => 'Double check that all details are correct!',
     'claim_step4_tip_p2'         => 'Click “Edit” to change any of the details listed.',
     'claim_step4_tip_p3'         => 'Click the “Save” button below if there is any information missing.',
@@ -158,7 +158,7 @@ return [
     'claim_submit_list_title' => 'Submitted Claims',
     'claim_submit_list_intro' => 'View your submitted claims here.',
     'claim_plan_name'         => 'Policy: ',
-    'claim_list_foot_note'    => 'Should you have any questions regarding your premium, cover, plan, or more please contact our claims team.',
+    'claim_list_foot_note'    => 'Should you have any questions regarding your premium, cover, plan, or more Please contact your advisor.',
 
     //set new password
     'set_new_password_title' => 'Reset your password',
@@ -247,7 +247,7 @@ return [
     //policy contact
     'policy_contact_title'      => 'Policy:',
     'policy_contact_advisor'    => 'Your advisor is:',
-    'policy_contact_footnote'   => 'Should you have any questions regarding your premium, cover, plan, or more please contact our claims team.',
+    'policy_contact_footnote'   => 'Should you have any questions regarding your premium, cover, plan, or more Please contact your advisor.',
 
     //SaveClaim
     'save_claim_title'   => 'Claim Saved',
